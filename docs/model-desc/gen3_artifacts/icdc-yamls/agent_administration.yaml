@@ -1,0 +1,97 @@
+--- &1
+$schema: http://json-schema.org/draft-04/schema#
+id: agent_administration
+title: Agent_administration
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &2 false
+submittable: &3 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: agents
+  backref: agent_administrations
+  label: of_agent
+  target_type: agent
+  multiplicity: many_to_one
+  required: 0
+- name: visits
+  backref: agent_administrations
+  label: on_visit
+  target_type: visit
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - agent_administration
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  document_number:
+    type: string
+  medication:
+    type: string
+  route_of_administration:
+    type: string
+  medication_lot_number:
+    type: string
+  medication_vial_id:
+    type: string
+  medication_actual_units_of_measure:
+    type: string
+  medication_duration:
+    type: string
+  medication_units_of_measure:
+    type: string
+  medication_actual_dose:
+    type: string
+  phase:
+    type: string
+  start_time:
+    type: string
+  stop_time:
+    type: string
+  dose_level:
+    type: string
+  dose_units_of_measure:
+    type: string
+  date_of_missed_dose:
+    type: string
+  medication_missed_dose:
+    type: string
+  missed_dose_amount:
+    type: string
+  missed_dose_units_of_measure:
+    type: string
+  medication_course_number:
+    type: string
+  comment:
+    type: string
+  crf_id:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  agents:
+    $ref: _definitions.yaml#/to_one
+  visits:
+    $ref: _definitions.yaml#/to_one

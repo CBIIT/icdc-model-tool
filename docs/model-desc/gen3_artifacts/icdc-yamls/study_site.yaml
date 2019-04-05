@@ -1,0 +1,53 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: study_site
+title: Study_site
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: studies
+  backref: study_sites
+  label: of_study
+  target_type: study
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - study_site
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  site_short_name:
+    type: string
+  veterinary_medical_center:
+    type: string
+  registering_institution:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  studies:
+    $ref: _definitions.yaml#/to_one

@@ -1,0 +1,287 @@
+# overlay kludge to make Gen3 work
+# project_id should be equal to clinical_study_designation everywhere when submitting data
+---
+Nodes:
+  adverse_event:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  agent:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  agent_administration:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  aliquot:
+    SystemProps:
+    - project_id
+    Props:
+    - project_id
+    - submitter_id
+    Category: biospecimen
+  assay:
+    Props:
+    - project_id
+    - submitter_id
+    Category: biospecimen
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  case:
+    Props:
+    - submitter_id
+    - project_id
+    SystemProps:
+    - project_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  cohort:
+    Props:
+    - project_id
+    - submitter_id
+    SystemProps:
+    - project_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  cycle:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  demographic:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  diagnosis:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  disease_extent:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  enrollment:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  evaluation:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  experiment:
+    Props:
+    - project_id
+    - submitter_id
+    - name
+    SystemProps:
+    - project_id
+  file:
+    Category: data_file
+    Props:
+    - object_id
+    - file_name
+    - data_category
+    - data_format
+    - data_type
+    - file_size
+    - submitter_id
+    - project_id
+    - md5sum
+    SystemProps:
+    - project_id
+    - updated_datetime
+    - created_datetime
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  follow_up:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  image:
+    Category: data_file
+    Props:
+    - object_id
+    - file_name
+    - data_category
+    - data_format
+    - data_type
+    - file_size
+    - submitter_id
+    - project_id
+    - md5sum
+    SystemProps:
+    - project_id
+    - updated_datetime
+    - created_datetime
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  lab_exam:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  off_study:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  off_treatment:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  physical_exam:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  principal_investigator:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  prior_surgery:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  prior_therapy:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  program:
+    Props:
+    - dbgap_accession_number
+    - submitter_id
+  project:
+    Props:
+    - dbgap_accession_number
+    - name
+    - code
+    - submitter_id
+    - availability_type
+    UniqueKeys:
+    - [ 'code' ]
+  sample:
+    Props:
+    - submitter_id
+    SystemProps:
+    - project_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  study:
+    Props:
+    - project_id
+    - submitter_id
+    SystemProps:
+    - project_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  study_arm:
+    SystemProps:
+    - project_id
+    Props:
+    - submitter_id
+    - project_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  study_site:
+    Props:
+    - project_id
+    - submitter_id
+    SystemProps:
+    - project_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  visit:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+  vital_signs:
+    Props:
+    - project_id
+    - submitter_id
+    UniqueKeys:
+    - - project_id
+      - submitter_id
+PropDefinitions:
+  submitter_id:
+    Desc: for Gen3
+    Nul: ''
+    Type: string
+Relationships:
+  member_of:
+    Mul: many_to_one
+    Req: true
+    Ends:
+    - Dst: sample
+      Src: aliquot
+    - Dst: case
+      Src: sample
+    - Dst: experiment
+      Src: cohort
+    - Dst: study_arm
+      Src: experiment
+    - Dst: project
+      Src: study
+    - Dst: project
+      Src: experiment
+    - Dst: program
+      Src: project

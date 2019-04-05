@@ -1,0 +1,53 @@
+--- &1
+$schema: http://json-schema.org/draft-04/schema#
+id: case
+title: Case
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &2 false
+submittable: &3 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cohorts
+  backref: cases
+  label: member_of
+  target_type: cohort
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - case
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  patient_id:
+    type: string
+  patient_first_name:
+    type: string
+  crf_id:
+    type: string
+  submitter_id:
+    type: string
+  project_id:
+    type: string
+  cohorts:
+    $ref: _definitions.yaml#/to_one

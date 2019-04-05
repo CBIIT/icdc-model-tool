@@ -1,0 +1,364 @@
+# PropDefinitions:
+#   prop1 :
+#     Term : >
+#       term reference token e.g., for
+#       $ref: "_terms.yaml#/ajcc_clinical_m", use
+#       'ajcc_clinical_m'
+#     Desc : ""
+#     Type : string|number
+#     Nul : true|false (nullable)
+#     Req : true|false
+#     Enum : [acceptible, values, for, prop, go, here]
+PropDefinitions:
+  id: null
+  type: null
+  function: null
+  name:
+    Desc: generic name property
+  comment:
+    Desc: generic comment
+  sex:
+    Desc: gender, needs enum
+    Src: ENROLLMENT/ENROLL/1
+  document_number:
+    Desc: S/N of the executed CRF
+    Src: ALL
+  clinical_study_designation:
+    Src: COURSE INIT/CINIT/1
+  patient_id:
+    Src: COURSE INIT/CINIT/1
+  clinical_study_id:
+    Src: COURSE INIT/CINIT/1
+  cycle_number:
+    Src: COURSE INIT/CINIT/1
+  date_of_cycle_start:
+    Src: COURSE INIT/CINIT/1
+  date_of_cycle_stop:
+    Src: COURSE INIT/CINIT/1
+  phase:
+    Desc: Where should this live?/What is?
+    Src: COURSE INIT/CINIT/1
+  arm:
+    Src: COURSE INIT/CINIT/1
+  ctep_treatment_assignment_code:
+    Src: COURSE INIT/CINIT/1
+  site_short_name:
+    Src: ENROLLMENT/ENROLL/1
+  investigator_name:
+    Src: external documents
+  patient_age_at_enrollment:
+    Src: ENROLLMENT/ENROLL/1
+  initials:
+    Src: ENROLLMENT/ENROLL/1
+  patient_first_name:
+    Src: ENROLLMENT/ENROLL/1
+  breed:
+    Src: ENROLLMENT/ENROLL/1
+  date_of_registration:
+    Src: ENROLLMENT/ENROLL/1
+  veterinary_medical_center:
+    Src: ENROLLMENT/ENROLL/1
+  patient_subgroup:
+    Src: ENROLLMENT/ENROLL/1
+  registering_institution:
+    Src: ENROLLMENT/ENROLL/1
+  primary_disease_site:
+    Src: ENROLLMENT/ENROLL/1
+  disease_term:
+    Src: ENROLLMENT/ENROLL/1
+  disease_stage:
+    Src: ENROLLMENT/ENROLL/1
+  histology_cytopathology:
+    Src: ENROLLMENT/ENROLL/1
+  date_of_histology_confirmation:
+    Src: ENROLLMENT/ENROLL/1
+  histological_grade:
+    Src: ENROLLMENT/ENROLL/1
+  date_of_diagnosis:
+    Src: ENROLLMENT/ENROLL/1
+  date_of_informed_consent:
+    Src: ENROLLMENT/ENROLL/1
+  date_of_iacuc_approval:
+    Desc: should go on the project, rather than enrollment node?
+    Src: ENROLLMENT/ENROLL/1
+  cohort_description:
+      # this really contains two elements, "cohort_dose" and "cohort_agent"
+      # which are the protocol directions, not necessarily the actuals
+      # (whihc are in agent_administration)
+      # study_arm <- agent
+    Desc: actually, a list of agent and dose
+    Src: ENROLLMENT/ENROLL/1
+  date_of_birth:
+    Src: ENROLLMENT/ENROLL/1
+  patient_subgroup:
+    Desc: really a description of why dog was enrolled
+    Src: ENROLLMENT/ENROLL/1    
+  enrollment_document_number:
+    Src: ENROLLMENT/ENROLL/1
+  site_short_name:
+    Desc: |
+      'site' on form
+    Src: ENROLLMENT/ENROLL/1
+  date_off_study:
+    Src: OFF_STUDY/OSSM/1
+  reason_off_study:
+    Src: OFF_STUDY/OSSM/1
+  date_of_disease_progression:
+    Src: OFF_STUDY/OSSM/1
+  date_off_treatment:
+    Src: OFF_STUDY/OSSM/1
+  reason_off_treatment:
+    Src: OFF_STUDY/OSSM/1
+  other_reason_off_treatment:
+    Src: OFF_STUDY/OSSM/1
+  best_resp_vet_tx_tp_secondary_response:
+    Src: OFF_STUDY/OSSM/1
+  date_last_medication_administration:
+    Src: OFF_STUDY/OSSM/1
+  best_resp_vet_tx_tp_best_response:
+    Src: OFF_STUDY/OSSM/1
+  date_of_best_response:
+    Src: OFF_STUDY/OSSM/1
+  date_of_examination:
+    Src: PHYSICAL_EXAM/PE/1
+  day_in_cycle:
+    Src: PHYSICAL_EXAM/PE/1
+  body_system:
+    Desc: Body system examined; up to 12 in a visit
+    Src: PHYSICAL_EXAM/PE/1
+  pe_finding:
+    Desc: Clinical exam result for the body system examined. Finding_results on form.
+    Src: PHYSICAL_EXAM/PE/1
+  vet_comment:
+    Src: PHYSICAL_EXAM/PE/1
+  patient_weight:
+    Src: PHYSICAL_EXAM/PE/1
+  date_of_vital_signs:
+    Desc: actually visit date
+    Src: PHYSICAL_EXAM/PE/1
+  body_surface_area:
+    Desc: Called "bsa" in form
+    Src: PHYSICAL_EXAM/PE/1
+  body_temperature:
+    Src: PHYSICAL_EXAM/PE/1
+  pulse:
+    Src: PHYSICAL_EXAM/PE/1
+  respiration_rate:
+    Src: PHYSICAL_EXAM/PE/1
+  respiration_pattern:
+    Src: PHYSICAL_EXAM/PE/1
+  systolic_bp:
+    Src: PHYSICAL_EXAM/PE/1
+  pulse_ox:
+    Src: PHYSICAL_EXAM/PE/1
+  modified_ecog:
+    Src: PHYSICAL_EXAM/PE/1
+  ecg:
+    Src: PHYSICAL_EXAM/PE/1
+  assessment_timepoint:
+    Src: PHYSICAL_EXAM/PE/1
+  date_of_surgery:
+    Src: PRIOR_SURG_SUPP/PSRG/1
+  procedure:
+    Src: PRIOR_SURG_SUPP/PSRG/1
+  anatomical_site_of_surgery:
+    Desc: Site_FUL on form
+    Src: PRIOR_SURG_SUPP/PSRG/1
+  surgical_finding:
+    Desc: Findings_FUL on form
+    Src: PRIOR_SURG_SUPP/PSRG/1
+  residual_disease:
+    Src: PRIOR_SURG_SUPP/PSRG/1
+  therapeutic_indicator:
+    Src: PRIOR_SURG_SUPP/PSRG/1
+  date_of_first_dose:
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  date_of_last_dose:
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  agent_name:
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  dose_schedule:
+    Desc: Schedule_FUL in form
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  total_dose:
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  agent_units_of_measure:
+    Desc: Agent UOM_FUL in form
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  best_response:
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  nonresponse_therapy_type:
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  prior_therapy_type:
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+  prior_steroid_exposure:
+    Desc: Has the patient ever been on steroids? in form
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  number_of_prior_regimens_steroid:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  total_number_of_doses_steroid:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  date_of_last_dose_steroid:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  prior_nsaid_exposure:
+    Desc: Has the patient ever been on NSAIDS? in form
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  number_of_prior_regimens_nsaid:
+    Src: PRIOR_TREAT_SUMM/PTX/1        
+  total_number_of_doses_nsaid:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  date_of_last_dose_nsaid:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  tx_loc_geo_loc_ind_nsaid:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  min_rsdl_dz_tx_ind_nsaids_treatment_pe:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  therapy_type:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  any_therapy:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  number_of_prior_regimens_any_therapy:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  total_number_of_doses_any_therapy:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  date_of_last_dose_any_therapy:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  treatment_performed_at_site:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  treatment_performed_in_minimal_residual:
+    Src: PRIOR_TREAT_SUMM/PTX/1
+  medication:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  route_of_administration:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  medication_lot_number:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  medication_vial_id:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  medication_actual_units_of_measure:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  medication_duration:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  medication_units_of_measure:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  medication_actual_dose:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  start_time:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  stop_time:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  dose_level:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  dose_units_of_measure:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  date_of_missed_dose:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  medication_missed_dose:
+    Desc: Q.- form has "medication"
+    Src: STUDY_MED_ADMIN/SDAD/1
+  missed_dose_amount:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  missed_dose_units_of_measure:
+    Desc: Q.- form has "dose uom_ful"
+    Src: STUDY_MED_ADMIN/SDAD/1    
+  medication_course_number:
+    Src: STUDY_MED_ADMIN/SDAD/1    
+  comments:
+    Src: STUDY_MED_ADMIN/SDAD/1
+  date_of_last_contact:
+    Src: FOLLOW_UP/FLWU/1
+  patient_status:
+    Desc: need vocab
+    Src: FOLLOW_UP/FLWU/1
+  explain_unknown_status:
+    Desc: free text?
+    Src: FOLLOW_UP/FLWU/1
+  contact_type:
+    Desc: need vocab
+    Src: FOLLOW_UP/FLWU/1
+  treatment_since_last_contact:
+    Desc: y/n
+    Src: FOLLOW_UP/FLWU/1
+  physical_exam_performed:
+    Desc: y/n
+    Src: FOLLOW_UP/FLWU/1
+  physical_exam_changes:
+    Desc: How described? Relative to data already stored in "physical_exam" node?
+    Src: FOLLOW_UP/FLWU/1
+  cohort_dose:
+    Desc: intended or protocol dose
+    Src:
+  date_of_evaluation:
+    Desc: inferred from evaluation inputs (e.g.,PE)
+  ae_dose:
+    Src: adverse events form
+  ae_agent_name:
+    Src: adverse events form
+  day_in_cycle:
+    Src: adverse events form
+  date_resolved:
+    Src: adverse events form
+  adverse_event_term:
+    Desc: enum vocab?
+    Src: adverse events form
+  adverse_event_description:
+    Desc: freetext
+    Src: adverse events form
+  adverse_event_grade:
+    Desc: enum
+    Src: adverse events form
+  adverse_event_grade_description:
+    Desc: enum (nec?)
+    Src: adverse events form
+  attribution_to_research:
+    Desc: What is?
+    Src: adverse events form
+  attribution_to_ind:
+    Desc: What is?
+    Src: adverse events form
+  attribution_to_disease:
+    Desc: What is?
+    Src: adverse events form
+  attribution_to_commercial:
+    Desc: What is?
+    Src: adverse events form
+  attribution_to_other:
+    Desc: What is?
+    Src: adverse events form
+  ae_other:
+    Desc: What is?
+    Src: adverse events form
+  dose_limiting_toxicity:
+    Desc: bool
+    Src: adverse events form
+  unexpected_adverse_event:
+    Desc: bool
+    Src: adverse events form
+  # gen3 kludge 
+  project_id:
+    Desc: gen3 kludge property
+    Src: gen3
+  object_id:
+    Desc: gen3 kludge property
+    Src: gen3
+  file_name:
+    Desc: gen3 kludge property
+    Src: gen3
+  data_category:
+    Desc: gen3 kludge property
+    Src: gen3
+  data_format:
+    Desc: gen3 kludge property
+    Src: gen3
+  data_type:
+    Desc: gen3 kludge property
+    Src: gen3
+  file_size:
+    Desc: gen3 kludge property
+    Src: gen3
+  dbgap_accession_number:
+    Desc: gen3 kludge property
+    Src: gen3
+  study_site:
+    Desc: review this
+    

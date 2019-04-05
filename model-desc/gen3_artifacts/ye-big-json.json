@@ -1,0 +1,4319 @@
+{
+	"study.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "study",
+		"title": "Study",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "programs",
+				"backref": "studies",
+				"label": "member_of",
+				"target_type": "program",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"study"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"name": {
+				"type": "string"
+			},
+			"clinical_study": {
+				"type": "string"
+			},
+			"clinical_study_id": {
+				"type": "string"
+			},
+			"programs": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"demographic.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "demographic",
+		"title": "Demographic",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common_file",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "cases",
+				"backref": "demographics",
+				"label": "of_case",
+				"target_type": "case",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"demographic"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"breed": {
+				"type": "string"
+			},
+			"patient_age_at_enrollment": {
+				"type": "string"
+			},
+			"cases": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"_terms.yaml": {
+		"section_location": {
+			"description": "Tissue source of the slide.\n"
+		},
+		"ajcc_clinical_t": {
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3440328&version=1.0",
+				"cde_id": 3440328
+			},
+			"description": "Extent of the primary cancer based on evidence obtained from clinical assessment parameters determined prior to treatment.\n"
+		},
+		"her2_erbb2_percent_positive_ihc": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3086980&version=1.0",
+				"cde_id": 3086980,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "HER2 ERBB Positive Finding Cell Percentage Category"
+			},
+			"description": "Classification to represent the number of positive HER2/ERBB2 cells in a specimen or sample.\n"
+		},
+		"percent_gc_content": {
+			"termDef": {
+				"cde_id": null,
+				"term_url": "http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/1%20Basic%20Statistics.html",
+				"term": "%GC",
+				"source": "FastQC",
+				"cde_version": null
+			},
+			"description": "The overall %GC of all bases in all sequences.\n"
+		},
+		"perineural_invasion_present": {
+			"termDef": {
+				"term": "Tumor Perineural Invasion Ind",
+				"source": "caDSR",
+				"cde_version": 3,
+				"cde_id": 64181,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=64181&version=3.0"
+			},
+			"description": "a yes/no indicator to ask if perineural invasion or infiltration of tumor or cancer is present.\n"
+		},
+		"relative_with_cancer_history": {
+			"termDef": {
+				"term": "Other Cancer Biological Relative History Indicator",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 3901752,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3901752&version=1.0"
+			},
+			"description": "Indicator to signify whether or not an individual's biological relative has been diagnosed with another type of cancer.\n"
+		},
+		"progesterone_receptor_result_ihc": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2957357&version=2.0",
+				"cde_id": 2957357,
+				"term": "Breast Carcinoma Progesterone Receptor Status",
+				"cde_version": 2,
+				"source": "caDSR"
+			},
+			"description": "Text term to represent the overall result of Progresterone Receptor (PR) testing.\n"
+		},
+		"experimental_strategy": {
+			"description": "The sequencing strategy used to generate the data file.\n"
+		},
+		"days_to_treatment": {
+			"description": "Number of days from date of initial pathologic diagnosis that treatment began.\n",
+			"termDef": {
+				"cde_version": null,
+				"source": null,
+				"term": "Days to Treatment Start",
+				"term_url": null,
+				"cde_id": null
+			}
+		},
+		"data_category": {
+			"description": "Broad categorization of the contents of the data file.\n"
+		},
+		"diagnosis_pathologically_confirmed": {
+			"description": "The histologic description of tissue or cells confirmed by a pathology review of frozen or formalin fixed slide(s) completed after the diagnostic pathology review of the tumor sample used to extract analyte(s).\n",
+			"termDef": {
+				"cde_id": null,
+				"term_url": null,
+				"source": null,
+				"cde_version": null,
+				"term": "Post-Diagnostic Pathology Review Confirmation"
+			}
+		},
+		"experiment_name": {
+			"description": "Submitter-defined name for the experiment.\n"
+		},
+		"fastq_name": {
+			"description": "Names of FASTQs.\n"
+		},
+		"spike_ins_fasta": {
+			"description": "Name of the FASTA file that contains the spike-in sequences.\n"
+		},
+		"estrogen_receptor_result_ihc": {
+			"description": "Text term to represent the overall result of Estrogen Receptor (ER) testing.\n",
+			"termDef": {
+				"cde_version": 2,
+				"source": "caDSR",
+				"term": "Breast Carcinoma Estrogen Receptor Status",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2957359&version=2.0",
+				"cde_id": 2957359
+			}
+		},
+		"smoking_history": {
+			"description": "Category describing current smoking status and smoking history as self-reported by a patient.\n",
+			"termDef": {
+				"term": "Smoking History",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2181650&version=1.0",
+				"cde_id": 2181650
+			}
+		},
+		"ldh_level_at_diagnosis": {
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Laboratory Procedure Lactate Dehydrogenase Result Integer::2 Decimal Place Value",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2798766&version=1.0",
+				"cde_id": 2798766
+			},
+			"description": "The 2 decimal place numeric laboratory value measured, assigned or computed related to the assessment of lactate dehydrogenase in a specimen.\n"
+		},
+		"adapter_name": {
+			"description": "Name of the sequencing adapter.\n"
+		},
+		"alcohol_intensity": {
+			"termDef": {
+				"term": "Person Self-Report Alcoholic Beverage Exposure Category",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3457767&version=1.0",
+				"cde_id": 3457767
+			},
+			"description": "Category to describe the patient's current level of alcohol use as self-reported by the patient.\n"
+		},
+		"days_to_collection": {
+			"description": "Time interval from the date of biospecimen collection to the date of initial pathologic diagnosis, represented as a calculated number of days.\n",
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Biospecimen Collection Date Less Initial Pathologic Diagnosis Date Calculated Day Value",
+				"cde_id": 3008340,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3008340&version=1.0"
+			}
+		},
+		"is_ffpe": {
+			"description": "Indicator to signify whether or not the tissue sample was fixed in formalin and embedded in paraffin (FFPE).\n",
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Specimen Processing Formalin Fixed Paraffin Embedded Tissue Indicator",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4170557&version=1.0",
+				"cde_id": 4170557
+			}
+		},
+		"base_caller_name": {
+			"description": "Name of the base caller.\n"
+		},
+		"cause_of_death": {
+			"termDef": {
+				"cde_version": 3,
+				"source": "caDSR",
+				"term": "Patient Death Reason",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2554674&version=3.0",
+				"cde_id": 2554674
+			},
+			"description": "Text term to identify the cause of death for a patient.\n"
+		},
+		"progesterone_receptor_percent_positive_ihc": {
+			"description": "Classification to represent Progesterone Receptor Positive results expressed as a percentage value.\n",
+			"termDef": {
+				"term": "Progesterone Receptor Level Cell Percentage Category",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 3128342,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3128342&version=1.0"
+			}
+		},
+		"analyte_volume": {
+			"termDef": {
+				"source": null,
+				"cde_version": null,
+				"term": "Biospecimen Analyte Volume",
+				"cde_id": null,
+				"term_url": null
+			},
+			"description": "The volume in microliters (ml) of the analyte(s) derived from the analyte(s) shipped for sequencing and characterization.\n"
+		},
+		"analyte_type_id": {
+			"description": "A single letter code used to identify a type of molecular analyte.\n",
+			"termDef": {
+				"term": "Molecular Analyte Identification Code",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 5432508,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432508&version=1.0"
+			}
+		},
+		"ajcc_pathologic_stage": {
+			"description": "The extent of a cancer, especially whether the disease has spread from the original site to other parts of the body based on AJCC staging criteria.\n",
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Neoplasm Disease Stage American Joint Committee on Cancer Code",
+				"cde_id": 3203222,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3203222&version=1.0"
+			}
+		},
+		"source_center": {
+			"description": "Name of the center that provided the item.\n"
+		},
+		"last_known_disease_status": {
+			"description": "Text term that describes the last known state or condition of an individual's neoplasm.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2759550&version=1.0",
+				"cde_id": 5424231,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Person Last Known Neoplasm Status"
+			}
+		},
+		"percent_tumor_nuclei": {
+			"termDef": {
+				"cde_id": 2841225,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2841225&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Malignant Neoplasm Neoplasm Nucleus Percentage Cell Value"
+			},
+			"description": "Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen.\n"
+		},
+		"28s_16s_ribosomal_rna_ratio": {
+			"description": "The 28S/18S ribosomal RNA band ratio used to assess the quality of total RNA.\n",
+			"termDef": {
+				"term": "28s/18s Ribosomal RNA Ratio",
+				"cde_version": null,
+				"source": null,
+				"term_url": null,
+				"cde_id": null
+			}
+		},
+		"encoding": {
+			"termDef": {
+				"term": "Encoding",
+				"source": "FastQC",
+				"cde_version": null,
+				"cde_id": null,
+				"term_url": "http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/1%20Basic%20Statistics.html"
+			},
+			"description": "Version of ASCII encoding of quality values found in the file.\n"
+		},
+		"library_preparation_kit_version": {
+			"description": "Version of Library Preparation Kit\n"
+		},
+		"read_length": {
+			"description": "The length of the reads.\n"
+		},
+		"portion_weight": {
+			"termDef": {
+				"cde_id": 5432593,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432593&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Biospecimen Portion Weight Milligram Value"
+			},
+			"description": "Numeric value that represents the sample portion weight, measured in milligrams.\n"
+		},
+		"tumor_code_id": {
+			"description": "BCR-defined id code for the tumor sample.\n"
+		},
+		"residual_disease": {
+			"description": "Text terms to describe the status of a tissue margin following surgical resection.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2608702&version=1.0",
+				"cde_id": 2608702,
+				"term": "Surgical Margin Resection Status",
+				"cde_version": 1,
+				"source": "caDSR"
+			}
+		},
+		"read_group_name": {
+			"description": "The name of the read group.\n"
+		},
+		"lymphatic_invasion_present": {
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 3,
+				"term": "Lymphatic/Small vessel Invasion Ind",
+				"cde_id": 64171,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=64171&version=3.0"
+			},
+			"description": "A yes/no indicator to ask if small or thin-walled vessel invasion is present, indicating lymphatic involvement\n"
+		},
+		"creation_datetime": {
+			"termDef": {
+				"term": "Biospecimen Portion Creation Seconds Date/Time",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432592&version=1.0",
+				"cde_id": 5432592
+			},
+			"description": "The datetime of portion creation encoded as seconds from epoch.\n"
+		},
+		"morphology": {
+			"description": "The third edition of the International Classification of Diseases for Oncology, published in 2000 used principally in tumor and cancer registries for coding the site (topography) and the histology (morphology) of neoplasms. The study of the structure of the cells and their arrangement to constitute tissues and, finally, the association among these to form organs. In pathology, the microscopic process of identifying normal and abnormal morphologic characteristics in tissues, by employing various cytochemical and immunocytochemical stains. A system of numbered categories for representation of data.\n",
+			"termDef": {
+				"term": "International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3226275&version=1.0",
+				"cde_id": 3226275
+			}
+		},
+		"ann_arbor_b_symptoms": {
+			"termDef": {
+				"term": "Lymphoma B-Symptoms Medical Record Documented Indicator",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 2902402,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2902402&version=1.0"
+			},
+			"description": "Text term to signify whether lymphoma B-symptoms are present as noted in the patient's medical record.\n"
+		},
+		"estrogen_receptor_percent_positive_ihc": {
+			"description": "Classification to represent ER Positive results expressed as a percentage value.\n",
+			"termDef": {
+				"cde_id": 3128341,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3128341&version=1.0",
+				"term": "ER Level Cell Percentage Category",
+				"source": "caDSR",
+				"cde_version": 1
+			}
+		},
+		"target_capture_kit_catalog_number": {
+			"description": "Catalog of Target Capture Kit.\n"
+		},
+		"days_to_last_follow_up": {
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Last Communication Contact Less Initial Pathologic Diagnosis Date Calculated Day Value",
+				"cde_id": 3008273,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3008273&version=1.0"
+			},
+			"description": "Time interval from the date of last follow up to the date of initial pathologic diagnosis, represented as a calculated number of days.\n"
+		},
+		"data_type": {
+			"description": "Specific content type of the data file.\n"
+		},
+		"days_to_birth": {
+			"termDef": {
+				"cde_id": 3008233,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3008233&version=1.0",
+				"term": "Person Birth Date Less Initial Pathologic Diagnosis Date Calculated Day Value",
+				"source": "caDSR",
+				"cde_version": 1
+			},
+			"description": "Time interval from a person's date of birth to the date of initial pathologic diagnosis, represented as a calculated negative number of days.\n"
+		},
+		"time_between_clamping_and_freezing": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432611&version=1.0",
+				"cde_id": 5432611,
+				"term": "Tissue Sample Clamping and Freezing Elapsed Minute Time",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Numeric representation of the elapsed time between the surgical clamping of blood supply and freezing of the sample, measured in minutes.\n"
+		},
+		"project_id": {
+			"description": "Unique ID for any specific defined piece of work that is undertaken or attempted to meet a single requirement.\n"
+		},
+		"percent_necrosis": {
+			"description": "Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen.\n",
+			"termDef": {
+				"term": "Malignant Neoplasm Necrosis Percentage Value",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 2841237,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2841237&version=1.0"
+			}
+		},
+		"spectrophotometer_method": {
+			"description": "Name of the method used to determine the concentration of purified nucleic acid within a solution.\n",
+			"termDef": {
+				"term": "Purification Nucleic Acid Solution Concentration Determination Method Type",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3008378&version=1.0",
+				"cde_id": 3008378
+			}
+		},
+		"a260_a280_ratio": {
+			"description": "Numeric value that represents the sample ratio of nucleic acid absorbance at 260 nm and 280 nm, used to determine a measure of DNA purity.\n",
+			"termDef": {
+				"term": "Nucleic Acid Absorbance at 260 And Absorbance at 280 DNA Purity Ratio Value",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 5432595,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432595&version=1.0"
+			}
+		},
+		"years_smoked": {
+			"termDef": {
+				"cde_id": 3137957,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3137957&version=1.0",
+				"term": "Person Smoking Duration Year Count",
+				"source": "caDSR",
+				"cde_version": 1
+			},
+			"description": "Numeric value (or unknown) to represent the number of years a person has been smoking.\n"
+		},
+		"her2_erbb2_result_ihc": {
+			"termDef": {
+				"term": "Laboratory Procedure HER2/neu Immunohistochemistry Receptor Status",
+				"cde_version": 2,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2957563&version=2.0",
+				"cde_id": 2957563
+			},
+			"description": "Text term to signify the result of the medical procedure that involves testing a sample of blood or tissue for HER2 by histochemical localization of immunoreactive substances using labeled antibodies as reagents.\n"
+		},
+		"circumferential_resection_margin": {
+			"description": "A value in millimeters indicating the measured length between a malignant lesion of the colon or rectum and the nearest radial (or circumferential) border of tissue removed during cancer surgery.\n",
+			"termDef": {
+				"term": "Colorectal Surgical Margin Circumferential Distance Measurement",
+				"cde_version": 3,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=64202&version=3.0",
+				"cde_id": 64202
+			}
+		},
+		"year_of_birth": {
+			"description": "Numeric value to represent the calendar year in which an individual was born.\n",
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Year Birth Date Number",
+				"cde_id": 2896954,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2896954&version=1.0"
+			}
+		},
+		"adapter_sequence": {
+			"description": "Base sequence of the sequencing adapter.\n"
+		},
+		"colon_polyps_history": {
+			"description": "Yes/No indicator to describe if the subject had a previous history of colon polyps as noted in the history/physical or previous endoscopic report (s).\n",
+			"termDef": {
+				"term": "Colon Carcinoma Polyp Occurrence Indicator",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3107197&version=1.0",
+				"cde_id": 3107197
+			}
+		},
+		"days_to_death": {
+			"termDef": {
+				"cde_id": 3165475,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3165475&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Death Less Initial Pathologic Diagnosis Date Calculated Day Value"
+			},
+			"description": "Time interval from a person's date of death to the date of initial pathologic diagnosis, represented as a calculated number of days.\n"
+		},
+		"state": {
+			"description": "The current state of the object.\n"
+		},
+		"to_trim_adapter_sequence": {
+			"description": "Does the user suggest adapter trimming?\n"
+		},
+		"days_to_treatment_start": {
+			"description": "Time interval from the date of the initial pathologic diagnosis to the start of treatment, represented as a calculated number of days.\n",
+			"termDef": {
+				"term": "Treatment Start Subtract First Pathologic Diagnosis Time Day Calculation Value",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102411&version=1.0",
+				"cde_id": 5102411
+			}
+		},
+		"ajcc_pathologic_n": {
+			"description": "The codes that represent the stage of cancer based on the nodes present (N stage) according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.\n",
+			"termDef": {
+				"term": "Neoplasm Disease Lymph Node Stage American Joint Committee on Cancer Code",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 3203106,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3203106&version=1.0"
+			}
+		},
+		"preservation_method": {
+			"description": "Text term that represents the method used to preserve the sample.\n",
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Tissue Sample Preservation Method Type",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432521&version=1.0",
+				"cde_id": 5432521
+			}
+		},
+		"progression_or_recurrence": {
+			"termDef": {
+				"term": "New Neoplasm Event Post Initial Therapy Indicator",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 3121376,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3121376&version=1.0"
+			},
+			"description": "Yes/No/Unknown indicator to identify whether a patient has had a new tumor event after initial treatment.\n"
+		},
+		"initial_weight": {
+			"description": "Numeric value that represents the initial weight of the sample, measured in milligrams.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432605&version=1.0",
+				"cde_id": 5432605,
+				"term": "Tissue Sample Initial Weight Milligram Value",
+				"cde_version": 1,
+				"source": "caDSR"
+			}
+		},
+		"ethnicity": {
+			"termDef": {
+				"cde_version": 2,
+				"source": "caDSR",
+				"term": "Ethnic Group Category Text",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2192217&version=2.0",
+				"cde_id": 2192217
+			},
+			"description": "An individual's self-described social and cultural grouping, specifically whether an individual describes themselves as Hispanic or Latino. The provided values are based on the categories defined by the U.S. Office of Management and Business and used by the U.S. Census Bureau.\n"
+		},
+		"hpv_positive_type": {
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Human Papillomavirus Type",
+				"cde_id": 2922649,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2922649&version=1.0"
+			},
+			"description": "Text classification to represent the strain or type of human papillomavirus identified in an individual.\n"
+		},
+		"tumor_stage": {
+			"termDef": {
+				"source": "NCIt",
+				"cde_version": null,
+				"term": "Tumor Stage",
+				"cde_id": "C16899",
+				"term_url": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C16899"
+			},
+			"description": "The extent of a cancer in the body. Staging is usually based on the size of the tumor, whether lymph nodes contain cancer, and whether the cancer has spread from the original site to other parts of the body. The accepted values for tumor_stage depend on the tumor site, type, and accepted staging system. These items should accompany the tumor_stage value as associated metadata.\n"
+		},
+		"size_selection_range": {
+			"description": "Range of size selection.\n"
+		},
+		"biomarker_name": {
+			"description": "The name of the biomarker being tested for this specimen and set of test results.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5473&version=2.31",
+				"cde_id": 5473,
+				"cde_version": 11,
+				"source": "caDSR",
+				"term": "Biomarker Name"
+			}
+		},
+		"race": {
+			"description": "An arbitrary classification of a taxonomic group that is a division of a species. It usually arises as a consequence of geographical isolation within a species and is characterized by shared heredity, physical attributes and behavior, and in the case of humans, by common history, nationality, or geographic distribution. The provided values are based on the categories defined by the U.S. Office of Management and Business and used by the U.S. Census Bureau.\n",
+			"termDef": {
+				"cde_id": 2192199,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2192199&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Race Category Text"
+			}
+		},
+		"library_preparation_kit_vendor": {
+			"description": "Vendor of Library Preparation Kit\n"
+		},
+		"burkitt_lymphoma_clinical_variant": {
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Burkitt Lymphoma Clinical Variant Type",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3770421&version=1.0",
+				"cde_id": 3770421
+			},
+			"description": "Burkitt's lymphoma categorization based on clinical features that differ from other forms of the same disease.\n"
+		},
+		"target_capture_kit_vendor": {
+			"description": "Vendor of Target Capture Kit.\n"
+		},
+		"ann_arbor_pathologic_stage": {
+			"termDef": {
+				"cde_id": null,
+				"term_url": null,
+				"term": "Ann Arbor Pathologic Stage",
+				"source": null,
+				"cde_version": null
+			},
+			"description": "The classification of the pathologically confirmed anatomic disease extent of lymphoma (Hodgkin's and Non-Hodgkins) based on the Ann Arbor Staging System.\n"
+		},
+		"portion_number": {
+			"description": "Numeric value that represents the sequential number assigned to a portion of the sample.\n",
+			"termDef": {
+				"term": "Biospecimen Portion Sequence Number",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 5432711,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432711&version=1.0"
+			}
+		},
+		"time_between_excision_and_freezing": {
+			"termDef": {
+				"term": "Tissue Sample Excision and Freezing Elapsed Minute Time",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 5432612,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432612&version=1.0"
+			},
+			"description": "Numeric representation of the elapsed time between the excision and freezing of the sample, measured in minutes.\n"
+		},
+		"platform": {
+			"description": "Name of the platform used to obtain data.\n"
+		},
+		"sample_type_id": {
+			"description": "The accompanying sample type id for the sample type.\n"
+		},
+		"percent_tumor_cells": {
+			"termDef": {
+				"term": "Specimen Tumor Cell Percentage Value",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432686&version=1.0",
+				"cde_id": 5432686
+			},
+			"description": "Numeric value that represents the percentage of infiltration by granulocytes in a sample.\n"
+		},
+		"percent_lymphocyte_infiltration": {
+			"termDef": {
+				"cde_id": 2897710,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2897710&version=2.0",
+				"source": "caDSR",
+				"cde_version": 2,
+				"term": "Specimen Lymphocyte Infiltration Percentage Value"
+			},
+			"description": "Numeric value to represent the percentage of infiltration by lymphocytes in a solid tissue normal sample or specimen.\n"
+		},
+		"RIN": {
+			"description": "A numerical assessment of the integrity of RNA based on the entire electrophoretic trace of the RNA sample including the presence or absence of degradation products.\n",
+			"termDef": {
+				"cde_id": 5278775,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5278775&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Biospecimen RNA Integrity Number Value"
+			}
+		},
+		"fev1_fvc_post_bronch_percent": {
+			"description": "Percentage value to represent result of Forced Expiratory Volume in 1 second (FEV1) divided by the Forced Vital Capacity (FVC) post-bronchodilator.\n",
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Post Bronchodilator FEV1/FVC Percent Value",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3302956&version=1.0",
+				"cde_id": 3302956
+			}
+		},
+		"pack_years_smoked": {
+			"description": "Numeric computed value to represent lifetime tobacco exposure defined as number of cigarettes smoked per day x number of years smoked divided by 20.\n",
+			"termDef": {
+				"cde_id": 2955385,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2955385&version=1.0",
+				"term": "Person Cigarette Smoking History Pack Year Value",
+				"source": "caDSR",
+				"cde_version": 1
+			}
+		},
+		"flow_cell_barcode": {
+			"description": "Flow Cell Barcode.\n"
+		},
+		"ann_arbor_clinical_stage": {
+			"termDef": {
+				"term": "Ann Arbor Clinical Stage",
+				"cde_version": null,
+				"source": null,
+				"term_url": null,
+				"cde_id": null
+			},
+			"description": "The classification of the clinically confirmed anatomic disease extent of lymphoma (Hodgkin's and Non-Hodgkins) based on the Ann Arbor Staging System.\n"
+		},
+		"days_to_treatment_end": {
+			"description": "Time interval from the date of the initial pathologic diagnosis to the date of treatment end, represented as a calculated number of days.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102431&version=1.0",
+				"cde_id": 5102431,
+				"term": "Treatment End Subtract First Pathologic Diagnosis Day Calculation Value",
+				"cde_version": 1,
+				"source": "caDSR"
+			}
+		},
+		"library_name": {
+			"description": "Name of the library.\n"
+		},
+		"well_number": {
+			"description": "Numeric value that represents the the well location within a plate for the analyte or aliquot from the sample.\n",
+			"termDef": {
+				"term": "Biospecimen Analyte or Aliquot Plate Well Number",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 5432613,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432613&version=1.0"
+			}
+		},
+		"percent_neutrophil_infiltration": {
+			"termDef": {
+				"cde_id": 2841267,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2841267&version=1.0",
+				"term": "Malignant Neoplasm Neutrophil Infiltration Percentage Cell Value",
+				"source": "caDSR",
+				"cde_version": 1
+			},
+			"description": "Numeric value to represent the percentage of infiltration by neutrophils in a tumor sample or specimen.\n"
+		},
+		"ann_arbor_tumor_stage": {
+			"description": "The classification of the anatomic disease extent of lymphoma (Hodgkin's and Non-Hodgkins) based on the Ann Arbor Staging System.\n",
+			"termDef": {
+				"cde_version": null,
+				"source": null,
+				"term": "Ann Arbor Tumor Stage",
+				"term_url": null,
+				"cde_id": null
+			}
+		},
+		"base_caller_version": {
+			"description": "Version of the base caller.\n"
+		},
+		"biomarker_test_method": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3121575&version=1.0",
+				"cde_id": 3121575,
+				"term": "Disease Detection Molecular Analysis Method Type",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Text descriptor of a molecular analysis method used for an individual.\n"
+		},
+		"treatment_outcome": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102383&version=1.0",
+				"cde_id": 5102383,
+				"term": "Treatment Outcome Type",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Text term that describes the patient¿s final outcome after the treatment was administered.\n"
+		},
+		"cigarettes_per_day": {
+			"description": "The average number of cigarettes smoked per day.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2001716&version=4.0",
+				"cde_id": 2001716,
+				"term": "Smoking Use Average Number",
+				"cde_version": 4,
+				"source": "caDSR"
+			}
+		},
+		"target_capture_kit_target_region": {
+			"description": "Target Capture Kit BED file.\n"
+		},
+		"datetime": {
+			"description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]\n"
+		},
+		"prior_malignancy": {
+			"description": "Text term to describe the patient's history of prior cancer diagnosis and the spatial location of any previous cancer occurrence.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3382736&version=2.0",
+				"cde_id": 3382736,
+				"term": "Prior Cancer Diagnosis Occurrence Description Text",
+				"cde_version": 2,
+				"source": "caDSR"
+			}
+		},
+		"percent_monocyte_infiltration": {
+			"description": "Numeric value to represent the percentage of monocyte infiltration in a sample or specimen.\n",
+			"termDef": {
+				"term": "Specimen Monocyte Infiltration Percentage Value",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5455535&version=1.0",
+				"cde_id": 5455535
+			}
+		},
+		"days_to_last_known_disease_status": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3008273&version=1.0",
+				"cde_id": 3008273,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Last Communication Contact Less Initial Pathologic Diagnosis Date Calculated Day Value"
+			},
+			"description": "Time interval from the date of last follow up to the date of initial pathologic diagnosis, represented as a calculated number of days.\n"
+		},
+		"tumor_descriptor": {
+			"description": "Text that describes the kind of disease present in the tumor specimen as related to a specific timepoint.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3288124&version=1.0",
+				"cde_id": 3288124,
+				"term": "Tumor Tissue Disease Description Type",
+				"cde_version": 1,
+				"source": "caDSR"
+			}
+		},
+		"tobacco_smoking_onset_year": {
+			"termDef": {
+				"cde_id": 2228604,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2228604&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Started Smoking Year"
+			},
+			"description": "The year in which the participant began smoking.\n"
+		},
+		"analyte_quantity": {
+			"termDef": {
+				"term": "Biospecimen Analyte Quantity",
+				"source": null,
+				"cde_version": null,
+				"cde_id": null,
+				"term_url": null
+			},
+			"description": "The quantity in micrograms (ug) of the analyte(s) derived from the analyte(s) shipped for sequencing and characterization.\n"
+		},
+		"height": {
+			"termDef": {
+				"cde_id": 649,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=649&version=4.1",
+				"term": "Patient Height Measurement",
+				"source": "caDSR",
+				"cde_version": 4.1
+			},
+			"description": "The height of the patient in centimeters.\n"
+		},
+		"total_sequences": {
+			"description": "A count of the total number of sequences processed.\n",
+			"termDef": {
+				"term": "Total Sequences",
+				"source": "FastQC",
+				"cde_version": null,
+				"cde_id": null,
+				"term_url": "http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/1%20Basic%20Statistics.html"
+			}
+		},
+		"tissue_type": {
+			"description": "Text term that represents a description of the kind of tissue collected with respect to disease status or proximity to tumor tissue.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432687&version=1.0",
+				"cde_id": 5432687,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Tissue Sample Description Type"
+			}
+		},
+		"is_paired_end": {
+			"description": "Are the reads paired end?\n"
+		},
+		"fev1_ref_pre_bronch_percent": {
+			"description": "The percentage comparison to a normal value reference range of the volume of air that a patient can forcibly exhale from the lungs in one second pre-bronchodilator.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3302947&version=1.0",
+				"cde_id": 3302947,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Pre Bronchodilator Lung Forced Expiratory Volume 1 Test Lab Percentage Value"
+			}
+		},
+		"percent_stromal_cells": {
+			"description": "Numeric value to represent the percentage of reactive cells that are present in a malignant tumor sample or specimen but are not malignant such as fibroblasts, vascular structures, etc.\n",
+			"termDef": {
+				"term": "Malignant Neoplasm Stromal Cell Percentage Value",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2841241&version=1.0",
+				"cde_id": 2841241
+			}
+		},
+		"ajcc_pathologic_t": {
+			"termDef": {
+				"term": "American Joint Committee on Cancer Tumor Stage Code",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3045435&version=1.0",
+				"cde_id": 3045435
+			},
+			"description": "Code of pathological T (primary tumor) to define the size or contiguous extension of the primary tumor (T), using staging criteria from the American Joint Committee on Cancer (AJCC).\n"
+		},
+		"data_format": {
+			"description": "Format of the data files.\n"
+		},
+		"figo_stage": {
+			"description": "The extent of a cervical or endometrial cancer within the body, especially whether the disease has spread from the original site to other parts of the body, as described by the International Federation of Gynecology and Obstetrics (FIGO) stages.\n",
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Gynecologic Tumor Grouping Cervical Endometrial FIGO 2009 Stage",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3225684&version=1.0",
+				"cde_id": 3225684
+			}
+		},
+		"composition": {
+			"description": "Text term that represents the cellular composition of the sample.\n",
+			"termDef": {
+				"cde_id": 5432591,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432591&version=1.0",
+				"term": "Biospecimen Cellular Composition Type",
+				"source": "caDSR",
+				"cde_version": 1
+			}
+		},
+		"vascular_invasion_present": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=64358&version=3.0",
+				"cde_id": 64358,
+				"cde_version": 3,
+				"source": "caDSR",
+				"term": "Tumor Vascular Invasion Ind-3"
+			},
+			"description": "The yes/no indicator to ask if large vessel or venous invasion was detected by surgery or presence in a tumor specimen.\n"
+		},
+		"new_event_anatomic_site": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3108271&version=2.0",
+				"cde_id": 3108271,
+				"term": "New Neoplasm Event Occurrence Anatomic Site",
+				"cde_version": 2,
+				"source": "caDSR"
+			},
+			"description": "Text term to specify the anatomic location of the return of tumor after treatment.\n"
+		},
+		"prior_treatment": {
+			"description": "A yes/no/unknown/not applicable indicator related to the administration of therapeutic agents received before the body specimen was collected.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4231463&version=1.0",
+				"cde_id": 4231463,
+				"term": "Therapeutic Procedure Prior Specimen Collection Administered Yes No Unknown Not Applicable Indicator",
+				"cde_version": 1,
+				"source": "caDSR"
+			}
+		},
+		"workflow_type": {
+			"description": "Generic name for the workflow used to analyze a data set.\n"
+		},
+		"fev1_ref_post_bronch_percent": {
+			"description": "The percentage comparison to a normal value reference range of the volume of air that a patient can forcibly exhale from the lungs in one second post-bronchodilator.\n",
+			"termDef": {
+				"cde_id": 3302948,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3302948&version=1.0",
+				"term": "Post Bronchodilator Lung Forced Expiratory Volume 1 Test Lab Percentage Value",
+				"source": "caDSR",
+				"cde_version": 1
+			}
+		},
+		"treatment_or_therapy": {
+			"description": "A yes/no/unknown/not applicable indicator related to the administration of therapeutic agents received before the body specimen was collected.\n",
+			"termDef": {
+				"term": "Therapeutic Procedure Prior Specimen Collection Administered Yes No Unknown Not Applicable Indicator",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 4231463,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4231463&version=1.0"
+			}
+		},
+		"id": "_terms",
+		"hpv_status": {
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Oncogenic Human Papillomavirus Result Type",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2230033&version=1.0",
+				"cde_id": 2230033
+			},
+			"description": "The findings of the oncogenic HPV.\n"
+		},
+		"lymph_nodes_positive": {
+			"description": "The number of lymph nodes involved with disease as determined by pathologic examination.\n",
+			"termDef": {
+				"cde_id": 89,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=89&version=3.0",
+				"term": "Lymph Node(s) Positive Number",
+				"source": "caDSR",
+				"cde_version": 3
+			}
+		},
+		"gender": {
+			"termDef": {
+				"term": "Person Gender Text Type",
+				"source": "caDSR",
+				"cde_version": 3,
+				"cde_id": 2200604,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2200604&version=3.0"
+			},
+			"description": "Text designations that identify gender. Gender is described as the assemblage of properties that distinguish people on the basis of their societal roles. [Explanatory Comment 1: Identification of gender is based upon self-report and may come from a form, questionnaire, interview, etc.]\n"
+		},
+		"intermediate_dimension": {
+			"description": "Intermediate dimension of the sample, in millimeters.\n"
+		},
+		"days_to_new_event": {
+			"description": "Time interval from the date of new tumor event including progression, recurrence and new primary malignacies to the date of initial pathologic diagnosis, represented as a calculated number of days.\n",
+			"termDef": {
+				"term": "New Tumor Event Less Initial Pathologic Diagnosis Date Calculated Day Value",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 3392464,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3392464&version=1.0"
+			}
+		},
+		"sequencing_center": {
+			"description": "Name of the center that provided the sequence files.\n"
+		},
+		"library_strategy": {
+			"description": "Library strategy.\n"
+		},
+		"ajcc_pathologic_m": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3045439&version=1.0",
+				"cde_id": 3045439,
+				"term": "American Joint Committee on Cancer Metastasis Stage Code",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Code to represent the defined absence or presence of distant spread or metastases (M) to locations via vascular channels or lymphatics beyond the regional lymph nodes, using criteria established by the American Joint Committee on Cancer (AJCC).\n"
+		},
+		"analyte_type": {
+			"description": "Text term that represents the kind of molecular specimen analyte.\n",
+			"termDef": {
+				"term": "Molecular Specimen Type Text Name",
+				"cde_version": 2,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2513915&version=2.0",
+				"cde_id": 2513915
+			}
+		},
+		"biospecimen_anatomic_site": {
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Submitted Tumor Sample Primary Anatomic Site",
+				"cde_id": 4742851,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4742851&version=1.0"
+			},
+			"description": "Text term that represents the name of the primary disease site of the submitted tumor sample.\n"
+		},
+		"library_preparation_kit_name": {
+			"description": "Name of Library Preparation Kit\n"
+		},
+		"file_name": {
+			"description": "The name (or part of a name) of a file (of any type).\n"
+		},
+		"spike_ins_concentration": {
+			"description": "Spike in concentration.\n"
+		},
+		"percent_eosinophil_infiltration": {
+			"termDef": {
+				"cde_version": 2,
+				"source": "caDSR",
+				"term": "Specimen Eosinophilia Percentage Value",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2897700&version=2.0",
+				"cde_id": 2897700
+			},
+			"description": "Numeric value to represent the percentage of infiltration by eosinophils in a tumor sample or specimen.\n"
+		},
+		"relationship_type": {
+			"termDef": {
+				"cde_id": 2690165,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2690165&version=2.0",
+				"term": "Family Member Relationship Type",
+				"source": "caDSR",
+				"cde_version": 2
+			},
+			"description": "The subgroup that describes the state of connectedness between members of the unit of society organized around kinship ties.\n"
+		},
+		"percent_inflam_infiltration": {
+			"termDef": {
+				"term": "Specimen Inflammation Change Percentage Value",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2897695&version=1.0",
+				"cde_id": 2897695
+			},
+			"description": "Numeric value to represent local response to cellular injury, marked by capillary dilatation, edema and leukocyte infiltration; clinically, inflammation is manifest by reddness, heat, pain, swelling and loss of function, with the need to heal damaged tissue.\n"
+		},
+		"year_of_death": {
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Year Death Number",
+				"cde_id": 2897030,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2897030&version=1.0"
+			},
+			"description": "Numeric value to represent the year of the death of an individual.\n"
+		},
+		"amount": {
+			"description": "Weight in grams or volume in mL.\n"
+		},
+		"weight": {
+			"termDef": {
+				"cde_version": 4,
+				"source": "caDSR",
+				"term": "Patient Weight Measurement",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=651&version=4.0",
+				"cde_id": 651
+			},
+			"description": "The weight of the patient measured in kilograms.\n"
+		},
+		"age_at_diagnosis": {
+			"description": "Age at the time of diagnosis expressed in number of days since birth.\n",
+			"termDef": {
+				"cde_id": 3225640,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3225640&version=2.0",
+				"term": "Patient Diagnosis Age Day Value",
+				"source": "caDSR",
+				"cde_version": 2
+			}
+		},
+		"hiv_positive": {
+			"termDef": {
+				"cde_id": 4030799,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4030799&version=1.0",
+				"term": "Physician Diagnosed HIV Infection Personal Medical History Yes No Not Applicable Indicator",
+				"source": "caDSR",
+				"cde_version": 1
+			},
+			"description": "Text term to signify whether a physician has diagnosed HIV infection in a patient.\n"
+		},
+		"target_capture_kit_version": {
+			"description": "Version of Target Capture Kit.\n"
+		},
+		"ajcc_clinical_n": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3440330&version=1.0",
+				"cde_id": 3440330,
+				"term": "Neoplasm American Joint Committee on Cancer Clinical Regional Lymph Node N Stage",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Extent of the regional lymph node involvement for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment.\n"
+		},
+		"shortest_dimension": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432603&version=1.0",
+				"cde_id": 5432603,
+				"term": "Tissue Sample Short Dimension Millimeter Measurement",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Numeric value that represents the shortest dimension of the sample, measured in millimeters.\n"
+		},
+		"ajcc_clinical_stage": {
+			"description": "Stage group determined from clinical information on the tumor (T), regional node (N) and metastases (M) and by grouping cases with similar prognosis for cancer.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3440332&version=1.0",
+				"cde_id": 3440332,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Neoplasm American Joint Committee on Cancer Clinical Group Stage"
+			}
+		},
+		"tumor_grade": {
+			"description": "Numeric value to express the degree of abnormality of cancer cells, a measure of differentiation and aggressiveness.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2785839&version=2.0",
+				"cde_id": 2785839,
+				"term": "Neoplasm Histologic Grade",
+				"cde_version": 2,
+				"source": "caDSR"
+			}
+		},
+		"current_weight": {
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Tissue Sample Current Weight Milligram Value",
+				"cde_id": 5432606,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432606&version=1.0"
+			},
+			"description": "Numeric value that represents the current weight of the sample, measured  in milligrams.\n"
+		},
+		"normal_tumor_genotype_snp_match": {
+			"description": "Text term that represents whether or not the genotype of the normal tumor matches or if the data is not available.\n",
+			"termDef": {
+				"cde_id": 4588156,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4588156&version=1.0",
+				"term": "Normal Tumor Genotype Match Indicator",
+				"source": "caDSR",
+				"cde_version": 1
+			}
+		},
+		"file_state": {
+			"description": "The current state of the data file object.\n"
+		},
+		"number_proliferating_cells": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432636&version=1.0",
+				"cde_id": 5432636,
+				"term": "Pathology Review Slide Proliferating Cell Count",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Numeric value that represents the count of proliferating cells determined during pathologic review of the sample slide(s).\n"
+		},
+		"library_preparation_kit_catalog_number": {
+			"description": "Catalog of Library Preparation Kit\n"
+		},
+		"dlco_ref_predictive_percent": {
+			"description": "The value, as a percentage of predicted lung volume, measuring the amount of carbon monoxide detected in a patient's lungs.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2180255&version=1.0",
+				"cde_id": 2180255,
+				"term": "Lung Carbon Monoxide Diffusing Capability Test Assessment Predictive Value Percentage Value",
+				"cde_version": 1,
+				"source": "caDSR"
+			}
+		},
+		"method_of_sample_procurement": {
+			"description": "The method used to procure the sample used to extract analyte(s).\n",
+			"termDef": {
+				"term": "Method of Sample Procurement",
+				"source": null,
+				"cde_version": null,
+				"cde_id": null,
+				"term_url": null
+			}
+		},
+		"qc_metric_state": {
+			"description": "State classification given by FASTQC for the metric. Metric specific details about the states are available on their website.\n",
+			"termDef": {
+				"source": "FastQC",
+				"cde_version": null,
+				"term": "QC Metric State",
+				"cde_id": null,
+				"term_url": "http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/"
+			}
+		},
+		"her2_erbb2_result_fish": {
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Laboratory Procedure HER2/neu in situ Hybridization Outcome Type",
+				"cde_id": 2854089,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2854089&version=1.0"
+			},
+			"description": "the type of outcome for HER2 as determined by an in situ hybridization (ISH) assay.\n"
+		},
+		"md5sum": {
+			"description": "The 128-bit hash value expressed as a 32 digit hexadecimal number used as a file's digital fingerprint.\n"
+		},
+		"site_of_resection_or_biopsy": {
+			"description": "The third edition of the International Classification of Diseases for Oncology, published in 2000, used principally in tumor and cancer registries for coding the site (topography) and the histology (morphology) of neoplasms. The description of an anatomical region or of a body part. Named locations of, or within, the body. A system of numbered categories for representation of data.\n",
+			"termDef": {
+				"cde_id": 3226281,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3226281&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "International Classification of Diseases for Oncology, Third Edition ICD-O-3 Site Code"
+			}
+		},
+		"freezing_method": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432607&version=1.0",
+				"cde_id": 5432607,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Tissue Sample Freezing Method Type"
+			},
+			"description": "Text term that represents the method used for freezing the sample.\n"
+		},
+		"UUID": {
+			"termDef": {
+				"term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100",
+				"cde_id": "C54100",
+				"cde_version": null,
+				"source": "NCIt",
+				"term": "Universally Unique Identifier"
+			},
+			"description": "A 128-bit identifier. Depending on the mechanism used to generate it, it is either guaranteed to be different from all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its relatively small size lends itself well to sorting, ordering, and hashing of all sorts, storing in databases, simple allocation, and ease of programming in general.\n"
+		},
+		"laterality": {
+			"description": "For tumors in paired organs, designates the side on which the cancer originates.\n",
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 3,
+				"term": "Primary Tumor Laterality",
+				"cde_id": 827,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=827&version=3.0"
+			}
+		},
+		"smoking_intensity": {
+			"description": "Numeric computed value to represent lifetime tobacco exposure defined as number of cigarettes smoked per day x number of years smoked divided by 20\n",
+			"termDef": {
+				"cde_id": 2955385,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2955385&version=1.0",
+				"term": "Person Cigarette Smoking History Pack Year Value",
+				"source": "caDSR",
+				"cde_version": 1
+			}
+		},
+		"tobacco_smoking_status": {
+			"description": "Category describing current smoking status and smoking history as self-reported by a patient.\n",
+			"termDef": {
+				"term": "Patient Smoking History Category",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2181650&version=1.0",
+				"cde_id": 2181650
+			}
+		},
+		"instrument_model": {
+			"description": "Numeric value that represents the sample dimension that is greater than the shortest dimension and less than the longest dimension, measured in millimeters.\n",
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Tissue Sample Intermediate Dimension Millimeter Measurement",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432604&version=1.0",
+				"cde_id": 5432604
+			}
+		},
+		"days_to_hiv_diagnosis": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4618491&version=1.0",
+				"cde_id": 4618491,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Human Immunodeficiency Virus Diagnosis Subtract Initial Pathologic Diagnosis Time Duration Day Calculation Value"
+			},
+			"description": "Time interval from the date of the initial pathologic diagnosis to the date of human immunodeficiency diagnosis, represented as a calculated number of days.\n"
+		},
+		"treatment_anatomic_site": {
+			"termDef": {
+				"term": "Treatment Anatomic Site",
+				"source": null,
+				"cde_version": null,
+				"cde_id": null,
+				"term_url": null
+			},
+			"description": "The anatomic site or field targeted by a treatment regimen or single agent therapy.\n"
+		},
+		"percent_normal_cells": {
+			"description": "Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen.\n",
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Malignant Neoplasm Normal Cell Percentage Value",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2841233&version=1.0",
+				"cde_id": 2841233
+			}
+		},
+		"longest_dimension": {
+			"description": "Numeric value that represents the longest dimension of the sample, measured in millimeters.\n",
+			"termDef": {
+				"cde_id": 5432602,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432602&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Tissue Sample Longest Dimension Millimeter Measurement"
+			}
+		},
+		"primary_diagnosis": {
+			"termDef": {
+				"cde_version": 3,
+				"source": "caDSR",
+				"term": "Neoplasm Histologic Type Name",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3081934&version=3.0",
+				"cde_id": 3081934
+			},
+			"description": "Text term for the structural pattern of cancer cells used to define a microscopic diagnosis.\n"
+		},
+		"sample_type": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3111302&version=2.0",
+				"cde_id": 3111302,
+				"term": "Specimen Type Collection Biospecimen Type",
+				"cde_version": 2,
+				"source": "caDSR"
+			},
+			"description": "Text term to describe the source of a biospecimen used for a laboratory test.\n"
+		},
+		"ann_arbor_extranodal_involvement": {
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Lymphomatous Extranodal Site Involvement Indicator",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3364582&version=1.0",
+				"cde_id": 3364582
+			},
+			"description": "Indicator that identifies whether a patient with malignant lymphoma has lymphomatous involvement of an extranodal site.\n"
+		},
+		"tobacco_smoking_quit_year": {
+			"description": "The year in which the participant quit smoking.\n",
+			"termDef": {
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Stopped Smoking Year",
+				"cde_id": 2228610,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2228610&version=1.0"
+			}
+		},
+		"days_to_recurrence": {
+			"termDef": {
+				"term": "New Tumor Event Less Initial Pathologic Diagnosis Date Calculated Day Value",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3392464&version=1.0",
+				"cde_id": 3392464
+			},
+			"description": "Time interval from the date of new tumor event including progression, recurrence and new primary malignancies to the date of initial pathologic diagnosis, represented as a calculated number of days.\n"
+		},
+		"microsatellite_instability_abnormal": {
+			"description": "The yes/no indicator to signify the status of a tumor for microsatellite instability.\n",
+			"termDef": {
+				"cde_id": 3123142,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3123142&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Microsatellite Instability Occurrence Indicator"
+			}
+		},
+		"file_size": {
+			"description": "The size of the data file (object) in bytes.\n"
+		},
+		"relationship_age_at_diagnosis": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5300571&version=1.0",
+				"cde_id": 5300571,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Relative Diagnosis Age Value"
+			},
+			"description": "The age (in years) when the patient's relative was first diagnosed.\n"
+		},
+		"ajcc_clinical_m": {
+			"termDef": {
+				"cde_id": 3440331,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3440331&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Neoplasm American Joint Committee on Cancer Clinical Distant Metastasis M Stage"
+			},
+			"description": "Extent of the distant metastasis for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment.\n"
+		},
+		"biomarker_result": {
+			"description": "Text term to define the results of genetic testing.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3234680&version=1.0",
+				"cde_id": 3234680,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Laboratory Procedure Genetic Abnormality Test Result Type"
+			}
+		},
+		"aliquot_volume": {
+			"description": "The volume in microliters (ml) of the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization.\n",
+			"termDef": {
+				"term": "Biospecimen Aliquot Volume",
+				"cde_version": null,
+				"source": null,
+				"term_url": null,
+				"cde_id": null
+			}
+		},
+		"includes_spike_ins": {
+			"description": "Spike-in included?\n"
+		},
+		"year_of_diagnosis": {
+			"description": "Numeric value to represent the year of an individual's initial pathologic diagnosis of cancer.\n",
+			"termDef": {
+				"term": "Year of initial pathologic diagnosis",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 2896960,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2896960&version=1.0"
+			}
+		},
+		"days_to_sample_procurement": {
+			"description": "The number of days from the date the patient was diagnosed to the date of the procedure that produced the sample.\n"
+		},
+		"bmi": {
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Body Mass Index (BMI)",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4973892&version=1.0",
+				"cde_id": 4973892
+			},
+			"description": "The body mass divided by the square of the body height expressed in units of kg/m^2.\n"
+		},
+		"treatment_intent_type": {
+			"description": "Text term to identify the reason for the administration of a treatment regimen. [Manually-curated]\n",
+			"termDef": {
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "Treatment Regimen Intent Type",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2793511&version=1.0",
+				"cde_id": 2793511
+			}
+		},
+		"alcohol_history": {
+			"termDef": {
+				"cde_id": 2201918,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2201918&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Alcohol Lifetime History Indicator"
+			},
+			"description": "A response to a question that asks whether the participant has consumed at least 12 drinks of any kind of alcoholic beverage in their lifetime.\n"
+		},
+		"method_of_diagnosis": {
+			"description": "The method used to initially the patient's diagnosis.\n",
+			"termDef": {
+				"cde_id": null,
+				"term_url": null,
+				"source": null,
+				"cde_version": null,
+				"term": "Method of Diagnosis"
+			}
+		},
+		"percent_granulocyte_infiltration": {
+			"termDef": {
+				"cde_version": 2,
+				"source": "caDSR",
+				"term": "Specimen Granulocyte Infiltration Percentage Value",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2897705&version=2.0",
+				"cde_id": 2897705
+			},
+			"description": "Numeric value to represent the percentage of infiltration by granulocytes in a tumor sample or specimen.\n"
+		},
+		"tissue_or_organ_of_origin": {
+			"description": "Text term that describes the anatomic site of the tumor or disease.\n",
+			"termDef": {
+				"term": "Tumor Disease Anatomic Site",
+				"source": "caDSR",
+				"cde_version": 3,
+				"cde_id": 3427536,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3427536&version=3.0"
+			}
+		},
+		"new_event_type": {
+			"description": "Text term to identify a new tumor event.\n",
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3119721&version=1.0",
+				"cde_id": 3119721,
+				"cde_version": 1,
+				"source": "caDSR",
+				"term": "New Neoplasm Event Type"
+			}
+		},
+		"concentration": {
+			"termDef": {
+				"cde_id": 5432594,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432594&version=1.0",
+				"source": "caDSR",
+				"cde_version": 1,
+				"term": "Biospecimen Analyte or Aliquot Extracted Concentration Milligram per Milliliter Value"
+			},
+			"description": "Numeric value that represents the concentration of an analyte or aliquot extracted from the sample or sample portion, measured in milligrams per milliliter.\n"
+		},
+		"cea_level_preoperative": {
+			"termDef": {
+				"term": "Preoperative Carcinoembryonic Antigen Result Value",
+				"source": "caDSR",
+				"cde_version": 1,
+				"cde_id": 2716510,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2716510&version=1.0"
+			},
+			"description": "Numeric value of the Carcinoembryonic antigen or CEA at the time before surgery. [Manually- curated]\n"
+		},
+		"ldh_normal_range_upper": {
+			"termDef": {
+				"cde_id": 2597015,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2597015&version=1.0",
+				"term": "Laboratory Procedure Lactate Dehydrogenase Result Upper Limit of Normal Value",
+				"source": "caDSR",
+				"cde_version": 1
+			},
+			"description": "The top value of the range of statistical characteristics that are supposed to represent accepted standard, non-pathological pattern for lactate dehydrogenase (units not specified).\n"
+		},
+		"fev1_fvc_pre_bronch_percent": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3302955&version=1.0",
+				"cde_id": 3302955,
+				"term": "Pre Bronchodilator FEV1/FVC Percent Value",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Percentage value to represent result of Forced Expiratory Volume in 1 second (FEV1) divided by the Forced Vital Capacity (FVC) pre-bronchodilator.\n"
+		},
+		"target_capture_kit_name": {
+			"description": "Name of Target Capture Kit.\n"
+		},
+		"data_file_error_type": {
+			"description": "Type of error for the data file object.\n"
+		},
+		"treatment_type": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102381&version=1.0",
+				"cde_id": 5102381,
+				"term": "Treatment Method Type",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Text term that describes the kind of treatment administered.\n"
+		},
+		"therapeutic_agents": {
+			"description": "Text identification of the individual agent(s) used as part of a prior treatment regimen.\n",
+			"termDef": {
+				"term": "Prior Therapy Regimen Text",
+				"cde_version": 1,
+				"source": "caDSR",
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2975232&version=1.0",
+				"cde_id": 2975232
+			}
+		},
+		"library_strand": {
+			"description": "Library stranded-ness.\n"
+		},
+		"vital_status": {
+			"termDef": {
+				"term": "Patient Vital Status",
+				"source": "caDSR",
+				"cde_version": 5,
+				"cde_id": 5,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5&version=5.0"
+			},
+			"description": "The survival state of the person registered on the protocol.\n"
+		},
+		"classification_of_tumor": {
+			"description": "Text that describes the kind of disease present in the tumor specimen as related to a specific timepoint.\n",
+			"termDef": {
+				"cde_id": 3288124,
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3288124&version=1.0",
+				"term": "Tumor Tissue Disease Description Type",
+				"source": "caDSR",
+				"cde_version": 1
+			}
+		},
+		"library_selection": {
+			"description": "Library Selection Method\n"
+		},
+		"oct_embedded": {
+			"termDef": {
+				"term_url": "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5432538&version=1.0",
+				"cde_id": 5432538,
+				"term": "Tissue Sample Optimal Cutting Temperature Compound Embedding Indicator",
+				"cde_version": 1,
+				"source": "caDSR"
+			},
+			"description": "Indicator of whether or not the sample was embedded in Optimal Cutting Temperature (OCT) compound.\n"
+		},
+		"tumor_code": {
+			"description": "Diagnostic tumor code of the tissue sample source.\n"
+		},
+		"aliquot_quantity": {
+			"description": "The quantity in micrograms (ug) of the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization.\n",
+			"termDef": {
+				"term_url": null,
+				"cde_id": null,
+				"term": "Biospecimen Aliquot Quantity",
+				"cde_version": null,
+				"source": null
+			}
+		}
+	},
+	"agent.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "agent",
+		"title": "Agent",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "study_arms",
+				"backref": "agents",
+				"label": "of_study_arm",
+				"target_type": "study_arm",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"agent"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"medication": {
+				"type": "string"
+			},
+			"study_arms": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"image.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "image",
+		"title": "Image",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "data_file",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "assays",
+				"backref": "images",
+				"label": "of_assay",
+				"target_type": "assay",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"image"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"assays": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"project_id": {
+				"term": {
+					"description": "Unique ID for any specific defined piece of work that is undertaken or attempted to meet a single requirement.\n"
+				},
+				"type": "string"
+			},
+			"data_format": {
+				"enum": [
+					"JPG",
+					"PNG"
+				],
+				"term": {
+					"description": "Format of the data files.\n"
+				}
+			},
+			"data_type": {
+				"enum": [
+					"Aligned Reads test",
+					"Alignment Coordinates test"
+				],
+				"term": {
+					"description": "Specific content type of the data file.\n"
+				}
+			},
+			"object_id": {
+				"description": "The GUID of the object in the index service.",
+				"type": "string"
+			},
+			"file_name": {
+				"term": {
+					"description": "The name (or part of a name) of a file (of any type).\n"
+				},
+				"type": "string"
+			},
+			"file_size": {
+				"term": {
+					"description": "The size of the data file (object) in bytes.\n"
+				},
+				"type": "integer"
+			},
+			"data_category": {
+				"enum": [
+					"Sequencing Data test",
+					"Sequencing Reads test",
+					"Raw Sequencing Data test"
+				],
+				"term": {
+					"description": "Broad categorization of the contents of the data file.\n"
+				}
+			}
+		}
+	},
+	"cohort.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "cohort",
+		"title": "Cohort",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "study_arms",
+				"backref": "cohorts",
+				"label": "member_of",
+				"target_type": "study_arm",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"cohort"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"cohort_id": {
+				"type": "string"
+			},
+			"study_arms": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"evaluation.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "evaluation",
+		"title": "Evaluation",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "visits",
+				"backref": "evaluations",
+				"label": "on_visit",
+				"target_type": "visit",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"evaluation"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"visits": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"adverse_event.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "adverse_event",
+		"title": "Adverse_event",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "adverse_events",
+				"backref": "adverse_events",
+				"label": "next",
+				"target_type": "adverse_event",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}, {
+				"name": "evaluations",
+				"backref": "adverse_events",
+				"label": "of_evaluation",
+				"target_type": "evaluation",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"adverse_event"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"adverse_events": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"evaluations": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"physical_exam.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "physical_exam",
+		"title": "Physical_exam",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "evaluations",
+				"backref": "physical_exams",
+				"label": "of_evaluation",
+				"target_type": "evaluation",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}, {
+				"name": "enrollments",
+				"backref": "physical_exams",
+				"label": "at_enrollment",
+				"target_type": "enrollment",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"physical_exam"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"date_of_examination": {
+				"type": "string"
+			},
+			"day_in_cycle": {
+				"type": "string"
+			},
+			"body_system": {
+				"type": "string"
+			},
+			"pe_finding": {
+				"type": "string"
+			},
+			"pe_comment": {
+				"type": "string"
+			},
+			"patient_weight": {
+				"type": "string"
+			},
+			"ecg": {
+				"type": "string"
+			},
+			"phase_pe": {
+				"type": "string"
+			},
+			"assessment_timepoint": {
+				"type": "string"
+			},
+			"evaluations": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"enrollments": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"off_study.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "off_study",
+		"title": "Off_study",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"off_study"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"date_off_study": {
+				"type": "string"
+			},
+			"reason_off_study": {
+				"type": "string"
+			},
+			"date_of_disease_progression": {
+				"type": "string"
+			},
+			"date_off_treatment": {
+				"type": "string"
+			},
+			"best_resp_vet_tx_tp_secondary_response": {
+				"type": "string"
+			},
+			"date_last_medication_administration": {
+				"type": "string"
+			},
+			"best_resp_vet_tx_tp_best_response": {
+				"type": "string"
+			},
+			"date_of_best_response": {
+				"type": "string"
+			}
+		}
+	},
+	"_settings.yaml": {
+		"_dict_commit": "0",
+		"_dict_version": "0"
+	},
+	"prior_therapy.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "prior_therapy",
+		"title": "Prior_therapy",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "enrollments",
+				"backref": "prior_therapies",
+				"label": "at_enrollment",
+				"target_type": "enrollment",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}, {
+				"name": "prior_therapies",
+				"backref": "prior_therapies",
+				"label": "next",
+				"target_type": "prior_therapy",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"prior_therapy"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"date_of_first_dose": {
+				"type": "string"
+			},
+			"date_of_last_dose": {
+				"type": "string"
+			},
+			"agent_name": {
+				"type": "string"
+			},
+			"dose_schedule": {
+				"type": "string"
+			},
+			"total_dose": {
+				"type": "string"
+			},
+			"agent_units_of_measure": {
+				"type": "string"
+			},
+			"best_response": {
+				"type": "string"
+			},
+			"nonresponse_therapy_type": {
+				"type": "string"
+			},
+			"prior_therapy_type": {
+				"type": "string"
+			},
+			"prior_steroid_exposure": {
+				"type": "string"
+			},
+			"number_of_prior_regimens_steroid": {
+				"type": "string"
+			},
+			"total_number_of_doses_steroid": {
+				"type": "string"
+			},
+			"date_of_last_dose_steroid": {
+				"type": "string"
+			},
+			"prior_nsaid_exposure": {
+				"type": "string"
+			},
+			"number_of_prior_regimens_nsaid": {
+				"type": "string"
+			},
+			"total_number_of_doses_nsaid": {
+				"type": "string"
+			},
+			"date_of_last_dose_nsaid": {
+				"type": "string"
+			},
+			"tx_loc_geo_loc_ind_nsaid": {
+				"type": "string"
+			},
+			"min_rsdl_dz_tx_ind_nsaids_treatment_pe": {
+				"type": "string"
+			},
+			"therapy_type": {
+				"type": "string"
+			},
+			"any_therapy": {
+				"type": "string"
+			},
+			"number_of_prior_regimens_any_therapy": {
+				"type": "string"
+			},
+			"total_number_of_doses_any_therapy": {
+				"type": "string"
+			},
+			"date_of_last_dose_any_therapy": {
+				"type": "string"
+			},
+			"treatment_performed_at_site": {
+				"type": "string"
+			},
+			"treatment_performed_in_minimal_residual": {
+				"type": "string"
+			},
+			"enrollments": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"prior_therapies": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"sample.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "sample",
+		"title": "Sample",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "visits",
+				"backref": "samples",
+				"label": "on_visit",
+				"target_type": "visit",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}, {
+				"name": "samples",
+				"backref": "samples",
+				"label": "next",
+				"target_type": "sample",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"sample"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"visits": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"samples": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"assay.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "assay",
+		"title": "Assay",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "samples",
+				"backref": "assays",
+				"label": "of_sample",
+				"target_type": "sample",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"assay"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"samples": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"case.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "case",
+		"title": "Case",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "cohorts",
+				"backref": "cases",
+				"label": "member_of",
+				"target_type": "cohort",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"case"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"patient_id": {
+				"type": "string"
+			},
+			"patient_first_name": {
+				"type": "string"
+			},
+			"cohorts": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"study_site.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "study_site",
+		"title": "Study_site",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "studies",
+				"backref": "study_sites",
+				"label": "of_study",
+				"target_type": "study",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"study_site"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"site_short_name": {
+				"type": "string"
+			},
+			"studies": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"file.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "file",
+		"title": "File",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "assays",
+				"backref": "files",
+				"label": "of_assay",
+				"target_type": "assay",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"file"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"assays": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"study_arm.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "study_arm",
+		"title": "Study_arm",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "studies",
+				"backref": "study_arms",
+				"label": "member_of",
+				"target_type": "study",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"study_arm"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"arm": {
+				"type": "string"
+			},
+			"ctep_treatment_assignment_code": {
+				"type": "string"
+			},
+			"studies": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"agent_administration.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "agent_administration",
+		"title": "Agent_administration",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "agents",
+				"backref": "agent_administrations",
+				"label": "of_agent",
+				"target_type": "agent",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}, {
+				"name": "visits",
+				"backref": "agent_administrations",
+				"label": "on_visit",
+				"target_type": "visit",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"agent_administration"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"medication": {
+				"type": "string"
+			},
+			"route_of_administration": {
+				"type": "string"
+			},
+			"medication_lot_number": {
+				"type": "string"
+			},
+			"medication_vial_id": {
+				"type": "string"
+			},
+			"medication_actual_units_of_measure": {
+				"type": "string"
+			},
+			"medication_duration": {
+				"type": "string"
+			},
+			"medication_units_of_measure": {
+				"type": "string"
+			},
+			"medication_actual_dose": {
+				"type": "string"
+			},
+			"phase": {
+				"type": "string"
+			},
+			"start_time": {
+				"type": "string"
+			},
+			"stop_time": {
+				"type": "string"
+			},
+			"dose_level": {
+				"type": "string"
+			},
+			"dose_units_of_measure": {
+				"type": "string"
+			},
+			"date_of_missed_dose": {
+				"type": "string"
+			},
+			"medication_missed_dose": {
+				"type": "string"
+			},
+			"missed_dose_amount": {
+				"type": "string"
+			},
+			"missed_dose_units_of_measure": {
+				"type": "string"
+			},
+			"medication_course_number": {
+				"type": "string"
+			},
+			"comment": {
+				"type": "string"
+			},
+			"agents": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"visits": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"visit.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "visit",
+		"title": "Visit",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "study_sites",
+				"backref": "visits",
+				"label": "at_site",
+				"target_type": "study_site",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}, {
+				"name": "cycles",
+				"backref": "visits",
+				"label": "of_cycle",
+				"target_type": "cycle",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}, {
+				"name": "visits",
+				"backref": "visits",
+				"label": "next",
+				"target_type": "visit",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"visit"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"study_sites": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"cycles": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"visits": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"cycle.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "cycle",
+		"title": "Cycle",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "cases",
+				"backref": "cycles",
+				"label": "of_case",
+				"target_type": "case",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"cycle"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"cycle_number": {
+				"type": "string"
+			},
+			"cycle_start_date": {
+				"type": "string"
+			},
+			"cycle_end_date": {
+				"type": "string"
+			},
+			"cases": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"diagnosis.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "diagnosis",
+		"title": "Diagnosis",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "cases",
+				"backref": "diagnoses",
+				"label": "of_case",
+				"target_type": "case",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"diagnosis"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"primary_disease_site": {
+				"type": "string"
+			},
+			"disease_term": {
+				"type": "string"
+			},
+			"disease_stage": {
+				"type": "string"
+			},
+			"histology_cytopathology": {
+				"type": "string"
+			},
+			"date_of_histology_confirmation": {
+				"type": "string"
+			},
+			"histology_grade": {
+				"type": "string"
+			},
+			"date_of_diagnosis": {
+				"type": "string"
+			},
+			"cases": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"_definitions.yaml": {
+		"md5sum": {
+			"pattern": "^[a-f0-9]{32}$",
+			"term": {
+				"$ref": "_terms.yaml#/md5sum"
+			},
+			"type": "string"
+		},
+		"parent_uuids": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/UUID"
+			}
+		},
+		"data_bundle_state": {
+			"description": "State of a data bundle.",
+			"enum": [
+				"submitted",
+				"validated",
+				"error",
+				"released",
+				"suppressed",
+				"redacted"
+			],
+			"default": "submitted"
+		},
+		"qc_metrics_state": {
+			"term": {
+				"$ref": "_terms.yaml#/qc_metric_state"
+			},
+			"enum": [
+				"FAIL",
+				"PASS",
+				"WARN"
+			]
+		},
+		"UUID": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+			"term": {
+				"$ref": "_terms.yaml#/UUID"
+			}
+		},
+		"state": {
+			"term": {
+				"$ref": "_terms.yaml#/state"
+			},
+			"oneOf": [{
+					"enum": [
+						"uploading",
+						"uploaded",
+						"md5summing",
+						"md5summed",
+						"validating",
+						"error",
+						"invalid",
+						"suppressed",
+						"redacted",
+						"live"
+					]
+				}, {
+					"enum": [
+						"validated",
+						"submitted",
+						"released"
+					]
+				}
+			],
+			"default": "validated",
+			"downloadable": [
+				"uploaded",
+				"md5summed",
+				"validating",
+				"validated",
+				"error",
+				"invalid",
+				"released"
+			],
+			"public": [
+				"live"
+			]
+		},
+		"to_many": {
+			"anyOf": [{
+					"type": "array",
+					"items": {
+						"$ref": "#/foreign_key",
+						"minItems": 1
+					}
+				}, {
+					"$ref": "#/foreign_key"
+				}
+			]
+		},
+		"to_one": {
+			"anyOf": [{
+					"type": "array",
+					"items": {
+						"$ref": "#/foreign_key",
+						"maxItems": 1,
+						"minItems": 1
+					}
+				}, {
+					"$ref": "#/foreign_key"
+				}
+			]
+		},
+		"object_id": {
+			"description": "The GUID of the object in the index service.",
+			"type": "string"
+		},
+		"data_file_properties": {
+			"md5sum": {
+				"$ref": "#/md5sum"
+			},
+			"object_id": {
+				"$ref": "#/object_id"
+			},
+			"updated_datetime": {
+				"$ref": "#/datetime"
+			},
+			"created_datetime": {
+				"$ref": "#/datetime"
+			},
+			"id": {
+				"$ref": "#/UUID",
+				"systemAlias": "node_id"
+			},
+			"submitter_id": {
+				"description": "The file ID assigned by the submitter.",
+				"type": [
+					"string",
+					"null"
+				]
+			},
+			"file_name": {
+				"$ref": "#/file_name"
+			},
+			"file_state": {
+				"$ref": "#/file_state"
+			},
+			"project_id": {
+				"$ref": "#/project_id"
+			},
+			"state_comment": {
+				"type": "string",
+				"description": "Optional comment about why the file is in the current state, mainly for invalid state.\n"
+			},
+			"error_type": {
+				"$ref": "#/data_file_error_type"
+			},
+			"file_size": {
+				"$ref": "#/file_size"
+			},
+			"state": {
+				"$ref": "#/state"
+			}
+		},
+		"workflow_properties": {
+			"project_id": {
+				"$ref": "#/project_id"
+			},
+			"workflow_link": {
+				"description": "Link to Github hash for the CWL workflow used.",
+				"type": "string"
+			},
+			"workflow_end_datetime": {
+				"$ref": "#/datetime"
+			},
+			"submitter_id": {
+				"description": "The file ID assigned by the submitter.",
+				"type": [
+					"string",
+					"null"
+				]
+			},
+			"workflow_version": {
+				"description": "Major version for a GDC workflow.",
+				"type": "string"
+			},
+			"state": {
+				"$ref": "#/state"
+			},
+			"updated_datetime": {
+				"$ref": "#/datetime"
+			},
+			"workflow_start_datetime": {
+				"$ref": "#/datetime"
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "#/UUID"
+			},
+			"created_datetime": {
+				"$ref": "#/datetime"
+			}
+		},
+		"id": "_definitions",
+		"release_state": {
+			"description": "Release state of an entity.",
+			"enum": [
+				"unreleased",
+				"released",
+				"redacted"
+			],
+			"default": "unreleased"
+		},
+		"foreign_key": {
+			"type": "object",
+			"additionalProperties": true,
+			"properties": {
+				"submitter_id": {
+					"type": "string"
+				},
+				"id": {
+					"$ref": "#/UUID"
+				}
+			}
+		},
+		"data_file_error_type": {
+			"term": {
+				"$ref": "_terms.yaml#/data_file_error_type"
+			},
+			"enum": [
+				"file_size",
+				"file_format",
+				"md5sum"
+			]
+		},
+		"project_id": {
+			"type": "string",
+			"term": {
+				"$ref": "_terms.yaml#/project_id"
+			}
+		},
+		"datetime": {
+			"term": {
+				"$ref": "_terms.yaml#/datetime"
+			},
+			"oneOf": [{
+					"format": "date-time",
+					"type": "string"
+				}, {
+					"type": "null"
+				}
+			]
+		},
+		"file_format": {
+			"term": {
+				"$ref": "_terms.yaml#/file_format"
+			},
+			"type": "string"
+		},
+		"file_state": {
+			"enum": [
+				"registered",
+				"uploading",
+				"uploaded",
+				"validating",
+				"validated",
+				"submitted",
+				"processing",
+				"processed",
+				"released",
+				"error"
+			],
+			"default": "registered",
+			"term": {
+				"$ref": "_terms.yaml#/file_state"
+			}
+		},
+		"file_name": {
+			"type": "string",
+			"term": {
+				"$ref": "_terms.yaml#/file_name"
+			}
+		},
+		"ubiquitous_properties": {
+			"created_datetime": {
+				"$ref": "#/datetime"
+			},
+			"id": {
+				"$ref": "#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "#/state"
+			},
+			"submitter_id": {
+				"type": [
+					"string"
+				],
+				"description": "A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.\n"
+			},
+			"type": {
+				"type": "string"
+			},
+			"updated_datetime": {
+				"$ref": "#/datetime"
+			},
+			"project_id": {
+				"$ref": "#/project_id"
+			}
+		},
+		"file_size": {
+			"type": "integer",
+			"term": {
+				"$ref": "_terms.yaml#/file_size"
+			}
+		}
+	},
+	"disease_extent.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "disease_extent",
+		"title": "Disease_extent",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "evaluations",
+				"backref": "disease_extents",
+				"label": "of_evaluation",
+				"target_type": "evaluation",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"disease_extent"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"evaluations": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"vital_signs.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "vital_signs",
+		"title": "Vital_signs",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "evaluations",
+				"backref": "vital_signs",
+				"label": "of_evaluation",
+				"target_type": "evaluation",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"vital_signs"
+				]
+			},
+			"id": {
+				"$ref": "_definitions.yaml#/UUID",
+				"systemAlias": "node_id"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"body_temperature": {
+				"type": "string"
+			},
+			"pulse": {
+				"type": "string"
+			},
+			"respiration_rate": {
+				"type": "string"
+			},
+			"repiration_pattern": {
+				"type": "string"
+			},
+			"systolic_bp": {
+				"type": "string"
+			},
+			"pulse_ox": {
+				"type": "string"
+			},
+			"evaluations": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"enrollment.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "enrollment",
+		"title": "Enrollment",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "cases",
+				"backref": "enrollments",
+				"label": "of_case",
+				"target_type": "case",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"enrollment"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"date_of_registration": {
+				"type": "string"
+			},
+			"veterinary_medical_center": {
+				"type": "string"
+			},
+			"registering_institution": {
+				"type": "string"
+			},
+			"initials": {
+				"type": "string"
+			},
+			"date_of_informed_consent": {
+				"type": "string"
+			},
+			"date_of_iacuc_approval": {
+				"type": "string"
+			},
+			"cases": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"prior_surgery.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "prior_surgery",
+		"title": "Prior_surgery",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "prior_surgeries",
+				"backref": "prior_surgeries",
+				"label": "next",
+				"target_type": "prior_surgery",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}, {
+				"name": "enrollments",
+				"backref": "prior_surgeries",
+				"label": "at_enrollment",
+				"target_type": "enrollment",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"prior_surgery"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"date_of_surgery": {
+				"type": "string"
+			},
+			"procedure": {
+				"type": "string"
+			},
+			"anatomical_site_of_surgery": {
+				"type": "string"
+			},
+			"surgical_finding": {
+				"type": "string"
+			},
+			"residual_disease": {
+				"type": "string"
+			},
+			"therapeutic_indicator": {
+				"type": "string"
+			},
+			"prior_surgeries": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"enrollments": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"investigator.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "investigator",
+		"title": "Investigator",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"investigator"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"investigator_code": {
+				"type": "string"
+			}
+		}
+	},
+	"lab_exam.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "lab_exam",
+		"title": "Lab_exam",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [{
+				"name": "evaluations",
+				"backref": "lab_exams",
+				"label": "of_evaluation",
+				"target_type": "evaluation",
+				"multiplicity": "many_to_one",
+				"required": 0
+			}
+		],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"lab_exam"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"bsa": {
+				"type": "string"
+			},
+			"evaluations": {
+				"$ref": "_definitions.yaml#/to_one"
+			}
+		}
+	},
+	"program.yaml": {
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"id": "program",
+		"title": "Program",
+		"type": "object",
+		"namespace": "https://icdc.nci.nih.gov",
+		"category": "common",
+		"program": "*",
+		"project": "*",
+		"description": "",
+		"additionalProperties": false,
+		"submittable": true,
+		"validators": null,
+		"systemProperties": [
+			"id",
+			"project_id",
+			"state",
+			"created_datetime",
+			"updated_datetime"
+		],
+		"links": [],
+		"required": [],
+		"uniqueKeys": [
+			[
+				"id"
+			],
+			[
+				"clinical_study_id",
+				"submitter_id"
+			]
+		],
+		"properties": {
+			"type": {
+				"enum": [
+					"program"
+				]
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"name": {
+				"description": "Full name/title of the program.",
+				"type": "string"
+			},
+			"dbgap_accession_number": {
+				"description": "The dbgap accession number provided for the program.",
+				"type": "string"
+			}
+		}
+	},
+	"experiment.yaml": {
+		"description": "A coordinated set of actions and observations designed to generate data, with the ultimate goal of discovery or hypothesis testing.\n",
+		"links": [{
+				"backref": "experiments",
+				"name": "projects",
+				"multiplicity": "many_to_one",
+				"required": true,
+				"target_type": "project",
+				"label": "performed_for"
+			}
+		],
+		"uniqueKeys": [["id"], ["project_id", "submitter_id"]],
+		"validators": null,
+		"id": "experiment",
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"properties": {
+			"associated_experiment": {
+				"type": ["string"],
+				"description": "The submitter_id for any experiment with which this experiment is associated, paired, or matched."
+			},
+			"updated_datetime": {
+				"$ref": "_definitions.yaml#/datetime"
+			},
+			"marker_panel_description": {
+				"type": "string",
+				"description": "Brief description of the marker panel used in this experiment."
+			},
+			"submitter_id": {
+				"type": ["string", "null"]
+			},
+			"experimental_intent": {
+				"type": ["string"],
+				"description": "Summary of the goals the experiment is designed to discover."
+			},
+			"copy_numbers_identified": {
+				"type": "boolean",
+				"description": "Are copy number variations identified in this experiment?"
+			},
+			"somatic_mutations_identified": {
+				"type": "boolean",
+				"description": "Are somatic mutations identified for this experiment?"
+			},
+			"type_of_specimen": {
+				"type": ["string"],
+				"description": "Broad description of the specimens used in the experiment."
+			},
+			"type_of_data": {
+				"enum": ["Raw", "Processed"],
+				"description": "Is the data raw or processed?"
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"projects": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"number_samples_per_experimental_group": {
+				"type": ["integer"],
+				"description": "The number of samples contained within this experimental group."
+			},
+			"type_of_sample": {
+				"type": ["string"],
+				"description": "String indicator identifying the types of samples as contrived or clinical."
+			},
+			"created_datetime": {
+				"$ref": "_definitions.yaml#/datetime"
+			},
+			"indels_identified": {
+				"type": "boolean",
+				"description": "Are indels identified in this experiment?"
+			},
+			"number_experimental_group": {
+				"type": ["integer"],
+				"description": "The number denoting this experiment's place within the group within the whole."
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"project_id": {
+				"$ref": "_definitions.yaml#/project_id"
+			},
+			"type": {
+				"enum": ["experiment"]
+			},
+			"experimental_description": {
+				"type": ["string"],
+				"description": "A brief description of the experiment being performed."
+			},
+			"data_description": {
+				"type": "string",
+				"description": "Brief description of the data being provided for this experiment."
+			}
+		},
+		"category": "administrative",
+		"title": "Experiment",
+		"systemProperties": ["id", "project_id", "created_datetime", "updated_datetime", "state"],
+		"required": ["submitter_id", "projects"],
+		"namespace": "http://bloodprofilingatlas.org/bpa/",
+		"submittable": true,
+		"project": "*",
+		"program": "*",
+		"additionalProperties": false,
+		"type": "object"
+	},
+	"case.yaml": {
+		"description": "The collection of all data related to a specific subject in the context of a specific experiment. \n",
+		"links": [{
+				"backref": "cases",
+				"name": "experiments",
+				"multiplicity": "many_to_one",
+				"required": true,
+				"target_type": "experiment",
+				"label": "member_of"
+			}
+		],
+		"uniqueKeys": [["id"], ["project_id", "submitter_id"]],
+		"validators": null,
+		"id": "case",
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"properties": {
+			"disease_type": {
+				"type": "string",
+				"description": "Name of the disease for the case."
+			},
+			"updated_datetime": {
+				"$ref": "_definitions.yaml#/datetime"
+			},
+			"created_datetime": {
+				"$ref": "_definitions.yaml#/datetime"
+			},
+			"submitter_id": {
+				"type": ["string", "null"]
+			},
+			"consent_codes": {
+				"items": {
+					"type": "string"
+				},
+				"type": "array"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"experiments": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"primary_site": {
+				"type": "string",
+				"description": "Primary site for the case."
+			},
+			"project_id": {
+				"$ref": "_definitions.yaml#/project_id"
+			},
+			"type": {
+				"type": "string"
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			}
+		},
+		"category": "administrative",
+		"title": "Case",
+		"systemProperties": ["id", "project_id", "created_datetime", "updated_datetime", "state"],
+		"required": ["submitter_id", "experiments"],
+		"namespace": "http://gdc.nci.nih.gov",
+		"submittable": true,
+		"project": "*",
+		"program": "*",
+		"additionalProperties": false,
+		"type": "object"
+	},
+	"aliquot.yaml": {
+		"description": "Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.\n",
+		"links": [{
+				"backref": "aliquots",
+				"name": "samples",
+				"multiplicity": "many_to_many",
+				"required": true,
+				"target_type": "sample",
+				"label": "derived_from"
+			}
+		],
+		"uniqueKeys": [["id"], ["project_id", "submitter_id"]],
+		"validators": [],
+		"id": "aliquot",
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"properties": {
+			"aliquot_quantity": {
+				"term": {
+					"$ref": "_terms.yaml#/aliquot_quantity"
+				},
+				"type": "number"
+			},
+			"aliquot_volume": {
+				"term": {
+					"$ref": "_terms.yaml#/aliquot_volume"
+				},
+				"type": "number"
+			},
+			"updated_datetime": {
+				"$ref": "_definitions.yaml#/datetime"
+			},
+			"created_datetime": {
+				"$ref": "_definitions.yaml#/datetime"
+			},
+			"analyte_type_id": {
+				"term": {
+					"$ref": "_terms.yaml#/analyte_type_id"
+				},
+				"enum": ["D", "E", "G", "H", "R", "S", "T", "W", "X", "Y"]
+			},
+			"analyte_type": {
+				"term": {
+					"$ref": "_terms.yaml#/analyte_type"
+				},
+				"type": "string"
+			},
+			"submitter_id": {
+				"type": ["string", "null"],
+				"description": "The legacy barcode used before prior to the use UUIDs. For TCGA this is bcraliquotbarcode.\n"
+			},
+			"amount": {
+				"term": {
+					"$ref": "_terms.yaml#/amount"
+				},
+				"type": "number"
+			},
+			"state": {
+				"$ref": "_definitions.yaml#/state"
+			},
+			"samples": {
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"type": {
+				"type": "string"
+			},
+			"concentration": {
+				"term": {
+					"$ref": "_terms.yaml#/concentration"
+				},
+				"type": "number"
+			},
+			"project_id": {
+				"$ref": "_definitions.yaml#/project_id"
+			},
+			"source_center": {
+				"term": {
+					"$ref": "_terms.yaml#/source_center"
+				},
+				"type": "string"
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"$ref": "_definitions.yaml#/UUID"
+			}
+		},
+		"category": "biospecimen",
+		"title": "Aliquot",
+		"systemProperties": ["id", "project_id", "state", "created_datetime", "updated_datetime"],
+		"required": ["submitter_id", "samples"],
+		"submittable": true,
+		"project": "*",
+		"program": "*",
+		"additionalProperties": false,
+		"type": "object",
+		"constraints": null
+	},
+	"project.yaml": {
+		"description": "Any specifically defined piece of work that is undertaken or attempted to meet a single requirement. (NCIt C47885)\n",
+		"links": [{
+				"backref": "projects",
+				"name": "programs",
+				"multiplicity": "many_to_one",
+				"required": true,
+				"target_type": "program",
+				"label": "member_of"
+			}
+		],
+		"uniqueKeys": [["id"], ["code"]],
+		"validators": null,
+		"id": "project",
+		"$schema": "http://json-schema.org/draft-04/schema#",
+		"properties": {
+			"date_collected": {
+				"type": "string",
+				"description": "The date or date range in which the project data was collected."
+			},
+			"code": {
+				"type": "string",
+				"description": "Unique identifier for the project."
+			},
+			"intended_release_date": {
+				"type": "string",
+				"description": "Tracks a Project's intended release date.",
+				"format": "date-time"
+			},
+			"support_id": {
+				"type": "string",
+				"description": "The ID of the source providing support/grant resources."
+			},
+			"releasable": {
+				"default": false,
+				"type": "boolean",
+				"description": "A project can only be released by the user when `releasable` is true.\n"
+			},
+			"released": {
+				"default": false,
+				"type": "boolean",
+				"description": "To release a project is to tell the GDC to include all submitted\nentities in the next GDC index.\n"
+			},
+			"availability_type": {
+				"enum": ["Open", "Restricted"],
+				"description": "Is the project open or restricted?"
+			},
+			"dbgap_accession_number": {
+				"type": "string",
+				"description": "The dbgap accession number provided for the project."
+			},
+			"id": {
+				"systemAlias": "node_id",
+				"description": "UUID for the project.",
+				"$ref": "_definitions.yaml#/UUID"
+			},
+			"name": {
+				"type": "string",
+				"description": "Display name/brief description for the project."
+			},
+			"programs": {
+				"description": "Indicates that the project is logically part of the indicated project.\n",
+				"$ref": "_definitions.yaml#/to_one"
+			},
+			"investigator_affiliation": {
+				"type": "string",
+				"description": "The investigator's affiliation with respect to a research institution."
+			},
+			"availability_mechanism": {
+				"type": "string",
+				"description": "Mechanism by which the project will be made avilable."
+			},
+			"support_source": {
+				"type": "string",
+				"description": "The name of source providing support/grant resources."
+			},
+			"state": {
+				"default": "open",
+				"enum": ["open", "review", "submitted", "processing", "closed", "legacy"],
+				"description": "The possible states a project can be in.  All but `open` are\nequivalent to some type of locked state.\n"
+			},
+			"investigator_name": {
+				"type": "string",
+				"description": "Name of the principal investigator for the project."
+			},
+			"type": {
+				"type": "string"
+			}
+		},
+		"category": "administrative",
+		"title": "Project",
+		"systemProperties": ["id", "state", "released", "releasable", "intended_release_date"],
+		"required": ["code", "name", "programs"],
+		"submittable": true,
+		"project": "*",
+		"program": "*",
+		"additionalProperties": false,
+		"type": "object",
+		"constraints": null
+	}
+}

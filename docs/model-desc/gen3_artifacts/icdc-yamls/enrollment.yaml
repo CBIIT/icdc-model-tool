@@ -1,0 +1,65 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: enrollment
+title: Enrollment
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cases
+  backref: enrollments
+  label: of_case
+  target_type: case
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - enrollment
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  date_of_registration:
+    type: string
+  registering_institution:
+    type: string
+  initials:
+    type: string
+  date_of_informed_consent:
+    type: string
+  site_short_name: &3
+    type: string
+  veterinary_medical_center:
+    type: string
+  enrollment_document_number:
+    type: string
+  cohort_description:
+    type: string
+  patient_subgroup:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  cases:
+    $ref: _definitions.yaml#/to_one

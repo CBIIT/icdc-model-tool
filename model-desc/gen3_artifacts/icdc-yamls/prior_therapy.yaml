@@ -1,0 +1,107 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: prior_therapy
+title: Prior_therapy
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: enrollments
+  backref: prior_therapies
+  label: at_enrollment
+  target_type: enrollment
+  multiplicity: many_to_one
+  required: 0
+- name: prior_therapies
+  backref: prior_therapies
+  label: next
+  target_type: prior_therapy
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - prior_therapy
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  date_of_first_dose:
+    type: string
+  date_of_last_dose:
+    type: string
+  agent_name:
+    type: string
+  dose_schedule:
+    type: string
+  total_dose:
+    type: string
+  agent_units_of_measure:
+    type: string
+  best_response:
+    type: string
+  nonresponse_therapy_type:
+    type: string
+  prior_therapy_type:
+    type: string
+  prior_steroid_exposure:
+    type: string
+  number_of_prior_regimens_steroid:
+    type: string
+  total_number_of_doses_steroid:
+    type: string
+  date_of_last_dose_steroid:
+    type: string
+  prior_nsaid_exposure:
+    type: string
+  number_of_prior_regimens_nsaid:
+    type: string
+  total_number_of_doses_nsaid:
+    type: string
+  date_of_last_dose_nsaid:
+    type: string
+  tx_loc_geo_loc_ind_nsaid:
+    type: string
+  min_rsdl_dz_tx_ind_nsaids_treatment_pe:
+    type: string
+  therapy_type:
+    type: string
+  any_therapy:
+    type: string
+  number_of_prior_regimens_any_therapy:
+    type: string
+  total_number_of_doses_any_therapy:
+    type: string
+  date_of_last_dose_any_therapy:
+    type: string
+  treatment_performed_at_site:
+    type: string
+  treatment_performed_in_minimal_residual:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  enrollments:
+    $ref: _definitions.yaml#/to_one
+  prior_therapies:
+    $ref: _definitions.yaml#/to_one

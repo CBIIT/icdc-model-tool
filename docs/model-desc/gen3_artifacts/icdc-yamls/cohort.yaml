@@ -1,0 +1,59 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: cohort
+title: Cohort
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: study_arms
+  backref: cohorts
+  label: member_of
+  target_type: study_arm
+  multiplicity: many_to_one
+  required: 0
+- name: experiments
+  backref: cohorts
+  label: member_of
+  target_type: experiment
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - cohort
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  cohort_description:
+    type: string
+  cohort_dose:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  study_arms:
+    $ref: _definitions.yaml#/to_one
+  experiments:
+    $ref: _definitions.yaml#/to_one

@@ -1,0 +1,63 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: sample
+title: Sample
+type: object
+namespace: https://icdc.nci.nih.gov
+category: biospecimen
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cases
+  backref: samples
+  label: member_of
+  target_type: case
+  multiplicity: many_to_one
+  required: 0
+- name: visits
+  backref: samples
+  label: on_visit
+  target_type: visit
+  multiplicity: many_to_one
+  required: 0
+- name: samples
+  backref: samples
+  label: next
+  target_type: sample
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - sample
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  submitter_id:
+    type: string
+  project_id:
+    type: string
+  cases:
+    $ref: _definitions.yaml#/to_one
+  visits:
+    $ref: _definitions.yaml#/to_one
+  samples:
+    $ref: _definitions.yaml#/to_one

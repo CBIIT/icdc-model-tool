@@ -1,0 +1,55 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: study
+title: Study
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: projects
+  backref: studies
+  label: member_of
+  target_type: project
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - study
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  clinical_study_name:
+    type: string
+  clinical_study_designation:
+    type: string
+  clinical_study_id:
+    type: string
+  date_of_iacuc_approval:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  projects:
+    $ref: _definitions.yaml#/to_one

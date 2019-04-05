@@ -1,0 +1,57 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: demographic
+title: Demographic
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cases
+  backref: demographics
+  label: of_case
+  target_type: case
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - demographic
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  breed:
+    type: string
+  patient_age_at_enrollment:
+    type: string
+  date_of_birth:
+    type: string
+  sex:
+    type: string
+  crf_id:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  cases:
+    $ref: _definitions.yaml#/to_one

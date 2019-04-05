@@ -1,0 +1,49 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: evaluation
+title: Evaluation
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: visits
+  backref: evaluations
+  label: on_visit
+  target_type: visit
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - evaluation
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  date_of_evaluation:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  visits:
+    $ref: _definitions.yaml#/to_one

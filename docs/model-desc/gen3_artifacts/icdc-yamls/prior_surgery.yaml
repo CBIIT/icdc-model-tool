@@ -1,0 +1,69 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: prior_surgery
+title: Prior_surgery
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: prior_surgeries
+  backref: prior_surgeries
+  label: next
+  target_type: prior_surgery
+  multiplicity: many_to_one
+  required: 0
+- name: enrollments
+  backref: prior_surgeries
+  label: at_enrollment
+  target_type: enrollment
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - prior_surgery
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  date_of_surgery:
+    type: string
+  procedure:
+    type: string
+  anatomical_site_of_surgery:
+    type: string
+  surgical_finding:
+    type: string
+  residual_disease:
+    type: string
+  therapeutic_indicator:
+    type: string
+  crf_id:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  prior_surgeries:
+    $ref: _definitions.yaml#/to_one
+  enrollments:
+    $ref: _definitions.yaml#/to_one

@@ -1,0 +1,51 @@
+--- &1
+$schema: http://json-schema.org/draft-04/schema#
+id: agent
+title: Agent
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &2 false
+submittable: &3 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: study_arms
+  backref: agents
+  label: of_study_arm
+  target_type: study_arm
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - agent
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  medication:
+    type: string
+  document_number:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  study_arms:
+    $ref: _definitions.yaml#/to_one

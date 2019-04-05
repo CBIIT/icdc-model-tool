@@ -1,0 +1,105 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: adverse_event
+title: Adverse_event
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: evaluations
+  backref: adverse_events
+  label: at_evaluation
+  target_type: evaluation
+  multiplicity: many_to_one
+  required: 0
+- name: adverse_events
+  backref: adverse_events
+  label: next
+  target_type: adverse_event
+  multiplicity: many_to_one
+  required: 0
+- name: cases
+  backref: adverse_events
+  label: had_adverse_event
+  target_type: case
+  multiplicity: many_to_one
+  required: 0
+- name: agents
+  backref: adverse_events
+  label: of_agent
+  target_type: agent
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - adverse_event
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  ae_dose:
+    type: string
+  ae_agent_name:
+    type: string
+  day_in_cycle:
+    type: string
+  date_resolved:
+    type: string
+  adverse_event_term:
+    type: string
+  adverse_event_description:
+    type: string
+  adverse_event_grade:
+    type: string
+  adverse_event_grade_description:
+    type: string
+  attribution_to_research:
+    type: string
+  attribution_to_ind:
+    type: string
+  attribution_to_disease:
+    type: string
+  attribution_to_commercial:
+    type: string
+  attribution_to_other:
+    type: string
+  ae_other:
+    type: string
+  dose_limiting_toxicity:
+    type: string
+  unexpected_adverse_event:
+    type: string
+  crf_id:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  evaluations:
+    $ref: _definitions.yaml#/to_one
+  adverse_events:
+    $ref: _definitions.yaml#/to_one
+  cases:
+    $ref: _definitions.yaml#/to_one
+  agents:
+    $ref: _definitions.yaml#/to_one

@@ -1,0 +1,63 @@
+--- &1
+$schema: http://json-schema.org/draft-04/schema#
+id: diagnosis
+title: Diagnosis
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &2 false
+submittable: &3 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cases
+  backref: diagnoses
+  label: of_case
+  target_type: case
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - diagnosis
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  primary_disease_site:
+    type: string
+  disease_term:
+    type: string
+  stage_of_disease:
+    type: string
+  histology_cytopathology:
+    type: string
+  date_of_histology_confirmation:
+    type: string
+  histological_grade:
+    type: string
+  date_of_diagnosis:
+    type: string
+  crf_id:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  cases:
+    $ref: _definitions.yaml#/to_one

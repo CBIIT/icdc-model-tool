@@ -1,0 +1,47 @@
+--- &1
+$schema: http://json-schema.org/draft-04/schema#
+id: lab_exam
+title: Lab_exam
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &2 false
+submittable: &3 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: evaluations
+  backref: lab_exams
+  label: at_evaluation
+  target_type: evaluation
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - lab_exam
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  evaluations:
+    $ref: _definitions.yaml#/to_one

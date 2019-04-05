@@ -1,0 +1,40 @@
+--- &1
+$schema: http://json-schema.org/draft-04/schema#
+id: program
+title: Program
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &2 false
+submittable: &3 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+ []
+required:
+ []
+uniqueKeys:
+- - id
+properties:
+  type:
+    enum:
+    - program
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  name:
+    type: string
+  dbgap_accession_number:
+    type: string
+  submitter_id:
+    type: string

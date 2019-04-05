@@ -1,0 +1,71 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: physical_exam
+title: Physical_exam
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: enrollments
+  backref: physical_exams
+  label: at_enrollment
+  target_type: enrollment
+  multiplicity: many_to_one
+  required: 0
+- name: evaluations
+  backref: physical_exams
+  label: at_evaluation
+  target_type: evaluation
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - physical_exam
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  date_of_examination:
+    type: string
+  day_in_cycle:
+    type: string
+  body_system:
+    type: string
+  pe_finding:
+    type: string
+  pe_comment:
+    type: string
+  phase_pe:
+    type: string
+  assessment_timepoint:
+    type: string
+  crf_id:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  enrollments:
+    $ref: _definitions.yaml#/to_one
+  evaluations:
+    $ref: _definitions.yaml#/to_one

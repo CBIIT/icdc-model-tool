@@ -1,0 +1,63 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: off_treatment
+title: Off_treatment
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cases
+  backref: off_treatments
+  label: went_off_treatment
+  target_type: case
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - off_treatment
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state: &3
+    $ref: _definitions.yaml#/state
+  document_number:
+    type: string
+  date_off_treatment:
+    type: string
+  reason_off_treatment:
+    type: string
+  date_of_disease_progression: &4
+    type: string
+  best_resp_vet_tx_tp_secondary_response:
+    type: string
+  date_last_medication_administration:
+    type: string
+  best_resp_vet_tx_tp_best_response:
+    type: string
+  date_of_best_response:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  cases: &5
+    $ref: _definitions.yaml#/to_one

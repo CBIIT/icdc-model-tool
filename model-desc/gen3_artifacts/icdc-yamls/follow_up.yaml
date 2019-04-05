@@ -1,0 +1,65 @@
+--- &1
+$schema: http://json-schema.org/draft-04/schema#
+id: follow_up
+title: Follow_up
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &2 false
+submittable: &3 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cases
+  backref: follow_ups
+  label: of_case
+  target_type: case
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - follow_up
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  document_number:
+    type: string
+  date_of_last_contact:
+    type: string
+  patient_status:
+    type: string
+  explain_unknown_status:
+    type: string
+  contact_type:
+    type: string
+  treatment_since_last_contact:
+    type: string
+  physical_exam_performed:
+    type: string
+  physical_exam_changes:
+    type: string
+  crf_id:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  cases:
+    $ref: _definitions.yaml#/to_one

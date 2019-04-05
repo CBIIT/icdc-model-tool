@@ -1,0 +1,53 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: project
+title: Project
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: programs
+  backref: projects
+  label: member_of
+  target_type: program
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - code
+- dbgap_accession_number
+properties:
+  type:
+    enum:
+    - project
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  dbgap_accession_number:
+    type: string
+  name:
+    type: string
+  code:
+    type: string
+  submitter_id:
+    type: string
+  availability_type:
+    type: string
+  programs:
+    $ref: _definitions.yaml#/to_one

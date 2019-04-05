@@ -1,0 +1,97 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: file
+title: File
+type: object
+namespace: https://icdc.nci.nih.gov
+category: data_file
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: assays
+  backref: files
+  label: of_assay
+  target_type: assay
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - file
+  id: &3
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  object_id:
+    type: string
+  file_name:
+    type: string
+  data_category:
+    enum:
+    - Simple Nucleotide Variation
+    - Transcriptome Profiling
+    - Biospecimen
+    - Sequencing Reads
+    - Copy Number Variation
+    - Clinical
+    - DNA Methylation
+    - Combined Nucleotide Variation
+  data_format:
+    enum:
+    - DICOM
+    - JPG
+    - VCF
+    - TXT
+    - BAM
+    - SVS
+    - XML
+  data_type:
+    enum:
+    - Annotated Somatic Mutation
+    - Raw Simple Somatic Mutation
+    - Aligned Reads
+    - Gene Expression Quantification
+    - Slide Image
+    - Biospecimen Supplement
+    - Copy Number Segment
+    - Masked Copy Number Segment
+    - Clinical Supplement
+    - Methylation Beta Value
+    - Isoform Expression Quantification
+    - miRNA Expression Quantification
+    - Raw CGI Variant
+    - Aggregated Somatic Mutation
+    - Splice Junction Quantification
+    - Masked Somatic Mutation
+    - Gene Level Copy Number Scores
+  file_size:
+    type: integer
+  submitter_id:
+    type: string
+  project_id:
+    type: string
+  md5sum:
+    type: string
+  updated_datetime:
+    type: string
+  created_datetime:
+    type: string
+  assays:
+    $ref: _definitions.yaml#/to_one

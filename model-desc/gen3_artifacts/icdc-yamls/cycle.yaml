@@ -1,0 +1,53 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: cycle
+title: Cycle
+type: object
+namespace: https://icdc.nci.nih.gov
+category: administrative
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cases
+  backref: cycles
+  label: of_case
+  target_type: case
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - cycle
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  cycle_number:
+    type: string
+  date_of_cycle_start:
+    type: string
+  date_of_cycle_end:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  cases:
+    $ref: _definitions.yaml#/to_one

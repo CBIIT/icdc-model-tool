@@ -1,0 +1,75 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: vital_signs
+title: Vital_signs
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: evaluations
+  backref: vital_signs
+  label: at_evaluation
+  target_type: evaluation
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - vital_signs
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  date_of_vital_signs:
+    type: string
+  body_temperature:
+    type: string
+  pulse:
+    type: string
+  respiration_rate:
+    type: string
+  respiration_pattern:
+    type: string
+  systolic_bp:
+    type: string
+  pulse_ox:
+    type: string
+  patient_weight:
+    type: string
+  body_surface_area:
+    type: string
+  modified_ecog:
+    type: string
+  ecg:
+    type: string
+  assessment_timepoint:
+    type: string
+  phase:
+    type: string
+  crf_id:
+    type: string
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  evaluations:
+    $ref: _definitions.yaml#/to_one

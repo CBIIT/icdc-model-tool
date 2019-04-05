@@ -1,0 +1,55 @@
+---
+$schema: http://json-schema.org/draft-04/schema#
+id: visit
+title: Visit
+type: object
+namespace: https://icdc.nci.nih.gov
+category: clinical
+program: '*'
+project: '*'
+description: ''
+additionalProperties: &1 false
+submittable: &2 true
+validators: null
+systemProperties:
+- id
+- state
+- created_datetime
+- updated_datetime
+- project_id
+links:
+- name: cycles
+  backref: visits
+  label: of_cycle
+  target_type: cycle
+  multiplicity: many_to_one
+  required: 0
+- name: visits
+  backref: visits
+  label: next
+  target_type: visit
+  multiplicity: many_to_one
+  required: 0
+required:
+ []
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  type:
+    enum:
+    - visit
+  id:
+    systemAlias: node_id
+    $ref: _definitions.yaml#/UUID
+  state:
+    $ref: _definitions.yaml#/state
+  project_id:
+    type: string
+  submitter_id:
+    type: string
+  cycles:
+    $ref: _definitions.yaml#/to_one
+  visits:
+    $ref: _definitions.yaml#/to_one
