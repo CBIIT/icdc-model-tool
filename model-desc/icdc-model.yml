@@ -19,6 +19,8 @@ Nodes:
   program:
     Props:
       - name
+      - program_description
+      - external_program_url
   study:
     Props:
       - clinical_study_name
