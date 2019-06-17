@@ -23,10 +23,14 @@ Nodes:
       - external_program_url
   study:
     Props:
-      - clinical_study_name
-      - clinical_study_designation
       - clinical_study_id
+      - clinical_study_designation
+      - clinical_study_name
+      - clinical_study_description
+      - clinical_study_type
       - date_of_iacuc_approval
+      - dates_of_conduct
+      -
   study_site:
     Props:
       - site_short_name
