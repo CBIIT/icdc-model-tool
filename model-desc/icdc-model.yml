@@ -83,13 +83,15 @@ Nodes:
   diagnosis:
     Category: clinical
     Props:
-      - primary_disease_site
       - disease_term
+      - primary_disease_site
       - stage_of_disease
+      - date_of_diagnosis
       - histology_cytopathology
       - date_of_histology_confirmation
       - histological_grade
-      - date_of_diagnosis
+      - concurrent_disease
+      - concurrent_disease_type
       - crf_id
   enrollment:
     Props:
