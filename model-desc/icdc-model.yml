@@ -171,7 +171,31 @@ Nodes:
       - crf_id
   sample:
     Category: biospecimen
-    Props: null
+    Props: 
+      - sample_id
+      - sample_type
+      # indicator as to the nature of the biomaterial - tissue, blood, urine, etc.
+      - general_sample_pathology
+      # indicator as to whether the sample is normal or tumor derived
+      - date_of_sample_collection
+      - necropsy_sample
+      - length_of_tumor
+      # length of the tumor from which the sample in question was derived
+      - width_of_tumor
+      # width of the tumor from which the sample in question was derived
+      - analysis_area
+      # total area of the slide region that was analyzed in mm2
+      - analysis_area_percentage_tumor
+      - analysis_area_percentage_stroma
+      - analysis_area_percentage_glass
+      - analysis_area_percenatge_pigmented_tumor
+      - total_tissue_area
+      # total area within the slide region analyzed that was represented by tissue
+      - tumor_tissue_area
+      - non_tumor_tissue_area
+      - percentage_tumor
+      - percentage_stroma
+      - comment
   evaluation:
     Category: clinical
     Props:
