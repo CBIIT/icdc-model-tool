@@ -30,7 +30,6 @@ Nodes:
       - clinical_study_type
       - date_of_iacuc_approval
       - dates_of_conduct
-      -
   study_site:
     Props:
       - site_short_name
@@ -64,6 +63,9 @@ Nodes:
       - patient_age_at_enrollment
       - date_of_birth
       - sex
+      - weight
+      # indicates the subject's weight at the time the subject was enrolled and/or biospecimens were acquired, at least in the case of studies that are not longitudinal in nature
+      - neutered_indicator
       - crf_id
   cycle:
     Props:
