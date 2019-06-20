@@ -92,6 +92,9 @@ Nodes:
       - histology_cytopathology
       - date_of_histology_confirmation
       - histological_grade
+      - pathology_report
+      - treatment_data
+      - follow_up_data
       - concurrent_disease
       - concurrent_disease_type
       - crf_id
@@ -190,7 +193,7 @@ Nodes:
       - analysis_area_percentage_tumor
       - analysis_area_percentage_stroma
       - analysis_area_percentage_glass
-      - analysis_area_percenatge_pigmented_tumor
+      - analysis_area_percentage_pigmented_tumor
       - total_tissue_area
       # total area within the slide region analyzed that was represented by tissue
       - tumor_tissue_area
