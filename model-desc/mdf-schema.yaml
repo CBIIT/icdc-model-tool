@@ -1,0 +1,222 @@
+$schema: http://json-schema.org/draft-06/schema#
+$id: http://cbiit.github.io/icdc-model-tool/model-desc/mdf-schema.yaml
+
+
+# "uniqueItems" : true - to insure an array is unique
+# still need to check that the document itself doesn't contain duplicate
+# object keys?
+
+# since the keys to the top-level objects are data (the names of nodes,
+# relationships, and properties), want to control the spec of those keys
+# draft 6 of JSONSchema has propertyNames property to do this
+
+type: object
+properties:
+  Nodes:
+    propertyNames:
+      $ref: "#/defs/snake_case_id"
+    additionalProperties:
+      $ref: "#/defs/nodeSpec"
+  Relationships:
+    propertyNames:
+      $ref: "#/defs/snake_case_id"
+    additionalProperties:
+      $ref: "#/defs/relnSpec"
+  PropDefinitions:
+    propertyNames:
+      $ref: "#/defs/snake_case_id"
+    additionalProperties:
+      $ref: "#/defs/propSpec"
+  NativeSchemaIncludes:
+    type: array
+    items:
+      $ref: "#/defs/fileNameId"
+required:
+  - Nodes
+  - Relationships
+
+propertyNames:
+  $ref: "#/defs/camelCaseId"
+
+additionalProperties: true
+
+defs:
+  snake_case_id:
+    $id: "#snake_case_id"
+    type: string
+    pattern: "^[A-Za-z_]*$"
+  camelCaseId:
+    $id: "#camelCaseId"
+    type: string
+    pattern: "^[A-Z][A-Za-z]*$"
+  fileNameId:
+    $id: "#fileNameId"
+    type: string
+    pattern: "^[A-Za-z_-~/.]+\\.json|jsn|yml|yaml$"
+  url:
+    $id: "#url"
+    type: string
+    pattern: |
+      ((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)
+  regex:
+    $id: "#regex"
+    type: object
+    properties:
+      pattern:
+        type: string
+      flavor:
+        description: |
+          Can tag as JS, Perl, egrep, whatever, here (optional)
+        type: string
+    required:
+      - pattern
+  simpleType:
+    description: |
+      simpleType (a scalar)
+    type: string
+    enum:
+      - number
+      - integer
+      - string
+      - datetime
+      - boolean
+      - TBD
+  enumType:
+    type:
+      array
+    description: |
+      enumType (an array - could be size 1; or a reference to value
+      domain api)
+    items:
+      oneOf:
+        -
+          type:
+            string
+        -
+          $ref:
+            "#/defs/url"
+  number_with_units:
+    $id: "#number_with_units"
+    type: object
+    description: |
+      number_with_units must have a "value_type" which is either "integer" or
+      "number", and a "units" property,which can be a simple string (e.g. "mg"),
+      or a regex ( "pattern" : ^<regexp>$ ), or an enumeration (array of allowed
+      units strings, or ref to the term server)
+    properties:
+      value_type:
+        type: string
+        enum:
+          - integer
+          - number
+      units:
+        oneOf:
+          -
+            type: string
+          -
+            $ref: "#/defs/regex"
+          -
+            $ref: "#/defs/enumType"
+    required:
+      - value_type
+      - units
+  nodeSpec:
+    $id: "#nodeSpec"
+    type: object
+    properties:
+      Props:
+        oneOf:
+          -
+            type:
+              string
+            items:
+              $ref: "#/defs/snake_case_id"
+          -
+            type:
+              "null"
+      Category:
+        $ref: "#/defs/snake_case_id"
+    required:
+      - Props
+  relnSpec:
+    $id: "#relnSpec"
+    type: object
+    properties:
+      Mul:
+        # here, the "default" multiplicity for all Src->Dst pairs
+        type: string
+        enum:
+          - one_to_one
+          - one_to_many
+          - many_to_one
+          - many_to_many
+      Props:
+        type: array
+        items:
+          $ref: "#/defs/snake_case_id"
+          # and need to warn if the property name does not appear in a propSpec
+      Ends:
+        type: array
+        items:
+          type: object
+          properties:
+            Src:
+              $ref: "#/defs/snake_case_id"
+              # and need to be nodes defined in Nodes:
+            Dst:
+              $ref: "#/defs/snake_case_id"
+              # and need to be nodes defined in Nodes:
+            Mul:
+              # here, Src->Dst specific multiplicity
+              # overrides default above
+              type: string
+              enum:
+                - one_to_one
+                - one_to_many
+                - many_to_one
+                - many_to_many
+          required:
+            - Src
+            - Dst
+    required:
+      - Props
+      - Mul
+      - Ends
+  propSpec:
+    $id: "#propSpec"
+    type: object
+    properties:
+      Desc:
+        description: |
+          Property description, free text
+        type: string
+      Src:
+        description: |
+          Original data source of this property (e.g., the clinical report form)
+        type: string
+      Nul:
+        type: boolean
+      Req:
+        type: boolean
+      Deprecated:
+        type: boolean
+      Type:
+        description: |
+          Property values can have (1) simple types (number, integer, string
+          datetime, or --if necessary-- "TBD"; (2) a number_with_units type
+          (e.g., { "value_type":"integer", "units":"mm" }); (3) a regular
+          expression that a (string) value must match; (4) an enumeration
+          of acceptable values, or a url to an api that will validate against
+          such a list
+        oneOf:
+          -
+            $ref: "#/defs/simpleType"
+          -
+            $ref: "#/defs/number_with_units
+          -
+            $ref: "#/defs/regex"
+          -
+            $ref: "#/defs/enumType"
+    required:
+      - Type
+      
