@@ -10,77 +10,129 @@
 #     Req : true|false
 #     Enum : [acceptible, values, for, prop, go, here]
 PropDefinitions:
-  id: null
-  type: null
-  function: null
+  #  id: null
+  #  type: null
+  #  function: null
   name:
     Desc: generic name property
+    Type: string
   comment:
     Desc: generic comment
+    Type: string
   sex:
     Desc: gender, needs enum
     Src: ENROLLMENT/ENROLL/1
+    Type:
+      - M
+      - F
   document_number:
     Desc: S/N of the executed CRF
     Src: ALL
+    Type:
+      pattern: |
+        ^R[0-9]+$
   clinical_study_designation:
     Src: COURSE INIT/CINIT/1
+    Type: TBD
   patient_id:
     Src: COURSE INIT/CINIT/1
+    Type:
+      pattern: |
+        ^[0-9]+$
   clinical_study_id:
     Src: COURSE INIT/CINIT/1
+    # needs enum?
+    Type: string
   cycle_number:
     Src: COURSE INIT/CINIT/1
+    Type: integer
   date_of_cycle_start:
     Src: COURSE INIT/CINIT/1
+    type: datetime
   date_of_cycle_end:
     Src: COURSE INIT/CINIT/1
+    Type: datetime
   phase:
     Desc: Where should this live?/What is?
     Src: COURSE INIT/CINIT/1
+    Type: TBD
   arm:
     Src: COURSE INIT/CINIT/1
+    Type: TBD
   ctep_treatment_assignment_code:
     Src: COURSE INIT/CINIT/1
+    # need regexp
+    Type:
+      pattern: |
+        ^.+$
   site_short_name:
     Src: ENROLLMENT/ENROLL/1
+    # needs enum?
+    type: string
   investigator_name:
     Src: external documents
+    Type: string
   patient_age_at_enrollment:
     Src: ENROLLMENT/ENROLL/1
+    Type:
+      value_type: number
+      units: years
   initials:
     Src: ENROLLMENT/ENROLL/1
+    Type: string
   patient_first_name:
     Src: ENROLLMENT/ENROLL/1
+    Type: string
   breed:
     Src: ENROLLMENT/ENROLL/1
+    Type:
+      - http://localhost/terms/domain/breed
   date_of_registration:
     Src: ENROLLMENT/ENROLL/1
+    Type: datetime
   veterinary_medical_center:
     Src: ENROLLMENT/ENROLL/1
+    Type: string
   patient_subgroup:
     Src: ENROLLMENT/ENROLL/1
+    # need enum?
+    Type: string
   registering_institution:
     Src: ENROLLMENT/ENROLL/1
+    Type: string
   primary_disease_site:
     Src: ENROLLMENT/ENROLL/1
+    Type:
+      - http://localhost/terms/domain/primary_disease_site
   disease_term:
     Src: ENROLLMENT/ENROLL/1
+    Type:
+      - http://localhost/terms/domain/disease_term
   stage_of_disease:
     Src: ENROLLMENT/ENROLL/1
+    Type:
+      - http://localhost/terms/domain/stage_of_disease
   histology_cytopathology:
     Src: ENROLLMENT/ENROLL/1
+    # need enum?
+    Type: string
   date_of_histology_confirmation:
     Src: ENROLLMENT/ENROLL/1
+    Type: datetime
   histological_grade:
     Src: ENROLLMENT/ENROLL/1
+    Type:
+      - http://localhost/terms/domain/histological_grade
   date_of_diagnosis:
     Src: ENROLLMENT/ENROLL/1
+    Type: datetime
   date_of_informed_consent:
     Src: ENROLLMENT/ENROLL/1
+    Type: datetime
   date_of_iacuc_approval:
     Desc: should go on the project, rather than enrollment node?
     Src: ENROLLMENT/ENROLL/1
+    Type: datetime
   cohort_description:
       # this really contains two elements, "cohort_dose" and "cohort_agent"
       # which are the protocol directions, not necessarily the actuals
@@ -88,141 +140,241 @@ PropDefinitions:
       # study_arm <- agent
     Desc: actually, a list of agent and dose
     Src: ENROLLMENT/ENROLL/1
+    Type: string
   date_of_birth:
     Src: ENROLLMENT/ENROLL/1
+    Type: datetime
   patient_subgroup:
     Desc: really a description of why dog was enrolled
-    Src: ENROLLMENT/ENROLL/1    
+    Src: ENROLLMENT/ENROLL/1
+    Type: string
   enrollment_document_number:
     Src: ENROLLMENT/ENROLL/1
+    Type: string
   site_short_name:
     Desc: |
       'site' on form
     Src: ENROLLMENT/ENROLL/1
+    # need enum?
+    Type: string
   date_off_study:
     Src: OFF_STUDY/OSSM/1
+    Type: datetime
   reason_off_study:
     Src: OFF_STUDY/OSSM/1
+    Type: string
   date_of_disease_progression:
     Src: OFF_STUDY/OSSM/1
+    Type: datetime
   date_off_treatment:
     Src: OFF_STUDY/OSSM/1
+    Type: datetime
   reason_off_treatment:
     Src: OFF_STUDY/OSSM/1
+    Type: string
   other_reason_off_treatment:
     Src: OFF_STUDY/OSSM/1
+    Type: string
   best_resp_vet_tx_tp_secondary_response:
     Src: OFF_STUDY/OSSM/1
+    Type: TBD
   date_last_medication_administration:
     Src: OFF_STUDY/OSSM/1
+    Type: datetime
   best_resp_vet_tx_tp_best_response:
     Src: OFF_STUDY/OSSM/1
+    Type: TBD
   date_of_best_response:
     Src: OFF_STUDY/OSSM/1
+    Type: datetime
   date_of_examination:
     Src: PHYSICAL_EXAM/PE/1
+    Type: datetime
   day_in_cycle:
     Src: PHYSICAL_EXAM/PE/1
+    Type: integer
   body_system:
     Desc: Body system examined; up to 12 in a visit
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      - Attitude
+      - Eyes/Ears/Nose/Throat
+      - Respiratory
+      - Cardiovascular
+      - Gastrointestinal
+      - Musculoskeletal
+      - Integumentary
+      - Lymphatic
+      - Endocrine
+      - Genitourinary
+      - Neurologic
+      - Other
   pe_finding:
     Desc: Clinical exam result for the body system examined. Finding_results on form.
     Src: PHYSICAL_EXAM/PE/1
+    Type: string
   pe_comment:
     Src: PHYSICAL_EXAM/PE/1
+    Type: string
   patient_weight:
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      value_type: number
+      units: kg
   date_of_vital_signs:
     Desc: actually visit date
     Src: PHYSICAL_EXAM/PE/1
+    Type: datetime
   body_surface_area:
     Desc: Called "bsa" in form
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      value_type: number
+      units: sq meters
   body_temperature:
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      value_type: number
+      units:
+        - degrees F
+        - degrees C
   pulse:
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      value_type: integer
+      units: bpm
   respiration_rate:
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      value_type: integer
+      units: breaths/min
   respiration_pattern:
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      - http://localhost/terms/domain/respiration_pattern
   systolic_bp:
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      value_type: integer
+      units: mm Hg
   pulse_ox:
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      value_type: number
+      units: "%"
   modified_ecog:
     Src: PHYSICAL_EXAM/PE/1
   ecg:
     Src: PHYSICAL_EXAM/PE/1
+    Type: boolean
   assessment_timepoint:
     Src: PHYSICAL_EXAM/PE/1
+    Type: integer
   date_of_surgery:
     Src: PRIOR_SURG_SUPP/PSRG/1
+    Type: datetime
   procedure:
     Src: PRIOR_SURG_SUPP/PSRG/1
+    Type:
+      - https://localhost/term/domain/procedure
   anatomical_site_of_surgery:
     Desc: Site_FUL on form
     Src: PRIOR_SURG_SUPP/PSRG/1
+    Type:
+      - https://localhost/term/domain/anatomical_site
   surgical_finding:
     Desc: Findings_FUL on form
     Src: PRIOR_SURG_SUPP/PSRG/1
+    Type: string
   residual_disease:
     Src: PRIOR_SURG_SUPP/PSRG/1
+    Type: TBD
   therapeutic_indicator:
     Src: PRIOR_SURG_SUPP/PSRG/1
+    Type: TBD
   date_of_first_dose:
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    Type: datetime
   date_of_last_dose:
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    Type: datetime
   agent_name:
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    Type:
+      - http://localhost/terms/domain/agent_name
   dose_schedule:
     Desc: Schedule_FUL in form
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    Type: TBD
   total_dose:
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    Type:
+      value_type: number
+      units: mg
   agent_units_of_measure:
     Desc: Agent UOM_FUL in form
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    Type: string
+    Deprecated: true
   best_response:
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    Type: TBD
   nonresponse_therapy_type:
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    # needs enum?
+    Type: string
   prior_therapy_type:
     Src: PRIOR_THRPY_SUPP/PTHR/1
+    # needs enum?
+    Type: string
   prior_steroid_exposure:
     Desc: Has the patient ever been on steroids? in form
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: boolean
   number_of_prior_regimens_steroid:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: integer
   total_number_of_doses_steroid:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: integer
   date_of_last_dose_steroid:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: datetime
   prior_nsaid_exposure:
     Desc: Has the patient ever been on NSAIDS? in form
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: boolean
   number_of_prior_regimens_nsaid:
-    Src: PRIOR_TREAT_SUMM/PTX/1        
+    Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: integer
   total_number_of_doses_nsaid:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: integer
   date_of_last_dose_nsaid:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: datetime
   tx_loc_geo_loc_ind_nsaid:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: TBD
   min_rsdl_dz_tx_ind_nsaids_treatment_pe:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: TBD
   therapy_type:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    # should be enumerated?
+    Type: string
   any_therapy:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: boolean
   number_of_prior_regimens_any_therapy:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: integer
   total_number_of_doses_any_therapy:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: integer
   date_of_last_dose_any_therapy:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: datetime
   treatment_performed_at_site:
     Src: PRIOR_TREAT_SUMM/PTX/1
   treatment_performed_in_minimal_residual:
@@ -231,146 +383,219 @@ PropDefinitions:
     Src: STUDY_MED_ADMIN/SDAD/1
   route_of_administration:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type:
+      - http://localhost/terms/domain/route_of_administration
   medication_lot_number:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type: string
   medication_vial_id:
     Src: STUDY_MED_ADMIN/SDAD/1
+    # should be a regex?
+    Type: string
   medication_actual_units_of_measure:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type: string
+    Deprecated: true
   medication_duration:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type:
+      value_type: number
+      units:
+        - days
+        - hr
+        - min
   medication_units_of_measure:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type: string
+    Deprecated: true
   medication_actual_dose:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type:
+      value_type: number
+      units: mg/kg
   start_time:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type: datetime
   stop_time:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type: datetime
   dose_level:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type:
+      value_type: number
+      units: mg/kg
   dose_units_of_measure:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type: string
+    Deprecated: true
   date_of_missed_dose:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type: datetime
   medication_missed_dose:
     Desc: Q.- form has "medication"
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type:
+      - http://localhost/terms/domain/agent_name
   missed_dose_amount:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type:
+      value_type: number
+      units: mg/kg
   missed_dose_units_of_measure:
     Desc: Q.- form has "dose uom_ful"
-    Src: STUDY_MED_ADMIN/SDAD/1    
+    Src: STUDY_MED_ADMIN/SDAD/1
+    Type: string
+    Deprecated: true
   medication_course_number:
     Src: STUDY_MED_ADMIN/SDAD/1    
+    Type: string
   comments:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type: string
   date_of_last_contact:
     Src: FOLLOW_UP/FLWU/1
+    Type: datetime
   patient_status:
     Desc: need vocab
     Src: FOLLOW_UP/FLWU/1
+    type: string
   explain_unknown_status:
     Desc: free text?
     Src: FOLLOW_UP/FLWU/1
+    Type: string
   contact_type:
     Desc: need vocab
     Src: FOLLOW_UP/FLWU/1
+    Type: string
   treatment_since_last_contact:
     Desc: y/n
     Src: FOLLOW_UP/FLWU/1
+    Type: boolean
   physical_exam_performed:
     Desc: y/n
     Src: FOLLOW_UP/FLWU/1
+    Type: boolean
   physical_exam_changes:
     Desc: How described? Relative to data already stored in "physical_exam" node?
     Src: FOLLOW_UP/FLWU/1
+    Type: TBD
   cohort_dose:
     Desc: intended or protocol dose
-    Src:
+    Type:
+      value_type: number
+      units: mg/kg
   date_of_evaluation:
     Desc: inferred from evaluation inputs (e.g.,PE)
   ae_dose:
     Src: adverse events form
+    Type:
+      value_type: number
+      units: mg/kg
   ae_agent_name:
     Src: adverse events form
+    Type:
+      - http://localhost/terms/domain/agent_name
   day_in_cycle:
     Src: adverse events form
+    Type: integer
   date_resolved:
     Src: adverse events form
+    Type: datetime
   adverse_event_term:
     Desc: enum vocab?
     Src: adverse events form
+    Type:
+      - http://localhost/terms/domain/adverse_events
   adverse_event_description:
     Desc: freetext
     Src: adverse events form
+    Type: string
   adverse_event_grade:
     Desc: enum
     Src: adverse events form
+    Type: string
   adverse_event_grade_description:
     Desc: enum (nec?)
     Src: adverse events form
+    Type: string
   attribution_to_research:
     Desc: What is?
     Src: adverse events form
+    Type: TBD
   attribution_to_ind:
     Desc: What is?
     Src: adverse events form
+    Type: TBD
   attribution_to_disease:
     Desc: What is?
     Src: adverse events form
+    Type: TBD
   attribution_to_commercial:
     Desc: What is?
     Src: adverse events form
+    Type: TBD
   attribution_to_other:
     Desc: What is?
     Src: adverse events form
+    Type: TBD
   ae_other:
     Desc: What is?
     Src: adverse events form
+    Type: TBD
   dose_limiting_toxicity:
     Desc: bool
     Src: adverse events form
+    Type: TBD
   unexpected_adverse_event:
     Desc: bool
     Src: adverse events form
+    Type: TBD
   # gen3 kludge 
   project_id:
     Desc: gen3 kludge property
     Src: gen3
+    Type: string
   object_id:
     Desc: gen3 kludge property
     Src: gen3
+    Type:
+      pattern: |
+        ([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}
   file_name:
     Desc: gen3 kludge property
     Src: gen3
+    Type: string
   data_category:
     Desc: gen3 kludge property
     Src: gen3
-    Enum: [Simple Nucleotide Variation, Transcriptome Profiling, Biospecimen, Sequencing Reads, Copy Number Variation, Clinical, DNA Methylation, Combined Nucleotide Variation]
+    Type: [Simple Nucleotide Variation, Transcriptome Profiling, Biospecimen, Sequencing Reads, Copy Number Variation, Clinical, DNA Methylation, Combined Nucleotide Variation]
   data_format:
     Desc: gen3 kludge property
     Src: gen3
-    Enum: [DICOM, JPG, TIF, VCF, TXT, BAM, SVS, XML]
+    Type: [DICOM, JPG, TIF, VCF, TXT, BAM, SVS, XML]
   data_type:
     Desc: gen3 kludge property
     Src: gen3
-    Enum: [Annotated Somatic Mutation, Raw Simple Somatic Mutation, Aligned Reads, Gene Expression Quantification, Slide Image, Biospecimen Supplement, Copy Number Segment, Masked Copy Number Segment, Clinical Supplement, Methylation Beta Value, Isoform Expression Quantification, miRNA Expression Quantification, Raw CGI Variant, Aggregated Somatic Mutation, Splice Junction Quantification, Masked Somatic Mutation, Gene Level Copy Number Scores]
+    Type: [Annotated Somatic Mutation, Raw Simple Somatic Mutation, Aligned Reads, Gene Expression Quantification, Slide Image, Biospecimen Supplement, Copy Number Segment, Masked Copy Number Segment, Clinical Supplement, Methylation Beta Value, Isoform Expression Quantification, miRNA Expression Quantification, Raw CGI Variant, Aggregated Somatic Mutation, Splice Junction Quantification, Masked Somatic Mutation, Gene Level Copy Number Scores]
   dbgap_accession_number:
     Desc: gen3 kludge property
     Src: gen3
+    Type:
+      pattern: |
+        phs[0-9]{5}([.]v[0-9]+)?([.]p[0-9]+)
   file_size:
     Desc: gen3 kludge property
     Src: gen3
     Type: integer
   study_site:
     Desc: review this
+    Type: string
   created_datetime:
     Desc: gen3 kludge property
     Src: gen3
-    Type: string
+    Type: datetime
   updated_datetime:
     Desc: gen3 kludge property
     Src: gen3
-    Type: string
+    Type: datetime
     
