@@ -1,0 +1,15 @@
+
+language: python
+dist: xenial
+python:
+  - "2.7"
+
+branches:
+  only:
+    - prop-constraints
+
+install:
+  - pip install -r model-desc/reqs.txt
+
+script:
+  - pytest
