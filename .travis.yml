@@ -1,4 +1,3 @@
-# buildit
 language: python
 dist: xenial
 python:
@@ -6,7 +5,7 @@ python:
 
 branches:
   only:
-    - prop-constraints
+    - master
 
 install:
   - pip install -r model-desc/reqs.txt

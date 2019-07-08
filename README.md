@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/CBIIT/icdc-model-tool.svg?branch=master)](https://travis-ci.org/CBIIT/icdc-model-tool)
+
+
 [View model artifacts](./model-desc)
 
 # MakeModel and model-tool
