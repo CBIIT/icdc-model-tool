@@ -12,4 +12,5 @@ install:
   - pip install -r model-desc/reqs.txt
 
 script:
+  - cd model-desc
   - pytest
