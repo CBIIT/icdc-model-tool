@@ -174,6 +174,7 @@ descriptions of each property. Property descriptions look like:
             - go
             - here
         Nul: <true|false> # is property nullable?
+        Req: <true|false> # is property required?
         Src: <a string describing where the property came from - e.g.
                  a CRF.>
 

@@ -23,8 +23,8 @@ PropDefinitions:
     Desc: gender, needs enum
     Src: ENROLLMENT/ENROLL/1
     Type:
-      - M
-      - F
+      - "M"
+      - "F"
   document_number:
     Desc: S/N of the executed CRF
     Src: ALL
@@ -48,7 +48,7 @@ PropDefinitions:
     Type: integer
   date_of_cycle_start:
     Src: COURSE INIT/CINIT/1
-    type: datetime
+    Type: datetime
   date_of_cycle_end:
     Src: COURSE INIT/CINIT/1
     Type: datetime
@@ -68,7 +68,7 @@ PropDefinitions:
   site_short_name:
     Src: ENROLLMENT/ENROLL/1
     # needs enum?
-    type: string
+    Type: string
   investigator_name:
     Src: external documents
     Type: string
@@ -264,6 +264,8 @@ PropDefinitions:
       units: "%"
   modified_ecog:
     Src: PHYSICAL_EXAM/PE/1
+    Type:
+      - http://localhost/terms/domain/modified_ecog
   ecg:
     Src: PHYSICAL_EXAM/PE/1
     Type: boolean
@@ -377,10 +379,14 @@ PropDefinitions:
     Type: datetime
   treatment_performed_at_site:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: boolean
   treatment_performed_in_minimal_residual:
     Src: PRIOR_TREAT_SUMM/PTX/1
+    Type: boolean
   medication:
     Src: STUDY_MED_ADMIN/SDAD/1
+    Type:
+      - http://localhost/terms/domain/medication
   route_of_administration:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type:
@@ -458,7 +464,7 @@ PropDefinitions:
   patient_status:
     Desc: need vocab
     Src: FOLLOW_UP/FLWU/1
-    type: string
+    Type: string
   explain_unknown_status:
     Desc: free text?
     Src: FOLLOW_UP/FLWU/1
@@ -486,6 +492,7 @@ PropDefinitions:
       units: mg/kg
   date_of_evaluation:
     Desc: inferred from evaluation inputs (e.g.,PE)
+    Type: datetime
   ae_dose:
     Src: adverse events form
     Type:

@@ -95,8 +95,8 @@ defs:
         -
           $ref:
             "#/defs/url"
-  number_with_units:
-    $id: "#number_with_units"
+  numberWithUnits:
+    $id: "#numberWithUnits"
     type: object
     description: |
       number_with_units must have a "value_type" which is either "integer" or
@@ -127,8 +127,7 @@ defs:
       Props:
         oneOf:
           -
-            type:
-              string
+            type: array
             items:
               $ref: "#/defs/snake_case_id"
           -
@@ -151,10 +150,14 @@ defs:
           - many_to_one
           - many_to_many
       Props:
-        type: array
-        items:
-          $ref: "#/defs/snake_case_id"
-          # and need to warn if the property name does not appear in a propSpec
+        oneOf:
+          -
+            type: array
+            items:
+              $ref: "#/defs/snake_case_id"
+          -
+            type:
+              "null"
       Ends:
         type: array
         items:
@@ -212,7 +215,7 @@ defs:
           -
             $ref: "#/defs/simpleType"
           -
-            $ref: "#/defs/number_with_units
+            $ref: "#/defs/numberWithUnits"
           -
             $ref: "#/defs/regex"
           -

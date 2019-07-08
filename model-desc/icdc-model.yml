@@ -334,11 +334,14 @@ Relationships:
       #  Dst: program
     Props: null
   of_case:
+    Mul: many_to_one
     Ends:
       - Src: enrollment
         Dst: case
+        Mul: one_to_one
       - Src: demographic
         Dst: case
+        Mul: one_to_one
       - Src: diagnosis
         Dst: case
       - Src: cycle
@@ -347,17 +350,21 @@ Relationships:
         Dst: case
     Props: null
   of_study_arm:
+    Mul: many_to_many
     Ends:
       - Src: agent
         Dst: study_arm
+    Props: null
   of_study:
+    Mul: many_to_many
     Ends:
       - Src: study_site
         Dst: study
       - Src: principal_investigator
         Dst: study
-        Mul: many_to_many
+    Props: null
   of_agent:
+    Mul: many_to_one
     Ends:
       - Src: agent_administration
         Dst: agent
@@ -365,11 +372,13 @@ Relationships:
         Dst: agent
     Props: null
   had_adverse_event:
+    Mul: many_to_one
     Ends:
       - Src: adverse_event
         Dst: case
     Props: null
   at_enrollment:
+    Mul: many_to_one
     Ends:
       - Src: prior_therapy
         Dst: enrollment
@@ -379,11 +388,13 @@ Relationships:
         Dst: enrollment
     Props: null
   of_cycle:
+    Mul: many_to_one
     Ends:
       - Src: visit
         Dst: cycle
     Props: Null
   on_visit:
+    Mul: many_to_one
     Ends:
       - Src: agent_administration
         Dst: visit
@@ -393,11 +404,13 @@ Relationships:
         Dst: visit
     Props: null
   of_sample:
+    Mul: many_to_one
     Ends:
       - Src: assay
         Dst: sample
     Props: null
   of_assay:
+    Mul: many_to_one
     Ends:
       - Src: file
         Dst: assay
@@ -405,6 +418,7 @@ Relationships:
         Dst: assay
     Props: null
   at_evaluation:
+    Mul: many_to_one
     Ends:
       - Src: physical_exam
         Dst: evaluation
@@ -418,15 +432,19 @@ Relationships:
         Dst: evaluation
     Props: null
   went_off_study:
+    Mul: one_to_one
     Ends:
       - Src: off_study
         Dst: case
+    Props: null
   went_off_treatment:
+    Mul: one_to_one
     Ends:
       - Src: off_treatment
         Dst: case
     Props: null
   next:
+    Mul: one_to_one
     Ends:
       - Src: visit
         Dst: visit
