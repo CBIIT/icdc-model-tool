@@ -374,8 +374,8 @@ Relationships:
   had_adverse_event:
     Mul: many_to_one
     Ends:
-      - Src: adverse_event
-        Dst: case
+      - Src: case
+        Dst: adverse_event
     Props: null
   at_enrollment:
     Mul: many_to_one
@@ -434,14 +434,14 @@ Relationships:
   went_off_study:
     Mul: one_to_one
     Ends:
-      - Src: off_study
-        Dst: case
+      - Src: case
+        Dst: off_study
     Props: null
   went_off_treatment:
     Mul: one_to_one
     Ends:
-      - Src: off_treatment
-        Dst: case
+      - Src: case
+        Dst: off_treatment
     Props: null
   next:
     Mul: one_to_one
