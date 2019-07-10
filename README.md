@@ -75,12 +75,14 @@ Usage:
       --dry-run : emit log msg, but no output files
 ```
 
-## Graph Description Input YAML
+## Model Description Files (MDF)
 
 The layout of nodes, relationships, node properties, and relationship
-properties are specified in data structure expressed in YAML files.
+properties are specified in data structure expressed in YAML-formatted
+"model description files".
 
-The input format follows these general conventions:
+The input format follows these general conventions, which are enforced
+by a [JSONSchema]() [schema](./model-desc/mdf-schema.yaml):
 
 * Special key names are capitalized; these are essentially directives
 to ModelMaker;
