@@ -82,7 +82,7 @@ properties are specified in data structure expressed in YAML-formatted
 "model description files".
 
 The input format follows these general conventions, which are enforced
-by a [JSONSchema]() [schema](./model-desc/mdf-schema.yaml):
+by a [JSONSchema](https://json-schema.org/understanding-json-schema/) [schema](./model-desc/mdf-schema.yaml):
 
 * Special key names are capitalized; these are essentially directives
 to ModelMaker;
