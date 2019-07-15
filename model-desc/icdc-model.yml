@@ -18,9 +18,12 @@
 Nodes:
   program:
     Props:
-      - name
-      - program_description
+      - program_name
+      - program_acronym
+      - program_short_description
+      - program_full_description
       - external_program_url
+      - program_sort_order
   study:
     Props:
       - clinical_study_id
