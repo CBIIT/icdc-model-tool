@@ -4,18 +4,17 @@ env:
 language: python
 dist: xenial
 python:
-- '2.7'
+  - '2.7'
 branches:
   only:
-  - master
+    - master
 install:
   - pip install -r model-desc/reqs.txt
 script:
   - cd model-desc
   - pytest && \
-  # if test passes, want to update icdc-model.svg
-    cp icdc-model.yml icdc-model-props.yml ../docs/model-desc && \
-    perl -I ../make-model/lib ../make-model/bin/model-tool -g ../docs/model-desc/icdc-model.svg ../docs/model-desc/icdc-model.yml ../docs/model-desc/icdc-model-props.yml
+  cp icdc-model.yml icdc-model-props.yml ../docs/model-desc && \
+  perl -I ../make-model/lib ../make-model/bin/model-tool -g ../docs/model-desc/icdc-model.svg ../docs/model-desc/icdc-model.yml ../docs/model-desc/icdc-model-props.yml
 
 deploy:
   provider: pages
