@@ -1,6 +1,8 @@
 TEST FORK
 
-[![Build Status](https://travis-ci.org/CBIIT/icdc-model-tool.svg?branch=master)](https://travis-ci.org/CBIIT/icdc-model-tool)
+TEST [![Build Status](https://travis-ci.com/majensen/icdc-model-tool.svg?branch=master)](https://travis-ci.com/majensen/icdc-model-tool)
+
+ORG [![Build Status](https://travis-ci.org/CBIIT/icdc-model-tool.svg?branch=master)](https://travis-ci.org/CBIIT/icdc-model-tool)
 
 
 [View model artifacts](./model-desc)
