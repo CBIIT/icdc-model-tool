@@ -1,15 +1,27 @@
+env:
+  global:
+    secure: cM2bXK9ZbB3FYtMxgNSaHMuJt5BUbDdNK9q9r6jEVMeiUZK2hXKCUFlxAFsnkSJw5BlIcuB+085P06SUD+t24nM6TPf+1QUl+emt/cSgmd09lcrfLeQ5tVMvjQyNTpvSRYVulpCvaI/3fL3amiTell6QECHHJneFnbt9Oww0YJsnGuXmsnQE8VA8shVXHEBl8UUPxobCr6tdIzAyElVzSJsxpG8Pa65uELHlHBHCDQdaXUW5x/FFiQYWOESfpu5ZuWMWk0ympjBFYRNKtDKsIuK45zshhWOBY9M+I2mzvYxH6FHlou0VONP00Dp5mMBu0U96vq7kaBPlR2+EBsUJey3z6vcDe9ho077SCVb7Q7lGhAB9lpeJMlOgq0/lZuWzUvWU7rgNLs3rfKEk8d5K+Tbpc2UPTohRk8n4NBDhRKIesMirLOBKWOCQaIcBJKcNkLUP9oFtFYtzrZh3fCR6BtiX/eJFapjhJcr9M4tI/8D8EjRAFJAfpdbMjuDRdaMbGAEOWXRrIiVANYGeZBmZuNY+XB+Yi89vdDKAvIIGPhFg7Ey+zIQdiEumvQ+kG3Agv49KLkdzaxHWhcOUtEJNZ9GNJuKIxWybA4n+E6HqxCvV4AACB/8qLzpF/URKaAf5rC0LyttaqNw+HPlr9ib+D/ouXZBizDbVYaSr5CilB/0=
 language: python
 dist: xenial
 python:
-  - "2.7"
-
+- '2.7'
 branches:
   only:
-    - master
-
+  - master
 install:
   - pip install -r model-desc/reqs.txt
-
 script:
   - cd model-desc
-  - pytest
+  - pytest && \
+  # if test passes, want to update icdc-model.svg
+    cp icdc-model.yml icdc-model-props.yml ../docs/model-desc && \
+    perl -I ../make-model/lib ../make-model/bin/model-tool -g ../docs/model-desc/icdc-model.svg ../docs/model-desc/icdc-model.yml ../docs/model-desc/icdc-model-props.yml
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master
+    
