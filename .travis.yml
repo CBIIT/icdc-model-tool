@@ -16,7 +16,7 @@ install:
   - pip install -r model-desc/reqs.txt
   - pushd make-model
   - perl Build.PL
-  - ./Build installdeps --cpan_client cpanm
+  - yes | ./Build installdeps --cpan_client cpanm
 script:
   - pushd make-model
   - ./Build test
