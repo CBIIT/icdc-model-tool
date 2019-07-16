@@ -9,7 +9,8 @@ branches:
   only:
     - master
 before_install:
-  - curl -L https://install.perlbrew.pl | bash
+  - curl -L https://cpanmin.us | perl - App::cpanminus
+  - cpanm Module::Build
 install:
   - pip install -r model-desc/reqs.txt
   - pushd make-model
