@@ -9,7 +9,8 @@ branches:
   only:
     - master
 before_install:
-  - curl -L https://cpanmin.us | perl - App::cpanminus
+  - apt-get install cpanminus
+  - cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib
   - cpanm Module::Build
 install:
   - pip install -r model-desc/reqs.txt
