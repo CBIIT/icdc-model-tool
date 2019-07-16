@@ -10,9 +10,6 @@ branches:
     - master
 before_install:
   - curl -L https://install.perlbrew.pl | bash
-  - perlbrew install perl-5.24.4
-  - perlbrew switch perl-5.24.4
-  - curl -L https://install.perlbrew.pl | bash
 install:
   - pip install -r model-desc/reqs.txt
   - pushd make-model
