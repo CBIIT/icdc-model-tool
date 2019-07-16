@@ -17,10 +17,9 @@ install:
   - pushd make-model
   - perl Build.PL
   - yes | ./Build installdeps --cpan_client cpanm
-script:
-  - pushd make-model
-  - ./Build test
+  - ./Build test --verbose
   - ./Build install
+script:
   - popd
   - pushd model-desc
   - pytest && cp icdc-model.yml icdc-model-props.yml ../docs/model-desc && model-tool -g ../docs/model-desc/icdc-model.svg ../docs/model-desc/icdc-model.yml ../docs/model-desc/icdc-model-props.yml
