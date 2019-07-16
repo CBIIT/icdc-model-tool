@@ -22,7 +22,7 @@ Nodes:
       - program_acronym
       - program_short_description
       - program_full_description
-      - external_program_url
+      - program_external_url
       - program_sort_order
   study:
     Props:
