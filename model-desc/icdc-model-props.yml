@@ -629,17 +629,33 @@ PropDefinitions:
     Src: PRIOR_TREAT_SUMM/PTX/1
     Type: TBD
 # program props
-  external_program_url:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
-  name:
-    Desc: generic name property
+  program_acronym:
+    Desc: official acronym for the name of the program
+    Src: curated
     Type: string
-  program_description:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
+  program_external_url:
+    Desc: external url to which users should be directed to learn more about the program
+    Src: curated
+    Type: string
+  program_full_description:
+    Desc: full length (multiple sentence) version of the program description
+    Src: curated
+    Type: string
+    Req: true
+  program_name:
+    Desc: name of the program
+    Src: curated
+    Type: string
+    Req: true
+  program_short_description:
+    Desc: abbreviated (single sentence) version of the program description
+    Src: curated
+    Type: string
+    Req: true
+  program_sort_order:
+    Desc: value upon which to arbitrarily prioritize display of the program within the UI
+    Src: curated
+    Type: integer
 # sample props
   analysis_area:
     Desc: '?'
