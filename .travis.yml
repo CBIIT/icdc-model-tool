@@ -18,6 +18,7 @@ install:
   - perl Build.PL
   - yes | ./Build installdeps --cpan_client cpanm
   - ./Build test --verbose
+  - ls -lR .
   - ./Build install
 script:
   - popd
