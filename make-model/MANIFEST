@@ -2,7 +2,6 @@ bin/model-tool
 Build.PL
 lib/ICDC/MakeModel.pm
 lib/ICDC/MakeModel/Config.pm
-lib/ICDC/MakeModel/OrderedRepresenter.pm
 lib/ICDC/MakeModel/Schema.pm
 MANIFEST			This list of files
 README
@@ -13,8 +12,11 @@ t/002_schema.t
 t/003_makemodel.t
 t/004_merge.t
 t/005_tool.t
+t/samples/try.yml
 t/samples/icdc-model-props.yml
 t/samples/icdc-model.yml
 t/samples/gen3-model-overlay.yml
 t/samples/_definitions.yaml
 t/samples/_terms.yaml
+META.yml
+META.json

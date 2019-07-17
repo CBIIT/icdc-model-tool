@@ -27,9 +27,11 @@ $obj->create_node_schemas;
 is_deeply [ sort keys %{$obj->get_node('visit')->root} ], [sort @ICDC::MakeModel::TOP_LEVEL_KEY_ORDER], "'visit' has all top-level keys";
 is_deeply [ sort keys %{$obj->get_node('prior_surgery')->root} ], [sort @ICDC::MakeModel::TOP_LEVEL_KEY_ORDER], "'prior_surgery' has all top level keys";
 
+$DB::single=1;
 my $ystr = $obj->get_node('visit')->as_yaml;
 my @tlo = grep /^\S*:/, split /\n/,$ystr;
 $_=~s/^(\S*):.*/$1/ for @tlo;
+
 is_deeply \@tlo, \@ICDC::MakeModel::TOP_LEVEL_KEY_ORDER, "yaml top-level key order correct";
 
 is $obj->get_node('file')->root->{category}, 'data_file', "set category for 'file' node correct";

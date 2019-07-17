@@ -18,13 +18,23 @@ use strict;
 use warnings;
 
 # object to represent a single node's schema
-our $yaml_dumper = YAML::PP::Dumper->new();
-$yaml_dumper->set_representer(
-  ICDC::MakeModel::OrderedRepresenter->new(
-    schema => YAML::PP->default_schema( boolean => 'perl' ),
-    emitter => YAML::PP::Emitter->new,
-   )
-   );
+my $ys = YAML::PP->default_schema( boolean => 'JSON::PP' );
+$ys->add_representer(
+  tied_equals => 'Tie::IxHash',
+  code => sub {
+    my ($rep, $node) = @_;
+    $node->{items} = [ %{ $node->{data} } ];
+    return 1;
+  },
+ );
+  
+our $yaml_dumper = YAML::PP::Dumper->new( schema => $ys,);
+# $yaml_dumper->set_representer(
+#   ICDC::MakeModel::OrderedRepresenter->new(
+#     schema => YAML::PP->default_schema( boolean => 'JSON::PP' ),
+#     emitter => YAML::PP::Emitter->new,
+#    )
+#    );
 
 
 sub new {
