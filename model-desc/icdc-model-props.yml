@@ -630,7 +630,11 @@ PropDefinitions:
     Type: TBD
 # program props
   program_acronym:
+<<<<<<< HEAD
     Desc: official acronym for the name of the program as it should be displayed within the UI
+=======
+    Desc: official acronym for the name of the program
+>>>>>>> NCATS_field_constraints
     Src: curated
     Type: string
   program_external_url:
