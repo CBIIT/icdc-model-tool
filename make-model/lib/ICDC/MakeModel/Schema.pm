@@ -5,7 +5,6 @@ use lib '../../../lib';
 use Carp qw/croak/;
 use Log::Log4perl qw/:easy/;
 use ICDC::MakeModel::Config;
-use ICDC::MakeModel::OrderedRepresenter;
 use JSON::PP;
 use YAML::PP;
 use YAML::PP::Dumper;
@@ -29,14 +28,6 @@ $ys->add_representer(
  );
   
 our $yaml_dumper = YAML::PP::Dumper->new( schema => $ys,);
-# $yaml_dumper->set_representer(
-#   ICDC::MakeModel::OrderedRepresenter->new(
-#     schema => YAML::PP->default_schema( boolean => 'JSON::PP' ),
-#     emitter => YAML::PP::Emitter->new,
-#    )
-#    );
-
-
 sub new {
   my $class = shift;
   my ($name, @args) = @_;
