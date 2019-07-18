@@ -174,7 +174,7 @@ PropDefinitions:
     Req: true
   crf_id:
     Desc: globally unique ID for the specific instance of the Enrollment case report form via which the patient was enrolled into the study/trial
-    Src: COURSE INIT/CINIT/1
+    Src: ENROLLMENT/ENROLL/1
     Type: TBD
   patient_first_name:
     Desc: patient's first name, in full
