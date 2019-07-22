@@ -168,12 +168,12 @@ PropDefinitions:
     Type: datetime
 # case props
   case_id:
-    Desc: globally unique ID by which the system can unambiguously identify a specific patient even across studies/trials. Likely to be a concatenation of a study identifier and patient_id below.
+    Desc: globally unique ID by which the system can unambiguously identify and display a specific patient even across studies/trials. Likely to be a concatenation of a study identifier and patient_id below.
     Src: to be provided by the data submitter, generated during data transformation as necessary
     Type: string
     Req: true
   crf_id:
-    Desc: globally unique ID for the specific instance of the Enrollment case report form via which the patient was enrolled into the study/trial
+    Desc: globally unique ID for the specific instance of the COTC Enrollment case report form via which the patient was enrolled into the study/trial
     Src: ENROLLMENT/ENROLL/1
     Type: TBD
   patient_first_name:
@@ -211,14 +211,14 @@ PropDefinitions:
     Type:
     - http://localhost/terms/domain/breed
   crf_id:
-    Desc: '?'
-    Src: '?'
+    Desc: globally unique ID for the specific instance of the Enrollment case report form via which the patient was enrolled into the study/trial, and which records key demographics
+    Src: ENROLLMENT/ENROLL/1
     Type: TBD
   date_of_birth:
     Src: ENROLLMENT/ENROLL/1
     Type: datetime
   neutered_indicator:
-    Desc: '?'
+    Desc: Boolean indicator as to whther the patient has been either spayed (female patients)or neutered (male patients)
     Src: '?'
     Type: TBD
   patient_age_at_enrollment:
@@ -233,21 +233,21 @@ PropDefinitions:
     - M
     - F
   weight:
-    Desc: '?'
+    Desc: the subject's weight at the time the subject was enrolled and/or biospecimens were acquired, at least in the case of studies that are not longitudinal in nature
     Src: '?'
     Type: TBD
 # diagnosis props
   concurrent_disease:
-    Desc: '?'
+    Desc: Boolean indicator as to whether the patient is has any significant secondary disease condition(s)
     Src: '?'
-    Type: TBD
+    Type: boolean
   concurrent_disease_type:
-    Desc: '?'
+    Desc: specifics of any notable secondary disease condition(s) within the patient
     Src: '?'
-    Type: TBD
+    Type: string
   crf_id:
-    Desc: '?'
-    Src: '?'
+    Desc: globally unique ID for the specific instance of the COTC Enrollment case report form via which the patient was enrolled into the study/trial, and which records key information as to diagnosis
+    Src: ENROLLMENT/ENROLL/1
     Type: TBD
   date_of_diagnosis:
     Src: ENROLLMENT/ENROLL/1
@@ -259,10 +259,11 @@ PropDefinitions:
     Src: ENROLLMENT/ENROLL/1
     Type:
     - http://localhost/terms/domain/disease_term
+    Req: true
   follow_up_data:
-    Desc: '?'
+    Desc: Boolean indicator as to whether follow up data for the patient exists
     Src: '?'
-    Type: TBD
+    Type: boolean
   histological_grade:
     Src: ENROLLMENT/ENROLL/1
     Type:
@@ -271,9 +272,9 @@ PropDefinitions:
     Src: ENROLLMENT/ENROLL/1
     Type: string
   pathology_report:
-    Desc: '?'
+    Desc: Boolean indicator as to whether a detailed pathology report upon which the diagnosis was based exists
     Src: '?'
-    Type: TBD
+    Type: boolean
   primary_disease_site:
     Src: ENROLLMENT/ENROLL/1
     Type:
@@ -283,9 +284,9 @@ PropDefinitions:
     Type:
     - http://localhost/terms/domain/stage_of_disease
   treatment_data:
-    Desc: '?'
+    Desc: Boolean indicator as to whether treatment data for the patient exists
     Src: '?'
-    Type: TBD
+    Type: boolean
 # disease_extent props
   crf_id:
     Desc: '?'
@@ -340,7 +341,7 @@ PropDefinitions:
     Type: TBD
 # enrollment props
   cohort_description:
-    Desc: actually, a list of agent and dose
+    Desc: essentially, the name of the agent under test and the dose at which it is being used
     Src: ENROLLMENT/ENROLL/1
     Type: string
   date_of_informed_consent:
@@ -350,23 +351,25 @@ PropDefinitions:
     Src: ENROLLMENT/ENROLL/1
     Type: datetime
   enrollment_document_number:
+    Desc: globally unique ID for the specific instance of the COTC Enrollment case report form via which the patient was enrolled into the study/trial
     Src: ENROLLMENT/ENROLL/1
     Type: string
   initials:
     Src: ENROLLMENT/ENROLL/1
     Type: string
   patient_subgroup:
-    Desc: really a description of why dog was enrolled
+    Desc: short description as to the reason for the patient being enrolled in the study/trial
     Src: ENROLLMENT/ENROLL/1
     Type: string
   registering_institution:
     Src: ENROLLMENT/ENROLL/1
     Type: string
   site_short_name:
-    Desc: "'site' on form\n"
+    Desc: widely accepted acronym for the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
     Src: ENROLLMENT/ENROLL/1
     Type: string
   veterinary_medical_center:
+    Desc: full name of the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
     Src: ENROLLMENT/ENROLL/1
     Type: string
 # evaluation props
@@ -637,7 +640,7 @@ PropDefinitions:
     Type: TBD
 # program props
   program_acronym:
-    Desc: official acronym for the name of the program
+    Desc: official acronym for the name of the program as it should be displayed within the UI
     Src: curated
     Type: string
   program_external_url:

@@ -56,6 +56,10 @@ Nodes:
       - cohort_dose
   case:
     Props:
+      - case_id
+      # globally unique ID by which the system can unambiguously identify and display a specific patient even across studies/trials.
+      # likely to be a concatenation of a study identifier and patient_id below
+      # to be provided by the data submitter, generated during data transformation as necessary
       - patient_id
       - patient_first_name
       - crf_id
