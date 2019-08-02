@@ -80,6 +80,7 @@ defs:
       - string
       - datetime
       - boolean
+      - uuid
       - TBD
   enumType:
     type:

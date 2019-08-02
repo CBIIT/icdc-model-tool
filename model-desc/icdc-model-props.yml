@@ -103,6 +103,9 @@ PropDefinitions:
     Deprecated: true
     Src: STUDY_MED_ADMIN/SDAD/1
     Type: string
+  id:
+    Req: true
+    Type: uuid
   medication:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type:

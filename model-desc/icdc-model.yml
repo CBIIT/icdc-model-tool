@@ -18,6 +18,7 @@
 Nodes:
   program:
     Props:
+      - id
       - program_name
       - program_acronym
       - program_short_description
@@ -26,6 +27,7 @@ Nodes:
       - program_sort_order
   study:
     Props:
+      - id
       - clinical_study_id
       - clinical_study_designation
       - clinical_study_name
@@ -35,33 +37,39 @@ Nodes:
       - dates_of_conduct
   study_site:
     Props:
+      - id
       - site_short_name
       - veterinary_medical_center
       - registering_institution
   study_arm:
     Props:
+      - id
       - arm
       - ctep_treatment_assignment_code
       # arm has no example in the data, putting cohort_description in here
       # to help define study_arm
   agent:
     Props:
+      - id
       - medication
       # d/n from STUDY_MED_ADMIN/SDAD/1      
       - document_number
   cohort:
     Props:
+      - id
       - cohort_description
       # the intended or protocol dose
       - cohort_dose
   case:
     Props:
+      - id
       - patient_id
       - patient_first_name
       - crf_id
   demographic:
     Category: clinical
     Props:
+      - id
       - breed
       - patient_age_at_enrollment
       - date_of_birth
@@ -72,22 +80,26 @@ Nodes:
       - crf_id
   cycle:
     Props:
+      - id
       - cycle_number
       - date_of_cycle_start
       - date_of_cycle_end
   visit:
     Category: clinical
-    Props: 
+    Props:
+      - id
       - visit_date
       - visit_number
   principal_investigator:
     Props:
+      - id
       - pi_first_name
       - pi_last_name
       - pi_middle_initial
   diagnosis:
     Category: clinical
     Props:
+      - id
       - disease_term
       - primary_disease_site
       - stage_of_disease
@@ -103,6 +115,7 @@ Nodes:
       - crf_id
   enrollment:
     Props:
+      - id
       - date_of_registration
       - registering_institution
       - initials
@@ -115,7 +128,8 @@ Nodes:
       - patient_subgroup
   prior_therapy:
     Category: clinical
-    Props: 
+    Props:
+      - id
       - date_of_first_dose
       - date_of_last_dose
       - agent_name
@@ -145,6 +159,7 @@ Nodes:
   prior_surgery:
     Category: clinical
     Props:
+      - id
       - date_of_surgery
       - procedure
       - anatomical_site_of_surgery
@@ -154,6 +169,7 @@ Nodes:
       - crf_id
   agent_administration:
     Props:
+      - id
       # d/n from STUDY_MED_ADMIN/SDAD/1
       - document_number
       - medication
@@ -179,7 +195,8 @@ Nodes:
       - crf_id
   sample:
     Category: biospecimen
-    Props: 
+    Props:
+      - id
       - sample_id
       - sample_type
       # indicator as to the nature of the biomaterial - tissue, blood, urine, etc.
@@ -207,18 +224,23 @@ Nodes:
   evaluation:
     Category: clinical
     Props:
+      - id
       # inferred:
       - date_of_evaluation
   assay:
-    Props: null
+    Props:
+      - id
   file:
     Category: data_file
-    Props: null
+    Props:
+      - id
   image:
-    Props: null
+    Props:
+      - id
   physical_exam:
     Category: clinical
     Props:
+      - id
       - date_of_examination
       - day_in_cycle
       - body_system
@@ -230,6 +252,7 @@ Nodes:
   vital_signs:
     Category: clinical
     Props:
+      - id
       - date_of_vital_signs
       - body_temperature
       - pulse
@@ -246,11 +269,13 @@ Nodes:
       - crf_id
   lab_exam:
     Category: clinical
-    Props: null
+    Props:
+      - id
   adverse_event:
     # how to link? To case and agent? Also to visit/followup?
     Category: clinical
     Props:
+      - id
       - ae_dose
       - ae_agent_name
       - day_in_cycle
@@ -270,7 +295,8 @@ Nodes:
       - crf_id
   disease_extent:
     Category: clinical
-    Props: 
+    Props:
+      - id
       - crf_id
       - lesion_number
       - lesion_site
@@ -287,6 +313,7 @@ Nodes:
   follow_up:
     Category: clinical
     Props:
+      - id
       # d/n from FOLLOW_UP/FLWU/1
       - document_number
       - date_of_last_contact
@@ -301,6 +328,7 @@ Nodes:
     # off_study, off_treatment -- how related? should be a dependency and normalize properties?
     Category: clinical
     Props:
+      - id
       # d/n from OFF_STUDY/OSSM/1
       - document_number
       - date_off_study
@@ -314,6 +342,7 @@ Nodes:
   off_treatment:
     Category: clinical
     Props:
+      - id
       # d/n from OFF_TREATMENT/OTSM/1
       - document_number
       - date_off_treatment
