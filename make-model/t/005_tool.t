@@ -7,7 +7,7 @@ use JSON;
 use IPC::Run qw/run/;
 
 my $dir = (-d 't' ? '.' : '..');
-my @testoutf = qw/try.svg try.json/;
+my @testoutf = qw/try.svg try.json try.txt/;
 my $sampdir = File::Spec->catdir($dir, qw/t samples/);
 my $tool = File::Spec->catfile($dir, 'bin', 'model-tool');
 
@@ -61,6 +61,13 @@ open my $j, File::Spec->catfile($dir,'try.json') or die "Can't open try.json: $!
   lives_ok { $j = decode_json $str } "smells like json";
   ok grep( /^_definitions.yaml$/, keys %$j), "_definitions.yaml present";
 }
+
+$in = $out = $err = '';
+lives_ok { run( [$tool, '-T', File::Spec->catfile($dir,'try.txt'), @descfiles],
+		\$in, \$out, \$err ) } "-g";
+diag $err if $err;
+ok(( -e File::Spec->catfile($dir,'try.txt')), "txt created");
+
 
 1;
 

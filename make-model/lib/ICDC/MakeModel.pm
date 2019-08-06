@@ -246,6 +246,20 @@ sub _relns_with_src_node {
   return \%relns;
 }
 
+sub table {
+  my $self = shift;
+  my ($fn) = @_;
+  my $fh = \*STDOUT;
+  if ($fn) {
+    open $fh, ">", $fn or die "Problem opening file '$fn': $!";
+  }
+  for my $n (sort $self->nodes) {
+    for my $p (sort $self->props($n)) {
+      say $fh join("\t",$n,$p);
+    }
+  }
+}
+
 sub viz {
   my $self = shift;
   my ($outf) = @_;

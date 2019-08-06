@@ -15,6 +15,7 @@ my $verbose = 0;
 my $make_graph = undef;
 my $make_schemas = undef;
 my $make_big_json = undef;
+my $output_table = undef;
 my $include_unlinked;
 my ($warn, $dry_run);
 my @search_dirs = ('init');
@@ -25,6 +26,7 @@ GetOptions (
   'graph|g:s' => \$make_graph,
   'bigjson|j|b:s' => \$make_big_json,
   'dir|d:s' => \@search_dirs,
+  'table|T:s' => \$output_table,
   'verbose|v+' => \$verbose,
   'warn|W' => \$warn,
   'dry-run|dry_run' => \$dry_run,
@@ -43,6 +45,7 @@ if ( defined $make_big_json && !$make_big_json ) {
   FATAL "Option --bigjson requires an argument\n";
   pod2usage(5);
 }
+
 if ( !@search_dirs ) {
   FATAL "Option --dir requires an argument\n";
   pod2usage(6);
@@ -50,7 +53,8 @@ if ( !@search_dirs ) {
 
 unless ($make_graph ||
 	  $make_schemas ||
-	  $make_big_json) {
+	  $make_big_json ||
+	  $output_table ) {
   FATAL "Nothing to do!\n";
   pod2usage(2);
 }
@@ -74,6 +78,10 @@ try {
 
 if ($make_graph) {
   $make_graph ne '-' ? $mm->viz($make_graph) : $mm->viz;
+}
+
+if ($output_table) {
+  $output_table ne '-' ? $mm->table($output_table) : $mm->table;
 }
 
 if ($make_schemas) {
@@ -134,9 +142,11 @@ model-tool - build model artifacts for "Gen3" commons
 
 =head1 SYNOPSIS
 
-  model-tool [-g <graph-out-file>] [-s <output-dir>] [-j <json-out-file>] <input.yaml> [<input2.yaml> ...]
+  model-tool [-g <graph-out-file>] [-s <output-dir>] [-j <json-out-file>] 
+             [-T <table-out-file>] <input.yaml> [<input2.yaml> ...]
      [-d dir_to_search [-d another_dir...]]
-  -g : create an SVG of model defined in input.yamls 
+  -g : create an SVG of model defined in input.yamls
+  -T : output a table of nodes and properties
   -s : create schema node files for Gen3
   -j : create big json schema squirt
   -d : directory to search for native schema yamls for inclusion
