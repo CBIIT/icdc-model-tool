@@ -333,8 +333,8 @@ Relationships:
         Dst: study_arm
       - Src: study_arm
         Dst: study
-      #- Src: study
-      #  Dst: program
+      - Src: study
+        Dst: program
     Props: null
   of_case:
     Mul: many_to_one
