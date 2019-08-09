@@ -5,18 +5,10 @@
 
 # lesions - extension
 
-# these are the built-in gen3 node categories
-# "category": "administrative",
-# "category": "biospecimen",
-# "category": "clinical",
-# "category": "data_file",
-# "category": "index_file",
-# "category": "internal",
-# "category": "metadata_file",
-# "category": "notation",
-
 Nodes:
   program:
+    Tags:
+      - CTN
     Props:
       - program_name
       - program_acronym
@@ -25,6 +17,8 @@ Nodes:
       - program_external_url
       - program_sort_order
   study:
+    Tags:
+      - CTN
     Props:
       - clinical_study_id
       - clinical_study_designation
@@ -33,15 +27,22 @@ Nodes:
       - clinical_study_type
       - date_of_iacuc_approval
       - dates_of_conduct
+      -   ctep_category
+      - ctep_su_category
+      -   ctep_term
+
   study_site:
     Props:
       - site_short_name
       - veterinary_medical_center
       - registering_institution
   study_arm:
+    Tags:
+      - CTN
     Props:
       - arm
       - ctep_treatment_assignment_code
+      - treatment_arm_version
       # arm has no example in the data, putting cohort_description in here
       # to help define study_arm
   agent:
@@ -55,6 +56,8 @@ Nodes:
       # the intended or protocol dose
       - cohort_dose
   case:
+    Tag:
+      - CTN
     Props:
       - case_id
       # globally unique ID by which the system can unambiguously identify and display a specific patient even across studies/trials.
@@ -64,8 +67,11 @@ Nodes:
       - patient_first_name
       - crf_id
   demographic:
+    Tags:
+      - CTN
     Category: clinical
     Props:
+      - ethnicity
       - breed
       - patient_age_at_enrollment
       - date_of_birth
@@ -105,7 +111,10 @@ Nodes:
       - concurrent_disease
       - concurrent_disease_type
       - crf_id
+      - diagnosis_code
   enrollment:
+    Tags:
+      - CTN
     Props:
       - date_of_registration
       - registering_institution
@@ -118,6 +127,8 @@ Nodes:
       - cohort_description
       - patient_subgroup
   prior_therapy:
+    Tags:
+      - CTN
     Category: clinical
     Props: 
       - date_of_first_dose
@@ -182,6 +193,8 @@ Nodes:
       - comment
       - crf_id
   sample:
+    Tags:
+      - CTN
     Category: biospecimen
     Props: 
       - sample_id
@@ -208,6 +221,8 @@ Nodes:
       - percentage_tumor
       - percentage_stroma
       - comment
+      - pathology_status_date
+      - surgical_event_id
   evaluation:
     Category: clinical
     Props:
@@ -216,8 +231,13 @@ Nodes:
   assay:
     Props: null
   file:
+    Tags:
+      - CTN
     Category: data_file
-    Props: null
+    Props:
+      - file_type
+      - file_name
+      
   image:
     Props: null
   physical_exam:
@@ -327,6 +347,55 @@ Nodes:
       - date_last_medication_administration
       - best_resp_vet_tx_tp_best_response
       - date_of_best_response
+  genomic_report:
+    Tags:
+      - CTNu
+    Props:
+      - molecular_id
+      - surgical_event_id
+      - variant_report_received_date
+      - variant_report_type
+      - status
+      - status_date
+      - total_variants
+      - cellularity
+      - total_mois
+      - total_amois
+      - total_confirmed_mois
+      - total_confirmed_amois
+  variant:
+    Tags:
+      - CTNu
+    Props:
+      - molecular_id_analysis_id
+      - variant_type
+      - confirmed
+      - status
+      - status_date
+      - gene_name
+      - chromosome
+      - position
+      - exon
+      - function
+      - cds_ref
+      - cds_alt
+      - ocp_ref
+      - ocp_alt
+      - strand
+      - protein
+      - transcript
+      - hgvs
+      - read_depth
+      - allele_frequency
+      - arm_specific
+      - aMOI
+      - ref_copy_number
+      - raw_copy_number
+      - copy_number
+      - confidence_interval_95percent
+      - confidence_interval_05percent
+      - reference
+      - alternative
 Relationships:
   member_of:
     Mul: many_to_one
@@ -423,6 +492,9 @@ Relationships:
         Dst: assay
       - Src: image
         Dst: assay
+      - Tags: ["CTNu"]
+        Src: genomic_report
+        Dst: assay
     Props: null
   at_evaluation:
     Mul: many_to_one
@@ -463,7 +535,28 @@ Relationships:
         Dst: prior_surgery
       - Src: adverse_event
         Dst: adverse_event
+      - Tags: ["CTN"]
+        Src: variant
+        Dst: variant
     Props: null
+  of_report:
+    Tags:
+      - CTNu
+    Mul: many_to_one
+    Ends:
+      - Src: variant
+        Dst: genomic_report
+  assigned_to:
+    Tags:
+      - CTNu
+    Mul: one_to_one
+    Ends:
+      - Src: case
+        Dst: study_arm
+    Props:
+      - assignment_type
+      - assignment_reason
+        
 NativeSchemaIncludes:
   - _definitions.yaml
   - _terms.yaml

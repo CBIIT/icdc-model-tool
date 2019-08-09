@@ -181,6 +181,8 @@ PropDefinitions:
     Src: ENROLLMENT/ENROLL/1
     Type: string
   patient_id:
+    Tags:
+      - CTN
     Desc: ID by which data owner can uniquely identify a specific patient, at least within a single study/trial, maintained exactly in the submitter's format. This may or may not be globally unique. 
     Src: ENROLLMENT/ENROLL/1
     Type: string
@@ -226,8 +228,13 @@ PropDefinitions:
     Type:
       units: years
       value_type: number
+  gender:
+    Tags:
+      - CTNu
+    Src: CTN
+    Type: http://localhost/terms/domain/gender
   sex:
-    Desc: gender, needs enum
+    Desc: not same as human gender
     Src: ENROLLMENT/ENROLL/1
     Type:
     - M
@@ -256,6 +263,8 @@ PropDefinitions:
     Src: ENROLLMENT/ENROLL/1
     Type: datetime
   disease_term:
+    Tags:
+      - CTN
     Src: ENROLLMENT/ENROLL/1
     Type:
     - http://localhost/terms/domain/disease_term
@@ -348,6 +357,8 @@ PropDefinitions:
     Src: ENROLLMENT/ENROLL/1
     Type: datetime
   date_of_registration:
+    Tags:
+      - CTN
     Src: ENROLLMENT/ENROLL/1
     Type: datetime
   enrollment_document_number:
@@ -553,6 +564,8 @@ PropDefinitions:
     Type: TBD
 # prior_therapy props
   agent_name:
+    Tags:
+      - CTN
     Src: PRIOR_THRPY_SUPP/PTHR/1
     Type:
     - http://localhost/terms/domain/agent_name
@@ -691,10 +704,14 @@ PropDefinitions:
     Desc: generic comment
     Type: string
   date_of_sample_collection:
+    Tags:
+      - CTN
     Desc: '?'
     Src: '?'
     Type: TBD
   general_sample_pathology:
+    Tags:
+      - CTN
     Desc: '?'
     Src: '?'
     Type: TBD
@@ -719,10 +736,14 @@ PropDefinitions:
     Src: '?'
     Type: TBD
   sample_id:
+    Tags:
+      - CTN
     Desc: '?'
     Src: '?'
     Type: TBD
   sample_type:
+    Tags:
+      - CTN
     Desc: '?'
     Src: '?'
     Type: TBD
@@ -864,3 +885,280 @@ PropDefinitions:
     Type:
       units: mm Hg
       value_type: integer
+  # CTN
+  ctep_category:
+    Tags:
+      - CTN
+    Src: CTN
+    Type: TBD
+  ctep_su_category:
+    Tags:
+      - CTN
+    Src: CTN
+    Type: TBD
+  ctep_term:
+    Tags:
+      - CTN
+    Src: CTN
+    Type: TBD
+  treatment_arm_version:
+    Tags:
+      - CTN
+    Src: CTN
+    Type: TBD
+  treatment_arm_stratum_id:
+    Tags:
+      - CTNu
+    Src: CTN
+    Type: TBD
+  ethnicity:
+    Tags:
+      - CTNu
+    Src: CTN
+    Type: http://localhost/terms/domain/ethnicity
+  diagnosis_code:
+    Tags:
+      - CTNu
+    Src: CTN
+    Type:  http://localhost/terms/domain/diagnosis_code
+  pathology_status_date:
+    Tags:
+      - CTNu
+    Src: CTN
+    Type: datetime
+  surgical_event_id:
+    Tags:
+      - CTNu
+    Src: CTN
+    Type: TBD
+  file_type:
+    Tags:
+      - CTNu
+    Src: CTN
+    Type:
+      - dna_bam
+      - dna_bai
+      - rna_bam
+      - rna_bai
+      - vcf
+
+  molecular_id:
+    Tags:
+      - CTNu
+    Src: CTN
+    Type: TBD
+  surgical_event_id:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  variant_report_received_date:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  variant_report_type:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  status:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  status_date:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  total_variants:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  cellularity:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  total_mois:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  total_amois:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  total_confirmed_mois:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  total_confirmed_amois:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  molecular_id_analysis_id:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  variant_type:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  confirmed:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  gene_name:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  chromosome:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  position:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  exon:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  function:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  cds_ref:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  cds_alt:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  ocp_ref:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  ocp_alt:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  strand:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  protein:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  transcript:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  hgvs:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  read_depth:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  allele_frequency:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  arm_specific:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  aMOI:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  ref_copy_number:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  raw_copy_number:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  copy_number:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  confidence_interval_95percent:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  confidence_interval_05percent:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  reference:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  alternative:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  arm_assignment_type:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  treatment_arm:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  treatment_arm_version:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  treatment_arm_stratum_id:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD
+  arm_assignment_reason:
+    Tags:
+      - CTNu 
+    Src: CTN
+    Type: TBD

@@ -281,11 +281,19 @@ sub viz {
       $lbl[1] = "|{$lbl[1]";
       $lbl[-1] = "$lbl[-1]}|";
     }
-    $graph->add_node(name => $_, label => \@lbl);
+    my %fmt = ( color => 'black' );
+    if ($self->{_nodes}{$_}{Tags}) {
+      %fmt = ( color => 'red');
+    }
+    $graph->add_node(name => $_, label => \@lbl, %fmt);
   }
   for my $r ($self->relationships) {
     for my $ends ($self->ends($r)) {
-      $graph->add_edge( from => $ends->{Src}, to => $ends->{Dst}, label=>"$r" );
+      my %fmt = ( color => 'black' );
+      if ($self->{_relns}{$r}{Tags} || $ends->{Tags}) {
+        %fmt = ( color => 'red');
+      }
+      $graph->add_edge( from => $ends->{Src}, to => $ends->{Dst}, label=>"$r", %fmt );
     }
   }
   if ($outf) {
