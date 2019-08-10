@@ -4,6 +4,7 @@ use v5.10;
 use Log::Log4perl qw/:easy/;
 use ICDC::MakeModel::Config;
 use ICDC::MakeModel::Schema;
+use ICDC::MakeModel::Model;
 use Tie::IxHash;
 use File::Find;
 use Hash::Merge;
@@ -42,6 +43,8 @@ sub new {
   return bless $self, $class;
 }
 
+
+
 # $nr = $o->get_node(<nodename>);
 sub get_node {
   my $self = shift;
@@ -59,6 +62,7 @@ sub get_native {
   return $self->{_native_objs}{$n};
 }
 
+sub model { shift->{_model} }
 # $input_root = $o->input;
 sub input { shift->{_input_yaml} }
 # @nodenames = $o->nodes
@@ -106,6 +110,7 @@ sub read_input {
       ${$self->{_nodes_with_relns}}{$e->{Dst}}++
     }
   }
+  $self->{_model} = ICDC::MakeModel::Model->new($self);
   1;
 }
 
