@@ -37,7 +37,7 @@ like ($err, qr/FATAL.*requires an arg/s, "Got correct error");
 
 $in = $out = $err = '';
 
-lives_ok { run( [$tool, '-g', File::Spec->catfile($dir,'try.svg'),'-T','-v', @descfiles],
+lives_ok { run( [$tool, '-g', File::Spec->catfile($dir,'try.svg'),'-s','-v', @descfiles],
 		\$in, \$out,\$err) } "-g [file] -s -v (bad option order)" ;
 like ($err, qr/FATAL.*requires an arg/s, "Got correct error");
 
@@ -46,6 +46,21 @@ lives_ok { run( [$tool, '-g', File::Spec->catfile($dir,'try.svg'), @descfiles],
 		\$in, \$out, \$err ) } "-g";
 diag $err if $err;
 ok(( -e File::Spec->catfile($dir,'try.svg')), "svg created");
+
+$in = $out = $err = '';
+lives_ok { run( [$tool, '-j', File::Spec->catfile($dir,'try.json'), @descfiles, '-d',
+		File::Spec->catdir($dir,'schema')],
+		\$in, \$out, \$err ) } "-j";
+diag $err if $err;
+ok(( -e File::Spec->catfile($dir,'try.json')), "json created");
+diag $err if $err;
+open my $j, File::Spec->catfile($dir,'try.json') or die "Can't open try.json: $!";
+{
+  local $/;
+  my $str = <$j>;
+  lives_ok { $j = decode_json $str } "smells like json";
+  ok grep( /^_definitions.yaml$/, keys %$j), "_definitions.yaml present";
+}
 
 $in = $out = $err = '';
 lives_ok { run( [$tool, '-T', File::Spec->catfile($dir,'try.txt'), @descfiles],

@@ -43,6 +43,8 @@ sub new {
   return bless $self, $class;
 }
 
+
+
 # $nr = $o->get_node(<nodename>);
 sub get_node {
   my $self = shift;

@@ -49,10 +49,18 @@ sub edge_types { values %{shift->{_edge_types}} }
 sub edge_type { $_[0]->{_edge_types}{$_[1]} }
 
 sub edges {  @{shift->{_edges}} }
+sub edge {
+  my $self = shift;
+  my ($type,$src,$dst) = @_;
+  $type = $type->name if ref $type;
+  $src = $src->name if ref $src;
+  $dst = $dst->name if ref $dst;
+  return $self->{_edge_table}{$type}{$src}{$dst};
+}
 
-sub edge_by_src { }
-sub edge_by_dst { }
-sub edge_by_type { }
+sub edge_by_src { shift->edges_by_src(@_) }
+sub edge_by_dst { shift->edges_by_dst(@_) }
+sub edge_by_type { shift->edges_by_type(@_) }
 
 sub edges_by_src { shift->edge_by('src',@_) }
 sub edges_by_dst { shift->edge_by('dst',@_) }
@@ -154,12 +162,13 @@ sub new {
     if ($propdef->{Tags}) {
       $self->{_tags} = $propdef->{Tags};
     }
-    unless ( $self->{_type} = $propdef->{Type} && (ref $propdef->{Type} ? ref $propdef->{Type} :
-                                                     $propdef->{Type}) ) {
+    $self->{_type} = $propdef->{Type} && (ref $propdef->{Type} ? ref $propdef->{Type} :
+                                            $propdef->{Type});
+    unless ( $self->{_type} ) {
       WARN "Property '$name' has no Type defined";
     }
     # below -- should call STS to get list if appropriate
-    $self->{_values} = ($propdef->{_type} eq 'ARRAY' ? [@{$propdef->{_type}}] : undef );
+    $self->{_values} = ($self->{_type} eq 'ARRAY' ? [@{$propdef->{Type}}] : undef );
   }
   else {
     WARN "Property '$name' does not have a PropDefinitions entry";
@@ -263,5 +272,21 @@ sub props {shift->type->props}
 sub prop { shift->type->prop(@_) }
 sub multiplicity { $_[0]->{_edgedef}->{Mul} || $_[0]->type->{_edgedef}->{Mul} }
 sub is_required { $_[0]->{_edgedef}->{Req} || $_[0]->type->{_edgedef}->{Req} }
+
+1;
+
+package ICDC::MakeModel::Model;
+
+=head1 NAME
+
+ICDC::MakeModel::Model - slurp MDF model into objects
+
+=head1 SYNOPSIS
+
+$model = ICDC::MakeModel::Model->($mm);
+
+=head1 DESCRIPTION
+
+
 
 1;

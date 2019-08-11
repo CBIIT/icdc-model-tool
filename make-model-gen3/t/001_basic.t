@@ -6,6 +6,7 @@ use lib '../lib';
 my $samplesd = File::Spec->catdir( (-d 't' ? 't' : '.'), 'samples' );
 my $obj;
 use_ok("ICDC::MakeModel");
+use_ok("ICDC::MakeModel::Schema");
 use_ok("ICDC::MakeModel::Config");
 isa_ok( $obj = ICDC::MakeModel->new(), "ICDC::MakeModel");
 lives_ok { $obj->read_input( File::Spec->catdir($samplesd,"try.yml") ) } "read yaml";
@@ -21,5 +22,10 @@ lives_ok {@r = $obj->relationships} "relationships";
 ok my $rels_of_sample = $obj->_relns_with_src_node("sample");
 is_deeply [sort keys %$rels_of_sample], [sort qw/on_visit next/], "relns of sample";
 
+$obj->create_node_schemas;
+is_deeply [ sort keys %{$obj->get_node('visit')->root} ], [sort @ICDC::MakeModel::TOP_LEVEL_KEY_ORDER], "'visit' has all top-level keys";
+is_deeply [ sort keys %{$obj->get_node('prior_surgery')->root} ], [sort @ICDC::MakeModel::TOP_LEVEL_KEY_ORDER], "'prior_surgery' has all top level keys";
+
+# my $y = $obj->get_node('visit')->as_yaml;
 
 done_testing;
