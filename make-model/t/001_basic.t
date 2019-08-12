@@ -18,8 +18,8 @@ $obj->read_input( File::Spec->catdir($samplesd,"icdc-model.yml"), File::Spec->ca
 lives_ok {@n = $obj->nodes} "nodes";
 lives_ok {@r = $obj->relationships} "relationships";
 
-ok my $rels_of_sample = $obj->_relns_with_src_node("sample");
-is_deeply [sort keys %$rels_of_sample], [sort qw/on_visit next/], "relns of sample";
+# ok my $rels_of_sample = $obj->_relns_with_src_node("sample");
+# is_deeply [sort keys %$rels_of_sample], [sort qw/on_visit next/], "relns of sample";
 
 
 done_testing;

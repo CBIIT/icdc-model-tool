@@ -31,16 +31,16 @@ $specced_props = Set::Scalar->new( @{$mod_y->{Nodes}{prior_therapy}{Props}} );
 $obj = ICDC::MakeModel->new(LOG_LEVEL=>$FATAL);
 $obj->read_input( File::Spec->catdir($samplesd,"icdc-model.yml"),
 		  File::Spec->catdir($samplesd,"icdc-model-props.yml"));
-$obj->create_node_schemas;
+
 diag "check original (before overlay)";
 $nodes = Set::Scalar->new($obj->nodes);
 ok $nodes->has('demographic'), "demographic node present...";
-$d_props = Set::Scalar->new(keys %{$obj->get_node('demographic')->root->{properties}});
+$d_props = Set::Scalar->new(map {$_->name} $obj->get_node('demographic')->props);
 ok $d_props->has('breed'), "...has 'breed' property";
 ok !$d_props->has('species'), "...but has no 'species' property";
 ok $nodes->has('cycle'), "cycle node present";
 $del_pt_props = Set::Scalar->new(qw/total_dose therapy_type total_number_of_doses_steroid/);
-$pt_props = Set::Scalar->new(keys %{$obj->get_node('prior_therapy')->root->{properties}});
+$pt_props = Set::Scalar->new(map {$_->name} $obj->get_node('prior_therapy')->props);
 ok $specced_props->is_subset($pt_props), "prior_therapy has all specified props...";
 ok $del_pt_props->is_subset($pt_props), "including props to be deleted";
 
@@ -50,11 +50,11 @@ $obj->read_input( File::Spec->catdir($samplesd,"icdc-model.yml"),
 		  File::Spec->catdir($samplesd,"icdc-model-props.yml"),
 		  File::Spec->catdir($samplesd,"deleting-overlay.yml"),
 		 );
-$obj->create_node_schemas;
+
 # check merge is correct - following data appear in overlay but not basic model
 $got_nodes = Set::Scalar->new($obj->nodes);
-$got_d_props = Set::Scalar->new(keys %{$obj->get_node('demographic')->root->{properties}});
-$got_pt_props = Set::Scalar->new(keys %{$obj->get_node('prior_therapy')->root->{properties}});
+$got_d_props = Set::Scalar->new(map {$_->name} $obj->get_node('demographic')->props);
+$got_pt_props = Set::Scalar->new(map {$_->name} $obj->get_node('prior_therapy')->props);
 ok !$got_nodes->has('cycle'), "now cycle DNE";
 ok !$got_d_props->has('breed'), "demographics no longer has 'breed' prop...";
 ok $got_d_props->has('species'), "but now has 'species' property";

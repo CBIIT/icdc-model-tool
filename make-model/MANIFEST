@@ -7,8 +7,6 @@ lib/ICDC/MakeModel/OrderedRepresenter.pm
 lib/ICDC/MakeModel/Schema.pm
 MANIFEST			This list of files
 README
-schema/_definitions.yaml
-schema/_terms.yaml
 t/001_basic.t
 t/004_merge.t
 t/005_tool.t
