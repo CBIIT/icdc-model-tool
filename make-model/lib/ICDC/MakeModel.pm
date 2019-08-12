@@ -135,7 +135,7 @@ sub viz {
     label_scheme => 3,
    );
   for ($self->nodes) {
-    my @lbl = $self->props($_);
+    my @lbl = map { $_->name } $self->model->node($_)->props;
     unshift @lbl, $_;
     if (@lbl>1) {
       $lbl[1] = "|{$lbl[1]";
@@ -143,10 +143,8 @@ sub viz {
     }
     $graph->add_node(name => $_, label => \@lbl);
   }
-  for my $r ($self->relationships) {
-    for my $ends ($self->ends($r)) {
-      $graph->add_edge( from => $ends->{Src}, to => $ends->{Dst}, label=>"$r" );
-    }
+  for my $r ($self->model->edges) {
+    $graph->add_edge( from => $r->src->name, to => $r->dst->name, label=>$r->type );
   }
   if ($outf) {
     $graph->run(driver=>'dot', format=>'svg',output_file=>$outf);

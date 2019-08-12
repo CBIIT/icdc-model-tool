@@ -267,7 +267,7 @@ sub new {
   bless $self, $class;
   $self->{_edgedef} = clone($info);
 
-  $self->{_type} = $model->edge_type($type);
+  $self->{_name} = $self->{_type} = $model->edge_type($type);
   if ($info->{Tags}) {
     $self->{_tags} = $info->{Tags};
   }
