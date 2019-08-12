@@ -1,6 +1,6 @@
 FROM maj1/icdc:graphviz-perlbrew
 
-MAINTAINER Mark A. Jensen <mark -dot- jensen -at- nih -dot- com>
+LABEL maintainer="Mark A. Jensen <mark -dot- jensen -at- nih -dot- com>"
 ARG perl=perl-5.24.4
 
 WORKDIR /opns
@@ -13,5 +13,5 @@ RUN /bin/bash --login -c 'perlbrew switch ${perl} ; \
          ./Build test ; \
 	./Build install ;' \
 WORKDIR /opns
-ADD /docker/start.sh .
+COPY /docker/start.sh .
 ENTRYPOINT ["./start.sh"]
