@@ -1,7 +1,7 @@
 use Module::Build;
 my $build = Module::Build->new(
   dist_name => "ICDC-MakeModel",
-  dist_abstract => "Manipulate and display models in MDF",
+  dist_abstract => "Read a config and squirt out Gen3 YAML files",
   dist_version_from => 'lib/ICDC/MakeModel.pm',
   dist_author => 'Mark A. Jensen',
   perl => '5.010',
@@ -21,8 +21,9 @@ my $build = Module::Build->new(
     'JSON' => 0,
     'JSON::PP' => 0,
     'Log::Log4perl' => 0,
-    'YAML::PP' => '0.018', # plain YAML doesn't do 'null' correctly
+    'YAML::PP' => 0, # plain YAML doesn't do 'null' correctly
     'Tie::IxHash' => 0,
+    'Lingua::EN::Inflexion' => 0,
     'Try::Tiny' => 0,
     'Clone' => 0,
     'Hash::Merge' => '0.300',

@@ -40,7 +40,6 @@ Nodes:
     SystemProps:
       - project_id
     Props:
-      - project_id
       - object_id
       - file_name
       - data_category

@@ -13,18 +13,15 @@ use warnings;
 my $J = JSON->new->pretty;
 my $verbose = 0;
 my $make_graph = undef;
-my $make_schemas = undef;
-my $make_big_json = undef;
+my $output_table = undef;
 my $include_unlinked;
 my ($warn, $dry_run);
 my @search_dirs = ('init');
 my @V = ($FATAL,$ERROR, $WARN, $INFO, $DEBUG );
 my $logger = get_logger("");
 GetOptions (
-  'schemas|s:s' => \$make_schemas,
   'graph|g:s' => \$make_graph,
-  'bigjson|j|b:s' => \$make_big_json,
-  'dir|d:s' => \@search_dirs,
+  'table|T:s' => \$output_table,
   'verbose|v+' => \$verbose,
   'warn|W' => \$warn,
   'dry-run|dry_run' => \$dry_run,
@@ -35,22 +32,14 @@ if ( defined $make_graph && !$make_graph ) {
   FATAL "Option --graph requires an argument\n";
   pod2usage(3);
 }
-if ( defined $make_schemas && !$make_schemas ) {
-  FATAL "Option --schemas requires an argument\n";
-  pod2usage(4);
-}
-if ( defined $make_big_json && !$make_big_json ) {
-  FATAL "Option --bigjson requires an argument\n";
-  pod2usage(5);
-}
-if ( !@search_dirs ) {
-  FATAL "Option --dir requires an argument\n";
-  pod2usage(6);
+
+if ( defined $output_table && !$output_table ) {
+  FATAL "Option --output_table requires an argument\n";
+  pod2usage(3);
 }
 
 unless ($make_graph ||
-	  $make_schemas ||
-	  $make_big_json) {
+	  $output_table ) {
   FATAL "Nothing to do!\n";
   pod2usage(2);
 }
@@ -76,70 +65,23 @@ if ($make_graph) {
   $make_graph ne '-' ? $mm->viz($make_graph) : $mm->viz;
 }
 
-if ($make_schemas) {
-  mkdir $make_schemas unless -d $make_schemas;
-  $mm->create_node_schemas;
-  exit(0) if $dry_run;
-  for ($mm->nodes) {
-    my $n = $mm->get_node($_);
-    try {
-      if ($mm->node_has_links($n) || $include_unlinked) {
-	open my $fh, ">", File::Spec->catfile($make_schemas,"$_.yaml") or die "Problem creating schema file for node '$_':$!";
-	print $fh $n->as_yaml;
-	close $fh;
-      }
-    } catch {
-      $logger->logdie($_);
-    };
-  }
-}
-
-if ($make_big_json) {
-  $mm->create_node_schemas;
-  $mm->load_native_yamls(@search_dirs);
-  my $j={};
-  for ($mm->nodes) {
-    my $n = $mm->get_node($_);
-    if ($mm->node_has_links($n) || $include_unlinked) {
-      $j->{"$_.yaml"} = $n->as_ordered_object;
-    }
-  }
-  for ($mm->natives) {
-    $j->{"$_.yaml"} = $mm->get_native($_)->as_ordered_object;
-  }
-  unless (defined $j->{'_settings.yaml'}) {
-    $j->{'_settings.yaml'}{_dict_commit} = '0';
-    $j->{'_settings.yaml'}{_dict_version} = '0';      
-  }
-  exit(0) if $dry_run;
-  try {
-    my $fh;
-    if ($make_big_json ne '-') {
-      open $fh, ">", $make_big_json or die "Problem creating json file '$make_big_json'";
-    }
-    else {
-      $fh = \*STDOUT;
-    }
-    print $fh $J->encode($j);
-  } catch {
-    $logger->logdie($_);
-  };
+if ($output_table) {
+  $output_table ne '-' ? $mm->table($output_table) : $mm->table;
 }
 
 # end script
 
 =head1 NAME
 
-model-tool - build model artifacts for "Gen3" commons
+model-tool - Perform useful functions with MDF models
 
 =head1 SYNOPSIS
 
-  model-tool [-g <graph-out-file>] [-s <output-dir>] [-j <json-out-file>] <input.yaml> [<input2.yaml> ...]
+  model-tool [-g <graph-out-file>] [-s <output-dir>] [-j <json-out-file>] 
+             [-T <table-out-file>] <input.yaml> [<input2.yaml> ...]
      [-d dir_to_search [-d another_dir...]]
-  -g : create an SVG of model defined in input.yamls 
-  -s : create schema node files for Gen3
-  -j : create big json schema squirt
-  -d : directory to search for native schema yamls for inclusion
+  -g : create an SVG of model defined in input.yamls
+  -T : output a table of nodes and properties
   -a : output all nodes, including unlinked nodes
   -v : verbosity (-v little ... -vvvv lots)
   -W : show all warnings ( = -vvv )

@@ -3,8 +3,8 @@ use lib '../../lib';
 use v5.10;
 use Log::Log4perl qw/:easy/;
 use ICDC::MakeModel::Config;
+use ICDC::MakeModel::Schema;
 use ICDC::MakeModel::Model;
-use YAML::PP qw/LoadFile/;
 use Tie::IxHash;
 use File::Find;
 use Hash::Merge;
@@ -43,27 +43,35 @@ sub new {
   return bless $self, $class;
 }
 
+
+
 # $nr = $o->get_node(<nodename>);
 sub get_node {
   my $self = shift;
   my ($n) = @_;
   die "nodename required as arg 1" unless defined $n;
-  return $self->model->node($n);
-  # my $nr = $self->{_node_objs};
-  # return $nr->{$n} if $nr->{$n};
-  # return $nr->{$n}=ICDC::MakeModel::Schema->new(@_); # make a place if not exist (pass args along)
-  # return $nr->{$n}=ICDC::MakeModel::Schema->new(@_); # make a place if not exist (pass args along)
+  my $nr = $self->{_node_objs};
+  return $nr->{$n} if $nr->{$n};
+  return $nr->{$n}=ICDC::MakeModel::Schema->new(@_); # make a place if not exist (pass args along)
+}
+
+sub get_native {
+  my $self = shift;
+  my ($n) = @_;
+  die "native nodename require as arg 1" unless defined $n;
+  return $self->{_native_objs}{$n};
 }
 
 sub model { shift->{_model} }
 # $input_root = $o->input;
 sub input { shift->{_input_yaml} }
-
-sub nodes { map { $_->name } shift->model->nodes }
-sub relationships { map { $_->name } shift->model->edge_types }
-sub ends { map { { Src => $_->{Src}->name, Dst => $_->{Dst}->name } } $_[0]->model->edge_type($_[1])->ends }
-
-sub props { map { $_->name } $_[0]->model->node($_[1])->props }
+# @nodenames = $o->nodes
+sub nodes { $_[0]->{_nodes} && keys %{$_[0]->{_nodes}} }
+# @relntypes = $o->relationships
+sub relationships { $_[0]->{_relns} && keys %{$_[0]->{_relns}} }
+sub ends { ($_[1] && $_[0]->{_relns}{$_[1]} && $_[0]->{_relns}{$_[1]}{Ends}) ? @{$_[0]->{_relns}{$_[1]}{Ends}} : () }
+sub props { ($_[1] && $_[0]->{_nodes}{$_[1]} && $_[0]->{_nodes}{$_[1]}{Props}) ? @{$_[0]->{_nodes}{$_[1]}{Props}} : () }
+sub natives { $_[0]->{_native_objs} && keys %{$_[0]->{_native_objs} }}
 
 sub node_has_links {
   my $self = shift;
@@ -78,7 +86,7 @@ sub read_input {
   $self->{_input_yaml} = {};
   INFO "Input files: ".join(',',@in_pths);
   for my $pth (@in_pths) {
-    my $pth_o = LoadFile($pth);
+    my $pth_o = YAML::PP::LoadFile($pth);
     my @dels = delete_paths($pth_o);
     $self->{_input_yaml} = $MERGER->merge( $self->{_input_yaml}, $pth_o);
     if (@dels) {
@@ -104,6 +112,143 @@ sub read_input {
   }
   $self->{_model} = ICDC::MakeModel::Model->new($self);
   1;
+}
+
+sub create_node_schemas {
+  my ($self) = @_;
+  my @nodes; 
+  unless (@nodes = $self->nodes) {
+    ERROR "Input defines no Nodes";
+    return;
+  }
+  for my $nodename (@nodes) {
+    my @args;
+    my $node_input =$self->input->{Nodes}{$nodename};
+    if ( $node_input->{Category} ) {
+      push @args, ( Category => $node_input->{Category} );
+    }
+    if ( $node_input->{UniqueKeys} ) {
+      push @args, ( UniqueKeys => $node_input->{UniqueKeys} );
+    }
+    # build schema
+    my $node = $self->get_node($nodename,@args);
+
+    # links
+    $self->_build_node_links($node);
+
+    # properties and terms
+    $self->_build_node_properties($node);
+
+    # finalize
+    $node->_finalize_schema;
+
+    unless ($self->node_has_links($node)) {
+      WARN "Node '$nodename' has no edges/links";
+    }
+  }
+}
+
+# find native yamls and slurp
+# _read_native_yamls('.', '~/place/where/they/are',...)
+sub load_native_yamls {
+  my $self = shift;
+  my @search_dirs = @_;
+  my @natives;
+  unless (@natives = @{$self->{_native_yaml}}) {
+    INFO "Input includes no Gen3-native yaml files";
+    return;
+  }
+  if (@natives && !@search_dirs) {
+    WARN "Input includes Gen3-native yaml files, but no dirs to search for these files is provided";
+    return;
+  }
+  for my $yf (@natives) {
+    my $s;
+    if (! -e $yf && @search_dirs) {
+      my $fyf;
+      find( { wanted => sub {
+		state $found;
+	      return if $found;
+	      if (-e $yf) {
+		$fyf = File::Spec->catfile($File::Find::dir,$yf);
+		$found = 1;
+	      }}, follow => 1,
+	    },@search_dirs );
+      if ($fyf) {
+	next unless ($s = ICDC::MakeModel::Schema->new_from_native_yaml($fyf));
+      }
+      else {
+	WARN "Native yaml file '$yf' not found. Skipping.";
+	next;
+      }
+    }
+    else {
+      next unless ($s = ICDC::MakeModel::Schema->new_from_native_yaml($yf));
+    }
+    $self->{_native_objs}{$s->name} = $s; 
+  }
+  return 1;
+}
+
+sub _build_node_links {
+  my $self = shift;
+  my ($node) = @_;
+  my $relns = $self->_relns_with_src_node($node);
+  $node->_add_links($relns);
+}
+
+sub _build_node_properties {
+  my $self = shift;
+  my ($node) = @_;
+  my $pdefs = $self->input->{PropDefinitions};
+  unless (defined $pdefs) {
+    FATAL "PropDefinitions section not present in input";
+    die "Input yaml error";
+  }
+  my $ndef = $self->input->{Nodes}{$node->name};
+  unless (defined $ndef) {
+    FATAL "Node '".$node->name."' not found in input";
+    die "Input yaml error";
+  }
+  return 1 unless defined $ndef->{Props};
+  for my $prop (@{$ndef->{Props}}) {
+    next unless defined $prop;
+    if ($pdefs->{$prop}) {
+      $node->_add_std_property($prop, $pdefs->{$prop});
+    }
+    else {
+      WARN "Property '$prop' of node '".$node->name."' does not appear in PropDefintions";
+      $node->_add_std_property($prop);
+    }
+  }
+  for my $prop (@{$ndef->{SystemProps}}) {
+    next unless defined $prop;
+    if ($pdefs->{$prop}) {
+      $node->_add_sys_property($prop, $pdefs->{$prop});
+    }
+    else {
+      WARN "Property '$prop' of node '".$node->name."' does not appear in PropDefintions";
+      $node->_add_sys_property($prop);
+    }
+  }
+}
+
+
+# $o->_relns_with_src_node(<nodename>) returns { <relname> => [ {Src=>...}, {Src=>...},... ] }
+sub _relns_with_src_node {
+  my ($self, $nodename) = @_;
+  die "nodename required as arg 1" unless defined $nodename;
+  $nodename = $nodename->name if ref $nodename; # can use object
+  my %relns;
+  for ($self->relationships) {
+    next unless defined $self->{_relns}{$_}{Ends};
+    my @ends = grep { $_->{Src} eq $nodename  } @{$self->{_relns}{$_}{Ends}};
+    if (@ends) {
+      $relns{$_} = [@ends];
+    }
+  }
+  1;
+  return \%relns;
 }
 
 sub table {
@@ -135,7 +280,7 @@ sub viz {
     label_scheme => 3,
    );
   for ($self->nodes) {
-    my @lbl = map { $_->name } $self->model->node($_)->props;
+    my @lbl = $self->props($_);
     unshift @lbl, $_;
     if (@lbl>1) {
       $lbl[1] = "|{$lbl[1]";
@@ -143,8 +288,10 @@ sub viz {
     }
     $graph->add_node(name => $_, label => \@lbl);
   }
-  for my $r ($self->model->edges) {
-    $graph->add_edge( from => $r->src->name, to => $r->dst->name, label=>$r->type );
+  for my $r ($self->relationships) {
+    for my $ends ($self->ends($r)) {
+      $graph->add_edge( from => $ends->{Src}, to => $ends->{Dst}, label=>"$r" );
+    }
   }
   if ($outf) {
     $graph->run(driver=>'dot', format=>'svg',output_file=>$outf);
@@ -228,20 +375,33 @@ sub do_deletes {
   }
 }
 
+sub include {
+}
+
+sub place_verbatim {
+}
+
 =head1 NAME
 
-ICDC::MakeModel - Perform useful functions on an MDF-defined graph model
+ICDC::MakeModel - Create Gen3-style node schemas from a convenient model description
 
 =head1 SYNOPSIS
 
  $model = ICDC::MakeModel->new;
  $model->read_input("icdc-model.yml","icdc-model-props.yml");
+ $model->create_node_schemas;
+ for my $nodename ($model->nodes) {
+   my $fn = "$nodename.yaml";
+   open my $fh, ">", $fn or die $!;
+   printf $fh $model->get_node($nodename)->as_yaml;
+ }
+
 
 =head1 DESCRIPTION
 
-C<MokeModel> takes one or two simple Model Description Files (MDFs) as input,
-and converts these into objects that can be computed. Using these, MakeModel
-defines some useful functions for visualization and transformation of the model.
+C<MokeModel> takes one or two simple description files as input, and
+creates the set of node schema YAML files necessarily to drive a Gen3
+commons instance.
 
 =head1 METHODS
 
@@ -252,6 +412,10 @@ defines some useful functions for visualization and transformation of the model.
 Read in input yaml files. The resulting objects are merged, so large
 components (like PropDefinitions) can be put in separate files.
 
+=item create_node_schemas()
+
+Build the Schema objects for all nodes defined in the input. 
+
 =item nodes()
 
 Return list of node names.
@@ -260,26 +424,21 @@ Return list of node names.
 
 Return list of relationship names.
 
+=item get_node($nodename)
+
+Return the L<ICDC::MakeModel::Schema> for the named node.
+
 =item viz([$filename])
 
 Create an SVG file of the model using GraphViz.
-
-=item table([$filename])
-
-Create a simple tab-delimited table of node and property names in this format:
-
-  node1    prop1
-  node1    prop2
-  node2    prop3
-  node2    prop4
-  ...
 
 =back
 
 =head1 CONFIG VARS
 
 These are present in L<ICDC::MakeModel::Config> and are exported by
-that module. They define some defaults for certain entity attributes.
+that module. They define some boilerplate items that will appear in
+all output schema YAMLs.
 
 =over
 
@@ -287,10 +446,22 @@ that module. They define some defaults for certain entity attributes.
 
 Level for log reporting (C<$DEBUG>, C<$INFO>, C<$WARN>, C<$ERROR>, C<$FATAL>).
 
+=item @TOP_LEVEL_KEY_ORDER
+
+Order of the schema file's top-level keys in the output YAML.
+
+=item $GEN3_NS
+
+String value for top-level 'namespace' key. 
+
 =item $MULT_DEFAULT
 
-Default multiplicity (C<many_to_many>, C<one_to_many>, or C<many_to_one>) for edges.
+Default multiplicity (C<many_to_many>, C<one_to_many>, or C<many_to_one>) for links.
 
+=item $STANDARD_SYSTEM_PROPERTIES
+
+System properties that need to be present in every schema (list of property names).
+		 
 =item $PROP_REQ_DEFAULT
 
 Boolean : should properties be defined as required by default?
@@ -313,7 +484,7 @@ Boolean : should a 'term' entry be added to all properties by default?
 
 SEE ALSO
 
-L<ICDC::MakeModel::Config>, L<ICDC::MakeModel::Model>
+L<ICDC::MakeModel::Config>, L<ICDC::MakeModel::Schema>
 
 =head1 AUTHOR
 

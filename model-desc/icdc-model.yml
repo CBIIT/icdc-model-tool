@@ -399,7 +399,7 @@ Relationships:
     Ends:
       - Src: visit
         Dst: cycle
-    Props: Null
+    Props: null
   on_visit:
     Mul: many_to_one
     Ends:
