@@ -708,7 +708,7 @@ PropDefinitions:
   necropsy_sample:
     Desc: indicator as to whether the sample was acquired as a result of a necropsy examination
     Src: '?'
-    Type: Boolean
+    Type: boolean
   non_tumor_tissue_area:
     Desc: for the NCATS study, area within analyzed tissue area represented by non-tumor tissue
     Src: '?'
@@ -730,9 +730,9 @@ PropDefinitions:
     Desc: indicator as to the physical nature of the biomaterial - tissue, blood, urine, etc
     Src: '?'
     Type:
-     - tissue
-     - blood
-     Req: true
+    - tissue
+    - blood
+    Req: true
   total_tissue_area:
     Desc: for the NCATS study, area within the slide's analysis area represented by tissue
     Src: '?'
