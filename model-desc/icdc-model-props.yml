@@ -223,9 +223,7 @@ PropDefinitions:
     Type: TBD
   patient_age_at_enrollment:
     Src: ENROLLMENT/ENROLL/1
-    Type:
-      units: years
-      value_type: number
+    Type: number
   sex:
     Desc: gender, needs enum
     Src: ENROLLMENT/ENROLL/1
