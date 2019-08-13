@@ -208,11 +208,6 @@ Nodes:
       - percentage_tumor
       - percentage_stroma
       - comment
-  evaluation:
-    Category: clinical
-    Props:
-      # inferred:
-      - date_of_evaluation
   assay:
     Props: null
   file:
@@ -407,7 +402,15 @@ Relationships:
         Dst: visit
       - Src: sample
         Dst: visit
-      - Src: evaluation
+      - Src: physical_exam
+        Dst: visit
+      - Src: lab_exam
+        Dst: visit
+      - Src: adverse_event
+        Dst: visit
+      - Src: disease_extent
+        Dst: visit
+      - Src: vital_signs
         Dst: visit
     Props: null
   of_sample:
@@ -423,20 +426,6 @@ Relationships:
         Dst: assay
       - Src: image
         Dst: assay
-    Props: null
-  at_evaluation:
-    Mul: many_to_one
-    Ends:
-      - Src: physical_exam
-        Dst: evaluation
-      - Src: lab_exam
-        Dst: evaluation
-      - Src: adverse_event
-        Dst: evaluation
-      - Src: disease_extent
-        Dst: evaluation
-      - Src: vital_signs
-        Dst: evaluation
     Props: null
   went_off_study:
     Mul: one_to_one
