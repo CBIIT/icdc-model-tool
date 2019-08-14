@@ -24,7 +24,8 @@ PropDefinitions:
   ae_dose:
     Src: adverse events form
     Type:
-      units: mg/kg
+      units:
+        - mg/kg
       value_type: number
   ae_other:
     Desc: What is?
@@ -97,7 +98,8 @@ PropDefinitions:
   dose_level:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type:
-      units: mg/kg
+      units:
+        - mg/kg
       value_type: number
   dose_units_of_measure:
     Deprecated: true
@@ -110,7 +112,8 @@ PropDefinitions:
   medication_actual_dose:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type:
-      units: mg/kg
+      units:
+        - mg/kg
       value_type: number
   medication_actual_units_of_measure:
     Deprecated: true
@@ -145,7 +148,8 @@ PropDefinitions:
   missed_dose_amount:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type:
-      units: mg/kg
+      units:
+        - mg/kg
       value_type: number
   missed_dose_units_of_measure:
     Deprecated: true
@@ -193,7 +197,8 @@ PropDefinitions:
   cohort_dose:
     Desc: intended or protocol dose
     Type:
-      units: mg/kg
+      units:
+        - mg/kg
       value_type: number
 # cycle props
   cycle_number:
@@ -224,7 +229,8 @@ PropDefinitions:
   patient_age_at_enrollment:
     Src: ENROLLMENT/ENROLL/1
     Type:
-      units: years
+      units:
+        - years
       value_type: number
   sex:
     Desc: gender, needs enum
@@ -618,7 +624,8 @@ PropDefinitions:
   total_dose:
     Src: PRIOR_THRPY_SUPP/PTHR/1
     Type:
-      units: mg
+      units:
+        - mg
       value_type: number
   total_number_of_doses_any_therapy:
     Src: PRIOR_TREAT_SUMM/PTX/1
@@ -814,7 +821,8 @@ PropDefinitions:
     Desc: Called "bsa" in form
     Src: PHYSICAL_EXAM/PE/1
     Type:
-      units: sq meters
+      units: 
+        - sq meters
       value_type: number
   body_temperature:
     Src: PHYSICAL_EXAM/PE/1
@@ -841,7 +849,8 @@ PropDefinitions:
   patient_weight:
     Src: PHYSICAL_EXAM/PE/1
     Type:
-      units: kg
+      units: 
+        - kg
       value_type: number
   phase:
     Desc: Where should this live?/What is?
@@ -850,12 +859,14 @@ PropDefinitions:
   pulse:
     Src: PHYSICAL_EXAM/PE/1
     Type:
-      units: bpm
+      units: 
+        - bpm
       value_type: integer
   pulse_ox:
     Src: PHYSICAL_EXAM/PE/1
     Type:
-      units: '%'
+      units: 
+        - '%'
       value_type: number
   respiration_pattern:
     Src: PHYSICAL_EXAM/PE/1
@@ -864,10 +875,12 @@ PropDefinitions:
   respiration_rate:
     Src: PHYSICAL_EXAM/PE/1
     Type:
-      units: breaths/min
+      units: 
+        - breaths/min
       value_type: integer
   systolic_bp:
     Src: PHYSICAL_EXAM/PE/1
     Type:
-      units: mm Hg
+      units: 
+        - mm Hg
       value_type: integer
