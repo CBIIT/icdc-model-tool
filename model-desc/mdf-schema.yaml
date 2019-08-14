@@ -100,7 +100,7 @@ defs:
     type: object
     description: |
       number_with_units must have a "value_type" which is either "integer" or
-      "number", and a "units" property,which can be a simple string (e.g. "mg"),
+      "number", and a "units" property,which can be a singleton array of a simple string (e.g. "mg"),
       or a regex ( "pattern" : ^<regexp>$ ), or an enumeration (array of allowed
       units strings, or ref to the term server)
     properties:
@@ -112,9 +112,10 @@ defs:
       units:
         oneOf:
           -
-            type: string
-          -
-            $ref: "#/defs/regex"
+            type: array
+            items:
+              -
+                $ref: "#/defs/regex"
           -
             $ref: "#/defs/enumType"
     required:
