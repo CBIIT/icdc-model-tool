@@ -212,7 +212,19 @@ Nodes:
     Props: null
   file:
     Category: data_file
-    Props: null
+    Props:
+      - file_name
+      - file_type
+      # what is the nature of the file's content
+      - file_description
+      - file_format
+      # in what format is the file? pdf vs. png vs. doc, etc.
+      - file_size
+      - md5sum
+      - file_status
+      # enumerated
+      - uuid
+      - file_locations
   image:
     Props: null
   physical_exam:
@@ -334,6 +346,12 @@ Relationships:
         Dst: study
       - Src: study
         Dst: program
+      - Src: case
+        Dst: study
+      # to accomodate Cases not maaped to any Cohrt, either due to error or by design 
+      - Src: cohort
+        Dst: study
+    # to accomodate a Study having Cases that should be grouped into Cohorts, but where Study Arms don't apply      
     Props: null
   of_case:
     Mul: many_to_one
@@ -426,6 +444,12 @@ Relationships:
         Dst: assay
       - Src: image
         Dst: assay
+    Props: null
+  from_diagnosis:
+    Mul: many_to_one
+    Ends:
+      - Src: file
+        Dst: diagnosis
     Props: null
   went_off_study:
     Mul: one_to_one

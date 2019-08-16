@@ -41,5 +41,7 @@ class MDFValidator:
       try:
         validate(instance=self.instance.as_dict(), schema=self.schema)
       except ValidationError as ve:
+        for e in d6(self.schema).iter_errors(self.instance.as_dict()):
+          print e;
         return ve
     return None
