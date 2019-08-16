@@ -378,10 +378,63 @@ PropDefinitions:
     Desc: full name of the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
     Src: ENROLLMENT/ENROLL/1
     Type: string
-# evaluation props
-  date_of_evaluation:
-    Desc: inferred from evaluation inputs (e.g.,PE)
-    Type: datetime
+# removed residual evaluation props from here
+# file props
+  file_name:
+    Desc: name of the file, as prvided by the data owner
+    Src:
+    Type: string
+    Req: true
+  file_type:
+    Desc: indicator as to the nature of the file in terms of its content, i.e. what the information contained within the file constitutes
+    Src: curated
+    Type:
+    - Pathology Report
+    - Image File
+    - Sequence File
+    # these just temprary working examples
+    Req: true
+  file_description:
+    Desc: optional description of the file and/or its content, e.g. amended versus original pathology report, low resolution versus high resolution image file, etc.
+    Src: curated
+    Type: string
+  file_format:
+    Desc: the specific format of the file, e.g. pdf vs. png vs. doc, etc., as derived by the loader
+    Src: derived by loader
+    Type:
+  file_size:
+    Desc: size of the file as derived by the loader
+    Src: derived by loader
+    Type:
+  md5sum:
+    Desc:
+    Src:
+    Type: string
+  file_status:
+    Desc: enumerated representation of the status of files
+    Src:
+    Type:
+    - uploading
+    - uploaded
+    - md5summing
+    - md5summed
+    - validating
+    - error
+    - invalid
+    - suppressed
+    - redacted
+    - live
+    - validated
+    - submitted
+    - released
+  uuid:
+    Desc:
+    Src:
+    Type: string
+  file_locations:
+    Desc:
+    Src:
+    Type: string
 # follow_up props
   contact_type:
     Desc: need vocab
