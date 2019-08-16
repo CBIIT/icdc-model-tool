@@ -31,6 +31,7 @@ class MDFValidator:
           print "Problem with '{fn}' ({e}), skipping".format(fn=inst_filename,e=e)
 
   def validate(self):
+    v = []
     print "Checking schema ====="
     try:
       d6.check_schema(self.schema)
@@ -39,7 +40,9 @@ class MDFValidator:
     if (self.instance):
       print "Checking instance==="
       try:
-        validate(instance=self.instance.as_dict(), schema=self.schema)
+        v = validate(instance=self.instance.as_dict(), schema=self.schema)
       except ValidationError as ve:
+        for e in d6(self.schema).iter_errors(self.instance.as_dict()):
+          print e;
         return ve
     return None

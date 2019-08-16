@@ -382,7 +382,6 @@ PropDefinitions:
 # file props
   file_name:
     Desc: name of the file, as prvided by the data owner
-    Src:
     Type: string
     Req: true
   file_type:
@@ -401,18 +400,17 @@ PropDefinitions:
   file_format:
     Desc: the specific format of the file, e.g. pdf vs. png vs. doc, etc., as derived by the loader
     Src: derived by loader
-    Type:
+    Type: TBD
   file_size:
     Desc: size of the file as derived by the loader
     Src: derived by loader
-    Type:
+    Type: number
   md5sum:
-    Desc:
-    Src:
+    Desc: md5 checksum
+    Src: should be submitted and then checked by loader
     Type: string
   file_status:
     Desc: enumerated representation of the status of files
-    Src:
     Type:
     - uploading
     - uploaded
@@ -427,13 +425,12 @@ PropDefinitions:
     - validated
     - submitted
     - released
-  uuid:
-    Desc:
-    Src:
-    Type: string
+  # let's talk about this one /maj
+  # uuid:
+  #   Desc:
+  #   Src:
+  #   Type: string
   file_locations:
-    Desc:
-    Src:
     Type: string
 # follow_up props
   contact_type:

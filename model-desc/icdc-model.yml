@@ -348,9 +348,9 @@ Relationships:
         Dst: program
       - Src: case
         Dst: study
-    # to accomodate Cases not maaped to any Cohrt, either due to error or by design 
+      # to accomodate Cases not maaped to any Cohrt, either due to error or by design 
       - Src: cohort
-      - Dst: study
+        Dst: study
     # to accomodate a Study having Cases that should be grouped into Cohorts, but where Study Arms don't apply      
     Props: null
   of_case:
