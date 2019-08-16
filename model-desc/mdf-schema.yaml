@@ -44,7 +44,7 @@ defs:
   snake_case_id:
     $id: "#snake_case_id"
     type: string
-    pattern: "^[A-Za-z_]*$"
+    pattern: "^[A-Za-z_][A-Za-z0-9_]*$"
   camelCaseId:
     $id: "#camelCaseId"
     type: string
@@ -52,7 +52,7 @@ defs:
   fileNameId:
     $id: "#fileNameId"
     type: string
-    pattern: "^[A-Za-z_-~/.]+\\.json|jsn|yml|yaml$"
+    pattern: "^[A-Za-z0-9_-~/.]+\\.json|jsn|yml|yaml$"
   url:
     $id: "#url"
     type: string
