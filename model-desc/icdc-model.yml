@@ -439,6 +439,9 @@ Relationships:
     Ends:
       - Src: assay
         Dst: sample
+      - Src: file
+        Dst: sample
+    # added primarily to support direct association of sequence files with the primary samples to which they relate, when we have no data around the processing intermediates    
     Props: null
   of_assay:
     Mul: many_to_one
