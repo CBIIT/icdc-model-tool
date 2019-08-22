@@ -368,6 +368,9 @@ Relationships:
         Dst: case
       - Src: follow_up
         Dst: case
+      - Src: sample
+        Dst: case
+    # to accommodate a Sample being directly associated with a Case, rather than being only indirectly associated with a Case through a Visit etc.
     Props: null
   of_study_arm:
     Mul: many_to_many
