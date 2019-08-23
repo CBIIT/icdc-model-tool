@@ -81,7 +81,7 @@ Rather than install the tool and its dependencies,
 model-tool can be run using a Docker container,
 [maj1/icdc:icdc-model-tool](https://cloud.docker.com/repository/docker/maj1/icdc/general).
 
-(model-tool-d)[https://github.com/CBIIT/icdc-model-tool-docker] is a
+[model-tool-d](https://github.com/CBIIT/icdc-model-tool-docker) is a
 command-line tool that runs just like model-tool, but uses the Docker
 container above under the hood. Check it out!
 
