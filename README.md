@@ -9,18 +9,18 @@
 
 The MakeModel "framework" takes a convenient, human-readable
 description of an overall graph model, laid out in one or two YAML
-files, and uses these to create the node schemas required to specify
-the model in the Gen3 system.
+files, and uses these to perform various functions that enable
+tasks related to the ICDC data system.
 
-The command-line tool `model-tool` takes the schema description files
-as input, and performs the following tasks
 
-* Creates the node schema YAML files required for Gen3 ("schema YAMLs")
-* Creates the JSON aggregation of all node YAML files (the "dictionary JSON")
-* Creates an SVG graphical representation of the model as specified;
-* Provides error checking and warnings relevant to model
-  specification, e.g., identifying nodes that do not have any incoming
-  or outgoing relationships ("edges").
+The command-line tool `model-tool` takes the model description files (MDF)
+as input, and performs the following tasks:
+
+* Validates the content of the MDF for syntax and consistency
+* Creates an SVG graphical representation of the model as specified; 
+* Output a simple tab-delimited table of nodes and properties;
+* _Coming Soon_: Outputs Cypher queries that can be used to create a representation
+  of the model in a [Neo4j](https://neo4j.com) graph database.
 
 ## Installing `model-tool`
 
@@ -60,20 +60,30 @@ graphic output feature.
   and the Usage hints should display:
 
 ```
+NCI-02133017-ML:icdc-model-tool jensenma$ make-model/bin/model-tool 
 FATAL: Nothing to do!
- (2019/01/29 23:12:31 in main::)
+ (2019/08/23 15:37:10 in main::)
 Usage:
-      model-tool [-g <graph-out-file>] [-s <output-dir>] [-j <json-out-file>] <input.yaml> [<input2.yaml> ...]
+      model-tool [-g <graph-out-file>] [-s <output-dir>] [-j <json-out-file>] 
+                 [-T <table-out-file>] <input.yaml> [<input2.yaml> ...]
          [-d dir_to_search [-d another_dir...]]
-      -g : create an SVG of model defined in input.yamls 
-      -s : create schema node files for Gen3
-      -j : create big json schema squirt
-      -d : directory to search for native schema yamls for inclusion
+      -g : create an SVG of model defined in input.yamls
+      -T : output a table of nodes and properties
       -a : output all nodes, including unlinked nodes
       -v : verbosity (-v little ... -vvvv lots)
       -W : show all warnings ( = -vvv )
       --dry-run : emit log msg, but no output files
 ```
+
+## Docker version of model-tool
+
+Rather than install the tool and its dependencies,
+model-tool can be run using a Docker container,
+[maj1/icdc:icdc-model-tool](https://cloud.docker.com/repository/docker/maj1/icdc/general).
+
+(model-tool-d)[https://github.com/CBIIT/icdc-model-tool-docker] is a
+command-line tool that runs just like model-tool, but uses the Docker
+container above under the hood. Check it out!
 
 ## Model Description Files (MDF)
 
@@ -291,38 +301,25 @@ yields
 
 ## model-tool Outputs
 
-### Gen3 "Schema YAML"
-
-`model-tool` uses MakeModel to create a set of Gen3 schema YAML files,
-one for each defined node. The schema YAML files contain the
-appropriate definitions of properties and links as required by the
-Gen3 dictionary system, as well as "boilerplate" and default items
-that are a nuisance to keep track of manually.
-
-*Note*: Objects (i.e., key-value constructs) in the output schema YAML
-documents will appear in the files in a pre-defined default order
-(rather than in a sorted order or a random order). The default order
-is the one that appears in Gen3 example documents. This order can be
-customized in the `ICDC::MakeModel::Config` module (but not very
-conveniently at the moment).
-
-### Gen3 "Dictionary JSON"
-
-`model-tool` will create a  JSON document containing all node schema
-definitions in a single JSON object. This is required by the Gen3
-system for configuration.
-
-#### Including Gen3 configuration YAMLs
-
-MakeModel has a feature to include "native" YAML files verbatim in the
-production of the dictionary JSON file. *Note*: this feature allows
-the verbatim inclusion of Gen3 model configuration files such as
-"\_settings.yaml", "\_definitions.yaml", and "\_terms.yaml". It will
-not add Gen3-defined node, properties or links to the model
-(currently).
-
 ### Graphic representation of the input model
 
 `model-tool` can produce an SVG rendering of the input data
 model. This requires that [GraphViz](http://www.graphviz.org/) be
 installed on your system.
+
+### Table of nodes and associated properties
+
+`model-tool` can produce a simple table of node names and property
+names, suitable for Excel etc.
+
+    $ model-tool --table t.txt icdc-model.yaml  # content of t.txt is...
+    ...
+    adverse_event   day_in_cycle
+    adverse_event   dose_limiting_toxicity
+    adverse_event   unexpected_adverse_event
+    agent   document_number
+    agent   medication
+    agent_administration    comment
+    agent_administration    crf_idp
+    ...
+
