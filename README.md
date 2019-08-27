@@ -311,7 +311,7 @@ color:
       Props:
         - breed
       Tags:
-    	- "color: red;"
+        - "color: red;"
     cat:
       Props:
         - breed
