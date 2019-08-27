@@ -104,10 +104,9 @@ Input to `model-tool` can be a single YAML file, or multiple YAML
 files. If multiple files are given, the data structures are merged, so
 that, for example, nodes and relationships can be described in one
 file, and property definitions can be provided in a separate file.
-
-Collectively, the input YAMLs can be called "model description
-files". These are distinct from Gen3 configuration YAML files output
-by the tool, called "schema" or "dictionary" files.
+p
+Collectively, the input YAMLs are called "model description
+files" (MDF). 
 
 ### Nodes
 
@@ -297,6 +296,27 @@ yields
         Props:
           - a_prop
       - new_prop
+
+#### Tagging Entities
+
+A `Tags` entry can be added to any object (thing that accepts
+key:value pairs) in the MDF. This is a way to associate
+metainformation with an entity that can be read later by a custom
+parser. A `Tags` entry value is an array of strings, the tags.
+
+For example, one may markup a set of nodes to be rendered in a certain
+color:
+
+  dog:
+    Props:
+	  - breed
+	Tags:
+	  - "color: red;"
+  cat
+    Props:
+      - breed
+    Tags:
+      - "color: blue;"
 
 
 ## model-tool Outputs

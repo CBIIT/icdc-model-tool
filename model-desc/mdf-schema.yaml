@@ -31,6 +31,8 @@ properties:
     type: array
     items:
       $ref: "#/defs/fileNameId"
+  Tags:
+    $ref: "#/defs/tagsSpec"
 required:
   - Nodes
   - Relationships
@@ -99,7 +101,7 @@ defs:
     $id: "#numberWithUnits"
     type: object
     description: |
-      number_with_units must have a "value_type" which is either "integer" or
+      numberWithUnits must have a "value_type" which is either "integer" or
       "number", and a "units" property,which can be a singleton array of a simple string (e.g. "mg"),
       or a regex ( "pattern" : ^<regexp>$ ), or an enumeration (array of allowed
       units strings, or ref to the term server)
@@ -118,9 +120,17 @@ defs:
                 $ref: "#/defs/regex"
           -
             $ref: "#/defs/enumType"
+      Tags:
+        $ref: "#/defs/tagsSpec"
     required:
       - value_type
       - units
+  tagsSpec:
+    $id: "#tagsSpec"
+    type: array
+    items:
+      type: string
+
   nodeSpec:
     $id: "#nodeSpec"
     type: object
@@ -136,6 +146,8 @@ defs:
               "null"
       Category:
         $ref: "#/defs/snake_case_id"
+      Tags:
+        $ref: "#/defs/tagsSpec"
     required:
       - Props
   relnSpec:
@@ -179,9 +191,13 @@ defs:
                 - one_to_many
                 - many_to_one
                 - many_to_many
+            Tags:
+              $ref: "#/defs/tagsSpec"
           required:
             - Src
             - Dst
+      Tags:
+        $ref: "#/defs/tagsSpec"
     required:
       - Props
       - Mul
@@ -221,6 +237,8 @@ defs:
             $ref: "#/defs/regex"
           -
             $ref: "#/defs/enumType"
+      Tags:
+        $ref: "#/defs/tagsSpec"
     required:
       - Type
       
