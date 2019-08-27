@@ -308,15 +308,15 @@ For example, one may markup a set of nodes to be rendered in a certain
 color:
 
     dog:
-        Props:
-    	  - breed
-    	Tags:
-    	  - "color: red;"
-      cat
-        Props:
-          - breed
-        Tags:
-          - "color: blue;"
+      Props:
+        - breed
+      Tags:
+    	- "color: red;"
+    cat:
+      Props:
+        - breed
+      Tags:
+        - "color: blue;"
 
 
 ## model-tool Outputs
