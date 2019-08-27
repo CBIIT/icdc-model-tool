@@ -307,16 +307,16 @@ parser. A `Tags` entry value is an array of strings, the tags.
 For example, one may markup a set of nodes to be rendered in a certain
 color:
 
-  dog:
-    Props:
-	  - breed
-	Tags:
-	  - "color: red;"
-  cat
-    Props:
-      - breed
-    Tags:
-      - "color: blue;"
+    dog:
+        Props:
+    	  - breed
+    	Tags:
+    	  - "color: red;"
+      cat
+        Props:
+          - breed
+        Tags:
+          - "color: blue;"
 
 
 ## model-tool Outputs
