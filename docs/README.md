@@ -1,4 +1,7 @@
-[Model artifacts](./model-desc)
+[![Build Status](https://travis-ci.org/CBIIT/icdc-model-tool.svg?branch=master)](https://travis-ci.org/CBIIT/icdc-model-tool)
+
+
+[View model artifacts](./model-desc)
 
 # MakeModel and model-tool
 
@@ -6,18 +9,18 @@
 
 The MakeModel "framework" takes a convenient, human-readable
 description of an overall graph model, laid out in one or two YAML
-files, and uses these to create the node schemas required to specify
-the model in the Gen3 system.
+files, and uses these to perform various functions that enable
+tasks related to the ICDC data system.
 
-The command-line tool `model-tool` takes the schema description files
-as input, and performs the following tasks
 
-* Creates the node schema YAML files required for Gen3 ("schema YAMLs")
-* Creates the JSON aggregation of all node YAML files (the "dictionary JSON")
-* Creates an SVG graphical representation of the model as specified;
-* Provides error checking and warnings relevant to model
-  specification, e.g., identifying nodes that do not have any incoming
-  or outgoing relationships ("edges").
+The command-line tool `model-tool` takes the model description files (MDF)
+as input, and performs the following tasks:
+
+* Validates the content of the MDF for syntax and consistency
+* Creates an SVG graphical representation of the model as specified; 
+* Output a simple tab-delimited table of nodes and properties;
+* _Coming Soon_: Outputs Cypher queries that can be used to create a representation
+  of the model in a [Neo4j](https://neo4j.com) graph database.
 
 ## Installing `model-tool`
 
@@ -57,27 +60,39 @@ graphic output feature.
   and the Usage hints should display:
 
 ```
+NCI-02133017-ML:icdc-model-tool jensenma$ make-model/bin/model-tool 
 FATAL: Nothing to do!
- (2019/01/29 23:12:31 in main::)
+ (2019/08/23 15:37:10 in main::)
 Usage:
-      model-tool [-g <graph-out-file>] [-s <output-dir>] [-j <json-out-file>] <input.yaml> [<input2.yaml> ...]
+      model-tool [-g <graph-out-file>] [-s <output-dir>] [-j <json-out-file>] 
+                 [-T <table-out-file>] <input.yaml> [<input2.yaml> ...]
          [-d dir_to_search [-d another_dir...]]
-      -g : create an SVG of model defined in input.yamls 
-      -s : create schema node files for Gen3
-      -j : create big json schema squirt
-      -d : directory to search for native schema yamls for inclusion
+      -g : create an SVG of model defined in input.yamls
+      -T : output a table of nodes and properties
       -a : output all nodes, including unlinked nodes
       -v : verbosity (-v little ... -vvvv lots)
       -W : show all warnings ( = -vvv )
       --dry-run : emit log msg, but no output files
 ```
 
-## Graph Description Input YAML
+## Docker version of model-tool
+
+Rather than install the tool and its dependencies,
+model-tool can be run using a Docker container,
+[maj1/icdc:icdc-model-tool](https://cloud.docker.com/repository/docker/maj1/icdc/general).
+
+[model-tool-d](https://github.com/CBIIT/icdc-model-tool-docker) is a
+command-line tool that runs just like model-tool, but uses the Docker
+container above under the hood. Check it out!
+
+## Model Description Files (MDF)
 
 The layout of nodes, relationships, node properties, and relationship
-properties are specified in data structure expressed in YAML files.
+properties are specified in data structure expressed in YAML-formatted
+"model description files".
 
-The input format follows these general conventions:
+The input format follows these general conventions, which are enforced
+by a [JSONSchema](https://json-schema.org/understanding-json-schema/) [schema](./model-desc/mdf-schema.yaml):
 
 * Special key names are capitalized; these are essentially directives
 to ModelMaker;
@@ -89,10 +104,9 @@ Input to `model-tool` can be a single YAML file, or multiple YAML
 files. If multiple files are given, the data structures are merged, so
 that, for example, nodes and relationships can be described in one
 file, and property definitions can be provided in a separate file.
-
-Collectively, the input YAMLs can be called "model description
-files". These are distinct from Gen3 configuration YAML files output
-by the tool, called "schema" or "dictionary" files.
+p
+Collectively, the input YAMLs are called "model description
+files" (MDF). 
 
 ### Nodes
 
@@ -144,7 +158,8 @@ each relationship type. Relationship descriptions look like:
                ...
 
 A named relationship can have properties defined, analogous to
-nodes.
+nodes. However, the Gen3 "graph" doesn't support relationship
+properties, so specifying these will not influence the output.
 
 A named relationship can be specified as required with the `Req` key,
 and its multiplicity (from source node type to destination node type)
@@ -173,6 +188,7 @@ descriptions of each property. Property descriptions look like:
             - go
             - here
         Nul: <true|false> # is property nullable?
+        Req: <true|false> # is property required?
         Src: <a string describing where the property came from - e.g.
                  a CRF.>
 
@@ -186,40 +202,144 @@ is not used in any output; it is essentially a comment.
 Where properties need to be applied to Nodes and Relationships, use a
 list of propnames from those defined in PropDefinitions.
 
+### Multiple input YAML files and "overlays"
+
+`model-tool` allows multiple input YAML files. The structured
+information in the files are merged together to produce one
+input structure internally. This allows a user to, for example,
+keep Node definitions in one file, Relationships in another, and
+Property definitions in yet another. Each of these objects has
+a separate top-level key, and will be merged into the single
+internal object without any "collisions".
+
+Merging YAML files into a single object occurs with specific
+rules that allow the user to "overlay" specific changes onto a
+base model file, without having to resort to multiple versions
+of a base model. The first pair of files is merged, the next file
+is merged into that result, and so on to the end of the input files.
+For example:
+
+    model-tool -g graph.svg icdc-model.yml temp-changes.yml
+
+would create a graphic of nodes and edges defined in `icdc-model.yml`,
+as modified by changes specified in `temp-changes.yml`.
+
+#### Adding elements
+
+As indicated above, if independent sets of keys at a given
+level of the YAML structure are present in the input files,
+the merged structure will possess all the keys and their
+contents:
+
+File 1:
+    Nodes:
+      original_node:
+        Props:
+	      - old_prop
+
+File 2:
+    Nodes:
+      original_node:
+        Props:
+          - new_prop
+      addtional_node:
+        Props:
+          - new_prop
+
+yields
+
+    Nodes:
+      original_node:
+        Props:
+          - old_prop
+          - new_prop
+      additional_node:
+        Props:
+          - new_prop
+
+Note that by default, the overlay keys and values are added;
+original array elements are not replaced. Array elements remain
+unique: if both files have an element named `foo`, only one
+`foo` element will be present in the merged array.
+
+#### Deleting/replacing elements
+
+To indicate that an overlay should remove a key and its contents,
+or an array element, that are present in an earlier file, prefix the
+key/element with a forward slash `/`
+
+File 1:
+
+    Nodes:
+      original_node:
+        Props:
+          - unwanted_prop
+          - a_prop
+      unwanted_node:
+        Props:
+          - a_prop
+
+File 2:
+    Nodes:
+      original_node:
+        Props:
+          - /unwanted_prop
+          - new_prop
+      /unwanted_node:
+        Props:
+          - whatever_prop
+
+yields
+
+    Nodes:
+      original_node:
+        Props:
+          - a_prop
+      - new_prop
+
+#### Tagging Entities
+
+A `Tags` entry can be added to any object (thing that accepts
+key:value pairs) in the MDF. This is a way to associate
+metainformation with an entity that can be read later by a custom
+parser. A `Tags` entry value is an array of strings, the tags.
+
+For example, one may markup a set of nodes to be rendered in a certain
+color:
+
+    dog:
+      Props:
+        - breed
+      Tags:
+        - "color: red;"
+    cat:
+      Props:
+        - breed
+      Tags:
+        - "color: blue;"
+
+
 ## model-tool Outputs
-
-### Gen3 "Schema YAML"
-
-`model-tool` uses MakeModel to create a set of Gen3 schema YAML files,
-one for each defined node. The schema YAML files contain the
-appropriate definitions of properties and links as required by the
-Gen3 dictionary system, as well as "boilerplate" and default items
-that are a nuisance to keep track of manually.
-
-*Note*: Objects (i.e., key-value constructs) in the output schema YAML
-documents will appear in the files in a pre-defined default order
-(rather than in a sorted order or a random order). The default order
-is the one that appears in Gen3 example documents. This order can be
-customized in the `ICDC::MakeModel::Config` module (but not very
-conveniently at the moment).
-
-### Gen3 "Dictionary JSON"
-
-`model-tool` will create a  JSON document containing all node schema
-definitions in a single JSON object. This is required by the Gen3
-system for configuration.
-
-#### Including Gen3 configuration YAMLs
-
-MakeModel has a feature to include "native" YAML files verbatim in the
-production of the dictionary JSON file. *Note*: this feature allows
-the verbatim inclusion of Gen3 model configuration files such as
-"\_settings.yaml", "\_definitions.yaml", and "\_terms.yaml". It will
-not add Gen3-defined node, properties or links to the model
-(currently).
 
 ### Graphic representation of the input model
 
 `model-tool` can produce an SVG rendering of the input data
 model. This requires that [GraphViz](http://www.graphviz.org/) be
 installed on your system.
+
+### Table of nodes and associated properties
+
+`model-tool` can produce a simple table of node names and property
+names, suitable for Excel etc.
+
+    $ model-tool --table t.txt icdc-model.yaml  # content of t.txt is...
+    ...
+    adverse_event   day_in_cycle
+    adverse_event   dose_limiting_toxicity
+    adverse_event   unexpected_adverse_event
+    agent   document_number
+    agent   medication
+    agent_administration    comment
+    agent_administration    crf_idp
+    ...
+
