@@ -97,6 +97,7 @@ defs:
         -
           $ref:
             "#/defs/url"
+    uniqueItems: true
   numberWithUnits:
     $id: "#numberWithUnits"
     type: object
@@ -118,6 +119,7 @@ defs:
             items:
               -
                 $ref: "#/defs/regex"
+            uniqueItems: true
           -
             $ref: "#/defs/enumType"
       Tags:
@@ -130,6 +132,7 @@ defs:
     type: array
     items:
       type: string
+    uniqueItems: true
 
   nodeSpec:
     $id: "#nodeSpec"
@@ -141,6 +144,7 @@ defs:
             type: array
             items:
               $ref: "#/defs/snake_case_id"
+            uniqueItems: true
           -
             type:
               "null"
@@ -168,6 +172,7 @@ defs:
             type: array
             items:
               $ref: "#/defs/snake_case_id"
+            uniqueItems: true
           -
             type:
               "null"
@@ -193,6 +198,7 @@ defs:
                 - many_to_many
             Tags:
               $ref: "#/defs/tagsSpec"
+          uniqueItems: true
           required:
             - Src
             - Dst

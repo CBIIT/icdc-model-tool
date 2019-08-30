@@ -236,10 +236,13 @@ PropDefinitions:
     Desc: gender, needs enum
     Src: ENROLLMENT/ENROLL/1
     Type:
-    - M
-    - F
+      - M
+      - F
   weight:
-    Desc: the subject's weight at the time the subject was enrolled and/or biospecimens were acquired, at least in the case of studies that are not longitudinal in nature
+    Desc: |
+      the subject's weight at the time the subject was enrolled and/or
+      biospecimens were acquired, at least in the case of studies that
+      are not longitudinal in nature
     Src: '?'
     Type: TBD
 # diagnosis props
