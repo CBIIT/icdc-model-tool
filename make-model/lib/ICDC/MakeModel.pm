@@ -144,7 +144,7 @@ sub viz {
     $graph->add_node(name => $_, label => \@lbl);
   }
   for my $r ($self->model->edges) {
-    $graph->add_edge( from => $r->src->name, to => $r->dst->name, label=>$r->type );
+    $graph->add_edge( from => $r->src->name, to => $r->dst->name, label=>$r->type->name );
   }
   if ($outf) {
     $graph->run(driver=>'dot', format=>'svg',output_file=>$outf);
