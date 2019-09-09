@@ -1,15 +1,59 @@
-language: python
+# following line is key to prevent an endless build/deploy cycle
+# when travis commits to pages:
+if: commit_message !~ ^Deploy.*
 dist: xenial
+env:
+  global:
+  - PERL5LIB=/usr/share/perl5
+language: python
+services:
+  - docker
 python:
-  - "2.7"
-
+  - '2.7'
 branches:
   only:
     - master
-
+before_install:
+  - docker pull maj1/icdc:model-tool-perl
+  - sudo apt-get install sed
 install:
   - pip install -r model-desc/reqs.txt
-
+  - pushd make-model
+  # - perl Build.PL
+  # - yes | ./Build installdeps --cpan_client cpanm
+  # - "./Build test --verbose"
+  # - ls -lR .
+  # - "./Build install"
+  # - "./Build realclean"
+  # - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl -Ilib bin/model-tool
 script:
-  - cd model-desc
+  - echo what
+  - popd
+  - pushd model-desc
   - pytest
+  - cp -aR ../make-model/lib lib
+  - cp -aR ../make-model/bin bin
+  - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl -Ilib bin/model-tool -g update-model.svg icdc-model.yml icdc-model-props.yml
+  - cp icdc-model.yml icdc-model-props.yml ../docs/model-desc
+  - sed -e '/^<\?xml/,/^<!-- Tit/d' update-model.svg > ../docs/model-desc/icdc-model.svg
+  - rm -f update-model.svg
+  - pushd ../docs
+  - cat ./README.md.content > ./README.md
+  - echo "<div id='graph' style='display:off;'>" >> ./README.md
+  - cat ./model-desc/icdc-model.svg >> ./README.md
+  - echo "</div>" >> ./README.md
+  - popd
+  - rm -rf lib bin
+  - rm -rf __pycache__
+  - rm MDFValidate/*.pyc
+
+  
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  target_branch: master
+  keep_history: true
+  verbose: true
+  on:
+    branch: master

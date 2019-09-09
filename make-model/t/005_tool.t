@@ -31,7 +31,7 @@ try {
 
 $in = $out = $err = '';
 
-lives_ok { run( [$tool, '-g', '-v', File::Spec->catfile($dir,'try.svg'), @descfiles],
+lives_ok { run( [$^X, $tool, '-g', '-v', File::Spec->catfile($dir,'try.svg'), @descfiles],
 		\$in, \$out,\$err) } "-g -v [file] (bad option order)" ;
 like ($err, qr/FATAL.*requires an arg/s, "Got correct error");
 
@@ -44,6 +44,7 @@ like ($err, qr/FATAL.*requires an arg/s, "Got correct error");
 $in = $out = $err = '';
 lives_ok { run( [$tool, '-g', File::Spec->catfile($dir,'try.svg'), @descfiles],
 		\$in, \$out, \$err ) } "-g";
+diag $out if $out;
 diag $err if $err;
 ok(( -e File::Spec->catfile($dir,'try.svg')), "svg created");
 

@@ -1,7 +1,13 @@
-[![Build Status](https://travis-ci.org/CBIIT/icdc-model-tool.svg?branch=master)](https://travis-ci.org/CBIIT/icdc-model-tool)
+<link rel='stylesheet' href="assets/style.css">
+<link rel='stylesheet' href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"  src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+<script type="text/javascript" src="assets/actions.js"></script>
 
-
-[View model artifacts](./model-desc)
+Zoom to Node: <select id="node_select">
+  <option value="">Zoom to Node</option>
+</select>
+<div id="model"></div>
 
 # MakeModel and model-tool
 
