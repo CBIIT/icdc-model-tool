@@ -3,7 +3,6 @@ Build.PL
 lib/ICDC/MakeModel.pm
 lib/ICDC/MakeModel/Config.pm
 lib/ICDC/MakeModel/Model.pm
-lib/ICDC/MakeModel/OrderedRepresenter.pm
 lib/ICDC/MakeModel/Schema.pm
 MANIFEST			This list of files
 README
