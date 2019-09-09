@@ -18,13 +18,21 @@
 Nodes:
   program:
     Props:
-      - name
+      - program_name
+      - program_acronym
+      - program_short_description
+      - program_full_description
+      - program_external_url
+      - program_sort_order
   study:
     Props:
-      - clinical_study_name
-      - clinical_study_designation
       - clinical_study_id
+      - clinical_study_designation
+      - clinical_study_name
+      - clinical_study_description
+      - clinical_study_type
       - date_of_iacuc_approval
+      - dates_of_conduct
   study_site:
     Props:
       - site_short_name
@@ -48,6 +56,10 @@ Nodes:
       - cohort_dose
   case:
     Props:
+      - case_id
+      # globally unique ID by which the system can unambiguously identify and display a specific patient even across studies/trials.
+      # likely to be a concatenation of a study identifier and patient_id below
+      # to be provided by the data submitter, generated during data transformation as necessary
       - patient_id
       - patient_first_name
       - crf_id
@@ -58,6 +70,9 @@ Nodes:
       - patient_age_at_enrollment
       - date_of_birth
       - sex
+      - weight
+      # indicates the subject's weight at the time the subject was enrolled and/or biospecimens were acquired, at least in the case of studies that are not longitudinal in nature
+      - neutered_indicator
       - crf_id
   cycle:
     Props:
@@ -77,13 +92,18 @@ Nodes:
   diagnosis:
     Category: clinical
     Props:
-      - primary_disease_site
       - disease_term
+      - primary_disease_site
       - stage_of_disease
+      - date_of_diagnosis
       - histology_cytopathology
       - date_of_histology_confirmation
       - histological_grade
-      - date_of_diagnosis
+      - pathology_report
+      - treatment_data
+      - follow_up_data
+      - concurrent_disease
+      - concurrent_disease_type
       - crf_id
   enrollment:
     Props:
@@ -163,17 +183,48 @@ Nodes:
       - crf_id
   sample:
     Category: biospecimen
-    Props: null
-  evaluation:
-    Category: clinical
-    Props:
-      # inferred:
-      - date_of_evaluation
+    Props: 
+      - sample_id
+      - sample_type
+      # indicator as to the nature of the biomaterial - tissue, blood, urine, etc.
+      - general_sample_pathology
+      # indicator as to whether the sample is normal or tumor derived
+      - date_of_sample_collection
+      - necropsy_sample
+      - length_of_tumor
+      # length of the tumor from which the sample in question was derived
+      - width_of_tumor
+      # width of the tumor from which the sample in question was derived
+      - analysis_area
+      # total area of the slide region that was analyzed in mm2
+      - analysis_area_percentage_tumor
+      - analysis_area_percentage_stroma
+      - analysis_area_percentage_glass
+      - analysis_area_percentage_pigmented_tumor
+      - total_tissue_area
+      # total area within the slide region analyzed that was represented by tissue
+      - tumor_tissue_area
+      - non_tumor_tissue_area
+      - percentage_tumor
+      - percentage_stroma
+      - comment
   assay:
     Props: null
   file:
     Category: data_file
-    Props: null
+    Props:
+      - file_name
+      - file_type
+      # what is the nature of the file's content
+      - file_description
+      - file_format
+      # in what format is the file? pdf vs. png vs. doc, etc.
+      - file_size
+      - md5sum
+      - file_status
+      # enumerated
+      - uuid
+      - file_locations
   image:
     Props: null
   physical_exam:
@@ -232,6 +283,18 @@ Nodes:
     Category: clinical
     Props: 
       - crf_id
+      - lesion_number
+      - lesion_site
+      - lesion_description
+      - previously_irradiated
+      - previously_treated
+      - measurable_lesion
+      - target_lesion
+      - date_of_evaluation
+      - measured_how
+      - longest_measurement
+      - evaluation_number
+      - evaluation_code
   follow_up:
     Category: clinical
     Props:
@@ -281,34 +344,50 @@ Relationships:
         Dst: study_arm
       - Src: study_arm
         Dst: study
-      #- Src: study
-      #  Dst: program
+      - Src: study
+        Dst: program
+      - Src: case
+        Dst: study
+      # to accomodate Cases not maaped to any Cohrt, either due to error or by design 
+      - Src: cohort
+        Dst: study
+    # to accomodate a Study having Cases that should be grouped into Cohorts, but where Study Arms don't apply      
     Props: null
   of_case:
+    Mul: many_to_one
     Ends:
       - Src: enrollment
         Dst: case
+        Mul: one_to_one
       - Src: demographic
         Dst: case
+        Mul: one_to_one
       - Src: diagnosis
         Dst: case
       - Src: cycle
         Dst: case
       - Src: follow_up
         Dst: case
+      - Src: sample
+        Dst: case
+    # to accommodate a Sample being directly associated with a Case, rather than being only indirectly associated with a Case through a Visit etc.
     Props: null
   of_study_arm:
+    Mul: many_to_many
     Ends:
       - Src: agent
         Dst: study_arm
+    Props: null
   of_study:
+    Mul: many_to_many
     Ends:
       - Src: study_site
         Dst: study
       - Src: principal_investigator
         Dst: study
-        Mul: many_to_many
+    Props: null
   of_agent:
+    Mul: many_to_one
     Ends:
       - Src: agent_administration
         Dst: agent
@@ -316,11 +395,13 @@ Relationships:
         Dst: agent
     Props: null
   had_adverse_event:
+    Mul: many_to_one
     Ends:
-      - Src: adverse_event
-        Dst: case
+      - Src: case
+        Dst: adverse_event
     Props: null
   at_enrollment:
+    Mul: many_to_one
     Ends:
       - Src: prior_therapy
         Dst: enrollment
@@ -330,54 +411,66 @@ Relationships:
         Dst: enrollment
     Props: null
   of_cycle:
+    Mul: many_to_one
     Ends:
       - Src: visit
         Dst: cycle
-    Props: Null
+    Props: null
   on_visit:
+    Mul: many_to_one
     Ends:
       - Src: agent_administration
         Dst: visit
       - Src: sample
         Dst: visit
-      - Src: evaluation
+      - Src: physical_exam
+        Dst: visit
+      - Src: lab_exam
+        Dst: visit
+      - Src: adverse_event
+        Dst: visit
+      - Src: disease_extent
+        Dst: visit
+      - Src: vital_signs
         Dst: visit
     Props: null
   of_sample:
+    Mul: many_to_one
     Ends:
       - Src: assay
         Dst: sample
+      - Src: file
+        Dst: sample
+    # added primarily to support direct association of sequence files with the primary samples to which they relate, when we have no data around the processing intermediates    
     Props: null
   of_assay:
+    Mul: many_to_one
     Ends:
       - Src: file
         Dst: assay
       - Src: image
         Dst: assay
     Props: null
-  at_evaluation:
+  from_diagnosis:
+    Mul: many_to_one
     Ends:
-      - Src: physical_exam
-        Dst: evaluation
-      - Src: lab_exam
-        Dst: evaluation
-      - Src: adverse_event
-        Dst: evaluation
-      - Src: disease_extent
-        Dst: evaluation
-      - Src: vital_signs
-        Dst: evaluation
+      - Src: file
+        Dst: diagnosis
     Props: null
   went_off_study:
+    Mul: one_to_one
     Ends:
-      - Src: off_study
-        Dst: case
+      - Src: case
+        Dst: off_study
+    Props: null
   went_off_treatment:
+    Mul: one_to_one
     Ends:
-      - Src: off_treatment
-        Dst: case
+      - Src: case
+        Dst: off_treatment
     Props: null
   next:
+    Mul: one_to_one
     Ends:
       - Src: visit
         Dst: visit
