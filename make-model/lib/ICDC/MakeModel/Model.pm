@@ -33,9 +33,18 @@ sub new {
     $self->{_edge_types}{$t} = ICDC::MakeModel::Model::EdgeType->new($t,$rs->{$t},$self);
     for my $e ( @{$rs->{$t}{Ends}} ) {
       next unless $e;
-      push @{$self->{_edges}}, ICDC::MakeModel::Model::Edge->new($t,$e,$self);
+      ICDC::MakeModel::Model::Edge->new($t,$e,$self);
     }
   }
+  for my $s (values %{$self->{_edge_table}}) {
+    for my $t (values %$s) {
+      for (values %$t) {
+	push @{$self->{_edges}}, $_;
+      }
+    }
+  }
+  
+
   return $self;
 }
 
@@ -288,8 +297,8 @@ sub new {
   else {
     WARN "Edge constructor called without model object: src and dst are strings, not Node objects";
   }
-  $model->{_edge_table}{$type}{$src}{$dst} = $self;
-  return $self;
+  $model->{_edge_table}{$type}{$src}{$dst} //= $self;
+  return $model->{_edge_table}{$type}{$src}{$dst};
 }
 
 sub tags { @{shift->{_tags}} }
