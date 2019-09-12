@@ -28,17 +28,21 @@ GetOptions (
   'all-nodes|all_nodes|a!' => \$include_unlinked, 
  ) or pod2usage(1);
 
-if ( defined $make_graph && !$make_graph ) {
+if ($dry_run) {
+    $verbose=2;
+}
+
+if ( !$dry_run && defined $make_graph && !$make_graph ) {
   FATAL "Option --graph requires an argument\n";
   pod2usage(3);
 }
 
-if ( defined $output_table && !$output_table ) {
+if ( !$dry_run &&  defined $output_table && !$output_table ) {
   FATAL "Option --output_table requires an argument\n";
   pod2usage(3);
 }
 
-unless ($make_graph ||
+unless ($dry_run || $make_graph ||
 	  $output_table ) {
   FATAL "Nothing to do!\n";
   pod2usage(2);
@@ -61,11 +65,11 @@ try {
   $logger->logdie(FATAL $_);
 };
 
-if ($make_graph) {
+if ($make_graph && !$dry_run) {
   $make_graph ne '-' ? $mm->viz($make_graph) : $mm->viz;
 }
 
-if ($output_table) {
+if ($output_table && !$dry_run) {
   $output_table ne '-' ? $mm->table($output_table) : $mm->table;
 }
 
