@@ -703,6 +703,7 @@ PropDefinitions:
     Desc: official acronym for the name of the program as it should be displayed within the UI
     Src: curated
     Type: string
+    Req: true
   program_external_url:
     Desc: external url to which users should be directed to learn more about the program
     Src: curated
