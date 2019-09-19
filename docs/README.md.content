@@ -9,6 +9,9 @@ Zoom to Node: <select id="node_select">
 </select>
 <div id="model"></div>
 
+<a href=".//model-desc/icdc-model.svg">SVG file (in view above)</a>
+
+
 # MakeModel and model-tool
 
 ## Overview
