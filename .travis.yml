@@ -36,7 +36,7 @@ script:
   # run model-tool with pre-built perl - fast
   - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl -Ilib bin/model-tool -g update-model.svg -T update-model.txt icdc-model.yml icdc-model-props.yml
   - cp icdc-model.yml icdc-model-props.yml ../docs/model-desc
-  - cp update-model.tbl ../docs/model-desc/icdc-model.txt
+  - cp update-model.txt ../docs/model-desc/icdc-model.txt
   - sed -e '/^<\?xml/,/^<!-- Tit/d' update-model.svg > ../docs/model-desc/icdc-model.svg
   - rm -f update-model.svg update-model.txt
   - pushd ../docs
