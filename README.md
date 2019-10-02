@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/CBIIT/icdc-model-tool.svg?branch=master)](https://travis-ci.org/CBIIT/icdc-model-tool)
 
+# Integrated Canine Data Commons Data Model
 
 [View model on GitHub Pages](https://cbiit.github.io/icdc-model-tool/)
 
@@ -12,8 +13,8 @@ description of an overall graph model, laid out in one or two YAML
 files, and uses these to perform various functions that enable
 tasks related to the ICDC data system.
 
-
-The command-line tool `model-tool` takes the model description files (MDF)
+The command-line tool `model-tool` (or `model-tool-d` for the Docker
+container version) takes the model description files (MDF)
 as input, and performs the following tasks:
 
 * Validates the content of the MDF for syntax and consistency
@@ -22,7 +23,28 @@ as input, and performs the following tasks:
 * _Coming Soon_: Outputs Cypher queries that can be used to create a representation
   of the model in a [Neo4j](https://neo4j.com) graph database.
 
-## Installing `model-tool`
+## Running `model-tool` with Docker
+
+To use model-tool without having to install Perl dependencies, you can
+use a pre-built Docker image. The script
+[`model-tool-d`](./make-model/bin/model-tool-d) should make this very
+simple on Linux and MacOS:
+
+* Get [Docker](https://docker.com)
+* Clone this repo
+
+        git clone https://github.com/CBIIT/icdc-model-tools.git
+
+* Do following at command line:
+
+        $ cd icdc-model-tools
+        $ export MODELTOOL_DIR=$(pwd)                                         # set MODELTOOL_DIR to absolute path to repo dir
+        $ export PATH=$PATH:$MODELTOOL_DIR/make_model/bin # put the script in your path
+        $ cd model-desc                                                                     # go to where the model description files are
+        $ model-tool-d -T icdc-model.txt icdc-model*.yml             # try creating a node/property table
+
+
+## Installing `model-tool` on your machine
 
 * MakeModel is written in Perl. If you don't have Perl,
 [get it](https://www.perl.org/get.html). On Windows, I recommend
@@ -43,15 +65,13 @@ graphic output feature.
 
   * Get the "cpanminus" tool:
 
-        curl -L https://cpanmin.us | perl - App::cpanminus     # or
-        wget -O - https://cpanmin.us | perl - App::cpanminus
+        curl -L https://cpanmin.us | perl - App::cpanminus     # or wget -O - https://cpanmin.us | perl - App::cpanminus
 
   * Run cpanm to install
 
         cpanm .
 
-    which will pull in all dependencies, run tests and install the
-    script.
+    which will pull in all dependencies, run tests and install the script.
 
 * Try it:
 
@@ -75,16 +95,6 @@ Usage:
       --dry-run : emit log msg, but no output files
 ```
 
-## Docker version of model-tool
-
-Rather than install the tool and its dependencies,
-model-tool can be run using a Docker container,
-[maj1/icdc:icdc-model-tool](https://cloud.docker.com/repository/docker/maj1/icdc/general).
-
-[model-tool-d](https://github.com/CBIIT/icdc-model-tool-docker) is a
-command-line tool that runs just like model-tool, but uses the Docker
-container above under the hood. Check it out!
-
 ## Model Description Files (MDF)
 
 The layout of nodes, relationships, node properties, and relationship
@@ -104,7 +114,7 @@ Input to `model-tool` can be a single YAML file, or multiple YAML
 files. If multiple files are given, the data structures are merged, so
 that, for example, nodes and relationships can be described in one
 file, and property definitions can be provided in a separate file.
-p
+
 Collectively, the input YAMLs are called "model description
 files" (MDF). 
 
