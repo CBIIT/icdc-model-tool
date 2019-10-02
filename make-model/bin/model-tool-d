@@ -3,7 +3,7 @@ DOCKERPERL=maj1/icdc:model-tool-perl
 DOCKER=$(which docker)
 MODELTOOL_DIR=${MODELTOOL_DIR:-.}
 [[ $MODELTOOL_DIR = ".." ]] && MODELTOOL_DIR=../. # edge case
-MODELTOOL_DIR=$(cd $(dirname $MODELTOOL_DIR) ; pwd) # absolute path
+MODELTOOL_DIR=$(cd $MODELTOOL_DIR ; pwd) # absolute path
 if [[ -d $MODELTOOL_DIR/make-model ]]
 then
     MODELTOOL_DIR=$MODELTOOL_DIR/make-model

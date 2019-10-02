@@ -38,10 +38,10 @@ simple on Linux and MacOS:
 * Do following at command line:
 
         $ cd icdc-model-tools
-        $ export MODELTOOL_DIR=$(pwd)                                         # set MODELTOOL_DIR to absolute path to repo dir
-        $ export PATH=$PATH:$MODELTOOL_DIR/make_model/bin # put the script in your path
-        $ cd model-desc                                                                     # go to where the model description files are
-        $ model-tool-d -T icdc-model.txt icdc-model*.yml             # try creating a node/property table
+        $ export MODELTOOL_DIR=$(pwd) # set MODELTOOL_DIR to absolute path to repo dir
+        $ export PATH=$PATH:$MODELTOOL_DIR/make-model/bin # put the script in your path
+        $ cd model-desc # go to where the model description files are
+        $ model-tool-d -T icdc-model.txt icdc-model*.yml # try creating a node/property table
 
 
 ## Installing `model-tool` on your machine
