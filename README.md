@@ -168,8 +168,7 @@ each relationship type. Relationship descriptions look like:
                ...
 
 A named relationship can have properties defined, analogous to
-nodes. However, the Gen3 "graph" doesn't support relationship
-properties, so specifying these will not influence the output.
+nodes. 
 
 A named relationship can be specified as required with the `Req` key,
 and its multiplicity (from source node type to destination node type)
