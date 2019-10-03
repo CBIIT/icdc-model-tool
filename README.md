@@ -241,12 +241,14 @@ the merged structure will possess all the keys and their
 contents:
 
 File 1:
+
     Nodes:
       original_node:
         Props:
 	      - old_prop
 
 File 2:
+
     Nodes:
       original_node:
         Props:
@@ -289,6 +291,7 @@ File 1:
           - a_prop
 
 File 2:
+
     Nodes:
       original_node:
         Props:
