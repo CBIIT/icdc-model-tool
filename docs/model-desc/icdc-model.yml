@@ -187,8 +187,12 @@ Nodes:
       - sample_id
       - sample_type
       # indicator as to the nature of the biomaterial - tissue, blood, urine, etc.
+      - sample_site
+      # indicator of anatomical location from which sample was acquired
       - general_sample_pathology
-      # indicator as to whether the sample is normal or tumor derived
+      # indicator as to whether the sample is normal or tumor derived - proactively include this for future use?
+      - specific_sample_pathology
+      # indicator of the specific pathology associated with a sample, e.g. squamous cell carcinoma - proactively include this for future use?
       - date_of_sample_collection
       - necropsy_sample
       - length_of_tumor
@@ -224,7 +228,7 @@ Nodes:
       - file_status
       # enumerated
       - uuid
-      - file_locations
+      - file_location
   image:
     Props: null
   physical_exam:
@@ -351,7 +355,7 @@ Relationships:
       # to accomodate Cases not maaped to any Cohrt, either due to error or by design 
       - Src: cohort
         Dst: study
-    # to accomodate a Study having Cases that should be grouped into Cohorts, but where Study Arms don't apply      
+      # to accomodate a Study having Cases that should be grouped into Cohorts, but where Study Arms don't apply      
     Props: null
   of_case:
     Mul: many_to_one
@@ -371,6 +375,12 @@ Relationships:
       - Src: sample
         Dst: case
     # to accommodate a Sample being directly associated with a Case, rather than being only indirectly associated with a Case through a Visit etc.
+      - Src: visit
+        Dst: case
+    # to accommodate situations in which a Visit cannot be unambiguously associated with a treatment Cycle
+      - Src: adverse_event
+        Dst: case
+    # required because adverse event observations are tied to date of onset rather than being tied to the date of the visit at which they were reported 
     Props: null
   of_study_arm:
     Mul: many_to_many
@@ -385,6 +395,9 @@ Relationships:
         Dst: study
       - Src: principal_investigator
         Dst: study
+      - Src: file
+        Dst: study
+        Mul: many_to_one
     Props: null
   of_agent:
     Mul: many_to_one
@@ -427,8 +440,7 @@ Relationships:
         Dst: visit
       - Src: lab_exam
         Dst: visit
-      - Src: adverse_event
-        Dst: visit
+    # removed relationship between adverse event and visit because adverse events are tied to date of onset rather than being tied to the date of the visit at which they were reported 
       - Src: disease_extent
         Dst: visit
       - Src: vital_signs
