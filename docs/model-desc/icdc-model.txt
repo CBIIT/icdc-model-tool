@@ -202,6 +202,7 @@ study	clinical_study_type
 study	date_of_iacuc_approval
 study	dates_of_conduct
 study_arm	arm
+study_arm	arm_description
 study_arm	ctep_treatment_assignment_code
 study_site	registering_institution
 study_site	site_short_name
