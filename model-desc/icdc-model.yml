@@ -397,7 +397,7 @@ Relationships:
         Dst: study
       - Src: file
         Dst: study
-        Mul: many to one
+        Mul: many_to_one
     Props: null
   of_agent:
     Mul: many_to_one
