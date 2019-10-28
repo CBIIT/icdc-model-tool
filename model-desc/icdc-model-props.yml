@@ -196,10 +196,8 @@ PropDefinitions:
     Type: string
   cohort_dose:
     Desc: intended or protocol dose
-    Type:
-      units:
-        - mg/kg
-      value_type: number
+    Type: string
+    # setting this as string so as to accommodate a lack of consistency in the way in which dosing is quoted within the COTC007B study, which will otherwise confound data loading for MVP
 # cycle props
   cycle_number:
     Src: COURSE INIT/CINIT/1
@@ -433,7 +431,7 @@ PropDefinitions:
   #   Desc:
   #   Src:
   #   Type: string
-  file_locations:
+  file_location:
     Type: string
 # follow_up props
   contact_type:
@@ -764,6 +762,8 @@ PropDefinitions:
     Type:
     - normal
     - tumor
+    - not applicable
+    # including this as an acceptable value to account for the difficulty in assigning blood samples from patients with cancer as either of the other two acceptable values
     Req: true
   length_of_tumor:
     Desc: length of the tumor from which a tumor sample was derived
@@ -796,6 +796,11 @@ PropDefinitions:
     Src: '?'
     Type: string
     Req: true
+  sample_site:
+    Desc: indicator of anatomical location from which sample was acquired # proactively include this for future use?
+    Src: '?'
+    Type:
+    - http://localhost/terms/domain/anatomical_location
   sample_type:
     Desc: indicator as to the physical nature of the biomaterial - tissue, blood, urine, etc.
     Src: '?'
@@ -803,6 +808,10 @@ PropDefinitions:
     - tissue
     - blood
     Req: true
+  specific_sample_pathology:
+     Desc: indicator of the specific pathology associated with a sample, e.g. squamous cell carcinoma # proactively include this for future use?
+     Src: '?'
+     Type: TBD #enum list of acceptable values
   total_tissue_area:
     Desc: for the NCATS study, area within the slide's analysis area represented by tissue
     Src: '?'
