@@ -31,6 +31,10 @@ PropDefinitions:
     Desc: What is?
     Src: adverse events form
     Type: TBD
+  arm_description:
+    Desc: Short description of the study arm
+    Src: ICDC
+    Type: string
   attribution_to_commercial:
     Desc: What is?
     Src: adverse events form
