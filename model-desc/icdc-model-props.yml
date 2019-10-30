@@ -55,10 +55,7 @@ PropDefinitions:
     Desc: What is?
     Src: adverse events form
     Type: TBD
-  crf_id:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
+  # crf_id also included in adverse_event (defined below)
   date_resolved:
     Src: adverse events form
     Type: datetime
@@ -87,18 +84,11 @@ PropDefinitions:
   comment:
     Desc: generic comment
     Type: string
-  crf_id:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
+  # crf_id also included in agent_administration
   date_of_missed_dose:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type: datetime
-  document_number:
-    Desc: S/N of the executed CRF
-    Src: ALL
-    Type:
-      pattern: "^R[0-9]+$\n"
+  # document_number also included in agent_administration
   dose_level:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type:
@@ -109,10 +99,7 @@ PropDefinitions:
     Deprecated: true
     Src: STUDY_MED_ADMIN/SDAD/1
     Type: string
-  medication:
-    Src: STUDY_MED_ADMIN/SDAD/1
-    Type:
-    - http://localhost/terms/domain/medication
+  # medication also included in agent_administration
   medication_actual_dose:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type:
@@ -217,10 +204,7 @@ PropDefinitions:
     Src: ENROLLMENT/ENROLL/1
     Type:
     - http://localhost/terms/domain/breed
-  crf_id:
-    Desc: globally unique ID for the specific instance of the Enrollment case report form via which the patient was enrolled into the study/trial, and which records key demographics
-    Src: ENROLLMENT/ENROLL/1
-    Type: TBD
+  # crf_id: included in demographic node, defined elsewhere
   date_of_birth:
     Src: ENROLLMENT/ENROLL/1
     Type: datetime
@@ -256,10 +240,10 @@ PropDefinitions:
     Desc: specifics of any notable secondary disease condition(s) within the patient
     Src: '?'
     Type: string
-  crf_id:
-    Desc: globally unique ID for the specific instance of the COTC Enrollment case report form via which the patient was enrolled into the study/trial, and which records key information as to diagnosis
-    Src: ENROLLMENT/ENROLL/1
-    Type: TBD
+  # crf_id: also included in diagnosis node, defined elsewhere in this document
+  #   Desc: globally unique ID for the specific instance of the COTC Enrollment case report form via which the patient was enrolled into the study/trial, and which records key information as to diagnosis
+  #   Src: ENROLLMENT/ENROLL/1
+  #   Type: TBD
   date_of_diagnosis:
     Src: ENROLLMENT/ENROLL/1
     Type: datetime
@@ -299,10 +283,7 @@ PropDefinitions:
     Src: '?'
     Type: boolean
 # disease_extent props
-  crf_id:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
+  # crf_id: also included in disease_extent node, defined elsewhere in this document
   date_of_evaluation:
     Desc: inferred from evaluation inputs (e.g.,PE)
     Type: datetime
@@ -351,10 +332,10 @@ PropDefinitions:
     Src: '?'
     Type: TBD
 # enrollment props
-  cohort_description:
-    Desc: essentially, the name of the agent under test and the dose at which it is being used
-    Src: ENROLLMENT/ENROLL/1
-    Type: string
+  # cohort_description: also included in enrollment node, defined elsewhere in this document
+  #   Desc: essentially, the name of the agent under test and the dose at which it is being used
+  #   Src: ENROLLMENT/ENROLL/1
+  #   Type: string
   date_of_informed_consent:
     Src: ENROLLMENT/ENROLL/1
     Type: datetime
@@ -372,17 +353,17 @@ PropDefinitions:
     Desc: short description as to the reason for the patient being enrolled in the study/trial
     Src: ENROLLMENT/ENROLL/1
     Type: string
-  registering_institution:
-    Src: ENROLLMENT/ENROLL/1
-    Type: string
-  site_short_name:
-    Desc: widely accepted acronym for the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
-    Src: ENROLLMENT/ENROLL/1
-    Type: string
-  veterinary_medical_center:
-    Desc: full name of the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
-    Src: ENROLLMENT/ENROLL/1
-    Type: string
+  # registering_institution: also included in enrollment node, defined elsewhere
+  #   Src: ENROLLMENT/ENROLL/1
+  #   Type: string
+  # site_short_name: also included in enrollment node, defined elsewhere
+  #   Desc: widely accepted acronym for the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
+  #   Src: ENROLLMENT/ENROLL/1
+  #   Type: string
+  # veterinary_medical_center: also included in enrollment node, defined elsewhere
+  #   Desc: full name of the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
+  #   Src: ENROLLMENT/ENROLL/1
+  #   Type: string
 # removed residual evaluation props from here
 # file props
   file_name:
@@ -442,18 +423,15 @@ PropDefinitions:
     Desc: need vocab
     Src: FOLLOW_UP/FLWU/1
     Type: string
-  crf_id:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
+  # crf_id: also included in follow_up node, defined elsewhere in this document
   date_of_last_contact:
     Src: FOLLOW_UP/FLWU/1
     Type: datetime
-  document_number:
-    Desc: S/N of the executed CRF
-    Src: ALL
-    Type:
-      pattern: "^R[0-9]+$\n"
+  # document_number: also included in follow_up node, defined elsewhere in this document
+  #  Desc: S/N of the executed CRF
+  #  Src: ALL
+  #  Type:
+  #    pattern: "^R[0-9]+$\n"
   explain_unknown_status:
     Desc: free text?
     Src: FOLLOW_UP/FLWU/1
@@ -474,7 +452,8 @@ PropDefinitions:
     Desc: y/n
     Src: FOLLOW_UP/FLWU/1
     Type: boolean
-# off_study props
+# off_study props and
+# off_treatment props
   best_resp_vet_tx_tp_best_response:
     Src: OFF_STUDY/OSSM/1
     Type: TBD
@@ -496,38 +475,14 @@ PropDefinitions:
   date_off_treatment:
     Src: OFF_STUDY/OSSM/1
     Type: datetime
-  document_number:
-    Desc: S/N of the executed CRF
-    Src: ALL
-    Type:
-      pattern: "^R[0-9]+$\n"
+  # document_number: also included in off_study node, defined elsewhere in this document
+  #   Desc: S/N of the executed CRF
+  #   Src: ALL
+  #   Type:
+  #     pattern: "^R[0-9]+$\n"
   reason_off_study:
     Src: OFF_STUDY/OSSM/1
     Type: string
-# off_treatment props
-  best_resp_vet_tx_tp_best_response:
-    Src: OFF_STUDY/OSSM/1
-    Type: TBD
-  best_resp_vet_tx_tp_secondary_response:
-    Src: OFF_STUDY/OSSM/1
-    Type: TBD
-  date_last_medication_administration:
-    Src: OFF_STUDY/OSSM/1
-    Type: datetime
-  date_of_best_response:
-    Src: OFF_STUDY/OSSM/1
-    Type: datetime
-  date_of_disease_progression:
-    Src: OFF_STUDY/OSSM/1
-    Type: datetime
-  date_off_treatment:
-    Src: OFF_STUDY/OSSM/1
-    Type: datetime
-  document_number:
-    Desc: S/N of the executed CRF
-    Src: ALL
-    Type:
-      pattern: "^R[0-9]+$\n"
   reason_off_treatment:
     Src: OFF_STUDY/OSSM/1
     Type: string
@@ -551,16 +506,11 @@ PropDefinitions:
     - Genitourinary
     - Neurologic
     - Other
-  crf_id:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
+  # crf_id: also included in physical_exam node, defined elsewhere in this document
   date_of_examination:
     Src: PHYSICAL_EXAM/PE/1
     Type: datetime
-  day_in_cycle:
-    Src: adverse events form
-    Type: integer
+  # day_in_cycle: also included in physical_exam node, defined elsewhere in this document
   pe_comment:
     Src: PHYSICAL_EXAM/PE/1
     Type: string
@@ -591,10 +541,7 @@ PropDefinitions:
     Src: PRIOR_SURG_SUPP/PSRG/1
     Type:
     - https://localhost/term/domain/anatomical_site
-  crf_id:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
+  # crf_id: also included in prior_surgery node, defined elsewhere in this document
   date_of_surgery:
     Src: PRIOR_SURG_SUPP/PSRG/1
     Type: datetime
@@ -753,9 +700,9 @@ PropDefinitions:
     Desc: for the NCATS study, percentage of the analysis area represnted by tumor tissue
     Src: '?'
     Type: number
-  comment:
-    Desc: generic comment concerning the preparation and/or annotation of the sample
-    Type: string
+  # comment: also included in sample node, defined elsewhere
+  #  Desc: generic comment concerning the preparation and/or annotation of the sample
+  #  Type: string
   date_of_sample_collection:
     Desc: '?'
     Src: '?'
@@ -883,10 +830,11 @@ PropDefinitions:
     Src: ENROLLMENT/ENROLL/1
     Type: string
   site_short_name:
-    Desc: "'site' on form\n"
+    Desc: widely accepted acronym for the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
     Src: ENROLLMENT/ENROLL/1
     Type: string
   veterinary_medical_center:
+    Desc: full name of the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
     Src: ENROLLMENT/ENROLL/1
     Type: string
 # visit props
@@ -899,9 +847,9 @@ PropDefinitions:
     Src: '?'
     Type: TBD
 # vital_signs props
-  assessment_timepoint:
-    Src: PHYSICAL_EXAM/PE/1
-    Type: integer
+  # assessment_timepoint: also included in vital_signs node, defined elsewhere
+  #   Src: PHYSICAL_EXAM/PE/1
+  #   Type: integer
   body_surface_area:
     Desc: Called "bsa" in form
     Src: PHYSICAL_EXAM/PE/1
@@ -916,10 +864,7 @@ PropDefinitions:
       - degrees F
       - degrees C
       value_type: number
-  crf_id:
-    Desc: '?'
-    Src: '?'
-    Type: TBD
+  # crf_id: also included in physical_exam node, defined elsewhere
   date_of_vital_signs:
     Desc: actually visit date
     Src: PHYSICAL_EXAM/PE/1
@@ -937,10 +882,10 @@ PropDefinitions:
       units: 
         - kg
       value_type: number
-  phase:
-    Desc: Where should this live?/What is?
-    Src: COURSE INIT/CINIT/1
-    Type: TBD
+  # phase:
+  #   Desc: Where should this live?/What is?
+  #   Src: COURSE INIT/CINIT/1
+  #   Type: TBD
   pulse:
     Src: PHYSICAL_EXAM/PE/1
     Type:
