@@ -8,11 +8,15 @@ if len(sys.argv) > 1:
   
 v = MDFValidator(*test_me)
 
+def test_yaml_valid():
+  assert v.yaml_validate() == None
+  
 def test_model_valid():
-  assert v.validate() == None
+  assert v.schema_validate() == None
 
 
 if __name__ == '__main__':
-   v.validate()
+  v.yaml_validate()
+  v.schema_validate()
 
 
