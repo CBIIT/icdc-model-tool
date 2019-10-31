@@ -27,10 +27,6 @@ properties:
       $ref: "#/defs/snake_case_id"
     additionalProperties:
       $ref: "#/defs/propSpec"
-  NativeSchemaIncludes:
-    type: array
-    items:
-      $ref: "#/defs/fileNameId"
   Tags:
     $ref: "#/defs/tagsSpec"
 required:
