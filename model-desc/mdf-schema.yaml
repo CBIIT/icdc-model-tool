@@ -27,6 +27,40 @@ properties:
       $ref: "#/defs/snake_case_id"
     additionalProperties:
       $ref: "#/defs/propSpec"
+  UniversalNodeProperties:
+    type: object
+    properties:
+      mustHave:
+        desc: |
+          items are names of properties that every node *must* have;
+          properties are defined in PropDefinitions
+        type: array
+        items:
+          $ref: "#/defs/snake_case_id"
+      mayHave:
+        desc: |
+          items are names of properties that every node *must* have;
+          properties are defined in PropDefinitions
+        type: array
+        items:
+          $ref: "#/defs/snake_case_id"
+  UniversalRelationshipProperties:
+    type: object
+    properties:
+      mustHave:
+        desc: |
+          items are names of properties that every relationship *must* have;
+          properties are defined in PropDefinitions      
+        type: array
+        items:
+          $ref: "#/defs/snake_case_id"
+      mayHave:
+        desc: |
+          items are names of properties that every relationship *may* have;
+          properties are defined in PropDefinitions      
+        type: array
+        items:
+          $ref: "#/defs/snake_case_id"
   Tags:
     $ref: "#/defs/tagsSpec"
 required:

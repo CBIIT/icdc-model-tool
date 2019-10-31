@@ -211,6 +211,24 @@ is not used in any output; it is essentially a comment.
 Where properties need to be applied to Nodes and Relationships, use a
 list of propnames from those defined in PropDefinitions.
 
+### Universal Properties
+
+In some use cases, it is desirable for every node (or relationship) to
+possess a certain property or set of properties. For example, every
+node may be expected to have a unique ID, regardless of its type.
+
+The `UniversalNodeProperties` and `UniversalRelationshipProperties`
+top-level keys provide a means to specify these properties. The subkey
+`mustHave` should contain an array of property names for required
+universal properties. The subkey `mayHave` can contain an array of
+property names that are univerally allowable for all nodes or relationships.
+
+    UniversalNodeProperties:
+      mustHave:
+        - id
+      mayHave:
+        - transaction_id
+
 ### Multiple input YAML files and "overlays"
 
 `model-tool` allows multiple input YAML files. The structured
