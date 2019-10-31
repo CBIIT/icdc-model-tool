@@ -496,7 +496,3 @@ Relationships:
       - Src: adverse_event
         Dst: adverse_event
     Props: null
-NativeSchemaIncludes:
-  - _definitions.yaml
-  - _terms.yaml
-
