@@ -47,8 +47,12 @@ class MDFValidator:
       raise
     try:
       self.schema = yaml.load(sch_file, Loader=self.yloader)
-    except RuntimeError:
-      print "YAML error in '{fn}':\n{e}".format(fn=sch_filename,e=e)
+    except ConstructorError as ce:
+      print "YAML error in '{fn}':\n{e}".format(fn=self.sch_filename,e=ce)
+      return ce
+    except ParserError as e:
+      print "YAML error in '{fn}':\n{e}".format(fn=self.sch_filename,e=e)
+      return e
     except Exception:
       raise
 
