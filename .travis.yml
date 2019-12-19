@@ -12,7 +12,7 @@ python:
   - '2.7'
 branches:
   only:
-    - master
+    - bento-refac
 before_install:
   - docker pull maj1/icdc:model-tool-perl
   - sudo apt-get install sed
@@ -21,7 +21,7 @@ install:
   - pip install -r bento-mdf/validators/mdf-validate/reqs.txt
 script:
   - pushd model-desc
-  - cp -aR ../bento-mdf/validators/mdf-validate/MDFValidate .
+  - cp -aR ../bento-mdf/validators/mdf-validate/MDFValidate MDFValidate
   - pytest
   - cp -aR ../bento-mdf/drivers/Perl/make-model/lib lib
   - cp -aR ../bento-mdf/drivers/Perl/make-model/bin bin
@@ -39,15 +39,15 @@ script:
   - popd
   - rm -rf lib bin
   - rm -rf __pycache__
-  - rm MDFValidate/*.pyc
+  - rm -rf MDFValidate/
 
   
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  target_branch: master
+  github_token: $BENTO_TOKEN
+  target_branch: bento-refac
   keep_history: true
   verbose: true
   on:
-    branch: master
+    branch: bento-refac
