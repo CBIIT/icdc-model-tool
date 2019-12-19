@@ -21,6 +21,7 @@ install:
   - pip install -r bento-mdf/validators/mdf-validate/reqs.txt
 script:
   - pushd model-desc
+  - cp ../bento-mdf/schema/mdf-schema.yaml .
   - cp -aR ../bento-mdf/validators/mdf-validate/MDFValidate MDFValidate
   - pytest
   - cp -aR ../bento-mdf/drivers/Perl/make-model/lib lib
