@@ -12,7 +12,7 @@ python:
   - '2.7'
 branches:
   only:
-    - bento-refac
+    - master
 before_install:
   - docker pull maj1/icdc:model-tool-perl
   - sudo apt-get install sed
@@ -46,9 +46,9 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $BENTO_TOKEN
-  target_branch: bento-refac
+  github_token: $GITHUB_TOKEN
+  target_branch: master
   keep_history: true
   verbose: true
   on:
-    branch: bento-refac
+    branch: master
