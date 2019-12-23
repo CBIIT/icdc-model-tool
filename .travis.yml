@@ -12,27 +12,20 @@ python:
   - '2.7'
 branches:
   only:
-    - master
+    - bento-refac
 before_install:
   - docker pull maj1/icdc:model-tool-perl
   - sudo apt-get install sed
   #
 install:
-  - pip install -r model-desc/reqs.txt
-  - pushd make-model
-  # long build...
-  # - perl Build.PL
-  # - yes | ./Build installdeps --cpan_client cpanm
-  # - "./Build test --verbose"
-  # - ls -lR .
-  # - "./Build install"
-  # - "./Build realclean"
+  - pip install -r bento-mdf/validators/mdf-validate/reqs.txt
 script:
-  - popd
   - pushd model-desc
+  - cp ../bento-mdf/schema/mdf-schema.yaml .
+  - cp -aR ../bento-mdf/validators/mdf-validate/MDFValidate MDFValidate
   - pytest
-  - cp -aR ../make-model/lib lib
-  - cp -aR ../make-model/bin bin
+  - cp -aR ../bento-mdf/drivers/Perl/make-model/lib lib
+  - cp -aR ../bento-mdf/drivers/Perl/make-model/bin bin
   # run model-tool with pre-built perl - fast
   - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl -Ilib bin/model-tool -g update-model.svg -T update-model.txt icdc-model.yml icdc-model-props.yml
   - cp icdc-model.yml icdc-model-props.yml ../docs/model-desc
@@ -47,15 +40,15 @@ script:
   - popd
   - rm -rf lib bin
   - rm -rf __pycache__
-  - rm MDFValidate/*.pyc
+  - rm -rf MDFValidate/
 
   
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  target_branch: master
+  github_token: $BENTO_TOKEN
+  target_branch: bento-refac
   keep_history: true
   verbose: true
   on:
-    branch: master
+    branch: bento-refac

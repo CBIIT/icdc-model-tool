@@ -1,5 +1,5 @@
 $schema: http://json-schema.org/draft-06/schema#
-$id: http://cbiit.github.io/icdc-model-tool/model-desc/mdf-schema.yaml
+$id: http://cbiit.github./bento-mdf/schema/mdf-schema.yaml
 
 
 # "uniqueItems" : true - to insure an array is unique

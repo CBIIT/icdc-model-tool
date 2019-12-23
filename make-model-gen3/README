@@ -1,5 +1,0 @@
-ICDC::MakeModel - Create Gen3-style node schemas from a convenient model description
-To install:
- $ cd <directory with Build.PL in it>
- $ cpanm .
- 
