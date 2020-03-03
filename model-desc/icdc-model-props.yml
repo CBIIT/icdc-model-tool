@@ -221,7 +221,7 @@ PropDefinitions:
       - Y
       - N
       - U
-    Req: "true"
+    Req: true
   patient_age_at_enrollment:
     Src: ENROLLMENT/ENROLL/1
     Type:
@@ -234,7 +234,7 @@ PropDefinitions:
       - M
       - F
       - U
-    Req: "true"
+    Req: true
   weight:
     Desc: |
       the subject's weight at the time the subject was enrolled and/or
@@ -244,7 +244,7 @@ PropDefinitions:
       units:
         - kg
       value_type: number
-    Req: "false"
+    Req: false
   # diagnosis props
   concurrent_disease:
     Desc: Boolean indicator as to whether the patient is has any significant
