@@ -58,9 +58,6 @@ Nodes:
   case:
     Props:
       - case_id
-      # globally unique ID by which the system can unambiguously identify and display a specific patient even across studies/trials.
-      # likely to be a concatenation of a study identifier and patient_id below
-      # to be provided by the data submitter, generated during data transformation as necessary
       - patient_id
       - patient_first_name
       - crf_id
@@ -72,7 +69,6 @@ Nodes:
       - date_of_birth
       - sex
       - weight
-      # indicates the subject's weight at the time the subject was enrolled and/or biospecimens were acquired, at least in the case of studies that are not longitudinal in nature
       - neutered_indicator
       - crf_id
   cycle:
@@ -186,32 +182,28 @@ Nodes:
     Category: biospecimen
     Props: 
       - sample_id
-      - sample_type
-      # indicator as to the nature of the biomaterial - tissue, blood, urine, etc.
       - sample_site
-      # indicator of anatomical location from which sample was acquired
+      - sample_type
       - general_sample_pathology
-      # indicator as to whether the sample is normal or tumor derived - proactively include this for future use?
+      - tumor_sample_origin
+      - summarized_sample_type # value is generated during data transformation based upon the combination of the preceding three properties
       - specific_sample_pathology
-      # indicator of the specific pathology associated with a sample, e.g. squamous cell carcinoma - proactively include this for future use?
       - date_of_sample_collection
       - necropsy_sample
+      - tumor_grade
       - length_of_tumor
-      # length of the tumor from which the sample in question was derived
       - width_of_tumor
-      # width of the tumor from which the sample in question was derived
       - analysis_area
-      # total area of the slide region that was analyzed in mm2
       - analysis_area_percentage_tumor
       - analysis_area_percentage_stroma
       - analysis_area_percentage_glass
       - analysis_area_percentage_pigmented_tumor
       - total_tissue_area
-      # total area within the slide region analyzed that was represented by tissue
       - tumor_tissue_area
       - non_tumor_tissue_area
       - percentage_tumor
       - percentage_stroma
+      - sample_preservation
       - comment
   assay:
     Props: null
@@ -220,14 +212,11 @@ Nodes:
     Props:
       - file_name
       - file_type
-      # what is the nature of the file's content
       - file_description
       - file_format
-      # in what format is the file? pdf vs. png vs. doc, etc.
       - file_size
       - md5sum
       - file_status
-      # enumerated
       - uuid
       - file_location
   image:
