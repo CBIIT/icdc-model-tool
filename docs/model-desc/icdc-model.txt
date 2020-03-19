@@ -188,10 +188,14 @@ sample	non_tumor_tissue_area
 sample	percentage_stroma
 sample	percentage_tumor
 sample	sample_id
+sample	sample_preservation
 sample	sample_site
 sample	sample_type
 sample	specific_sample_pathology
+sample	summarized_sample_type
 sample	total_tissue_area
+sample	tumor_grade
+sample	tumor_sample_origin
 sample	tumor_tissue_area
 sample	width_of_tumor
 study	clinical_study_description
