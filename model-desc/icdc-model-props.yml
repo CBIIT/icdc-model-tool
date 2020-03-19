@@ -397,7 +397,7 @@ PropDefinitions:
       - Pathology Report
       - Image File
       - Sequence File
-      # these just temprary working examples
+      # these just temporary working examples
     Req: true
   file_description:
     Desc: optional description of the file and/or its content, e.g. amended versus
@@ -734,17 +734,17 @@ PropDefinitions:
   #  Type: string
   date_of_sample_collection:
     Desc: '?'
-    Src: '?'
     Type: datetime
   general_sample_pathology:
-    Desc: indicator as to whether the sample represents normal tissue or was derived
+    Desc: indicator as to whether a sample represents normal tissue versus having been derived
       from diseased or tumor tissue
-    Src: '?'
     Type:
-      - normal
-      - tumor
-      - not applicable
-      # including this as an acceptable value to account for the difficulty in assigning blood samples from patients with cancer as either of the other two acceptable values
+      - Normal
+      - Malignant
+      - Benign
+      - Hyperplastic
+      - Diseased
+      - Not Applicable # included to accommodate the inevitable ambiguity in assigning a general sample pathology to certain sample types, e.g. blood
     Req: true
   length_of_tumor:
     Desc: length of the tumor from which a tumor sample was derived
@@ -754,10 +754,13 @@ PropDefinitions:
         - mm
       value_type: number
   necropsy_sample:
-    Desc: indicator as to whether the sample was acquired as a result of a necropsy
+    Desc: Indicator as to whether a sample was acquired as a result of a necropsy
       examination
-    Src: '?'
-    Type: boolean
+    Type:
+      - Y
+      - N
+      - U
+    Req: true
   non_tumor_tissue_area:
     Desc: for the NCATS study, area within analyzed tissue area represented by
       non-tumor tissue
@@ -775,30 +778,36 @@ PropDefinitions:
     Src: '?'
     Type: number
   sample_id:
-    Desc: globally unqiue ID for the sample, more than likely generated from values
-      within the raw data, concatenated together to ensure global uniqueness
-    Src: '?'
+    Desc: globally unqiue ID for a sample, generated from values
+      within the raw data concatenated together to ensure global uniqueness
     Type: string
     Req: true
+  sample_preservation:
+    Desc: the method by which a sample was preserved
+    Type:
+      - FFPE
+      - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
+    Req: true
   sample_site:
-    Desc: indicator of anatomical location from which sample was acquired # proactively include this for future use?
-    Src: '?'
-    Type:
-      - http://localhost/terms/domain/anatomical_location
+    Desc: the anatomical location from which a sample was acquired
+    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
+      #- http://localhost/terms/domain/anatomical_location
   sample_type:
-    Desc: indicator as to the physical nature of the biomaterial - tissue, blood,
+    Desc: indicator as to the physical nature of a sample - tissue, blood,
       urine, etc.
-    Src: '?'
     Type:
-      - tissue
-      - blood
+      - Tissue
+      - Blood # list of acceptable values will gradually be expanded as data submission requirements solidify
     Req: true
   specific_sample_pathology:
-    Desc: # proactively include this for future use?
-      indicator of the specific pathology associated with a sample, e.g.
+    Desc: indicator of the specific pathology associated with a sample, e.g.
       squamous cell carcinoma
-    Src: '?'
-    Type: TBD #enum list of acceptable values
+    Type: string # will be superseded by an enumerated list of acceptable valuesas as data submission requirements solidify
+    Req: true
+  summarized_sample_type:
+    Desc: summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in three independent properties
+    Type: string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
+    Req: false
   total_tissue_area:
     Desc: for the NCATS study, area within the slide's analysis area represented by
       tissue
@@ -807,6 +816,18 @@ PropDefinitions:
       units:
         - mm2
       value_type: number
+  tumor_grade:
+    Desc: grade of the tumor from which a sample was acquired as determined by the evaluation of a pathologist
+    Type: string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
+    Req: false
+  tumor_sample_origin:
+    Desc: indicator as to whether a tumor sample was derived from a primary versus a metastatic tumor
+    Type:
+      - Primary
+      - Metastatic
+      - Not Applicable # included to accommodate samples not derived from tumors
+      - Unknown # included to accommodate the almost inevitable case where the origin of tumor samples is not certain
+    Req: true
   tumor_tissue_area:
     Desc: for the NCATS study, area within analyzed tissue area represented by tumor
       tissue
