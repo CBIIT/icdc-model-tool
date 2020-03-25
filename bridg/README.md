@@ -1,7 +1,7 @@
 # ICDC Model Mapping to [BRIDG](https://bridgmodel.nci.nih.gov/)
 
 The [ICDC graph model](../model-desc) -- nodes, relationships, and properties -- has
-been mapped manually to the standardized conceptual model called [BRIDG](https://bridgmodel.nci.nih.gov/) by Wendy Verhoeff. The detailed mapping is found in [this Excel spreadsheet]("./ICDC Cross-Mapping of Data Sources and Standards - 20200110.xlsx").
+been mapped manually to the standardized conceptual model called [BRIDG](https://bridgmodel.nci.nih.gov/) by Wendy Verhoeff. The detailed mapping is found in [this Excel spreadsheet](./ICDC%20Cross-Mapping%20of%20Data%20Sources%20and%20Standards%20-%2020200110.xlsx).
 
 ## Graphics
 
