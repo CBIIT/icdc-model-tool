@@ -26,10 +26,15 @@ script:
   - cp -aR ../bento-mdf/drivers/Perl/make-model/bin bin
   # run model-tool with pre-built perl - fast
   - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl -Ilib bin/model-tool -g update-model.svg -T update-model.txt icdc-model.yml icdc-model-props.yml
+  - echo repo $(git remote -v show) > update-info.txt
+  - echo commit $(git log -1 --pretty=format:"%h") >> update-info.txt
+  - cat update-info.txt
+  - cat update-info.txt update-model.txt > x.txt
+  - mv x.txt update-model.txt
   - cp icdc-model.yml icdc-model-props.yml ../docs/model-desc
   - cp update-model.txt ../docs/model-desc/icdc-model.txt
   - sed -e '1,6d' update-model.svg > ../docs/model-desc/icdc-model.svg
-  - rm -f update-model.svg update-model.txt
+  - rm -f update-model.svg update-info.txt update-model.txt
   - pushd ../docs
   - cat ./README.md.content > ./README.md
   - echo "<div id='graph' style='display:off;'>" >> ./README.md
