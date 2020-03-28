@@ -1,229 +1,325 @@
-adverse_event	adverse_event_description
-adverse_event	adverse_event_grade
-adverse_event	adverse_event_grade_description
-adverse_event	adverse_event_term
-adverse_event	ae_agent_name
-adverse_event	ae_dose
-adverse_event	ae_other
-adverse_event	attribution_to_commercial
-adverse_event	attribution_to_disease
-adverse_event	attribution_to_ind
-adverse_event	attribution_to_other
-adverse_event	attribution_to_research
-adverse_event	crf_id
-adverse_event	date_resolved
-adverse_event	day_in_cycle
-adverse_event	dose_limiting_toxicity
-adverse_event	unexpected_adverse_event
-agent	document_number
-agent	medication
-agent_administration	comment
-agent_administration	crf_id
-agent_administration	date_of_missed_dose
-agent_administration	document_number
-agent_administration	dose_level
-agent_administration	dose_units_of_measure
-agent_administration	medication
-agent_administration	medication_actual_dose
-agent_administration	medication_actual_units_of_measure
-agent_administration	medication_course_number
-agent_administration	medication_duration
-agent_administration	medication_lot_number
-agent_administration	medication_missed_dose
-agent_administration	medication_units_of_measure
-agent_administration	medication_vial_id
-agent_administration	missed_dose_amount
-agent_administration	missed_dose_units_of_measure
-agent_administration	phase
-agent_administration	route_of_administration
-agent_administration	start_time
-agent_administration	stop_time
-case	case_id
-case	crf_id
-case	patient_first_name
-case	patient_id
-cohort	cohort_description
-cohort	cohort_dose
-cycle	cycle_number
-cycle	date_of_cycle_end
-cycle	date_of_cycle_start
-demographic	breed
-demographic	crf_id
-demographic	date_of_birth
-demographic	neutered_indicator
-demographic	patient_age_at_enrollment
-demographic	sex
-demographic	weight
-diagnosis	concurrent_disease
-diagnosis	concurrent_disease_type
-diagnosis	crf_id
-diagnosis	date_of_diagnosis
-diagnosis	date_of_histology_confirmation
-diagnosis	disease_term
-diagnosis	follow_up_data
-diagnosis	histological_grade
-diagnosis	histology_cytopathology
-diagnosis	pathology_report
-diagnosis	primary_disease_site
-diagnosis	stage_of_disease
-diagnosis	treatment_data
-disease_extent	crf_id
-disease_extent	date_of_evaluation
-disease_extent	evaluation_code
-disease_extent	evaluation_number
-disease_extent	lesion_description
-disease_extent	lesion_number
-disease_extent	lesion_site
-disease_extent	longest_measurement
-disease_extent	measurable_lesion
-disease_extent	measured_how
-disease_extent	previously_irradiated
-disease_extent	previously_treated
-disease_extent	target_lesion
-enrollment	cohort_description
-enrollment	date_of_informed_consent
-enrollment	date_of_registration
-enrollment	enrollment_document_number
-enrollment	initials
-enrollment	patient_subgroup
-enrollment	registering_institution
-enrollment	site_short_name
-enrollment	veterinary_medical_center
-file	file_description
-file	file_format
-file	file_location
-file	file_name
-file	file_size
-file	file_status
-file	file_type
-file	md5sum
-file	uuid
-follow_up	contact_type
-follow_up	crf_id
-follow_up	date_of_last_contact
-follow_up	document_number
-follow_up	explain_unknown_status
-follow_up	patient_status
-follow_up	physical_exam_changes
-follow_up	physical_exam_performed
-follow_up	treatment_since_last_contact
-off_study	best_resp_vet_tx_tp_best_response
-off_study	best_resp_vet_tx_tp_secondary_response
-off_study	date_last_medication_administration
-off_study	date_of_best_response
-off_study	date_of_disease_progression
-off_study	date_off_study
-off_study	date_off_treatment
-off_study	document_number
-off_study	reason_off_study
-off_treatment	best_resp_vet_tx_tp_best_response
-off_treatment	best_resp_vet_tx_tp_secondary_response
-off_treatment	date_last_medication_administration
-off_treatment	date_of_best_response
-off_treatment	date_of_disease_progression
-off_treatment	date_off_treatment
-off_treatment	document_number
-off_treatment	reason_off_treatment
-physical_exam	assessment_timepoint
-physical_exam	body_system
-physical_exam	crf_id
-physical_exam	date_of_examination
-physical_exam	day_in_cycle
-physical_exam	pe_comment
-physical_exam	pe_finding
-physical_exam	phase_pe
-principal_investigator	pi_first_name
-principal_investigator	pi_last_name
-principal_investigator	pi_middle_initial
-prior_surgery	anatomical_site_of_surgery
-prior_surgery	crf_id
-prior_surgery	date_of_surgery
-prior_surgery	procedure
-prior_surgery	residual_disease
-prior_surgery	surgical_finding
-prior_surgery	therapeutic_indicator
-prior_therapy	agent_name
-prior_therapy	agent_units_of_measure
-prior_therapy	any_therapy
-prior_therapy	best_response
-prior_therapy	date_of_first_dose
-prior_therapy	date_of_last_dose
-prior_therapy	date_of_last_dose_any_therapy
-prior_therapy	date_of_last_dose_nsaid
-prior_therapy	date_of_last_dose_steroid
-prior_therapy	dose_schedule
-prior_therapy	min_rsdl_dz_tx_ind_nsaids_treatment_pe
-prior_therapy	nonresponse_therapy_type
-prior_therapy	number_of_prior_regimens_any_therapy
-prior_therapy	number_of_prior_regimens_nsaid
-prior_therapy	number_of_prior_regimens_steroid
-prior_therapy	prior_nsaid_exposure
-prior_therapy	prior_steroid_exposure
-prior_therapy	prior_therapy_type
-prior_therapy	therapy_type
-prior_therapy	total_dose
-prior_therapy	total_number_of_doses_any_therapy
-prior_therapy	total_number_of_doses_nsaid
-prior_therapy	total_number_of_doses_steroid
-prior_therapy	treatment_performed_at_site
-prior_therapy	treatment_performed_in_minimal_residual
-prior_therapy	tx_loc_geo_loc_ind_nsaid
-program	program_acronym
-program	program_external_url
-program	program_full_description
-program	program_name
-program	program_short_description
-program	program_sort_order
-sample	analysis_area
-sample	analysis_area_percentage_glass
-sample	analysis_area_percentage_pigmented_tumor
-sample	analysis_area_percentage_stroma
-sample	analysis_area_percentage_tumor
-sample	comment
-sample	date_of_sample_collection
-sample	general_sample_pathology
-sample	length_of_tumor
-sample	necropsy_sample
-sample	non_tumor_tissue_area
-sample	percentage_stroma
-sample	percentage_tumor
-sample	sample_id
-sample	sample_preservation
-sample	sample_site
-sample	sample_type
-sample	specific_sample_pathology
-sample	summarized_sample_type
-sample	total_tissue_area
-sample	tumor_grade
-sample	tumor_sample_origin
-sample	tumor_tissue_area
-sample	width_of_tumor
-study	clinical_study_description
-study	clinical_study_designation
-study	clinical_study_id
-study	clinical_study_name
-study	clinical_study_type
-study	date_of_iacuc_approval
-study	dates_of_conduct
-study_arm	arm
-study_arm	arm_description
-study_arm	ctep_treatment_assignment_code
-study_site	registering_institution
-study_site	site_short_name
-study_site	veterinary_medical_center
-visit	visit_date
-visit	visit_number
-vital_signs	assessment_timepoint
-vital_signs	body_surface_area
-vital_signs	body_temperature
-vital_signs	crf_id
-vital_signs	date_of_vital_signs
-vital_signs	ecg
-vital_signs	modified_ecog
-vital_signs	patient_weight
-vital_signs	phase
-vital_signs	pulse
-vital_signs	pulse_ox
-vital_signs	respiration_pattern
-vital_signs	respiration_rate
-vital_signs	systolic_bp
+node	property	value_or_TYPE
+adverse_event	adverse_event_description	STRING
+adverse_event	adverse_event_grade	STRING
+adverse_event	adverse_event_grade_description	STRING
+adverse_event	adverse_event_term	EXTERNAL
+adverse_event	ae_agent_name	EXTERNAL
+adverse_event	ae_dose	NUMBER (mg/kg)
+adverse_event	ae_other	TBD
+adverse_event	attribution_to_commercial	TBD
+adverse_event	attribution_to_disease	TBD
+adverse_event	attribution_to_ind	TBD
+adverse_event	attribution_to_other	TBD
+adverse_event	attribution_to_research	TBD
+adverse_event	crf_id	TBD
+adverse_event	date_resolved	DATETIME
+adverse_event	day_in_cycle	INTEGER
+adverse_event	dose_limiting_toxicity	TBD
+adverse_event	unexpected_adverse_event	TBD
+agent	document_number	REGEXP /^R[0-9]+$/
+agent	medication	EXTERNAL
+agent_administration	comment	STRING
+agent_administration	crf_id	TBD
+agent_administration	date_of_missed_dose	DATETIME
+agent_administration	document_number	REGEXP /^R[0-9]+$/
+agent_administration	dose_level	NUMBER (mg/kg)
+agent_administration	dose_units_of_measure	STRING
+agent_administration	medication	EXTERNAL
+agent_administration	medication_actual_dose	NUMBER (mg/kg)
+agent_administration	medication_actual_units_of_measure	STRING
+agent_administration	medication_course_number	STRING
+agent_administration	medication_duration	NUMBER (days)
+agent_administration	medication_duration	NUMBER (hr)
+agent_administration	medication_duration	NUMBER (min)
+agent_administration	medication_lot_number	STRING
+agent_administration	medication_missed_dose	EXTERNAL
+agent_administration	medication_units_of_measure	STRING
+agent_administration	medication_vial_id	STRING
+agent_administration	missed_dose_amount	NUMBER (mg/kg)
+agent_administration	missed_dose_units_of_measure	STRING
+agent_administration	phase	TBD
+agent_administration	route_of_administration	EXTERNAL
+agent_administration	start_time	DATETIME
+agent_administration	stop_time	DATETIME
+assay	NA	NA
+case	case_id	STRING
+case	crf_id	TBD
+case	patient_first_name	STRING
+case	patient_id	STRING
+cohort	cohort_description	STRING
+cohort	cohort_dose	STRING
+cycle	cycle_number	INTEGER
+cycle	date_of_cycle_end	DATETIME
+cycle	date_of_cycle_start	DATETIME
+demographic	breed	EXTERNAL
+demographic	crf_id	TBD
+demographic	date_of_birth	DATETIME
+demographic	neutered_indicator	N
+demographic	neutered_indicator	U
+demographic	neutered_indicator	Y
+demographic	patient_age_at_enrollment	NUMBER (years)
+demographic	sex	F
+demographic	sex	M
+demographic	sex	U
+demographic	weight	NUMBER (kg)
+diagnosis	concurrent_disease	BOOLEAN
+diagnosis	concurrent_disease_type	STRING
+diagnosis	crf_id	TBD
+diagnosis	date_of_diagnosis	DATETIME
+diagnosis	date_of_histology_confirmation	DATETIME
+diagnosis	disease_term	EXTERNAL
+diagnosis	follow_up_data	N
+diagnosis	follow_up_data	Y
+diagnosis	histological_grade	EXTERNAL
+diagnosis	histology_cytopathology	STRING
+diagnosis	pathology_report	N
+diagnosis	pathology_report	Y
+diagnosis	primary_disease_site	EXTERNAL
+diagnosis	stage_of_disease	EXTERNAL
+diagnosis	treatment_data	N
+diagnosis	treatment_data	Y
+disease_extent	crf_id	TBD
+disease_extent	date_of_evaluation	DATETIME
+disease_extent	evaluation_code	TBD
+disease_extent	evaluation_number	TBD
+disease_extent	lesion_description	TBD
+disease_extent	lesion_number	TBD
+disease_extent	lesion_site	TBD
+disease_extent	longest_measurement	TBD
+disease_extent	measurable_lesion	TBD
+disease_extent	measured_how	TBD
+disease_extent	previously_irradiated	TBD
+disease_extent	previously_treated	TBD
+disease_extent	target_lesion	TBD
+enrollment	cohort_description	STRING
+enrollment	date_of_informed_consent	DATETIME
+enrollment	date_of_registration	DATETIME
+enrollment	enrollment_document_number	STRING
+enrollment	initials	STRING
+enrollment	patient_subgroup	STRING
+enrollment	registering_institution	STRING
+enrollment	site_short_name	STRING
+enrollment	veterinary_medical_center	STRING
+file	file_description	STRING
+file	file_format	TBD
+file	file_location	STRING
+file	file_name	STRING
+file	file_size	NUMBER
+file	file_status	error
+file	file_status	invalid
+file	file_status	live
+file	file_status	md5summed
+file	file_status	md5summing
+file	file_status	redacted
+file	file_status	released
+file	file_status	submitted
+file	file_status	suppressed
+file	file_status	uploaded
+file	file_status	uploading
+file	file_status	validated
+file	file_status	validating
+file	file_type	Image File
+file	file_type	Pathology Report
+file	file_type	Sequence File
+file	md5sum	STRING
+file	uuid	NA
+follow_up	contact_type	STRING
+follow_up	crf_id	TBD
+follow_up	date_of_last_contact	DATETIME
+follow_up	document_number	REGEXP /^R[0-9]+$/
+follow_up	explain_unknown_status	STRING
+follow_up	patient_status	STRING
+follow_up	physical_exam_changes	TBD
+follow_up	physical_exam_performed	BOOLEAN
+follow_up	treatment_since_last_contact	BOOLEAN
+image	NA	NA
+lab_exam	NA	NA
+off_study	best_resp_vet_tx_tp_best_response	TBD
+off_study	best_resp_vet_tx_tp_secondary_response	TBD
+off_study	date_last_medication_administration	DATETIME
+off_study	date_of_best_response	DATETIME
+off_study	date_of_disease_progression	DATETIME
+off_study	date_off_study	DATETIME
+off_study	date_off_treatment	DATETIME
+off_study	document_number	REGEXP /^R[0-9]+$/
+off_study	reason_off_study	STRING
+off_treatment	best_resp_vet_tx_tp_best_response	TBD
+off_treatment	best_resp_vet_tx_tp_secondary_response	TBD
+off_treatment	date_last_medication_administration	DATETIME
+off_treatment	date_of_best_response	DATETIME
+off_treatment	date_of_disease_progression	DATETIME
+off_treatment	date_off_treatment	DATETIME
+off_treatment	document_number	REGEXP /^R[0-9]+$/
+off_treatment	reason_off_treatment	STRING
+physical_exam	assessment_timepoint	INTEGER
+physical_exam	body_system	Attitude
+physical_exam	body_system	Cardiovascular
+physical_exam	body_system	Endocrine
+physical_exam	body_system	Eyes/Ears/Nose/Throat
+physical_exam	body_system	Gastrointestinal
+physical_exam	body_system	Genitourinary
+physical_exam	body_system	Integumentary
+physical_exam	body_system	Lymphatic
+physical_exam	body_system	Musculoskeletal
+physical_exam	body_system	Neurologic
+physical_exam	body_system	Other
+physical_exam	body_system	Respiratory
+physical_exam	crf_id	TBD
+physical_exam	date_of_examination	DATETIME
+physical_exam	day_in_cycle	INTEGER
+physical_exam	pe_comment	STRING
+physical_exam	pe_finding	STRING
+physical_exam	phase_pe	TBD
+principal_investigator	pi_first_name	TBD
+principal_investigator	pi_last_name	TBD
+principal_investigator	pi_middle_initial	TBD
+prior_surgery	anatomical_site_of_surgery	EXTERNAL
+prior_surgery	crf_id	TBD
+prior_surgery	date_of_surgery	DATETIME
+prior_surgery	procedure	EXTERNAL
+prior_surgery	residual_disease	TBD
+prior_surgery	surgical_finding	STRING
+prior_surgery	therapeutic_indicator	TBD
+prior_therapy	agent_name	EXTERNAL
+prior_therapy	agent_units_of_measure	STRING
+prior_therapy	any_therapy	BOOLEAN
+prior_therapy	best_response	TBD
+prior_therapy	date_of_first_dose	DATETIME
+prior_therapy	date_of_last_dose	DATETIME
+prior_therapy	date_of_last_dose_any_therapy	DATETIME
+prior_therapy	date_of_last_dose_nsaid	DATETIME
+prior_therapy	date_of_last_dose_steroid	DATETIME
+prior_therapy	dose_schedule	TBD
+prior_therapy	min_rsdl_dz_tx_ind_nsaids_treatment_pe	TBD
+prior_therapy	nonresponse_therapy_type	STRING
+prior_therapy	number_of_prior_regimens_any_therapy	INTEGER
+prior_therapy	number_of_prior_regimens_nsaid	INTEGER
+prior_therapy	number_of_prior_regimens_steroid	INTEGER
+prior_therapy	prior_nsaid_exposure	BOOLEAN
+prior_therapy	prior_steroid_exposure	BOOLEAN
+prior_therapy	prior_therapy_type	STRING
+prior_therapy	therapy_type	STRING
+prior_therapy	total_dose	NUMBER (mg)
+prior_therapy	total_number_of_doses_any_therapy	INTEGER
+prior_therapy	total_number_of_doses_nsaid	INTEGER
+prior_therapy	total_number_of_doses_steroid	INTEGER
+prior_therapy	treatment_performed_at_site	BOOLEAN
+prior_therapy	treatment_performed_in_minimal_residual	BOOLEAN
+prior_therapy	tx_loc_geo_loc_ind_nsaid	TBD
+program	program_acronym	STRING
+program	program_external_url	STRING
+program	program_full_description	STRING
+program	program_name	STRING
+program	program_short_description	STRING
+program	program_sort_order	INTEGER
+sample	analysis_area	NUMBER (mm2)
+sample	analysis_area_percentage_glass	NUMBER
+sample	analysis_area_percentage_pigmented_tumor	NUMBER
+sample	analysis_area_percentage_stroma	NUMBER
+sample	analysis_area_percentage_tumor	NUMBER
+sample	comment	STRING
+sample	date_of_sample_collection	DATETIME
+sample	general_sample_pathology	Benign
+sample	general_sample_pathology	Diseased
+sample	general_sample_pathology	Hyperplastic
+sample	general_sample_pathology	Malignant
+sample	general_sample_pathology	Normal
+sample	general_sample_pathology	Not Applicable
+sample	length_of_tumor	NUMBER (mm)
+sample	necropsy_sample	N
+sample	necropsy_sample	U
+sample	necropsy_sample	Y
+sample	non_tumor_tissue_area	NUMBER (mm2)
+sample	percentage_stroma	NUMBER
+sample	percentage_tumor	NUMBER
+sample	sample_id	STRING
+sample	sample_preservation	FFPE
+sample	sample_preservation	Snap Frozen
+sample	sample_site	STRING
+sample	sample_type	Blood
+sample	sample_type	Tissue
+sample	specific_sample_pathology	STRING
+sample	summarized_sample_type	STRING
+sample	total_tissue_area	NUMBER (mm2)
+sample	tumor_grade	STRING
+sample	tumor_sample_origin	Metastatic
+sample	tumor_sample_origin	Not Applicable
+sample	tumor_sample_origin	Primary
+sample	tumor_sample_origin	Unknown
+sample	tumor_tissue_area	NUMBER (mm2)
+sample	width_of_tumor	NUMBER (mm)
+study	clinical_study_description	STRING
+study	clinical_study_designation	STRING
+study	clinical_study_id	STRING
+study	clinical_study_name	STRING
+study	clinical_study_type	STRING
+study	date_of_iacuc_approval	DATETIME
+study	dates_of_conduct	STRING
+study_arm	arm	TBD
+study_arm	arm_description	STRING
+study_arm	ctep_treatment_assignment_code	REGEXP /^.+$/
+study_site	registering_institution	STRING
+study_site	site_short_name	STRING
+study_site	veterinary_medical_center	STRING
+visit	visit_date	TBD
+visit	visit_number	TBD
+vital_signs	assessment_timepoint	INTEGER
+vital_signs	body_surface_area	NUMBER (sq meters)
+vital_signs	body_temperature	NUMBER (degrees F)
+vital_signs	body_temperature	NUMBER (degrees C)
+vital_signs	crf_id	TBD
+vital_signs	date_of_vital_signs	DATETIME
+vital_signs	ecg	BOOLEAN
+vital_signs	modified_ecog	EXTERNAL
+vital_signs	patient_weight	NUMBER (kg)
+vital_signs	phase	TBD
+vital_signs	pulse	NUMBER (bpm)
+vital_signs	pulse_ox	NUMBER (%)
+vital_signs	respiration_pattern	EXTERNAL
+vital_signs	respiration_rate	NUMBER (breaths/min)
+vital_signs	systolic_bp	NUMBER (mm Hg)
+
+relationship	source_node	destination_node	property	value_or_TYPE
+at_enrollment	prior_surgery	enrollment	NA	NA
+at_enrollment	physical_exam	enrollment	NA	NA
+at_enrollment	prior_therapy	enrollment	NA	NA
+from_diagnosis	file	diagnosis	NA	NA
+had_adverse_event	case	adverse_event	NA	NA
+member_of	study_arm	study	NA	NA
+member_of	cohort	study_arm	NA	NA
+member_of	cohort	study	NA	NA
+member_of	case	cohort	NA	NA
+member_of	case	study	NA	NA
+member_of	study	program	NA	NA
+next	sample	sample	NA	NA
+next	prior_therapy	prior_therapy	NA	NA
+next	adverse_event	adverse_event	NA	NA
+next	visit	visit	NA	NA
+next	prior_surgery	prior_surgery	NA	NA
+of_agent	agent_administration	agent	NA	NA
+of_agent	adverse_event	agent	NA	NA
+of_assay	image	assay	NA	NA
+of_assay	file	assay	NA	NA
+of_case	cycle	case	NA	NA
+of_case	follow_up	case	NA	NA
+of_case	diagnosis	case	NA	NA
+of_case	sample	case	NA	NA
+of_case	visit	case	NA	NA
+of_case	enrollment	case	NA	NA
+of_case	demographic	case	NA	NA
+of_case	adverse_event	case	NA	NA
+of_cycle	visit	cycle	NA	NA
+of_sample	file	sample	NA	NA
+of_sample	assay	sample	NA	NA
+of_study	study_site	study	NA	NA
+of_study	principal_investigator	study	NA	NA
+of_study	file	study	NA	NA
+of_study_arm	agent	study_arm	NA	NA
+on_visit	agent_administration	visit	NA	NA
+on_visit	disease_extent	visit	NA	NA
+on_visit	physical_exam	visit	NA	NA
+on_visit	sample	visit	NA	NA
+on_visit	lab_exam	visit	NA	NA
+on_visit	vital_signs	visit	NA	NA
+went_off_study	case	off_study	NA	NA
+went_off_treatment	case	off_treatment	NA	NA
