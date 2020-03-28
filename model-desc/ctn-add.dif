@@ -1,0 +1,316 @@
+--- icdc-model.yml	2019-08-27 11:15:08.000000000 -0400
++++ ctn-icdc-model.yml	2019-08-27 11:14:30.000000000 -0400
+@@ -5,18 +5,10 @@
+ 
+ # lesions - extension
+ 
+-# these are the built-in gen3 node categories
+-# "category": "administrative",
+-# "category": "biospecimen",
+-# "category": "clinical",
+-# "category": "data_file",
+-# "category": "index_file",
+-# "category": "internal",
+-# "category": "metadata_file",
+-# "category": "notation",
+-
+ Nodes:
+   program:
++    Tags:
++      - CTN
+     Props:
+       - program_name
+       - program_acronym
+@@ -25,6 +17,8 @@
+       - program_external_url
+       - program_sort_order
+   study:
++    Tags:
++      - CTN
+     Props:
+       - clinical_study_id
+       - clinical_study_designation
+@@ -33,15 +27,22 @@
+       - clinical_study_type
+       - date_of_iacuc_approval
+       - dates_of_conduct
++      -   ctep_category
++      - ctep_su_category
++      -   ctep_term
++
+   study_site:
+     Props:
+       - site_short_name
+       - veterinary_medical_center
+       - registering_institution
+   study_arm:
++    Tags:
++      - CTN
+     Props:
+       - arm
+       - ctep_treatment_assignment_code
++      - treatment_arm_version
+       # arm has no example in the data, putting cohort_description in here
+       # to help define study_arm
+   agent:
+@@ -55,6 +56,8 @@
+       # the intended or protocol dose
+       - cohort_dose
+   case:
++    Tag:
++      - CTN
+     Props:
+       - case_id
+       # globally unique ID by which the system can unambiguously identify and display a specific patient even across studies/trials.
+@@ -64,8 +67,11 @@
+       - patient_first_name
+       - crf_id
+   demographic:
++    Tags:
++      - CTN
+     Category: clinical
+     Props:
++      - ethnicity
+       - breed
+       - patient_age_at_enrollment
+       - date_of_birth
+@@ -105,7 +111,10 @@
+       - concurrent_disease
+       - concurrent_disease_type
+       - crf_id
++      - diagnosis_code
+   enrollment:
++    Tags:
++      - CTN
+     Props:
+       - date_of_registration
+       - registering_institution
+@@ -118,6 +127,8 @@
+       - cohort_description
+       - patient_subgroup
+   prior_therapy:
++    Tags:
++      - CTN
+     Category: clinical
+     Props: 
+       - date_of_first_dose
+@@ -182,6 +193,8 @@
+       - comment
+       - crf_id
+   sample:
++    Tags:
++      - CTN
+     Category: biospecimen
+     Props: 
+       - sample_id
+@@ -208,23 +221,23 @@
+       - percentage_tumor
+       - percentage_stroma
+       - comment
++      - pathology_status_date
++      - surgical_event_id
++  evaluation:
++    Category: clinical
++    Props:
++      # inferred:
++      - date_of_evaluation
+   assay:
+     Props: null
+   file:
++    Tags:
++      - CTN
+     Category: data_file
+     Props:
+-      - file_name
+       - file_type
+-      # what is the nature of the file's content
+-      - file_description
+-      - file_format
+-      # in what format is the file? pdf vs. png vs. doc, etc.
+-      - file_size
+-      - md5sum
+-      - file_status
+-      # enumerated
+-      - uuid
+-      - file_locations
++      - file_name
++      
+   image:
+     Props: null
+   physical_exam:
+@@ -334,6 +347,55 @@
+       - date_last_medication_administration
+       - best_resp_vet_tx_tp_best_response
+       - date_of_best_response
++  genomic_report:
++    Tags:
++      - CTNu
++    Props:
++      - molecular_id
++      - surgical_event_id
++      - variant_report_received_date
++      - variant_report_type
++      - status
++      - status_date
++      - total_variants
++      - cellularity
++      - total_mois
++      - total_amois
++      - total_confirmed_mois
++      - total_confirmed_amois
++  variant:
++    Tags:
++      - CTNu
++    Props:
++      - molecular_id_analysis_id
++      - variant_type
++      - confirmed
++      - status
++      - status_date
++      - gene_name
++      - chromosome
++      - position
++      - exon
++      - function
++      - cds_ref
++      - cds_alt
++      - ocp_ref
++      - ocp_alt
++      - strand
++      - protein
++      - transcript
++      - hgvs
++      - read_depth
++      - allele_frequency
++      - arm_specific
++      - aMOI
++      - ref_copy_number
++      - raw_copy_number
++      - copy_number
++      - confidence_interval_95percent
++      - confidence_interval_05percent
++      - reference
++      - alternative
+ Relationships:
+   member_of:
+     Mul: many_to_one
+@@ -344,14 +406,8 @@
+         Dst: study_arm
+       - Src: study_arm
+         Dst: study
+-      - Src: study
+-        Dst: program
+-      - Src: case
+-        Dst: study
+-      # to accomodate Cases not maaped to any Cohrt, either due to error or by design 
+-      - Src: cohort
+-        Dst: study
+-    # to accomodate a Study having Cases that should be grouped into Cohorts, but where Study Arms don't apply      
++      #- Src: study
++      #  Dst: program
+     Props: null
+   of_case:
+     Mul: many_to_one
+@@ -368,9 +424,6 @@
+         Dst: case
+       - Src: follow_up
+         Dst: case
+-      - Src: sample
+-        Dst: case
+-    # to accommodate a Sample being directly associated with a Case, rather than being only indirectly associated with a Case through a Visit etc.
+     Props: null
+   of_study_arm:
+     Mul: many_to_many
+@@ -415,7 +468,7 @@
+     Ends:
+       - Src: visit
+         Dst: cycle
+-    Props: null
++    Props: Null
+   on_visit:
+     Mul: many_to_one
+     Ends:
+@@ -423,15 +476,7 @@
+         Dst: visit
+       - Src: sample
+         Dst: visit
+-      - Src: physical_exam
+-        Dst: visit
+-      - Src: lab_exam
+-        Dst: visit
+-      - Src: adverse_event
+-        Dst: visit
+-      - Src: disease_extent
+-        Dst: visit
+-      - Src: vital_signs
++      - Src: evaluation
+         Dst: visit
+     Props: null
+   of_sample:
+@@ -439,9 +484,6 @@
+     Ends:
+       - Src: assay
+         Dst: sample
+-      - Src: file
+-        Dst: sample
+-    # added primarily to support direct association of sequence files with the primary samples to which they relate, when we have no data around the processing intermediates    
+     Props: null
+   of_assay:
+     Mul: many_to_one
+@@ -450,12 +492,23 @@
+         Dst: assay
+       - Src: image
+         Dst: assay
++      - Tags: ["CTNu"]
++        Src: genomic_report
++        Dst: assay
+     Props: null
+-  from_diagnosis:
++  at_evaluation:
+     Mul: many_to_one
+     Ends:
+-      - Src: file
+-        Dst: diagnosis
++      - Src: physical_exam
++        Dst: evaluation
++      - Src: lab_exam
++        Dst: evaluation
++      - Src: adverse_event
++        Dst: evaluation
++      - Src: disease_extent
++        Dst: evaluation
++      - Src: vital_signs
++        Dst: evaluation
+     Props: null
+   went_off_study:
+     Mul: one_to_one
+@@ -482,7 +535,28 @@
+         Dst: prior_surgery
+       - Src: adverse_event
+         Dst: adverse_event
+-    Props: null
++      - Tags: ["CTN"]
++        Src: variant
++        Dst: variant
++    Props: null
++  of_report:
++    Tags:
++      - CTNu
++    Mul: many_to_one
++    Ends:
++      - Src: variant
++        Dst: genomic_report
++  assigned_to:
++    Tags:
++      - CTNu
++    Mul: one_to_one
++    Ends:
++      - Src: case
++        Dst: study_arm
++    Props:
++      - assignment_type
++      - assignment_reason
++        
+ NativeSchemaIncludes:
+   - _definitions.yaml
+   - _terms.yaml
