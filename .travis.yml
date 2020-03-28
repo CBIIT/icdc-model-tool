@@ -26,9 +26,9 @@ script:
   - cp -aR ../bento-mdf/drivers/Perl/make-model/bin bin
   # run model-tool with pre-built perl - fast
   - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl -Ilib bin/model-tool -g update-model.svg -T update-model.txt icdc-model.yml icdc-model-props.yml
-  - git log -10
+  - git log -2
   - echo repo $(git remote get-url origin) > update-info.txt
-  - echo commit $(git log -1 --pretty=format:"%h") >> update-info.txt
+  - echo commit $(git log -2 --pretty=format:"%h" | tail -1) >> update-info.txt
   - cat update-info.txt
   - cat update-info.txt update-model.txt > x.txt
   - cp -f x.txt update-model.txt
