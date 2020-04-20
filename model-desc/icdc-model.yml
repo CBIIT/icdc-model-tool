@@ -187,12 +187,15 @@ Nodes:
       - general_sample_pathology
       - tumor_sample_origin
       - summarized_sample_type # value is generated during data transformation based upon the combination of the preceding three properties
+      - molecular_subtype
       - specific_sample_pathology
       - date_of_sample_collection
+      - sample_chronology
       - necropsy_sample
       - tumor_grade
       - length_of_tumor
       - width_of_tumor
+      - volume_of_tumor
       - analysis_area
       - analysis_area_percentage_tumor
       - analysis_area_percentage_stroma
