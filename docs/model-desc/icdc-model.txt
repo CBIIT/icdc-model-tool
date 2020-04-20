@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool.git
-commit 21af0b3
+commit 6668837
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -64,7 +64,9 @@ demographic	sex	F
 demographic	sex	M
 demographic	sex	U
 demographic	weight	NUMBER (kg)
-diagnosis	concurrent_disease	BOOLEAN
+diagnosis	concurrent_disease	N
+diagnosis	concurrent_disease	U
+diagnosis	concurrent_disease	Y
 diagnosis	concurrent_disease_type	STRING
 diagnosis	crf_id	TBD
 diagnosis	date_of_diagnosis	DATETIME
@@ -77,7 +79,30 @@ diagnosis	histology_cytopathology	STRING
 diagnosis	pathology_report	N
 diagnosis	pathology_report	Y
 diagnosis	primary_disease_site	EXTERNAL
-diagnosis	stage_of_disease	EXTERNAL
+diagnosis	stage_of_disease	I
+diagnosis	stage_of_disease	II
+diagnosis	stage_of_disease	III
+diagnosis	stage_of_disease	IIIa
+diagnosis	stage_of_disease	IIIb
+diagnosis	stage_of_disease	IIa
+diagnosis	stage_of_disease	IIb
+diagnosis	stage_of_disease	IV
+diagnosis	stage_of_disease	IVa
+diagnosis	stage_of_disease	IVb
+diagnosis	stage_of_disease	Ia
+diagnosis	stage_of_disease	Ib
+diagnosis	stage_of_disease	Not Applicable
+diagnosis	stage_of_disease	T2N0M0
+diagnosis	stage_of_disease	T2N0M1
+diagnosis	stage_of_disease	T2N1M0
+diagnosis	stage_of_disease	T2N1M1
+diagnosis	stage_of_disease	T3N0M0
+diagnosis	stage_of_disease	T3N0M1
+diagnosis	stage_of_disease	T3N1M0
+diagnosis	stage_of_disease	Unknown
+diagnosis	stage_of_disease	V
+diagnosis	stage_of_disease	Va
+diagnosis	stage_of_disease	Vb
 diagnosis	treatment_data	N
 diagnosis	treatment_data	Y
 disease_extent	crf_id	TBD
@@ -120,9 +145,12 @@ file	file_status	uploaded
 file	file_status	uploading
 file	file_status	validated
 file	file_status	validating
+file	file_type	DNA Methylation Analysis File
 file	file_type	Image File
 file	file_type	Pathology Report
-file	file_type	Sequence File
+file	file_type	RNA Sequence File
+file	file_type	Whole Exome Sequence File
+file	file_type	Whole Genome Sequence File
 file	md5sum	STRING
 file	uuid	NA
 follow_up	contact_type	STRING
@@ -228,12 +256,21 @@ sample	general_sample_pathology	Malignant
 sample	general_sample_pathology	Normal
 sample	general_sample_pathology	Not Applicable
 sample	length_of_tumor	NUMBER (mm)
+sample	molecular_subtype	STRING
 sample	necropsy_sample	N
 sample	necropsy_sample	U
 sample	necropsy_sample	Y
 sample	non_tumor_tissue_area	NUMBER (mm2)
 sample	percentage_stroma	NUMBER
 sample	percentage_tumor	NUMBER
+sample	sample_chronology	After Treatment
+sample	sample_chronology	Before Treatment
+sample	sample_chronology	During Treatment
+sample	sample_chronology	Not Applicable
+sample	sample_chronology	Unknown
+sample	sample_chronology	Upon Death
+sample	sample_chronology	Upon Progression
+sample	sample_chronology	Upon Relapse
 sample	sample_id	STRING
 sample	sample_preservation	FFPE
 sample	sample_preservation	Snap Frozen
@@ -249,6 +286,7 @@ sample	tumor_sample_origin	Not Applicable
 sample	tumor_sample_origin	Primary
 sample	tumor_sample_origin	Unknown
 sample	tumor_tissue_area	NUMBER (mm2)
+sample	volume_of_tumor	NUMBER (cm3)
 sample	width_of_tumor	NUMBER (mm)
 study	clinical_study_description	STRING
 study	clinical_study_designation	STRING
@@ -293,35 +331,35 @@ member_of	cohort	study_arm	NA	NA
 member_of	cohort	study	NA	NA
 member_of	case	cohort	NA	NA
 member_of	case	study	NA	NA
-next	adverse_event	adverse_event	NA	NA
-next	prior_therapy	prior_therapy	NA	NA
-next	sample	sample	NA	NA
-next	visit	visit	NA	NA
 next	prior_surgery	prior_surgery	NA	NA
-of_agent	adverse_event	agent	NA	NA
+next	prior_therapy	prior_therapy	NA	NA
+next	visit	visit	NA	NA
+next	sample	sample	NA	NA
+next	adverse_event	adverse_event	NA	NA
 of_agent	agent_administration	agent	NA	NA
+of_agent	adverse_event	agent	NA	NA
 of_assay	file	assay	NA	NA
 of_assay	image	assay	NA	NA
-of_case	demographic	case	NA	NA
-of_case	enrollment	case	NA	NA
-of_case	cycle	case	NA	NA
-of_case	visit	case	NA	NA
-of_case	follow_up	case	NA	NA
-of_case	adverse_event	case	NA	NA
-of_case	diagnosis	case	NA	NA
 of_case	sample	case	NA	NA
+of_case	adverse_event	case	NA	NA
+of_case	enrollment	case	NA	NA
+of_case	visit	case	NA	NA
+of_case	demographic	case	NA	NA
+of_case	diagnosis	case	NA	NA
+of_case	follow_up	case	NA	NA
+of_case	cycle	case	NA	NA
 of_cycle	visit	cycle	NA	NA
-of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
-of_study	file	study	NA	NA
+of_sample	file	sample	NA	NA
 of_study	principal_investigator	study	NA	NA
 of_study	study_site	study	NA	NA
+of_study	file	study	NA	NA
 of_study_arm	agent	study_arm	NA	NA
 on_visit	lab_exam	visit	NA	NA
 on_visit	disease_extent	visit	NA	NA
-on_visit	vital_signs	visit	NA	NA
-on_visit	physical_exam	visit	NA	NA
 on_visit	sample	visit	NA	NA
 on_visit	agent_administration	visit	NA	NA
+on_visit	vital_signs	visit	NA	NA
+on_visit	physical_exam	visit	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA

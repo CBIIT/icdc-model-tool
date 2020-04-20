@@ -247,9 +247,12 @@ PropDefinitions:
     Req: false
   # diagnosis props
   concurrent_disease:
-    Desc: Boolean indicator as to whether the patient is has any significant
+    Desc: Indicator as to whether the patient is has any significant
       secondary disease condition(s)
-    Type: boolean
+    Type:
+      - Y
+      - N
+      - U
   concurrent_disease_type:
     Desc: specifics of any notable secondary disease condition(s) within the patient
     Type: string
@@ -293,7 +296,31 @@ PropDefinitions:
   stage_of_disease:
     Src: ENROLLMENT/ENROLL/1
     Type:
-      - http://localhost/terms/domain/stage_of_disease
+      - I
+      - Ia
+      - Ib
+      - II
+      - IIa
+      - IIb
+      - III
+      - IIIa
+      - IIIb
+      - IV
+      - IVa
+      - IVb
+      - V
+      - Va
+      - Vb
+      - T2N0M0
+      - T2N0M1
+      - T2N1M0
+      - T2N1M1
+      - T3N0M0
+      - T3N0M1
+      - T3N1M0
+      - Not Applicable # where the subject is a healthy control
+      - Unknown # where a value for stage of disease simply isn't available?
+    Req: true
   treatment_data:
     Desc: Indicator as to whether treatment data for the patient exists
     Type:
@@ -386,7 +413,7 @@ PropDefinitions:
   # removed residual evaluation props from here
   # file props
   file_name:
-    Desc: name of the file, as prvided by the data owner
+    Desc: name of the file, as provided by the data owner
     Type: string
     Req: true
   file_type:
@@ -396,7 +423,10 @@ PropDefinitions:
     Type:
       - Pathology Report
       - Image File
-      - Sequence File
+      - RNA Sequence File
+      - Whole Genome Sequence File
+      - Whole Exome Sequence File
+      - DNA Methylation Analysis File
       # these just temporary working examples
     Req: true
   file_description:
@@ -733,7 +763,7 @@ PropDefinitions:
   #  Desc: generic comment concerning the preparation and/or annotation of the sample
   #  Type: string
   date_of_sample_collection:
-    Desc: '?'
+    Desc: date upon which a sample was acquired
     Type: datetime
   general_sample_pathology:
     Desc: indicator as to whether a sample represents normal tissue versus having been derived
@@ -753,6 +783,10 @@ PropDefinitions:
       units:
         - mm
       value_type: number
+    Req: false
+  molecular_subtype:
+    Desc: TBD
+    Type: string
   necropsy_sample:
     Desc: Indicator as to whether a sample was acquired as a result of a necropsy
       examination
@@ -777,6 +811,18 @@ PropDefinitions:
     Desc: percentage of total tissue area represented by tumor tissue
     Src: '?'
     Type: number
+  sample_chronology:
+    Desc: indicator as to when a sample was acquired relative to therapuetic treatment being administered 
+    Type:
+      - Before Treatment
+      - During Treatment
+      - After Treatment
+      - Upon Progression
+      - Upon Relapse
+      - Upon Death
+      - Not Applicable
+      - Unknown
+    Req: true
   sample_id:
     Desc: globally unqiue ID for a sample, generated from values
       within the raw data concatenated together to ensure global uniqueness
@@ -792,6 +838,7 @@ PropDefinitions:
     Desc: the anatomical location from which a sample was acquired
     Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
+    Req: true
   sample_type:
     Desc: indicator as to the physical nature of a sample - tissue, blood,
       urine, etc.
@@ -826,7 +873,7 @@ PropDefinitions:
       - Primary
       - Metastatic
       - Not Applicable # included to accommodate samples not derived from tumors
-      - Unknown # included to accommodate the almost inevitable case where the origin of tumor samples is not certain
+      - Unknown # included to accommodate the almost inevitable case where the origin of a tumor sample is uncertain
     Req: true
   tumor_tissue_area:
     Desc: for the NCATS study, area within analyzed tissue area represented by tumor
@@ -836,6 +883,13 @@ PropDefinitions:
       units:
         - mm2
       value_type: number
+  volume_of_tumor:
+    Desc: volume of the tumor from which the sample was derived
+    Type:
+      units:
+        - cm3
+      value_type: number
+    Req: false    
   width_of_tumor:
     Desc: width of the tumor from which a tumor sample was derived
     Src: '?'
@@ -843,6 +897,7 @@ PropDefinitions:
       units:
         - mm
       value_type: number
+    Req: false
   # study props
   clinical_study_description:
     Desc: short summary of what the study/trial was intended to determine and how it
