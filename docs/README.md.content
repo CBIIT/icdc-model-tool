@@ -4,7 +4,14 @@
 <script type="text/javascript"  src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
 <script type="text/javascript" src="assets/actions.js"></script>
 
-# Integrated Canine Data Commons data model
+[![Build Status](https://travis-ci.org/CBIIT/icdc-model-tool.svg?branch=master)](https://travis-ci.org/CBIIT/icdc-model-tool)
+
+# Integrated Canine Data Commons Data Model
+
+[View model on GitHub Pages](https://cbiit.github.io/icdc-model-tool/)
+
+
+
 
 Zoom to Node: <select id="node_select">
   <option value="">Zoom to Node</option>
@@ -12,8 +19,6 @@ Zoom to Node: <select id="node_select">
 <div id="model"></div>
 
 <p>
-<a href="./model-desc/icdc-model.svg">SVG file (in view above)</a>
+<a href="./model-desc/icdc-model-tool.svg">SVG file (in view above)</a>
 <p>
 <a href="./model-desc">Additional model files</a>
-
-
