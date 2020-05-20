@@ -32,13 +32,13 @@ script:
   - cat update-info.txt update-model.txt > x.txt
   - cp -f x.txt update-model.txt
   - cp icdc-model.yml icdc-model-props.yml ../docs/model-desc
-  - cp update-model.txt ../docs/model-desc/icdc-model-tool.txt
-  - sed -e '1,6d' update-model.svg > ../docs/model-desc/icdc-model-tool.svg
+  - cp update-model.txt ../docs/model-desc/icdc-model.txt
+  - sed -e '1,6d' update-model.svg > ../docs/model-desc/icdc-model.svg
   - rm -f update-model.svg update-info.txt x.txt update-model.txt
   - pushd ../docs
   - cat ./README.md.content > ./README.md
   - echo "<div id='graph' style='display:off;'>" >> ./README.md
-  - cat ./model-desc/icdc-model-tool.svg >> ./README.md
+  - cat ./model-desc/icdc-model.svg >> ./README.md
   - echo "</div>" >> ./README.md
   - popd
   - rm -rf lib bin
