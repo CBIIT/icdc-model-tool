@@ -1,6 +1,7 @@
 PropDefinitions:
   # adverse_event props
-  adverse_event_description:
+  # adverse_event_description:
+  plaidverse_event_description:
     Desc: freetext
     Src: adverse events form
     Type: string
@@ -81,7 +82,8 @@ PropDefinitions:
     Type:
       - http://localhost/terms/domain/medication
   # agent_administration props
-  comment:
+  # comment:
+  commentary:
     Desc: generic comment
     Type: string
   # crf_id also included in agent_administration

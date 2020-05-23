@@ -24,6 +24,7 @@ before_script:
 script:
   - cp -aR ../bento-mdf/drivers/Perl/make-model/lib lib
   - cp -aR ../bento-mdf/drivers/Perl/make-model/bin bin
+  - cp -a ../bento-mdf/drivers/Perl/diff-xls/bin/flat-model-diff-xls.pl bin  
   # run model-tool with pre-built perl - fast
   - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl -Ilib bin/model-tool -g update-model.svg -T update-model.txt icdc-model.yml icdc-model-props.yml
   - echo repo $(git remote get-url origin) > update-info.txt
