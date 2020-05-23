@@ -36,8 +36,8 @@ script:
   - cp icdc-model.yml icdc-model-props.yml ../docs/model-desc
   - cp update-model.txt ../docs/model-desc/icdc-model.txt
   - sed -e '1,6d' update-model.svg > ../docs/model-desc/icdc-model.svg
-  - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl bin/flat-model-diff-xls.pl --working
-  - cp diff*.xlsx ../docs/model-desc/diff-xls  
+  - docker run --rm -it -v "$PWD/..":/home/user -w /home/user maj1/icdc:model-tool-perl model-desc/bin/flat-model-diff-xls.pl --working
+  - mv ../diff*.xlsx ../docs/model-desc/diff-xls  
   - rm -f update-model.svg update-info.txt x.txt update-model.txt
   - pushd ../docs
   - cat ./README.md.content > ./README.md
