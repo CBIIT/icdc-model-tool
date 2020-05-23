@@ -54,10 +54,11 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  github_token: $TEST_TOKEN
   #target_branch: master
   target_branch: test
   keep_history: true
   verbose: true
   on:
-    branch: master
+    # branch: master
+    branch: test
