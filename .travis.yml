@@ -11,7 +11,8 @@ services:
 python:
 branches:
   only:
-    - master
+    - test
+#    - master
 before_install:
   - docker pull maj1/icdc:model-tool-perl
   - sudo apt-get install sed
@@ -34,12 +35,17 @@ script:
   - cp icdc-model.yml icdc-model-props.yml ../docs/model-desc
   - cp update-model.txt ../docs/model-desc/icdc-model.txt
   - sed -e '1,6d' update-model.svg > ../docs/model-desc/icdc-model.svg
+  - docker run --rm -it -v "$PWD":/home/user -w /home/user maj1/icdc:model-tool-perl bin/flat-model-diff-xls.pl --working
+  - cp diff*.xlsx ../docs/model-desc/diff-xls  
   - rm -f update-model.svg update-info.txt x.txt update-model.txt
   - pushd ../docs
   - cat ./README.md.content > ./README.md
   - echo "<div id='graph' style='display:off;'>" >> ./README.md
   - cat ./model-desc/icdc-model.svg >> ./README.md
   - echo "</div>" >> ./README.md
+  - pushd model-desc
+  - n=$(ls -t diff-xls | head  -1) ; perl -i -ne "BEGIN {\$n='$n'}" -e 'if (/Diff/) { print ; $_ = <> ; print ; print "  <li> <a href=\"./diff-xls/$n\">$n</li>\n" ; } else { print; }' index.html 
+  - popd
   - popd
   - rm -rf lib bin
   - rm -rf __pycache__
@@ -48,7 +54,8 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  target_branch: master
+  #target_branch: master
+  target_branch: test
   keep_history: true
   verbose: true
   on:
