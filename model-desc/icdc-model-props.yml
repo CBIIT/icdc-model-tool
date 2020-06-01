@@ -216,8 +216,8 @@ PropDefinitions:
     Desc: Indicator as to whether the patient has been either spayed (female
       patients) or neutered (male patients)
     Type:
-      - Yes
-      - No
+      - 'Yes'
+      - 'No'
       - Unknown
     Req: true
   patient_age_at_enrollment:
@@ -234,7 +234,7 @@ PropDefinitions:
     Req: true
   weight:
     Desc: |
-      the subject's weight at the time the subject was enrolled and/or
+      the subject\'s weight at the time the subject was enrolled and/or
       biospecimens were acquired, at least in the case of studies that
       are not longitudinal in nature
     Type:
@@ -242,23 +242,32 @@ PropDefinitions:
         - kg
       value_type: number
     Req: false
+
   # diagnosis props
   best_response:
-    Desc: indicator as to the best overall response to therapeutic intervention that was observed within an individual patient/subject/donor
+    Desc: |
+      indicator as to the best overall response to therapeutic intervention
+      that was observed within an individual patient/subject/donor
     Type:
       - Complete Response
       - Partial Response
       - Stable Disease
       - Progressive Disease
-      - Not Determined # included to accommodate situations either where the study in question does not assess the effects of any therpeutic intervention or where the response to therpeutic intervention could not be determined
-      - Not Applicable # included to accommodate situations in which healthy control subjects are included within a study that does assess the effects of a therapeutic intervention
+      - Not Determined 
+      # included to accommodate situations either where the study in question 
+      # does not assess the effects of any therpeutic intervention or where 
+      # the response to therpeutic intervention could not be determined
+      - Not Applicable 
+      # included to accommodate situations in which healthy control subjects
+      # are included within a study that does assess the effects of a
+      # therapeutic intervention
     Req: true  
   concurrent_disease:
     Desc: Indicator as to whether the patient is has any significant
       secondary disease condition(s)
     Type:
-      - Yes
-      - No
+      - 'Yes'
+      - 'No'
       - Unknown
   concurrent_disease_type:
     Desc: specifics of any notable secondary disease condition(s) within the patient
@@ -278,8 +287,8 @@ PropDefinitions:
   follow_up_data:
     Desc: Indicator as to whether follow up data for the patient exists
     Type:
-      - Yes
-      - No
+      - 'Yes'
+      - 'No'
   histological_grade:
     Type:
       - http://localhost/terms/domain/histological_grade
@@ -289,8 +298,8 @@ PropDefinitions:
     Desc: Indicator as to whether a detailed pathology report upon which the
       diagnosis was based exists
     Type:
-      - Yes
-      - No
+      - 'Yes'
+      - 'No'
   primary_disease_site:
     Type:
       - http://localhost/terms/domain/primary_disease_site
@@ -325,8 +334,8 @@ PropDefinitions:
   treatment_data:
     Desc: Indicator as to whether treatment data for the patient exists
     Type:
-      - Yes
-      - No
+      - 'Yes'
+      - 'No'
   # disease_extent props
   # crf_id: also included in disease_extent node, defined elsewhere in this document
   date_of_evaluation:
@@ -628,9 +637,6 @@ PropDefinitions:
   any_therapy:
     Src: PRIOR_TREAT_SUMM/PTX/1
     Type: boolean
-  best_response:
-    Src: PRIOR_THRPY_SUPP/PTHR/1
-    Type: TBD
   date_of_first_dose:
     Src: PRIOR_THRPY_SUPP/PTHR/1
     Type: datetime
@@ -793,8 +799,8 @@ PropDefinitions:
     Desc: Indicator as to whether a sample was acquired as a result of a necropsy
       examination
     Type:
-      - Yes
-      - No
+      - 'Yes'
+      - 'No'
       - Unknown
     Req: true
   non_tumor_tissue_area:
