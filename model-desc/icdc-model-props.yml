@@ -1,7 +1,6 @@
 PropDefinitions:
   # adverse_event props
-  # adverse_event_description:
-  plaidverse_event_description:
+  adverse_event_description:
     Desc: freetext
     Src: adverse events form
     Type: string
@@ -82,8 +81,7 @@ PropDefinitions:
     Type:
       - http://localhost/terms/domain/medication
   # agent_administration props
-  # comment:
-  commentary:
+  comment:
     Desc: generic comment
     Type: string
   # crf_id also included in agent_administration
@@ -209,23 +207,20 @@ PropDefinitions:
     Type: datetime
   # demographic props
   breed:
-    Src: ENROLLMENT/ENROLL/1
     Type:
       - http://localhost/terms/domain/breed
   # crf_id: included in demographic node, defined elsewhere
   date_of_birth:
-    Src: ENROLLMENT/ENROLL/1
     Type: datetime
   neutered_indicator:
     Desc: Indicator as to whether the patient has been either spayed (female
       patients) or neutered (male patients)
     Type:
-      - Y
-      - N
-      - U
+      - Yes
+      - No
+      - Unknown
     Req: true
   patient_age_at_enrollment:
-    Src: ENROLLMENT/ENROLL/1
     Type:
       units:
         - years
@@ -233,9 +228,9 @@ PropDefinitions:
   sex:
     Desc: Sex of patient/subject/donor
     Type:
-      - M
-      - F
-      - U
+      - Male
+      - Female
+      - Unknown
     Req: true
   weight:
     Desc: |
@@ -248,13 +243,23 @@ PropDefinitions:
       value_type: number
     Req: false
   # diagnosis props
+  best_response:
+    Desc: indicator as to the best overall response to therapeutic intervention that was observed within an individual patient/subject/donor
+    Type:
+      - Complete Response
+      - Partial Response
+      - Stable Disease
+      - Progressive Disease
+      - Not Determined # included to accommodate situations either where the study in question does not assess the effects of any therpeutic intervention or where the response to therpeutic intervention could not be determined
+      - Not Applicable # included to accommodate situations in which healthy control subjects are included within a study that does assess the effects of a therapeutic intervention
+    Req: true  
   concurrent_disease:
     Desc: Indicator as to whether the patient is has any significant
       secondary disease condition(s)
     Type:
-      - Y
-      - N
-      - U
+      - Yes
+      - No
+      - Unknown
   concurrent_disease_type:
     Desc: specifics of any notable secondary disease condition(s) within the patient
     Type: string
@@ -263,40 +268,33 @@ PropDefinitions:
   #   Src: ENROLLMENT/ENROLL/1
   #   Type: TBD
   date_of_diagnosis:
-    Src: ENROLLMENT/ENROLL/1
     Type: datetime
   date_of_histology_confirmation:
-    Src: ENROLLMENT/ENROLL/1
     Type: datetime
   disease_term:
-    Src: ENROLLMENT/ENROLL/1
     Type:
       - http://localhost/terms/domain/disease_term
     Req: true
   follow_up_data:
     Desc: Indicator as to whether follow up data for the patient exists
     Type:
-      - Y
-      - N
+      - Yes
+      - No
   histological_grade:
-    Src: ENROLLMENT/ENROLL/1
     Type:
       - http://localhost/terms/domain/histological_grade
   histology_cytopathology:
-    Src: ENROLLMENT/ENROLL/1
     Type: string
   pathology_report:
-    Desc: Idicator as to whether a detailed pathology report upon which the
+    Desc: Indicator as to whether a detailed pathology report upon which the
       diagnosis was based exists
     Type:
-      - Y
-      - N
+      - Yes
+      - No
   primary_disease_site:
-    Src: ENROLLMENT/ENROLL/1
     Type:
       - http://localhost/terms/domain/primary_disease_site
   stage_of_disease:
-    Src: ENROLLMENT/ENROLL/1
     Type:
       - I
       - Ia
@@ -320,14 +318,15 @@ PropDefinitions:
       - T3N0M0
       - T3N0M1
       - T3N1M0
-      - Not Applicable # where the subject is a healthy control
-      - Unknown # where a value for stage of disease simply isn't available?
+      - Not Applicable # to accommodate situations where the subject is a healthy control
+      - Not Determined # to accommodate situations where stage of disease was deliberately not assessed
+      - Unknown # to accommodate situations where a value for stage of disease simply isn't available
     Req: true
   treatment_data:
     Desc: Indicator as to whether treatment data for the patient exists
     Type:
-      - Y
-      - N
+      - Yes
+      - No
   # disease_extent props
   # crf_id: also included in disease_extent node, defined elsewhere in this document
   date_of_evaluation:
@@ -423,13 +422,15 @@ PropDefinitions:
       the information contained within the file constitutes
     Src: curated
     Type:
+      - Study Protocol
+      - Supplemental Data File
       - Pathology Report
       - Image File
       - RNA Sequence File
       - Whole Genome Sequence File
       - Whole Exome Sequence File
       - DNA Methylation Analysis File
-      # these just temporary working examples
+      - Index File
     Req: true
   file_description:
     Desc: optional description of the file and/or its content, e.g. amended versus
@@ -780,7 +781,6 @@ PropDefinitions:
     Req: true
   length_of_tumor:
     Desc: length of the tumor from which a tumor sample was derived
-    Src: '?'
     Type:
       units:
         - mm
@@ -793,9 +793,9 @@ PropDefinitions:
     Desc: Indicator as to whether a sample was acquired as a result of a necropsy
       examination
     Type:
-      - Y
-      - N
-      - U
+      - Yes
+      - No
+      - Unknown
     Req: true
   non_tumor_tissue_area:
     Desc: for the NCATS study, area within analyzed tissue area represented by
@@ -812,9 +812,9 @@ PropDefinitions:
   percentage_tumor:
     Desc: percentage of total tissue area represented by tumor tissue
     Src: '?'
-    Type: number
+    Type: string #changed to string in order to accommodate values being quoted in ranges or as greateror or less than
   sample_chronology:
-    Desc: indicator as to when a sample was acquired relative to therapuetic treatment being administered 
+    Desc: indicator as to when a sample was acquired relative to therapeutic treatment being administered 
     Type:
       - Before Treatment
       - During Treatment
@@ -822,8 +822,7 @@ PropDefinitions:
       - Upon Progression
       - Upon Relapse
       - Upon Death
-      - Not Applicable
-      - Unknown
+      - Not Applicable # included to accommodate samples being acquired via a study which did not assess the effects of any therapeutic intervention
     Req: true
   sample_id:
     Desc: globally unqiue ID for a sample, generated from values
@@ -841,7 +840,7 @@ PropDefinitions:
     Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
     Req: true
-  sample_type:
+  physical_sample_type: #changed to clarify relative to summarized_sample_type
     Desc: indicator as to the physical nature of a sample - tissue, blood,
       urine, etc.
     Type:

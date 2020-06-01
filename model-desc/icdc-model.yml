@@ -96,6 +96,7 @@ Nodes:
       - histology_cytopathology
       - date_of_histology_confirmation
       - histological_grade
+      - best_response
       - pathology_report
       - treatment_data
       - follow_up_data
@@ -183,7 +184,7 @@ Nodes:
     Props: 
       - sample_id
       - sample_site
-      - sample_type
+      - physical_sample_type # formerly just sample_type
       - general_sample_pathology
       - tumor_sample_origin
       - summarized_sample_type # value is generated during data transformation based upon the combination of the preceding three properties
@@ -345,10 +346,10 @@ Relationships:
         Dst: program
       - Src: case
         Dst: study
-      # to accomodate Cases not maaped to any Cohrt, either due to error or by design 
+      # to accommodate Cases not mapped to any Cohort, either due to error or by design 
       - Src: cohort
         Dst: study
-      # to accomodate a Study having Cases that should be grouped into Cohorts, but where Study Arms don't apply      
+      # to accommodate a Study having Cases that should be grouped into Cohorts, but where Study Arms do not apply      
     Props: null
   of_case:
     Mul: many_to_one
