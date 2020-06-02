@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool.git
-commit eef08db
+commit d5b7a4a
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -56,28 +56,34 @@ cycle	date_of_cycle_start	DATETIME
 demographic	breed	EXTERNAL
 demographic	crf_id	TBD
 demographic	date_of_birth	DATETIME
-demographic	neutered_indicator	N
-demographic	neutered_indicator	U
-demographic	neutered_indicator	Y
+demographic	neutered_indicator	No
+demographic	neutered_indicator	Unknown
+demographic	neutered_indicator	Yes
 demographic	patient_age_at_enrollment	NUMBER (years)
-demographic	sex	F
-demographic	sex	M
-demographic	sex	U
+demographic	sex	Female
+demographic	sex	Male
+demographic	sex	Unknown
 demographic	weight	NUMBER (kg)
-diagnosis	concurrent_disease	N
-diagnosis	concurrent_disease	U
-diagnosis	concurrent_disease	Y
+diagnosis	best_response	Complete Response
+diagnosis	best_response	Not Applicable
+diagnosis	best_response	Not Determined
+diagnosis	best_response	Partial Response
+diagnosis	best_response	Progressive Disease
+diagnosis	best_response	Stable Disease
+diagnosis	concurrent_disease	No
+diagnosis	concurrent_disease	Unknown
+diagnosis	concurrent_disease	Yes
 diagnosis	concurrent_disease_type	STRING
 diagnosis	crf_id	TBD
 diagnosis	date_of_diagnosis	DATETIME
 diagnosis	date_of_histology_confirmation	DATETIME
 diagnosis	disease_term	EXTERNAL
-diagnosis	follow_up_data	N
-diagnosis	follow_up_data	Y
+diagnosis	follow_up_data	No
+diagnosis	follow_up_data	Yes
 diagnosis	histological_grade	EXTERNAL
 diagnosis	histology_cytopathology	STRING
-diagnosis	pathology_report	N
-diagnosis	pathology_report	Y
+diagnosis	pathology_report	No
+diagnosis	pathology_report	Yes
 diagnosis	primary_disease_site	EXTERNAL
 diagnosis	stage_of_disease	I
 diagnosis	stage_of_disease	II
@@ -92,6 +98,7 @@ diagnosis	stage_of_disease	IVb
 diagnosis	stage_of_disease	Ia
 diagnosis	stage_of_disease	Ib
 diagnosis	stage_of_disease	Not Applicable
+diagnosis	stage_of_disease	Not Determined
 diagnosis	stage_of_disease	T2N0M0
 diagnosis	stage_of_disease	T2N0M1
 diagnosis	stage_of_disease	T2N1M0
@@ -103,8 +110,8 @@ diagnosis	stage_of_disease	Unknown
 diagnosis	stage_of_disease	V
 diagnosis	stage_of_disease	Va
 diagnosis	stage_of_disease	Vb
-diagnosis	treatment_data	N
-diagnosis	treatment_data	Y
+diagnosis	treatment_data	No
+diagnosis	treatment_data	Yes
 disease_extent	crf_id	TBD
 disease_extent	date_of_evaluation	DATETIME
 disease_extent	evaluation_code	TBD
@@ -147,8 +154,11 @@ file	file_status	validated
 file	file_status	validating
 file	file_type	DNA Methylation Analysis File
 file	file_type	Image File
+file	file_type	Index File
 file	file_type	Pathology Report
 file	file_type	RNA Sequence File
+file	file_type	Study Protocol
+file	file_type	Supplemental Data File
 file	file_type	Whole Exome Sequence File
 file	file_type	Whole Genome Sequence File
 file	md5sum	STRING
@@ -213,7 +223,12 @@ prior_surgery	therapeutic_indicator	TBD
 prior_therapy	agent_name	EXTERNAL
 prior_therapy	agent_units_of_measure	STRING
 prior_therapy	any_therapy	BOOLEAN
-prior_therapy	best_response	TBD
+prior_therapy	best_response	Complete Response
+prior_therapy	best_response	Not Applicable
+prior_therapy	best_response	Not Determined
+prior_therapy	best_response	Partial Response
+prior_therapy	best_response	Progressive Disease
+prior_therapy	best_response	Stable Disease
 prior_therapy	date_of_first_dose	DATETIME
 prior_therapy	date_of_last_dose	DATETIME
 prior_therapy	date_of_last_dose_any_therapy	DATETIME
@@ -257,17 +272,18 @@ sample	general_sample_pathology	Normal
 sample	general_sample_pathology	Not Applicable
 sample	length_of_tumor	NUMBER (mm)
 sample	molecular_subtype	STRING
-sample	necropsy_sample	N
-sample	necropsy_sample	U
-sample	necropsy_sample	Y
+sample	necropsy_sample	No
+sample	necropsy_sample	Unknown
+sample	necropsy_sample	Yes
 sample	non_tumor_tissue_area	NUMBER (mm2)
 sample	percentage_stroma	NUMBER
-sample	percentage_tumor	NUMBER
+sample	percentage_tumor	STRING
+sample	physical_sample_type	Blood
+sample	physical_sample_type	Tissue
 sample	sample_chronology	After Treatment
 sample	sample_chronology	Before Treatment
 sample	sample_chronology	During Treatment
 sample	sample_chronology	Not Applicable
-sample	sample_chronology	Unknown
 sample	sample_chronology	Upon Death
 sample	sample_chronology	Upon Progression
 sample	sample_chronology	Upon Relapse
@@ -275,8 +291,6 @@ sample	sample_id	STRING
 sample	sample_preservation	FFPE
 sample	sample_preservation	Snap Frozen
 sample	sample_site	STRING
-sample	sample_type	Blood
-sample	sample_type	Tissue
 sample	specific_sample_pathology	STRING
 sample	summarized_sample_type	STRING
 sample	total_tissue_area	NUMBER (mm2)
@@ -325,42 +339,42 @@ at_enrollment	prior_surgery	enrollment	NA	NA
 at_enrollment	physical_exam	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
-member_of	study	program	NA	NA
 member_of	cohort	study_arm	NA	NA
 member_of	cohort	study	NA	NA
 member_of	case	study	NA	NA
 member_of	case	cohort	NA	NA
+member_of	study	program	NA	NA
 member_of	study_arm	study	NA	NA
 next	prior_therapy	prior_therapy	NA	NA
 next	prior_surgery	prior_surgery	NA	NA
-next	adverse_event	adverse_event	NA	NA
 next	visit	visit	NA	NA
+next	adverse_event	adverse_event	NA	NA
 next	sample	sample	NA	NA
-of_agent	agent_administration	agent	NA	NA
 of_agent	adverse_event	agent	NA	NA
+of_agent	agent_administration	agent	NA	NA
 of_assay	image	assay	NA	NA
 of_assay	file	assay	NA	NA
-of_case	visit	case	NA	NA
-of_case	demographic	case	NA	NA
+of_case	enrollment	case	NA	NA
 of_case	sample	case	NA	NA
 of_case	follow_up	case	NA	NA
-of_case	adverse_event	case	NA	NA
 of_case	cycle	case	NA	NA
 of_case	diagnosis	case	NA	NA
-of_case	enrollment	case	NA	NA
+of_case	demographic	case	NA	NA
+of_case	visit	case	NA	NA
+of_case	adverse_event	case	NA	NA
 of_cycle	visit	cycle	NA	NA
-of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
-of_study	principal_investigator	study	NA	NA
+of_sample	file	sample	NA	NA
 of_study	study_site	study	NA	NA
+of_study	principal_investigator	study	NA	NA
 of_study	file	study	NA	NA
 of_study_arm	agent	study_arm	NA	NA
-on_visit	lab_exam	visit	NA	NA
-on_visit	vital_signs	visit	NA	NA
-on_visit	physical_exam	visit	NA	NA
 on_visit	sample	visit	NA	NA
 on_visit	disease_extent	visit	NA	NA
 on_visit	agent_administration	visit	NA	NA
+on_visit	physical_exam	visit	NA	NA
+on_visit	vital_signs	visit	NA	NA
+on_visit	lab_exam	visit	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
 
@@ -375,6 +389,7 @@ analysis_area_percentage_stroma	for the NCATS study, percentage of the analysis 
 analysis_area_percentage_tumor	for the NCATS study, percentage of the analysis area represnted by tumor tissue
 anatomical_site_of_surgery	Site_FUL on form
 arm_description	Short description of the study arm
+best_response	indicator as to the best overall response to therapeutic intervention that was observed within an individual patient/subject/donor 
 body_surface_area	Called "bsa" in form
 body_system	Body system examined; up to 12 in a visit
 case_id	globally unique ID by which the system can unambiguously identify and display a specific patient even across studies/trials. Likely to be a concatenation of a study identifier and patient_id below.
@@ -415,7 +430,7 @@ molecular_subtype	TBD
 necropsy_sample	Indicator as to whether a sample was acquired as a result of a necropsy examination
 neutered_indicator	Indicator as to whether the patient has been either spayed (female patients) or neutered (male patients)
 non_tumor_tissue_area	for the NCATS study, area within analyzed tissue area represented by non-tumor tissue
-pathology_report	Idicator as to whether a detailed pathology report upon which the diagnosis was based exists
+pathology_report	Indicator as to whether a detailed pathology report upon which the diagnosis was based exists
 patient_first_name	patient's first name, in full
 patient_id	ID by which data owner can uniquely identify a specific patient, at least within a single study/trial, maintained exactly in the submitter's format. This may or may not be globally unique.
 patient_status	need vocab
@@ -424,17 +439,17 @@ pe_finding	Clinical exam result for the body system examined. Finding_results on
 percentage_stroma	percentage of total tissue area represented by stromal tissue
 percentage_tumor	percentage of total tissue area represented by tumor tissue
 physical_exam_performed	y/n
+physical_sample_type	indicator as to the physical nature of a sample - tissue, blood, urine, etc.
 program_acronym	official acronym for the name of the program as it should be displayed within the UI
 program_external_url	external url to which users should be directed to learn more about the program
 program_full_description	full length (multiple sentence) version of the program description
 program_name	name of the program
 program_short_description	abbreviated (single sentence) version of the program description
 program_sort_order	value upon which to arbitrarily prioritize display of the program within the UI
-sample_chronology	indicator as to when a sample was acquired relative to therapuetic treatment being administered
+sample_chronology	indicator as to when a sample was acquired relative to therapeutic treatment being administered
 sample_id	globally unqiue ID for a sample, generated from values within the raw data concatenated together to ensure global uniqueness
 sample_preservation	the method by which a sample was preserved
 sample_site	the anatomical location from which a sample was acquired
-sample_type	indicator as to the physical nature of a sample - tissue, blood, urine, etc.
 sex	Sex of patient/subject/donor
 site_short_name	widely accepted acronym for the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
 specific_sample_pathology	indicator of the specific pathology associated with a sample, e.g. squamous cell carcinoma
@@ -449,5 +464,5 @@ tumor_tissue_area	for the NCATS study, area within analyzed tissue area represen
 unexpected_adverse_event	bool
 veterinary_medical_center	full name of the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
 volume_of_tumor	volume of the tumor from which the sample was derived
-weight	the subject's weight at the time the subject was enrolled and/or biospecimens were acquired, at least in the case of studies that are not longitudinal in nature 
+weight	the subject\'s weight at the time the subject was enrolled and/or biospecimens were acquired, at least in the case of studies that are not longitudinal in nature 
 width_of_tumor	width of the tumor from which a tumor sample was derived
