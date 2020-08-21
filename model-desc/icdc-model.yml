@@ -62,6 +62,7 @@ Nodes:
       - patient_first_name
       - crf_id
   registration:
+    Props: 
       - registration_origin
       - registration_id
       - is_primary_id
