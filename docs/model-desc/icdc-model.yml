@@ -61,6 +61,11 @@ Nodes:
       - patient_id
       - patient_first_name
       - crf_id
+  registration:
+    Props: 
+      - registration_origin
+      - registration_id
+      - is_primary_id
   demographic:
     Category: clinical
     Props:
@@ -375,6 +380,8 @@ Relationships:
       - Src: adverse_event
         Dst: case
     # required because adverse event observations are tied to date of onset rather than being tied to the date of the visit at which they were reported 
+      - Src: registration
+        Dst: case
     Props: null
   of_study_arm:
     Mul: many_to_many

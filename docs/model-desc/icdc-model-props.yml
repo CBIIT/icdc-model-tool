@@ -741,6 +741,21 @@ PropDefinitions:
       the UI
     Src: curated
     Type: integer
+  # registration props
+  registration_origin:
+    Desc: the entity with which a subject registration ID is associated, for example an ICDC study, the CCOGC biobank from which samples for a study subject were acquired, etc.
+    Type: string
+    Req: true
+  registration_id:
+    Desc: any ID used by a data submitter to identify a patient/subject/donor, either locally or globally
+    Type: string
+    Req: true
+  is_primary_id:
+    Desc: indicator as to whether the ID in question was also independently captured as patient_id and therefore used to create case_id. For each study subject, one, and only one, registration ID must be flagged as being a primary ID
+    Type:
+      - 'Yes'
+      - 'No'
+    Req: true
   # sample props
   analysis_area:
     Desc: for the NCATS study, total area of slide subject to analysis
@@ -820,7 +835,7 @@ PropDefinitions:
     Src: '?'
     Type: string #changed to string in order to accommodate values being quoted in ranges or as greateror or less than
   sample_chronology:
-    Desc: indicator as to when a sample was acquired relative to therapeutic treatment being administered 
+    Desc: indicator as to when a sample was acquired relative to therapeutic treatment administration and/or key disease outcome observations
     Type:
       - Before Treatment
       - During Treatment
