@@ -753,8 +753,8 @@ PropDefinitions:
   is_primary_id:
     Desc: indicator as to whether the ID in question was also independently captured as patient_id and therefore used to create case_id. For each study subject, one, and only one, registration ID must be flagged as being a primary ID
     Type:
-      - Yes
-      - No
+      - 'Yes'
+      - 'No'
     Req: true
   # sample props
   analysis_area:
