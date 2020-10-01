@@ -56,7 +56,7 @@ Nodes:
       # d/n from STUDY_MED_ADMIN/SDAD/1      
       - document_number
   cohort:
-    Category: clinical_trial
+    Category: administrative
     Props:
       - cohort_description
       # the intended or protocol dose
@@ -119,7 +119,7 @@ Nodes:
       - concurrent_disease_type
       - crf_id
   enrollment:
-    Category: clinical_trial
+    Category: administrative
     Props:
       - date_of_registration
       - registering_institution
@@ -313,7 +313,7 @@ Nodes:
       - evaluation_number
       - evaluation_code
   follow_up:
-    Category: clinical_trial
+    Category: clinical
     Props:
       # d/n from FOLLOW_UP/FLWU/1
       - document_number
