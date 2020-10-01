@@ -17,6 +17,7 @@
 
 Nodes:
   program:
+    Category: administrative
     Props:
       - program_name
       - program_acronym
@@ -25,6 +26,7 @@ Nodes:
       - program_external_url
       - program_sort_order
   study:
+    Category: administrative
     Props:
       - clinical_study_id
       - clinical_study_designation
@@ -34,11 +36,13 @@ Nodes:
       - date_of_iacuc_approval
       - dates_of_conduct
   study_site:
+    Category: administrative
     Props:
       - site_short_name
       - veterinary_medical_center
       - registering_institution
   study_arm:
+    Category: administrative
     Props:
       - arm
       - ctep_treatment_assignment_code
@@ -46,22 +50,26 @@ Nodes:
       # to help define study_arm
       - arm_description
   agent:
+    Category: clinical_trial
     Props:
       - medication
       # d/n from STUDY_MED_ADMIN/SDAD/1      
       - document_number
   cohort:
+    Category: administrative
     Props:
       - cohort_description
       # the intended or protocol dose
       - cohort_dose
   case:
+    Category: case
     Props:
       - case_id
       - patient_id
       - patient_first_name
       - crf_id
   registration:
+    Category: administrative
     Props: 
       - registration_origin
       - registration_id
@@ -77,16 +85,18 @@ Nodes:
       - neutered_indicator
       - crf_id
   cycle:
+    Category: clinical_trial
     Props:
       - cycle_number
       - date_of_cycle_start
       - date_of_cycle_end
   visit:
-    Category: clinical
+    Category: clinical_trial
     Props: 
       - visit_date
       - visit_number
   principal_investigator:
+    Category: administrative
     Props:
       - pi_first_name
       - pi_last_name
@@ -109,6 +119,7 @@ Nodes:
       - concurrent_disease_type
       - crf_id
   enrollment:
+    Category: administrative
     Props:
       - date_of_registration
       - registering_institution
@@ -160,6 +171,7 @@ Nodes:
       - therapeutic_indicator
       - crf_id
   agent_administration:
+    Category: clinical_trial
     Props:
       # d/n from STUDY_MED_ADMIN/SDAD/1
       - document_number
@@ -215,6 +227,7 @@ Nodes:
       - sample_preservation
       - comment
   assay:
+    Category: analysis
     Props: null
   file:
     Category: data_file
@@ -229,9 +242,10 @@ Nodes:
       - uuid
       - file_location
   image:
+    Category: data_file
     Props: null
   physical_exam:
-    Category: clinical
+    Category: clinical_trial
     Props:
       - date_of_examination
       - day_in_cycle
@@ -242,7 +256,7 @@ Nodes:
       - assessment_timepoint
       - crf_id
   vital_signs:
-    Category: clinical
+    Category: clinical_trial
     Props:
       - date_of_vital_signs
       - body_temperature
@@ -259,11 +273,11 @@ Nodes:
       - phase
       - crf_id
   lab_exam:
-    Category: clinical
+    Category: clinical_trial
     Props: null
   adverse_event:
     # how to link? To case and agent? Also to visit/followup?
-    Category: clinical
+    Category: clinical_trial
     Props:
       - ae_dose
       - ae_agent_name
@@ -283,7 +297,7 @@ Nodes:
       - unexpected_adverse_event
       - crf_id
   disease_extent:
-    Category: clinical
+    Category: clinical_trial
     Props: 
       - crf_id
       - lesion_number
@@ -313,7 +327,7 @@ Nodes:
       - crf_id
   off_study:
     # off_study, off_treatment -- how related? should be a dependency and normalize properties?
-    Category: clinical
+    Category: clinical_trial
     Props:
       # d/n from OFF_STUDY/OSSM/1
       - document_number
@@ -326,7 +340,7 @@ Nodes:
       - best_resp_vet_tx_tp_best_response
       - date_of_best_response
   off_treatment:
-    Category: clinical
+    Category: clinical_trial
     Props:
       # d/n from OFF_TREATMENT/OTSM/1
       - document_number
