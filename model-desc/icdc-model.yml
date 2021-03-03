@@ -49,6 +49,7 @@ Nodes:
       # arm has no example in the data, putting cohort_description in here
       # to help define study_arm
       - arm_description
+      - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
   agent:
     Category: clinical_trial
     Props:
@@ -61,6 +62,7 @@ Nodes:
       - cohort_description
       # the intended or protocol dose
       - cohort_dose
+      - cohort_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
   case:
     Category: case
     Props:
@@ -73,7 +75,7 @@ Nodes:
     Props: 
       - registration_origin
       - registration_id
-      - is_primary_id
+      #- is_primary_id
   demographic:
     Category: clinical
     Props:
@@ -402,6 +404,9 @@ Relationships:
     Ends:
       - Src: agent
         Dst: study_arm
+      - Src: case
+        Dst: study_arm
+        Mul: one_to_one
     Props: null
   of_study:
     Mul: many_to_many

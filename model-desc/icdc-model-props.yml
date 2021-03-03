@@ -195,6 +195,10 @@ PropDefinitions:
     Desc: intended or protocol dose
     Type: string
     # setting this as string so as to accommodate a lack of consistency in the way in which dosing is quoted within the COTC007B study, which will otherwise confound data loading for MVP
+  cohort_id:
+    Desc: unique identifier via which cohorts that share values for cohort description, but which actually belong to different studies, can be differentiated
+    Src: curated
+    Type: string
   # cycle props
   cycle_number:
     Src: COURSE INIT/CINIT/1
@@ -320,6 +324,9 @@ PropDefinitions:
       - V
       - Va
       - Vb
+      - TisN0M0
+      - T1N0M0
+      - T1NXM0
       - T2N0M0
       - T2N0M1
       - T2N1M0
@@ -327,6 +334,9 @@ PropDefinitions:
       - T3N0M0
       - T3N0M1
       - T3N1M0
+      - T3N1M1
+      - T3NXM1
+      - TXN0M0
       - Not Applicable # to accommodate situations where the subject is a healthy control
       - Not Determined # to accommodate situations where stage of disease was deliberately not assessed
       - Unknown # to accommodate situations where a value for stage of disease simply isn't available
@@ -440,6 +450,10 @@ PropDefinitions:
       - Whole Exome Sequence File
       - DNA Methylation Analysis File
       - Index File
+      - Array CGH Analysis File # required for the MGC01 study
+      - Variant Analysis File # for raw .vcf files
+      - Variant Report # for reports detailing validated variants
+      - Data Analysis Whitepaper # for any document detailing a data analysis pipleine and/or methodology
     Req: true
   file_description:
     Desc: optional description of the file and/or its content, e.g. amended versus
@@ -750,12 +764,12 @@ PropDefinitions:
     Desc: any ID used by a data submitter to identify a patient/subject/donor, either locally or globally
     Type: string
     Req: true
-  is_primary_id:
-    Desc: indicator as to whether the ID in question was also independently captured as patient_id and therefore used to create case_id. For each study subject, one, and only one, registration ID must be flagged as being a primary ID
-    Type:
-      - 'Yes'
-      - 'No'
-    Req: true
+  #is_primary_id:
+   #Desc: indicator as to whether the ID in question was also independently captured as patient_id and therefore used to create case_id. For each study subject, one, and only one, registration ID must be flagged as being a primary ID
+    #Type:
+     # - 'Yes'
+     # - 'No'
+    #Req: true
   # sample props
   analysis_area:
     Desc: for the NCATS study, total area of slide subject to analysis
@@ -817,6 +831,7 @@ PropDefinitions:
       - 'Yes'
       - 'No'
       - Unknown
+      - Not Applicable # included to accommodate cell line samples
     Req: true
   non_tumor_tissue_area:
     Desc: for the NCATS study, area within analyzed tissue area represented by
@@ -833,7 +848,7 @@ PropDefinitions:
   percentage_tumor:
     Desc: percentage of total tissue area represented by tumor tissue
     Src: '?'
-    Type: string #changed to string in order to accommodate values being quoted in ranges or as greateror or less than
+    Type: string #changed to string in order to accommodate values being quoted in ranges, as greater or less than, or as Unknown
   sample_chronology:
     Desc: indicator as to when a sample was acquired relative to therapeutic treatment administration and/or key disease outcome observations
     Type:
@@ -844,6 +859,7 @@ PropDefinitions:
       - Upon Relapse
       - Upon Death
       - Not Applicable # included to accommodate samples being acquired via a study which did not assess the effects of any therapeutic intervention
+      - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: true
   sample_id:
     Desc: globally unqiue ID for a sample, generated from values
@@ -855,6 +871,8 @@ PropDefinitions:
     Type:
       - FFPE
       - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
+      - Not Applicable # included to accommodate cell line samples, which will be processed absent interim preservation and storage
+      - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: true
   sample_site:
     Desc: the anatomical location from which a sample was acquired
@@ -867,6 +885,7 @@ PropDefinitions:
     Type:
       - Tissue
       - Blood # list of acceptable values will gradually be expanded as data submission requirements solidify
+      - Cell Line # required for the CCL01 and OSA01 studies
     Req: true
   specific_sample_pathology:
     Desc: indicator of the specific pathology associated with a sample, e.g.
@@ -887,7 +906,16 @@ PropDefinitions:
       value_type: number
   tumor_grade:
     Desc: grade of the tumor from which a sample was acquired as determined by the evaluation of a pathologist
-    Type: string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
+    Type: # was string, to be superseded by an enumerated list of acceptable values as data submission requirements solidify
+      - 1
+      - 2
+      - 3
+      - 4
+      - High
+      - Medium
+      - Low
+      - Unknown
+      - Not Applicable
     Req: false
   tumor_sample_origin:
     Desc: indicator as to whether a tumor sample was derived from a primary versus a metastatic tumor
@@ -964,6 +992,10 @@ PropDefinitions:
     Src: COURSE INIT/CINIT/1
     Type:
       pattern: "^.+$\n"
+  arm_id:
+    Desc: unique identifier via which arms having the same name, but which actually belong to different studies, can be differentiated
+    Src: curated
+    Type: string
   # study_site props
   registering_institution:
     Src: ENROLLMENT/ENROLL/1
