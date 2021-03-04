@@ -907,10 +907,10 @@ PropDefinitions:
   tumor_grade:
     Desc: grade of the tumor from which a sample was acquired as determined by the evaluation of a pathologist
     Type: # was string, to be superseded by an enumerated list of acceptable values as data submission requirements solidify
-      - 1
-      - 2
-      - 3
-      - 4
+      - "1"
+      - "2"
+      - "3"
+      - "4"
       - High
       - Medium
       - Low
