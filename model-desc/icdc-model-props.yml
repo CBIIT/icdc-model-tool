@@ -451,7 +451,7 @@ PropDefinitions:
       - DNA Methylation Analysis File
       - Index File
       - Array CGH Analysis File # required for the MGC01 study
-      - Variant Analysis File # for raw .vcf files
+      - Variant Call File # for raw .vcf files
       - Variant Report # for reports detailing validated variants
       - Data Analysis Whitepaper # for any document detailing a data analysis pipleine and/or methodology
     Req: true
