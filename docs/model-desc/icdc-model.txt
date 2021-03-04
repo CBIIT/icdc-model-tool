@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool.git
-commit 9c2b91f
+commit e6c00e2
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -50,6 +50,7 @@ case	patient_first_name	STRING
 case	patient_id	STRING
 cohort	cohort_description	STRING
 cohort	cohort_dose	STRING
+cohort	cohort_id	STRING
 cycle	cycle_number	INTEGER
 cycle	date_of_cycle_end	DATETIME
 cycle	date_of_cycle_start	DATETIME
@@ -99,6 +100,8 @@ diagnosis	stage_of_disease	Ia
 diagnosis	stage_of_disease	Ib
 diagnosis	stage_of_disease	Not Applicable
 diagnosis	stage_of_disease	Not Determined
+diagnosis	stage_of_disease	T1N0M0
+diagnosis	stage_of_disease	T1NXM0
 diagnosis	stage_of_disease	T2N0M0
 diagnosis	stage_of_disease	T2N0M1
 diagnosis	stage_of_disease	T2N1M0
@@ -106,6 +109,10 @@ diagnosis	stage_of_disease	T2N1M1
 diagnosis	stage_of_disease	T3N0M0
 diagnosis	stage_of_disease	T3N0M1
 diagnosis	stage_of_disease	T3N1M0
+diagnosis	stage_of_disease	T3N1M1
+diagnosis	stage_of_disease	T3NXM1
+diagnosis	stage_of_disease	TXN0M0
+diagnosis	stage_of_disease	TisN0M0
 diagnosis	stage_of_disease	Unknown
 diagnosis	stage_of_disease	V
 diagnosis	stage_of_disease	Va
@@ -152,13 +159,17 @@ file	file_status	uploaded
 file	file_status	uploading
 file	file_status	validated
 file	file_status	validating
+file	file_type	Array CGH Analysis File
 file	file_type	DNA Methylation Analysis File
+file	file_type	Data Analysis Whitepaper
 file	file_type	Image File
 file	file_type	Index File
 file	file_type	Pathology Report
 file	file_type	RNA Sequence File
 file	file_type	Study Protocol
 file	file_type	Supplemental Data File
+file	file_type	Variant Call File
+file	file_type	Variant Report
 file	file_type	Whole Exome Sequence File
 file	file_type	Whole Genome Sequence File
 file	md5sum	STRING
@@ -257,8 +268,6 @@ program	program_full_description	STRING
 program	program_name	STRING
 program	program_short_description	STRING
 program	program_sort_order	INTEGER
-registration	is_primary_id	No
-registration	is_primary_id	Yes
 registration	registration_id	STRING
 registration	registration_origin	STRING
 sample	analysis_area	NUMBER (mm2)
@@ -277,28 +286,41 @@ sample	general_sample_pathology	Not Applicable
 sample	length_of_tumor	NUMBER (mm)
 sample	molecular_subtype	STRING
 sample	necropsy_sample	No
+sample	necropsy_sample	Not Applicable
 sample	necropsy_sample	Unknown
 sample	necropsy_sample	Yes
 sample	non_tumor_tissue_area	NUMBER (mm2)
 sample	percentage_stroma	NUMBER
 sample	percentage_tumor	STRING
 sample	physical_sample_type	Blood
+sample	physical_sample_type	Cell Line
 sample	physical_sample_type	Tissue
 sample	sample_chronology	After Treatment
 sample	sample_chronology	Before Treatment
 sample	sample_chronology	During Treatment
 sample	sample_chronology	Not Applicable
+sample	sample_chronology	Unknown
 sample	sample_chronology	Upon Death
 sample	sample_chronology	Upon Progression
 sample	sample_chronology	Upon Relapse
 sample	sample_id	STRING
 sample	sample_preservation	FFPE
+sample	sample_preservation	Not Applicable
 sample	sample_preservation	Snap Frozen
+sample	sample_preservation	Unknown
 sample	sample_site	STRING
 sample	specific_sample_pathology	STRING
 sample	summarized_sample_type	STRING
 sample	total_tissue_area	NUMBER (mm2)
-sample	tumor_grade	STRING
+sample	tumor_grade	1
+sample	tumor_grade	2
+sample	tumor_grade	3
+sample	tumor_grade	4
+sample	tumor_grade	High
+sample	tumor_grade	Low
+sample	tumor_grade	Medium
+sample	tumor_grade	Not Applicable
+sample	tumor_grade	Unknown
 sample	tumor_sample_origin	Metastatic
 sample	tumor_sample_origin	Not Applicable
 sample	tumor_sample_origin	Primary
@@ -315,6 +337,7 @@ study	date_of_iacuc_approval	DATETIME
 study	dates_of_conduct	STRING
 study_arm	arm	TBD
 study_arm	arm_description	STRING
+study_arm	arm_id	STRING
 study_arm	ctep_treatment_assignment_code	REGEXP /^.+$/
 study_site	registering_institution	STRING
 study_site	site_short_name	STRING
@@ -338,35 +361,35 @@ vital_signs	respiration_rate	NUMBER (breaths/min)
 vital_signs	systolic_bp	NUMBER (mm Hg)
 
 relationship	source_node	destination_node	property	value_or_TYPE
-at_enrollment	prior_therapy	enrollment	NA	NA
 at_enrollment	prior_surgery	enrollment	NA	NA
 at_enrollment	physical_exam	enrollment	NA	NA
+at_enrollment	prior_therapy	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
-member_of	case	study	NA	NA
-member_of	case	cohort	NA	NA
-member_of	study	program	NA	NA
-member_of	study_arm	study	NA	NA
 member_of	cohort	study_arm	NA	NA
 member_of	cohort	study	NA	NA
+member_of	study	program	NA	NA
+member_of	case	study	NA	NA
+member_of	case	cohort	NA	NA
+member_of	study_arm	study	NA	NA
+next	prior_surgery	prior_surgery	NA	NA
 next	adverse_event	adverse_event	NA	NA
+next	sample	sample	NA	NA
 next	prior_therapy	prior_therapy	NA	NA
 next	visit	visit	NA	NA
-next	prior_surgery	prior_surgery	NA	NA
-next	sample	sample	NA	NA
 of_agent	adverse_event	agent	NA	NA
 of_agent	agent_administration	agent	NA	NA
 of_assay	file	assay	NA	NA
 of_assay	image	assay	NA	NA
-of_case	enrollment	case	NA	NA
-of_case	demographic	case	NA	NA
-of_case	follow_up	case	NA	NA
-of_case	visit	case	NA	NA
-of_case	adverse_event	case	NA	NA
 of_case	registration	case	NA	NA
-of_case	diagnosis	case	NA	NA
-of_case	sample	case	NA	NA
+of_case	demographic	case	NA	NA
+of_case	adverse_event	case	NA	NA
+of_case	visit	case	NA	NA
 of_case	cycle	case	NA	NA
+of_case	enrollment	case	NA	NA
+of_case	sample	case	NA	NA
+of_case	follow_up	case	NA	NA
+of_case	diagnosis	case	NA	NA
 of_cycle	visit	cycle	NA	NA
 of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
@@ -374,12 +397,13 @@ of_study	study_site	study	NA	NA
 of_study	principal_investigator	study	NA	NA
 of_study	file	study	NA	NA
 of_study_arm	agent	study_arm	NA	NA
-on_visit	vital_signs	visit	NA	NA
-on_visit	agent_administration	visit	NA	NA
-on_visit	lab_exam	visit	NA	NA
+of_study_arm	case	study_arm	NA	NA
 on_visit	disease_extent	visit	NA	NA
-on_visit	physical_exam	visit	NA	NA
+on_visit	vital_signs	visit	NA	NA
 on_visit	sample	visit	NA	NA
+on_visit	lab_exam	visit	NA	NA
+on_visit	agent_administration	visit	NA	NA
+on_visit	physical_exam	visit	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
 
@@ -394,6 +418,7 @@ analysis_area_percentage_stroma	for the NCATS study, percentage of the analysis 
 analysis_area_percentage_tumor	for the NCATS study, percentage of the analysis area represnted by tumor tissue
 anatomical_site_of_surgery	Site_FUL on form
 arm_description	Short description of the study arm
+arm_id	unique identifier via which arms having the same name, but which actually belong to different studies, can be differentiated
 best_response	indicator as to the best overall response to therapeutic intervention that was observed within an individual patient/subject/donor 
 body_surface_area	Called "bsa" in form
 body_system	Body system examined; up to 12 in a visit
@@ -405,6 +430,7 @@ clinical_study_name	name of the study/trial as it should be displayed within the
 clinical_study_type	arbitrary designation of the study/trial to indicate its underlying nature, e.g. clinical trial, transcriptomics study, etc.
 cohort_description	actually, a list of agent and dose
 cohort_dose	intended or protocol dose
+cohort_id	unique identifier via which cohorts that share values for cohort description, but which actually belong to different studies, can be differentiated
 comment	generic comment
 concurrent_disease	Indicator as to whether the patient is has any significant secondary disease condition(s)
 concurrent_disease_type	specifics of any notable secondary disease condition(s) within the patient
@@ -427,7 +453,6 @@ file_status	enumerated representation of the status of files
 file_type	indicator as to the nature of the file in terms of its content, i.e. what the information contained within the file constitutes
 follow_up_data	Indicator as to whether follow up data for the patient exists
 general_sample_pathology	indicator as to whether a sample represents normal tissue versus having been derived from diseased or tumor tissue
-is_primary_id	indicator as to whether the ID in question was also independently captured as patient_id and therefore used to create case_id. For each study subject, one, and only one, registration ID must be flagged as being a primary ID
 length_of_tumor	length of the tumor from which a tumor sample was derived
 md5sum	md5 checksum
 medication_missed_dose	Q.- form has "medication"
