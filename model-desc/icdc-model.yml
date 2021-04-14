@@ -533,5 +533,5 @@ Relationships:
     Mul: many_to_one
     Ends:
       - Src: case
-      - Dst: individual
+        Dst: individual
     Props: null
