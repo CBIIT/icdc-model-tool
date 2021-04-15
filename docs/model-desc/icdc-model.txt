@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool.git
-commit da7657d
+commit 40b8c37
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -184,6 +184,12 @@ follow_up	physical_exam_changes	TBD
 follow_up	physical_exam_performed	BOOLEAN
 follow_up	treatment_since_last_contact	BOOLEAN
 image	NA	NA
+image_collection	collection_access	Cloud
+image_collection	collection_access	Download
+image_collection	image_collection_name	STRING
+image_collection	image_collection_url	STRING
+image_collection	repository_name	STRING
+individual	NA	NA
 lab_exam	NA	NA
 off_study	best_resp_vet_tx_tp_best_response	TBD
 off_study	best_resp_vet_tx_tp_secondary_response	TBD
@@ -361,49 +367,51 @@ vital_signs	respiration_rate	NUMBER (breaths/min)
 vital_signs	systolic_bp	NUMBER (mm Hg)
 
 relationship	source_node	destination_node	property	value_or_TYPE
-at_enrollment	prior_surgery	enrollment	NA	NA
 at_enrollment	prior_therapy	enrollment	NA	NA
 at_enrollment	physical_exam	enrollment	NA	NA
+at_enrollment	prior_surgery	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
-member_of	cohort	study	NA	NA
-member_of	cohort	study_arm	NA	NA
-member_of	study_arm	study	NA	NA
-member_of	study	program	NA	NA
 member_of	case	study	NA	NA
 member_of	case	cohort	NA	NA
-next	visit	visit	NA	NA
-next	prior_surgery	prior_surgery	NA	NA
-next	adverse_event	adverse_event	NA	NA
+member_of	cohort	study	NA	NA
+member_of	cohort	study_arm	NA	NA
+member_of	study	program	NA	NA
+member_of	study_arm	study	NA	NA
 next	prior_therapy	prior_therapy	NA	NA
+next	visit	visit	NA	NA
+next	adverse_event	adverse_event	NA	NA
+next	prior_surgery	prior_surgery	NA	NA
 next	sample	sample	NA	NA
-of_agent	adverse_event	agent	NA	NA
 of_agent	agent_administration	agent	NA	NA
+of_agent	adverse_event	agent	NA	NA
 of_assay	image	assay	NA	NA
 of_assay	file	assay	NA	NA
 of_case	visit	case	NA	NA
-of_case	diagnosis	case	NA	NA
 of_case	sample	case	NA	NA
-of_case	follow_up	case	NA	NA
+of_case	diagnosis	case	NA	NA
 of_case	demographic	case	NA	NA
-of_case	registration	case	NA	NA
-of_case	enrollment	case	NA	NA
+of_case	follow_up	case	NA	NA
 of_case	cycle	case	NA	NA
+of_case	enrollment	case	NA	NA
 of_case	adverse_event	case	NA	NA
+of_case	registration	case	NA	NA
 of_cycle	visit	cycle	NA	NA
 of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
-of_study	principal_investigator	study	NA	NA
 of_study	file	study	NA	NA
 of_study	study_site	study	NA	NA
+of_study	principal_investigator	study	NA	NA
+of_study	image_collection	study	NA	NA
 of_study_arm	case	study_arm	NA	NA
 of_study_arm	agent	study_arm	NA	NA
-on_visit	vital_signs	visit	NA	NA
-on_visit	disease_extent	visit	NA	NA
-on_visit	lab_exam	visit	NA	NA
 on_visit	sample	visit	NA	NA
+on_visit	vital_signs	visit	NA	NA
 on_visit	agent_administration	visit	NA	NA
+on_visit	lab_exam	visit	NA	NA
+on_visit	disease_extent	visit	NA	NA
 on_visit	physical_exam	visit	NA	NA
+represents	case	individual	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
 
@@ -431,6 +439,7 @@ clinical_study_type	arbitrary designation of the study/trial to indicate its und
 cohort_description	actually, a list of agent and dose
 cohort_dose	intended or protocol dose
 cohort_id	unique identifier via which cohorts that share values for cohort description, but which actually belong to different studies, can be differentiated
+collection_access	indicator as to whether the image collection can be accessed via download versus being accessible only via the cloud
 comment	generic comment
 concurrent_disease	Indicator as to whether the patient is has any significant secondary disease condition(s)
 concurrent_disease_type	specifics of any notable secondary disease condition(s) within the patient
@@ -453,6 +462,9 @@ file_status	enumerated representation of the status of files
 file_type	indicator as to the nature of the file in terms of its content, i.e. what the information contained within the file constitutes
 follow_up_data	Indicator as to whether follow up data for the patient exists
 general_sample_pathology	indicator as to whether a sample represents normal tissue versus having been derived from diseased or tumor tissue
+image_collection_name	name of the image collection exactly as it appears at the location where the collection can be accessed and viewed
+image_collection_url	external url via which the image collection can be accessed and viewed
+image_type_included	list of image types included in the image collection, drawn from a list of acceptable values
 length_of_tumor	length of the tumor from which a tumor sample was derived
 md5sum	md5 checksum
 medication_missed_dose	Q.- form has "medication"
@@ -479,6 +491,7 @@ program_short_description	abbreviated (single sentence) version of the program d
 program_sort_order	value upon which to arbitrarily prioritize display of the program within the UI
 registration_id	any ID used by a data submitter to identify a patient/subject/donor, either locally or globally
 registration_origin	the entity with which a subject registration ID is associated, for example an ICDC study, the CCOGC biobank from which samples for a study subject were acquired, etc.
+repository_name	name of the image repository within which the image collection can be found, stated in the form of the appropriate acronym
 sample_chronology	indicator as to when a sample was acquired relative to therapeutic treatment administration and/or key disease outcome observations
 sample_id	globally unqiue ID for a sample, generated from values within the raw data concatenated together to ensure global uniqueness
 sample_preservation	the method by which a sample was preserved
