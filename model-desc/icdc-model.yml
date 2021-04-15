@@ -76,6 +76,9 @@ Nodes:
       - registration_origin
       - registration_id
       #- is_primary_id
+  individual:
+    Category: administrative
+    Props: null
   demographic:
     Category: clinical
     Props:
@@ -246,6 +249,14 @@ Nodes:
   image:
     Category: data_file
     Props: null
+  image_collection:
+    Category: administrative
+    Props:
+      - image_collection_name
+      - image_type_included
+      - image_collection_url
+      - repository_name
+      - collection_access
   physical_exam:
     Category: clinical_trial
     Props:
@@ -418,6 +429,9 @@ Relationships:
       - Src: file
         Dst: study
         Mul: many_to_one
+      - Src: image_collection
+        Dst: study
+        Mul: many_to_one
     Props: null
   of_agent:
     Mul: many_to_one
@@ -514,4 +528,10 @@ Relationships:
         Dst: prior_surgery
       - Src: adverse_event
         Dst: adverse_event
+    Props: null
+  represents:
+    Mul: many_to_one
+    Ends:
+      - Src: case
+        Dst: individual
     Props: null

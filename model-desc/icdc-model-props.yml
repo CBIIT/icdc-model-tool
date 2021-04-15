@@ -453,7 +453,7 @@ PropDefinitions:
       - Array CGH Analysis File # required for the MGC01 study
       - Variant Call File # for raw .vcf files
       - Variant Report # for reports detailing validated variants
-      - Data Analysis Whitepaper # for any document detailing a data analysis pipleine and/or methodology
+      - Data Analysis Whitepaper # for any document detailing a data analysis pipeline and/or methodology
     Req: true
   file_description:
     Desc: optional description of the file and/or its content, e.g. amended versus
@@ -531,6 +531,41 @@ PropDefinitions:
     Desc: y/n
     Src: FOLLOW_UP/FLWU/1
     Type: boolean
+  # image collection props
+  image_collection_name:
+    Desc: name of the image collection exactly as it appears at the location where the collection can be accessed and viewed 
+    Src: curated
+    Type: string
+    Req: true
+  image_type_included:
+    Desc: list of image types included in the image collection, drawn from a list of acceptable values
+    Src: curated
+    Type:
+      value_type: list
+      item_type:
+        - CT
+        - Histopathology
+        - MRI
+        - PET
+        - X-ray
+    Req: true
+  image_collection_url:
+    Desc: external url via which the image collection can be accessed and viewed
+    Src: curated
+    Type: string
+    Req: true
+  repository_name:
+    Desc: name of the image repository within which the image collection can be found, stated in the form of the appropriate acronym
+    Src: curated
+    Type: string
+    Req: true
+  collection_access:
+    Desc: indicator as to whether the image collection can be accessed via download versus being accessible only via the cloud
+    Src: curated
+    Type:
+      - Download
+      - Cloud
+    Req: true
   # off_study props and
   # off_treatment props
   best_resp_vet_tx_tp_best_response:
