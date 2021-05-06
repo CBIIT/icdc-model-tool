@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool.git
-commit 40b8c37
+commit 63c8088
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -44,6 +44,7 @@ agent_administration	route_of_administration	EXTERNAL
 agent_administration	start_time	DATETIME
 agent_administration	stop_time	DATETIME
 assay	NA	NA
+canine_individual	canine_individual_id	STRING
 case	case_id	STRING
 case	crf_id	TBD
 case	patient_first_name	STRING
@@ -189,7 +190,6 @@ image_collection	collection_access	Download
 image_collection	image_collection_name	STRING
 image_collection	image_collection_url	STRING
 image_collection	repository_name	STRING
-individual	NA	NA
 lab_exam	NA	NA
 off_study	best_resp_vet_tx_tp_best_response	TBD
 off_study	best_resp_vet_tx_tp_secondary_response	TBD
@@ -334,6 +334,7 @@ sample	tumor_sample_origin	Unknown
 sample	tumor_tissue_area	NUMBER (mm2)
 sample	volume_of_tumor	NUMBER (cm3)
 sample	width_of_tumor	NUMBER (mm)
+study	accession_id	STRING
 study	clinical_study_description	STRING
 study	clinical_study_designation	STRING
 study	clinical_study_id	STRING
@@ -341,6 +342,9 @@ study	clinical_study_name	STRING
 study	clinical_study_type	STRING
 study	date_of_iacuc_approval	DATETIME
 study	dates_of_conduct	STRING
+study	study_disposition	Pending
+study	study_disposition	Under Embargo
+study	study_disposition	Unrestricted
 study_arm	arm	TBD
 study_arm	arm_description	STRING
 study_arm	arm_id	STRING
@@ -372,50 +376,51 @@ at_enrollment	physical_exam	enrollment	NA	NA
 at_enrollment	prior_surgery	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
-member_of	case	study	NA	NA
-member_of	case	cohort	NA	NA
 member_of	cohort	study	NA	NA
 member_of	cohort	study_arm	NA	NA
-member_of	study	program	NA	NA
+member_of	case	study	NA	NA
+member_of	case	cohort	NA	NA
 member_of	study_arm	study	NA	NA
-next	prior_therapy	prior_therapy	NA	NA
-next	visit	visit	NA	NA
+member_of	study	program	NA	NA
 next	adverse_event	adverse_event	NA	NA
 next	prior_surgery	prior_surgery	NA	NA
 next	sample	sample	NA	NA
+next	prior_therapy	prior_therapy	NA	NA
+next	visit	visit	NA	NA
 of_agent	agent_administration	agent	NA	NA
 of_agent	adverse_event	agent	NA	NA
-of_assay	image	assay	NA	NA
 of_assay	file	assay	NA	NA
-of_case	visit	case	NA	NA
+of_assay	image	assay	NA	NA
 of_case	sample	case	NA	NA
-of_case	diagnosis	case	NA	NA
-of_case	demographic	case	NA	NA
-of_case	follow_up	case	NA	NA
-of_case	cycle	case	NA	NA
 of_case	enrollment	case	NA	NA
 of_case	adverse_event	case	NA	NA
+of_case	visit	case	NA	NA
+of_case	demographic	case	NA	NA
+of_case	diagnosis	case	NA	NA
+of_case	cycle	case	NA	NA
 of_case	registration	case	NA	NA
+of_case	follow_up	case	NA	NA
 of_cycle	visit	cycle	NA	NA
-of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
-of_study	file	study	NA	NA
-of_study	study_site	study	NA	NA
+of_sample	file	sample	NA	NA
 of_study	principal_investigator	study	NA	NA
+of_study	study_site	study	NA	NA
 of_study	image_collection	study	NA	NA
+of_study	file	study	NA	NA
 of_study_arm	case	study_arm	NA	NA
 of_study_arm	agent	study_arm	NA	NA
-on_visit	sample	visit	NA	NA
-on_visit	vital_signs	visit	NA	NA
 on_visit	agent_administration	visit	NA	NA
 on_visit	lab_exam	visit	NA	NA
-on_visit	disease_extent	visit	NA	NA
+on_visit	sample	visit	NA	NA
 on_visit	physical_exam	visit	NA	NA
-represents	case	individual	NA	NA
+on_visit	vital_signs	visit	NA	NA
+on_visit	disease_extent	visit	NA	NA
+represents	case	canine_individual	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
 
 property	description
+accession_id	TBD
 adverse_event_description	freetext
 adverse_event_grade	enum
 agent_units_of_measure	Agent UOM_FUL in form
@@ -430,6 +435,7 @@ arm_id	unique identifier via which arms having the same name, but which actually
 best_response	indicator as to the best overall response to therapeutic intervention that was observed within an individual patient/subject/donor 
 body_surface_area	Called "bsa" in form
 body_system	Body system examined; up to 12 in a visit
+canine_individual_id	TBD
 case_id	globally unique ID by which the system can unambiguously identify and display a specific patient even across studies/trials. Likely to be a concatenation of a study identifier and patient_id below.
 clinical_study_description	short summary of what the study/trial was intended to determine and how it was conducted
 clinical_study_designation	unique, human-friendly alpha-numeric ID for the study/trial
@@ -499,6 +505,7 @@ sample_site	the anatomical location from which a sample was acquired
 sex	Sex of patient/subject/donor
 site_short_name	widely accepted acronym for the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
 specific_sample_pathology	indicator of the specific pathology associated with a sample, e.g. squamous cell carcinoma
+study_disposition	TBD
 summarized_sample_type	summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in three independent properties
 surgical_finding	Findings_FUL on form
 total_tissue_area	for the NCATS study, area within the slide's analysis area represented by tissue
