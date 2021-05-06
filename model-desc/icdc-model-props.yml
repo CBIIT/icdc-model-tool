@@ -1031,7 +1031,7 @@ PropDefinitions:
     Src: curated
     Type: string
     Req: true
-  flag_study_as:
+  study_disposition:
     Desc: TBD
     Src: curated
     Type:
