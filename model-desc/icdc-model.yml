@@ -35,6 +35,8 @@ Nodes:
       - clinical_study_type
       - date_of_iacuc_approval
       - dates_of_conduct
+      - accession_id
+      - flag_study_as
   study_site:
     Category: administrative
     Props:
@@ -76,9 +78,10 @@ Nodes:
       - registration_origin
       - registration_id
       #- is_primary_id
-  individual:
+  canine_individual:
     Category: administrative
-    Props: null
+    Props:
+      - canine_individual_id
   demographic:
     Category: clinical
     Props:
@@ -409,6 +412,7 @@ Relationships:
     # required because adverse event observations are tied to date of onset rather than being tied to the date of the visit at which they were reported 
       - Src: registration
         Dst: case
+        Mul: many_to_many
     Props: null
   of_study_arm:
     Mul: many_to_many
@@ -533,5 +537,5 @@ Relationships:
     Mul: many_to_one
     Ends:
       - Src: case
-        Dst: individual
+        Dst: canine_individual
     Props: null
