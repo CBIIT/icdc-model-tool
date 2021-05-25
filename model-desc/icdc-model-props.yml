@@ -797,6 +797,29 @@ PropDefinitions:
       the UI
     Src: curated
     Type: integer
+  # publication props
+  publication_title:
+    Desc: full title of the publication stated exactly as applied to the published work
+    Type: string
+    Req: true
+  authorship:
+    Desc: list of authors for the cited work, i.e. for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
+    Type: string
+    Req: true
+  year_of_publication:
+    Desc: year in which the cited work was published
+    Type: number
+    Req: true
+  journal_citation:
+    Desc: name of the journal in which the cited work was published, inclusive of the citation itself in terms fo jouranl volume number, part number where applicable and page numbers
+    Type: string
+    Req: true
+  digital_object_id:
+    Desc: digital object identifier for the cited work by which it can be permanently identified and linked on the web
+    Type: string
+  pubmed_id:
+    Desc: unique numerical identifier assigned to the cited work by PubMed
+    Type: number
   # registration props
   registration_origin:
     Desc: the entity with which a subject registration ID is associated, for example an ICDC study, the CCOGC biobank from which samples for a study subject were acquired, etc.

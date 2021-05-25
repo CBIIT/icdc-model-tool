@@ -271,6 +271,15 @@ Nodes:
       - phase_pe
       - assessment_timepoint
       - crf_id
+  publication:
+    Category: administrative
+    Props:
+      - publication_title
+      - authorship
+      - year_of_publication
+      - journal_citation
+      - digital_object_id
+      - pubmed_id
   vital_signs:
     Category: clinical_trial
     Props:
@@ -434,6 +443,9 @@ Relationships:
         Dst: study
         Mul: many_to_one
       - Src: image_collection
+        Dst: study
+        Mul: many_to_one
+      - Src: publication
         Dst: study
         Mul: many_to_one
     Props: null
