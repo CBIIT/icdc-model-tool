@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool.git
-commit 63c8088
+commit a036d29
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -274,6 +274,12 @@ program	program_full_description	STRING
 program	program_name	STRING
 program	program_short_description	STRING
 program	program_sort_order	INTEGER
+publication	authorship	STRING
+publication	digital_object_id	STRING
+publication	journal_citation	STRING
+publication	publication_title	STRING
+publication	pubmed_id	NUMBER
+publication	year_of_publication	NUMBER
 registration	registration_id	STRING
 registration	registration_origin	STRING
 sample	analysis_area	NUMBER (mm2)
@@ -371,50 +377,51 @@ vital_signs	respiration_rate	NUMBER (breaths/min)
 vital_signs	systolic_bp	NUMBER (mm Hg)
 
 relationship	source_node	destination_node	property	value_or_TYPE
-at_enrollment	prior_therapy	enrollment	NA	NA
 at_enrollment	physical_exam	enrollment	NA	NA
+at_enrollment	prior_therapy	enrollment	NA	NA
 at_enrollment	prior_surgery	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
-member_of	cohort	study	NA	NA
-member_of	cohort	study_arm	NA	NA
-member_of	case	study	NA	NA
 member_of	case	cohort	NA	NA
-member_of	study_arm	study	NA	NA
+member_of	case	study	NA	NA
+member_of	cohort	study_arm	NA	NA
+member_of	cohort	study	NA	NA
 member_of	study	program	NA	NA
+member_of	study_arm	study	NA	NA
 next	adverse_event	adverse_event	NA	NA
+next	prior_therapy	prior_therapy	NA	NA
 next	prior_surgery	prior_surgery	NA	NA
 next	sample	sample	NA	NA
-next	prior_therapy	prior_therapy	NA	NA
 next	visit	visit	NA	NA
-of_agent	agent_administration	agent	NA	NA
 of_agent	adverse_event	agent	NA	NA
-of_assay	file	assay	NA	NA
+of_agent	agent_administration	agent	NA	NA
 of_assay	image	assay	NA	NA
-of_case	sample	case	NA	NA
-of_case	enrollment	case	NA	NA
-of_case	adverse_event	case	NA	NA
-of_case	visit	case	NA	NA
+of_assay	file	assay	NA	NA
 of_case	demographic	case	NA	NA
-of_case	diagnosis	case	NA	NA
-of_case	cycle	case	NA	NA
+of_case	enrollment	case	NA	NA
 of_case	registration	case	NA	NA
 of_case	follow_up	case	NA	NA
+of_case	adverse_event	case	NA	NA
+of_case	sample	case	NA	NA
+of_case	visit	case	NA	NA
+of_case	diagnosis	case	NA	NA
+of_case	cycle	case	NA	NA
 of_cycle	visit	cycle	NA	NA
-of_sample	assay	sample	NA	NA
 of_sample	file	sample	NA	NA
+of_sample	assay	sample	NA	NA
+of_study	publication	study	NA	NA
 of_study	principal_investigator	study	NA	NA
 of_study	study_site	study	NA	NA
 of_study	image_collection	study	NA	NA
 of_study	file	study	NA	NA
-of_study_arm	case	study_arm	NA	NA
 of_study_arm	agent	study_arm	NA	NA
-on_visit	agent_administration	visit	NA	NA
-on_visit	lab_exam	visit	NA	NA
-on_visit	sample	visit	NA	NA
+of_study_arm	case	study_arm	NA	NA
 on_visit	physical_exam	visit	NA	NA
 on_visit	vital_signs	visit	NA	NA
 on_visit	disease_extent	visit	NA	NA
+on_visit	lab_exam	visit	NA	NA
+on_visit	agent_administration	visit	NA	NA
+on_visit	sample	visit	NA	NA
 represents	case	canine_individual	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
@@ -432,6 +439,7 @@ analysis_area_percentage_tumor	for the NCATS study, percentage of the analysis a
 anatomical_site_of_surgery	Site_FUL on form
 arm_description	Short description of the study arm
 arm_id	unique identifier via which arms having the same name, but which actually belong to different studies, can be differentiated
+authorship	list of authors for the cited work, i.e. for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
 best_response	indicator as to the best overall response to therapeutic intervention that was observed within an individual patient/subject/donor 
 body_surface_area	Called "bsa" in form
 body_system	Body system examined; up to 12 in a visit
@@ -456,6 +464,7 @@ date_of_iacuc_approval	if applicable, date upon which the study/trial was approv
 date_of_sample_collection	date upon which a sample was acquired
 date_of_vital_signs	actually visit date
 dates_of_conduct	indicator of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year
+digital_object_id	digital object identifier for the cited work by which it can be permanently identified and linked on the web
 document_number	S/N of the executed CRF
 dose_limiting_toxicity	bool
 dose_schedule	Schedule_FUL in form
@@ -471,6 +480,7 @@ general_sample_pathology	indicator as to whether a sample represents normal tiss
 image_collection_name	name of the image collection exactly as it appears at the location where the collection can be accessed and viewed
 image_collection_url	external url via which the image collection can be accessed and viewed
 image_type_included	list of image types included in the image collection, drawn from a list of acceptable values
+journal_citation	name of the journal in which the cited work was published, inclusive of the citation itself in terms fo jouranl volume number, part number where applicable and page numbers
 length_of_tumor	length of the tumor from which a tumor sample was derived
 md5sum	md5 checksum
 medication_missed_dose	Q.- form has "medication"
@@ -495,6 +505,8 @@ program_full_description	full length (multiple sentence) version of the program 
 program_name	name of the program
 program_short_description	abbreviated (single sentence) version of the program description
 program_sort_order	value upon which to arbitrarily prioritize display of the program within the UI
+publication_title	full title of the publication stated exactly as applied to the published work
+pubmed_id	unique numerical identifier assigned to the cited work by PubMed
 registration_id	any ID used by a data submitter to identify a patient/subject/donor, either locally or globally
 registration_origin	the entity with which a subject registration ID is associated, for example an ICDC study, the CCOGC biobank from which samples for a study subject were acquired, etc.
 repository_name	name of the image repository within which the image collection can be found, stated in the form of the appropriate acronym
@@ -519,3 +531,4 @@ veterinary_medical_center	full name of the university at which the patient was e
 volume_of_tumor	volume of the tumor from which the sample was derived
 weight	the subject\'s weight at the time the subject was enrolled and/or biospecimens were acquired, at least in the case of studies that are not longitudinal in nature 
 width_of_tumor	width of the tumor from which a tumor sample was derived
+year_of_publication	year in which the cited work was published
