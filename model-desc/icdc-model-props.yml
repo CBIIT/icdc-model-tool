@@ -266,8 +266,8 @@ PropDefinitions:
       - Progressive Disease
       - Not Determined 
       # included to accommodate situations either where the study in question 
-      # does not assess the effects of any therpeutic intervention or where 
-      # the response to therpeutic intervention could not be determined
+      # does not assess the effects of any therapeutic intervention or where 
+      # the response to therapeutic intervention could not be determined
       - Not Applicable 
       # included to accommodate situations in which healthy control subjects
       # are included within a study that does assess the effects of a
@@ -459,6 +459,7 @@ PropDefinitions:
       - Index File
       - Array CGH Analysis File # required for the MGC01 study
       - Variant Call File # for raw .vcf files
+      - Mutation Annotation File # for annotated .maf files
       - Variant Report # for reports detailing validated variants
       - Data Analysis Whitepaper # for any document detailing a data analysis pipeline and/or methodology
     Req: true
@@ -555,6 +556,8 @@ PropDefinitions:
         - MRI
         - PET
         - X-ray
+        - Optical
+        - Ultrasound
     Req: true
   image_collection_url:
     Desc: external url via which the image collection can be accessed and viewed

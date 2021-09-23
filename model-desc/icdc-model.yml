@@ -412,7 +412,10 @@ Relationships:
         Dst: case
       - Src: sample
         Dst: case
-    # to accommodate a Sample being directly associated with a Case, rather than being only indirectly associated with a Case through a Visit etc.
+    # to accommodate a Sample being directly associated with a Case, rather than being only indirectly associated with a Case through a Visit, etc.
+      - Src: file
+        Dst: case
+    # to accommodate a File being directly associated with a Case, rather than being only indirectly associated with a Case through a Sample or Diagnosis
       - Src: visit
         Dst: case
     # to accommodate situations in which a Visit cannot be unambiguously associated with a treatment Cycle
