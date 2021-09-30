@@ -14,6 +14,7 @@ jobs:
           python-version: '3.x'
       - name: Validate MDF
         run: |
+          echo $PWD
           pip install bento-mdf/validators/mdf-validate
           push model-desc
           test-mdf.py icdc-model.yml icdc-model-props.yml
