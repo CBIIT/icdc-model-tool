@@ -21,5 +21,11 @@ jobs:
           pushd model-desc
           test-mdf.py icdc-model.yml icdc-model-props.yml
         shell: bash
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Where am I
+        run: echo $PWD
+        shell: bash
           
   
