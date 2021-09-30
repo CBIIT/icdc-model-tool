@@ -51,8 +51,6 @@ jobs:
           cat ./model-desc/icdc-model.svg >> ./README.md
           echo "</div>" >> ./README.md
           popd
-          
-        shell: bash
       - name: Commit artifacts to docs
         run: |
           git config user.name github-actions
