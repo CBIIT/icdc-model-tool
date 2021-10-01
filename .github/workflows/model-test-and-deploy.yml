@@ -6,7 +6,7 @@ on:
 
 jobs:
   validate-and-build:
-    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml
+    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@c01a5278200507f218135349e4a1855f4f0cd77e
     with:
       model_files: |
         icdc-model.yml icdc-model-props.yml
