@@ -1,8 +1,5 @@
 name: Model Validate and Build
-on:
-  push:
-    branches:
-      - feat-gh-actions
+on: push
 
 jobs:
   validate-and-build:
