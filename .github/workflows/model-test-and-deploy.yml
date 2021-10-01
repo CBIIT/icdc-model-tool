@@ -29,11 +29,16 @@ jobs:
         with:
           submodules: 'true'
       - name: Build model artifacts
+        env:
+          REPO: ${{ secrets.REPO }}
+          USER: ${{ secrets.REPO_USER }}
+          PW: ${{ secrets.REPO_PW }}
         run: |
           pushd model-desc
           cp -aR ../bento-mdf/drivers/Perl/make-model/lib lib
           cp -aR ../bento-mdf/drivers/Perl/make-model/bin bin
           # run model-tool with pre-built perl - fast
+          docker login -u $USER -p $PW $REPO
           docker run -v "$PWD":/home/user -w /home/user maj1.jfrog.io/model-tool-perl:latest -Ilib bin/model-tool -g update-model.svg -T update-model.txt icdc-model.yml icdc-model-props.yml
           echo repo $(git remote get-url origin) > update-info.txt
           # second to last commit is ours, last commit is travis'
