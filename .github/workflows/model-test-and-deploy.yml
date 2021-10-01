@@ -1,4 +1,4 @@
-name: model-test-and-deploy
+name: Model Validate and Build
 on:
   push:
     branches:
