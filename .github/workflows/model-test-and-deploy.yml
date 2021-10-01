@@ -5,62 +5,14 @@ on:
       - feat-gh-actions
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: 'true'
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: Validate MDF
-        run: |
-          echo $PWD
-          pip install bento-mdf/validators/mdf-validate
-          pushd model-desc
-          test-mdf.py icdc-model.yml icdc-model-props.yml
-        shell: bash
-  build:
-    runs-on: ubuntu-latest
-    needs: validate
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: 'true'
-      - name: Build model artifacts
-        env:
-          REPO: ${{ secrets.REPO }}
-          RSVC: ${{ secrets.RSVC }}
-          USER: ${{ secrets.REPO_USER }}
-          PW: ${{ secrets.REPO_PW }}
-        run: |
-          pushd model-desc
-          cp -aR ../bento-mdf/drivers/Perl/make-model/lib lib
-          cp -aR ../bento-mdf/drivers/Perl/make-model/bin bin
-          # run model-tool with pre-built perl - fast
-          docker login -u $USER -p $PW $RSVC
-          docker run -v "$PWD":/home/user -w /home/user $REPO/model-tool-perl:latest -Ilib bin/model-tool -g update-model.svg -T update-model.txt icdc-model.yml icdc-model-props.yml
-          echo repo $(git remote get-url origin) > update-info.txt
-          # second to last commit is ours, last commit is travis'
-          echo commit $(git log -2 --pretty=format:"%h" | tail -1) >> update-info.txt
-          cat update-info.txt
-          cat update-info.txt update-model.txt > x.txt
-          cp -f x.txt update-model.txt
-          cp icdc-model.yml icdc-model-props.yml ../docs/model-desc
-          cp update-model.txt ../docs/model-desc/icdc-model.txt
-          sed -e '1,6d' update-model.svg > ../docs/model-desc/icdc-model.svg
-          rm -f update-model.svg update-info.txt x.txt update-model.txt
-          pushd ../docs
-          cat ./README.md.content > ./README.md
-          echo "<div id='graph' style='display:off;'>" >> ./README.md
-          cat ./model-desc/icdc-model.svg >> ./README.md
-          echo "</div>" >> ./README.md
-          popd
-      - name: Commit artifacts to docs
-        run: |
-          git config user.name github-actions
-          git add docs
-          git commit -m "deploy artifacts to github page"
-          git push
-        shell: bash
+  validate-and-build:
+    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml
+    with:
+      model_files: |
+        icdc-model.yml icdc-model-props.yml
+      model_prefix: icdc-model
+    secrets:
+      docker_repo: ${{ secrets.REPO }}
+      docker_svc: ${{ secrets.RSVC }}
+      repo_user: ${{ secrets.REPO_USER }}
+      repo_pw: ${{ secrets.REPO_PW }}
