@@ -1,0 +1,15 @@
+name: Model Validate and Build
+on: push
+
+jobs:
+  validate-and-build:
+    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v1.0.0
+    with:
+      model_files: |
+        icdc-model.yml icdc-model-props.yml
+      model_prefix: icdc-model
+    secrets:
+      docker_repo: ${{ secrets.REPO }}
+      docker_svc: ${{ secrets.RSVC }}
+      repo_user: ${{ secrets.REPO_USER }}
+      repo_pw: ${{ secrets.REPO_PW }}
