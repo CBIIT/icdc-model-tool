@@ -9,11 +9,12 @@ on:
 
 jobs:
   validate-and-build:
-    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v1.0.0
+    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v1.1.0
     with:
       model_files: |
         icdc-model.yml icdc-model-props.yml
       model_prefix: icdc-model
+      event_name: ${{ github.event_name }}
     secrets:
       docker_repo: ${{ secrets.REPO }}
       docker_svc: ${{ secrets.RSVC }}
