@@ -770,36 +770,34 @@ PropDefinitions:
     Type: TBD
   # program props
   program_acronym:
-    Desc: official acronym for the name of the program as it should be displayed
-      within the UI
-    Src: curated
+    Desc: The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI
+    Src: Internally-generated
     Type: string
-    Req: true
+    Req: 'Yes'
   program_external_url:
-    Desc: external url to which users should be directed to learn more about the
-      program
-    Src: curated
+    Desc: The external url to which users should be directed in order to learn more about the program
     Type: string
+    Req: 'No'
   program_full_description:
-    Desc: full length (multiple sentence) version of the program description
-    Src: curated
+    Desc: A more detailed, multiple sentence description of the program
+    Src: Internally-generated
     Type: string
-    Req: true
+    Req: 'Yes'
   program_name:
-    Desc: name of the program
-    Src: curated
+    Desc: The name of the program under which related studies will be grouped, in full text and unabbreviated form, exactly as it will be displayed within the UI
+    Src: Internally-generated
     Type: string
-    Req: true
+    Req: 'Yes'
   program_short_description:
-    Desc: abbreviated (single sentence) version of the program description
-    Src: curated
+    Desc: An abbreviated, single sentence description of the program
+    Src: Internally-generated
     Type: string
-    Req: true
+    Req: 'Yes'
   program_sort_order:
-    Desc: value upon which to arbitrarily prioritize display of the program within
-      the UI
-    Src: curated
+    Desc: An arbitrarily-assigned value used to dictate the order in which programs are displayed within the UI
+    Src: Internally-generated
     Type: integer
+    Req: 'No'
   # publication props
   publication_title:
     Desc: full title of the publication stated exactly as applied to the published work
