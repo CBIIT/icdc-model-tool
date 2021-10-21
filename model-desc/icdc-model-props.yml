@@ -545,13 +545,13 @@ PropDefinitions:
     Type: boolean
   # image collection props
   image_collection_name:
-    Desc: name of the image collection exactly as it appears at the location where the collection can be accessed and viewed 
-    Src: curated
+    Desc: The name of the image collection exactly as it appears at the location where the collection can be viewed and/or accessed 
+    Src: Internally-curated
     Type: string
-    Req: true
+    Req: 'Yes'
   image_type_included:
-    Desc: list of image types included in the image collection, drawn from a list of acceptable values
-    Src: curated
+    Desc: A list of the image types included in the image collection, as dictated by a set of acceptable values that can appear within any given list of image types
+    Src: Internally-curated
     Type:
       value_type: list
       item_type:
@@ -562,24 +562,24 @@ PropDefinitions:
         - X-ray
         - Optical
         - Ultrasound
-    Req: true
+    Req: 'Yes'
   image_collection_url:
-    Desc: external url via which the image collection can be accessed and viewed
-    Src: curated
+    Desc: The external url via which the image collection can be viewed and/or accessed
+    Src: Internally-curated
     Type: string
-    Req: true
+    Req: 'Yes'
   repository_name:
-    Desc: name of the image repository within which the image collection can be found, stated in the form of the appropriate acronym
-    Src: curated
+    Desc: The name of the image repository within which the image collection can be found, stated in the form of the appropriate acronym
+    Src: Internally-curated
     Type: string
-    Req: true
+    Req: 'Yes'
   collection_access:
-    Desc: indicator as to whether the image collection can be accessed via download versus being accessible only via the cloud
-    Src: curated
+    Desc: Indicator as to whether the image collection can be accessed via download versus being accessible only via the cloud
+    Src: Internally-curated
     Type:
       - Download
       - Cloud
-    Req: true
+    Req: 'Yes'
   # off_study props and
   # off_treatment props
   best_resp_vet_tx_tp_best_response:
@@ -805,27 +805,29 @@ PropDefinitions:
     Req: 'No'
   # publication props
   publication_title:
-    Desc: full title of the publication stated exactly as applied to the published work
+    Desc: The full title of the publication stated exactly as it appears on the published work
     Type: string
-    Req: true
+    Req: 'Yes'
   authorship:
-    Desc: list of authors for the cited work, i.e. for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
+    Desc: A list of authors for the cited work, specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
     Type: string
-    Req: true
+    Req: 'Yes'
   year_of_publication:
-    Desc: year in which the cited work was published
+    Desc: The year in which the cited work was published
     Type: number
-    Req: true
+    Req: 'Yes'
   journal_citation:
-    Desc: name of the journal in which the cited work was published, inclusive of the citation itself in terms fo jouranl volume number, part number where applicable and page numbers
+    Desc: The name of the journal in which the cited work was published, inclusive of the citation itself in terms of journal volume number, part number where applicable, and page numbers
     Type: string
-    Req: true
+    Req: 'Yes'
   digital_object_id:
-    Desc: digital object identifier for the cited work by which it can be permanently identified and linked on the web
+    Desc: Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet
     Type: string
+    Req: Preferred
   pubmed_id:
-    Desc: unique numerical identifier assigned to the cited work by PubMed
+    Desc: Where applicable, the unique numerical identifier assigned to the cited work by PubMed, by which it can be linked to via the internet
     Type: number
+    Req: Preferred
   # registration props
   registration_origin:
     Desc: the entity with which a subject registration ID is associated, for example an ICDC study, the CCOGC biobank from which samples for a study subject were acquired, etc.
