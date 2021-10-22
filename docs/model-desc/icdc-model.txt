@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool
-commit c40498f
+commit 26abe3b
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -383,47 +383,47 @@ at_enrollment	prior_therapy	enrollment	NA	NA
 at_enrollment	prior_surgery	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
+member_of	study	program	NA	NA
 member_of	cohort	study	NA	NA
 member_of	cohort	study_arm	NA	NA
-member_of	study	program	NA	NA
+member_of	study_arm	study	NA	NA
 member_of	case	study	NA	NA
 member_of	case	cohort	NA	NA
-member_of	study_arm	study	NA	NA
-next	sample	sample	NA	NA
-next	prior_surgery	prior_surgery	NA	NA
 next	visit	visit	NA	NA
-next	prior_therapy	prior_therapy	NA	NA
+next	prior_surgery	prior_surgery	NA	NA
 next	adverse_event	adverse_event	NA	NA
-of_agent	agent_administration	agent	NA	NA
+next	prior_therapy	prior_therapy	NA	NA
+next	sample	sample	NA	NA
 of_agent	adverse_event	agent	NA	NA
-of_assay	image	assay	NA	NA
+of_agent	agent_administration	agent	NA	NA
 of_assay	file	assay	NA	NA
+of_assay	image	assay	NA	NA
+of_case	sample	case	NA	NA
 of_case	enrollment	case	NA	NA
+of_case	visit	case	NA	NA
+of_case	file	case	NA	NA
+of_case	follow_up	case	NA	NA
 of_case	adverse_event	case	NA	NA
 of_case	cycle	case	NA	NA
 of_case	registration	case	NA	NA
-of_case	visit	case	NA	NA
-of_case	follow_up	case	NA	NA
-of_case	sample	case	NA	NA
 of_case	demographic	case	NA	NA
-of_case	file	case	NA	NA
 of_case	diagnosis	case	NA	NA
 of_cycle	visit	cycle	NA	NA
 of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
-of_study	principal_investigator	study	NA	NA
-of_study	image_collection	study	NA	NA
+of_study	publication	study	NA	NA
 of_study	file	study	NA	NA
 of_study	study_site	study	NA	NA
-of_study	publication	study	NA	NA
-of_study_arm	case	study_arm	NA	NA
+of_study	image_collection	study	NA	NA
+of_study	principal_investigator	study	NA	NA
 of_study_arm	agent	study_arm	NA	NA
-on_visit	disease_extent	visit	NA	NA
+of_study_arm	case	study_arm	NA	NA
+on_visit	vital_signs	visit	NA	NA
+on_visit	agent_administration	visit	NA	NA
 on_visit	physical_exam	visit	NA	NA
 on_visit	lab_exam	visit	NA	NA
 on_visit	sample	visit	NA	NA
-on_visit	vital_signs	visit	NA	NA
-on_visit	agent_administration	visit	NA	NA
+on_visit	disease_extent	visit	NA	NA
 represents	case	canine_individual	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA

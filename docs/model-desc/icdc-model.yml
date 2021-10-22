@@ -17,7 +17,11 @@
 
 Nodes:
   program:
-    Category: administrative
+    Tags:
+      Category: administrative
+      Assignment: core
+      Class: primary
+      Color: black
     Props:
       - program_name
       - program_acronym
@@ -26,7 +30,11 @@ Nodes:
       - program_external_url
       - program_sort_order
   study:
-    Category: administrative
+    Tags:
+      Category: study
+      Assignment: core
+      Class: primary
+      Color: black
     Props:
       - clinical_study_id
       - clinical_study_designation
@@ -38,13 +46,21 @@ Nodes:
       - accession_id
       - study_disposition
   study_site:
-    Category: administrative
+    Tags:
+      Category: study
+      Assignment: core
+      Class: secondary
+      Color: black
     Props:
       - site_short_name
       - veterinary_medical_center
       - registering_institution
   study_arm:
-    Category: administrative
+    Tags:
+      Category: study
+      Assignment: core
+      Class: secondary
+      Color: black
     Props:
       - arm
       - ctep_treatment_assignment_code
@@ -53,37 +69,61 @@ Nodes:
       - arm_description
       - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
   agent:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       - medication
       # d/n from STUDY_MED_ADMIN/SDAD/1      
       - document_number
   cohort:
-    Category: administrative
+    Tags:
+      Category: study
+      Assignment: core
+      Class: secondary
+      Color: black
     Props:
       - cohort_description
       # the intended or protocol dose
       - cohort_dose
       - cohort_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
   case:
-    Category: case
+    Tags:
+      Category: case
+      Assignment: core
+      Class: primary
+      Color: black
     Props:
       - case_id
       - patient_id
       - patient_first_name
       - crf_id
   registration:
-    Category: administrative
+    Tags:
+      Category: case
+      Assignment: core
+      Class: secondary
+      Color: black
     Props: 
       - registration_origin
       - registration_id
       #- is_primary_id
   canine_individual:
-    Category: administrative
+    Tags:
+      Category: case
+      Assignment: core
+      Class: secondary
+      Color: black
     Props:
       - canine_individual_id
   demographic:
-    Category: clinical
+    Tags:
+      Category: case
+      Assignment: core
+      Class: primary
+      Color: black
     Props:
       - breed
       - patient_age_at_enrollment
@@ -93,24 +133,40 @@ Nodes:
       - neutered_indicator
       - crf_id
   cycle:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       - cycle_number
       - date_of_cycle_start
       - date_of_cycle_end
   visit:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props: 
       - visit_date
       - visit_number
   principal_investigator:
-    Category: administrative
+    Tags:
+      Category: study
+      Assignment: core
+      Class: primary
+      Color: black
     Props:
       - pi_first_name
       - pi_last_name
       - pi_middle_initial
   diagnosis:
-    Category: clinical
+    Tags:
+      Category: clinical
+      Assignment: core
+      Class: primary
+      Color: black
     Props:
       - disease_term
       - primary_disease_site
@@ -127,7 +183,11 @@ Nodes:
       - concurrent_disease_type
       - crf_id
   enrollment:
-    Category: administrative
+    Tags:
+      Category: case
+      Assignment: core
+      Class: primary
+      Color: black
     Props:
       - date_of_registration
       - registering_institution
@@ -140,7 +200,11 @@ Nodes:
       - cohort_description
       - patient_subgroup
   prior_therapy:
-    Category: clinical
+    Tags:
+      Category: clinical
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props: 
       - date_of_first_dose
       - date_of_last_dose
@@ -169,7 +233,11 @@ Nodes:
       - treatment_performed_at_site
       - treatment_performed_in_minimal_residual
   prior_surgery:
-    Category: clinical
+    Tags:
+      Category: clinical
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       - date_of_surgery
       - procedure
@@ -179,7 +247,11 @@ Nodes:
       - therapeutic_indicator
       - crf_id
   agent_administration:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       # d/n from STUDY_MED_ADMIN/SDAD/1
       - document_number
@@ -205,7 +277,11 @@ Nodes:
       - comment
       - crf_id
   sample:
-    Category: biospecimen
+    Tags:
+      Category: biospecimen
+      Assignment: core
+      Class: primary
+      Color: black
     Props: 
       - sample_id
       - sample_site
@@ -235,10 +311,18 @@ Nodes:
       - sample_preservation
       - comment
   assay:
-    Category: analysis
+    Tags:
+      Category: analysis
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props: null
   file:
-    Category: data_file
+    Tags:
+      Category: data_file
+      Assignment: core
+      Class: primary
+      Color: black
     Props:
       - file_name
       - file_type
@@ -250,10 +334,18 @@ Nodes:
       - uuid
       - file_location
   image:
-    Category: data_file
+    Tags:
+      Category: data_file
+      Assignment: core
+      Class: secondary
+      Color: black
     Props: null
   image_collection:
-    Category: administrative
+    Tags:
+      Category: study
+      Assignment: core
+      Class: secondary
+      Color: black
     Props:
       - image_collection_name
       - image_type_included
@@ -261,7 +353,11 @@ Nodes:
       - repository_name
       - collection_access
   physical_exam:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       - date_of_examination
       - day_in_cycle
@@ -272,7 +368,11 @@ Nodes:
       - assessment_timepoint
       - crf_id
   publication:
-    Category: administrative
+    Tags:
+      Category: study
+      Assignment: core
+      Class: secondary
+      Color: black
     Props:
       - publication_title
       - authorship
@@ -281,7 +381,11 @@ Nodes:
       - digital_object_id
       - pubmed_id
   vital_signs:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       - date_of_vital_signs
       - body_temperature
@@ -298,11 +402,19 @@ Nodes:
       - phase
       - crf_id
   lab_exam:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props: null
   adverse_event:
     # how to link? To case and agent? Also to visit/followup?
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       - ae_dose
       - ae_agent_name
@@ -322,7 +434,11 @@ Nodes:
       - unexpected_adverse_event
       - crf_id
   disease_extent:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props: 
       - crf_id
       - lesion_number
@@ -338,7 +454,11 @@ Nodes:
       - evaluation_number
       - evaluation_code
   follow_up:
-    Category: clinical
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       # d/n from FOLLOW_UP/FLWU/1
       - document_number
@@ -352,7 +472,11 @@ Nodes:
       - crf_id
   off_study:
     # off_study, off_treatment -- how related? should be a dependency and normalize properties?
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       # d/n from OFF_STUDY/OSSM/1
       - document_number
@@ -365,7 +489,11 @@ Nodes:
       - best_resp_vet_tx_tp_best_response
       - date_of_best_response
   off_treatment:
-    Category: clinical_trial
+    Tags:
+      Category: clinical_trial
+      Assignment: extended
+      Class: secondary
+      Color: black
     Props:
       # d/n from OFF_TREATMENT/OTSM/1
       - document_number
