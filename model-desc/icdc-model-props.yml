@@ -1060,7 +1060,7 @@ PropDefinitions:
       - Unrestricted
       - Pending
       - Under Embargo
-    Req: 'Y'
+    Req: 'Yes'
   # study_arm props
   arm:
     Desc: Where applicable, the nature of each arm into which the study/trial has been divided, e.g. in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm
