@@ -217,41 +217,44 @@ PropDefinitions:
     Type: datetime
   # demographic props
   breed:
+    Desc: The specific breed of the canine patient/subject/donor, per the list of breeds officially recognized by the American Kennel Club
     Type:
       - http://localhost/terms/domain/breed
+    Req: 'Yes'
   # crf_id: included in demographic node, defined elsewhere
   date_of_birth:
+    Desc: The date of birth of the canine patient/subject/donor
     Type: datetime
+    Req: 'No'
   neutered_indicator:
-    Desc: Indicator as to whether the patient has been either spayed (female
-      patients) or neutered (male patients)
+    Desc: Indicator as to whether the patient/subject/donor has been either spayed (female
+      subjects) or neutered (male subjects)
     Type:
       - 'Yes'
       - 'No'
       - Unknown
-    Req: true
+    Req: 'Yes'
   patient_age_at_enrollment:
+    Desc: The age the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
     Type:
       units:
         - years
       value_type: number
+    Req: 'No'
   sex:
-    Desc: Sex of patient/subject/donor
+    Desc: The biological sex of the patient/subject/donor
     Type:
       - Male
       - Female
       - Unknown
-    Req: true
+    Req: 'Y'
   weight:
-    Desc: |
-      the subject\'s weight at the time the subject was enrolled and/or
-      biospecimens were acquired, at least in the case of studies that
-      are not longitudinal in nature
+    Desc: The weight of the patient/subject/donor at the time of study/trial enrollment and/or biospecimens being acquired, at least in the case of studies that are not longitudinal in nature
     Type:
       units:
         - kg
       value_type: number
-    Req: false
+    Req: 'N'
 
   # diagnosis props
   best_response:
@@ -407,24 +410,21 @@ PropDefinitions:
   #   Src: ENROLLMENT/ENROLL/1
   #   Type: string
   date_of_informed_consent:
-    Src: ENROLLMENT/ENROLL/1
+    Desc: The date upon which the owner of the patient/subject/donor signed an informed consent on behalf of the subject
     Type: datetime
+    Req: 'No'
   date_of_registration:
-    Src: ENROLLMENT/ENROLL/1
+    Desc: The date upon which the patient/subject/donor was enrolled in the study/trial
     Type: datetime
-  enrollment_document_number:
-    Desc: globally unique ID for the specific instance of the COTC Enrollment case
-      report form via which the patient was enrolled into the study/trial
-    Src: ENROLLMENT/ENROLL/1
-    Type: string
+    Req: 'No'
   initials:
-    Src: ENROLLMENT/ENROLL/1
+    Desc: The initials of the patient/subject/donor based upon the subject's first or given name, and the last or family name of the subject's owner
     Type: string
+    Req: 'No'
   patient_subgroup:
-    Desc: short description as to the reason for the patient being enrolled in the
-      study/trial
-    Src: ENROLLMENT/ENROLL/1
+    Desc: A short description as to the reason for the patient/subject/donor being enrolled in any given study/trial arm or cohort, for example, a clinical trial patient having been enrolled in a dose escalation cohort
     Type: string
+    Req: 'No'
   # registering_institution: also included in enrollment node, defined elsewhere
   #   Src: ENROLLMENT/ENROLL/1
   #   Type: string
