@@ -247,14 +247,14 @@ PropDefinitions:
       - Male
       - Female
       - Unknown
-    Req: 'Y'
+    Req: 'Yes'
   weight:
     Desc: The weight of the patient/subject/donor at the time of study/trial enrollment and/or biospecimens being acquired, at least in the case of studies that are not longitudinal in nature
     Type:
       units:
         - kg
       value_type: number
-    Req: 'N'
+    Req: 'No'
 
   # diagnosis props
   best_response:
