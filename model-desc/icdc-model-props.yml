@@ -886,41 +886,15 @@ PropDefinitions:
      # - 'No'
     #Req: 'Yes'
   # sample props
-  analysis_area:
-    Desc: for the NCATS study, total area of slide subject to analysis
-    Src: '?'
-    Type:
-      units:
-        - mm2
-      value_type: number
-  analysis_area_percentage_glass:
-    Desc: for the NCATS study, percentage of the analysis area represnted by glass
-    Src: '?'
-    Type: number
-  analysis_area_percentage_pigmented_tumor:
-    Desc: for the NCATS study, percentage of the analysis area represnted by
-      pigmented tumor tissue
-    Src: '?'
-    Type: number
-  analysis_area_percentage_stroma:
-    Desc: for the NCATS study, percentage of the analysis area represnted by stromal
-      tissue
-    Src: '?'
-    Type: number
-  analysis_area_percentage_tumor:
-    Desc: for the NCATS study, percentage of the analysis area represnted by tumor
-      tissue
-    Src: '?'
-    Type: number
   # comment: also included in sample node, defined elsewhere
   #  Desc: generic comment concerning the preparation and/or annotation of the sample
   #  Type: string
   date_of_sample_collection:
-    Desc: date upon which a sample was acquired
+    Desc: The date upon which the sample was acquired from the patient/subject/donor
     Type: datetime
+    Req: 'No'
   general_sample_pathology:
-    Desc: indicator as to whether a sample represents normal tissue versus having been derived
-      from diseased or tumor tissue
+    Desc: An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue
     Type:
       - Normal
       - Malignant
@@ -928,44 +902,32 @@ PropDefinitions:
       - Hyperplastic
       - Diseased
       - Not Applicable # included to accommodate the inevitable ambiguity in assigning a general sample pathology to certain sample types, e.g. blood
-    Req: true
+    Req: 'Yes'
   length_of_tumor:
-    Desc: length of the tumor from which a tumor sample was derived
+    Desc: The length of the tumor from which a tumor sample was derived, as measured in mm
     Type:
       units:
         - mm
       value_type: number
-    Req: false
+    Req: 'No'
   molecular_subtype:
-    Desc: TBD
+    Desc: Where applicable, the molecular subtype of the tumor sample in question, for example, the tumor being basal versus lumnial in nature
     Type: string
+    Req: 'No'
   necropsy_sample:
-    Desc: Indicator as to whether a sample was acquired as a result of a necropsy
-      examination
+    Desc: An indication as to whether a sample was acquired as a result of a necropsy examination
     Type:
       - 'Yes'
       - 'No'
       - Unknown
       - Not Applicable # included to accommodate cell line samples
-    Req: true
-  non_tumor_tissue_area:
-    Desc: for the NCATS study, area within analyzed tissue area represented by
-      non-tumor tissue
-    Src: '?'
-    Type:
-      units:
-        - mm2
-      value_type: number
-  percentage_stroma:
-    Desc: percentage of total tissue area represented by stromal tissue
-    Src: '?'
-    Type: number
+    Req: 'Yes'
   percentage_tumor:
-    Desc: percentage of total tissue area represented by tumor tissue
-    Src: '?'
+    Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range
     Type: string #changed to string in order to accommodate values being quoted in ranges, as greater or less than, or as Unknown
+    Req: 'No'
   sample_chronology:
-    Desc: indicator as to when a sample was acquired relative to therapeutic treatment administration and/or key disease outcome observations
+    Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations
     Type:
       - Before Treatment
       - During Treatment
@@ -975,52 +937,42 @@ PropDefinitions:
       - Upon Death
       - Not Applicable # included to accommodate samples being acquired via a study which did not assess the effects of any therapeutic intervention
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
-    Req: true
+    Req: 'Yes'
   sample_id:
-    Desc: globally unqiue ID for a sample, generated from values
-      within the raw data concatenated together to ensure global uniqueness
+    Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation
     Type: string
-    Req: true
+    Req: 'Yes'
   sample_preservation:
-    Desc: the method by which a sample was preserved
+    Desc: The method by which a sample was preserved
     Type:
       - FFPE
       - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
-      - Not Applicable # included to accommodate cell line samples, which will be processed absent interim preservation and storage
+      - Not Applicable # included to accommodate cell line samples, which will generally be processed absent interim preservation and storage
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
-    Req: true
+    Req: 'Yes'
   sample_site:
-    Desc: the anatomical location from which a sample was acquired
+    Desc: The specific anatomical location from which any given sample was acquired
     Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
-    Req: true
-  physical_sample_type: #changed to clarify relative to summarized_sample_type
-    Desc: indicator as to the physical nature of a sample - tissue, blood,
-      urine, etc.
+    Req: 'Yes'
+  physical_sample_type:
+    Desc: An indication as to the physical nature of any given sample
     Type:
       - Tissue
       - Blood # list of acceptable values will gradually be expanded as data submission requirements solidify
       - Cell Line # required for the CCL01 and OSA01 studies
-    Req: true
+    Req: 'Yes'
   specific_sample_pathology:
-    Desc: indicator of the specific pathology associated with a sample, e.g.
-      squamous cell carcinoma
+    Desc: Indication as to specific histology and/or pathology associated with a sample
     Type: string # will be superseded by an enumerated list of acceptable valuesas as data submission requirements solidify
-    Req: true
+    Req: 'Yes'
   summarized_sample_type:
-    Desc: summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in three independent properties
+    Desc: A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin
+    Src: Internally-curated 
     Type: string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
-    Req: false
-  total_tissue_area:
-    Desc: for the NCATS study, area within the slide's analysis area represented by
-      tissue
-    Src: '?'
-    Type:
-      units:
-        - mm2
-      value_type: number
+    Req: 'No'
   tumor_grade:
-    Desc: grade of the tumor from which a sample was acquired as determined by the evaluation of a pathologist
+    Desc: The grade of the tumor from which a sample was acquired, i.e. the dgree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
     Type: # was string, to be superseded by an enumerated list of acceptable values as data submission requirements solidify
       - "1"
       - "2"
@@ -1031,38 +983,29 @@ PropDefinitions:
       - Low
       - Unknown
       - Not Applicable
-    Req: false
+    Req: 'No'
   tumor_sample_origin:
-    Desc: indicator as to whether a tumor sample was derived from a primary versus a metastatic tumor
+    Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor
     Type:
       - Primary
       - Metastatic
       - Not Applicable # included to accommodate samples not derived from tumors
       - Unknown # included to accommodate the almost inevitable case where the origin of a tumor sample is uncertain
-    Req: true
-  tumor_tissue_area:
-    Desc: for the NCATS study, area within analyzed tissue area represented by tumor
-      tissue
-    Src: '?'
-    Type:
-      units:
-        - mm2
-      value_type: number
+    Req: 'Yes'
   volume_of_tumor:
-    Desc: volume of the tumor from which the sample was derived
+    Desc: The volume of the tumor from which a tumor sample was derived, as measured in cm3
     Type:
       units:
         - cm3
       value_type: number
-    Req: false    
+    Req: 'No'   
   width_of_tumor:
-    Desc: width of the tumor from which a tumor sample was derived
-    Src: '?'
+    Desc: The width of the tumor from which a tumor sample was derived, as measured in mm
     Type:
       units:
         - mm
       value_type: number
-    Req: false
+    Req: 'No'
   # study props
   clinical_study_description:
     Desc: A multiple sentence summary of what the study/trial was intended to determine and how it was conducted
