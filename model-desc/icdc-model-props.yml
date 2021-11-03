@@ -486,13 +486,11 @@ PropDefinitions:
   # removed residual evaluation props from here
   # file props
   file_name:
-    Desc: name of the file, as provided by the data owner
+    Desc: The name of the file, maintained exactly as provided by the data submitter
     Type: string
-    Req: true
+    Req: 'Yes'
   file_type:
-    Desc: indicator as to the nature of the file in terms of its content, i.e. what
-      the information contained within the file constitutes
-    Src: curated
+    Desc: An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format
     Type:
       - Study Protocol
       - Supplemental Data File
@@ -508,28 +506,27 @@ PropDefinitions:
       - Mutation Annotation File # for annotated .maf files
       - Variant Report # for reports detailing validated variants
       - Data Analysis Whitepaper # for any document detailing a data analysis pipeline and/or methodology
-    Req: true
+    Req: 'Yes'
   file_description:
-    Desc: optional description of the file and/or its content, e.g. amended versus
-      original pathology report, low resolution versus high resolution image
-      file, etc.
-    Src: curated
+    Desc: An optional description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length
     Type: string
+    Req: 'No'
   file_format:
-    Desc: the specific format of the file, e.g. pdf vs. png vs. doc, etc., as
-      derived by the loader
-    Src: derived by loader
-    Type: TBD
-  file_size:
-    Desc: size of the file as derived by the loader
-    Src: derived by loader
-    Type: number
-  md5sum:
-    Desc: md5 checksum
-    Src: should be submitted and then checked by loader
+    Desc: The specific format of the file as determined by the data loader
+    Src: Loader-derived
     Type: string
+    Req: 'Yes'
+  file_size:
+    Desc: The size of the file in bytes
+    Type: number
+    Req: "Yes"
+  md5sum:
+    Desc: The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC
+    Type: string
+    Req: "Yes"
   file_status:
-    Desc: enumerated representation of the status of files
+    Desc: An enumerated representation of the status of any given file
+    Src: Loader-derived
     Type:
       - uploading
       - uploaded
@@ -545,12 +542,17 @@ PropDefinitions:
       - submitted
       - released
   # let's talk about this one /maj
-  # uuid:
-  #   Desc:
-  #   Src:
-  #   Type: string
-  file_location:
+    Req: 'Yes'
+  uuid:
+    Desc: The universally unique alpha-numeric identifier assigned to each file
+    Src: Loader-derived
     Type: string
+    Req: 'Yes'
+  file_location:
+    Desc: The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url
+    Src: Loader-derived
+    Type: string
+    Req: 'Yes'
   # follow_up props
   contact_type:
     Desc: need vocab
