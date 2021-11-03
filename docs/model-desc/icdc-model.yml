@@ -298,16 +298,7 @@ Nodes:
       - length_of_tumor
       - width_of_tumor
       - volume_of_tumor
-      - analysis_area
-      - analysis_area_percentage_tumor
-      - analysis_area_percentage_stroma
-      - analysis_area_percentage_glass
-      - analysis_area_percentage_pigmented_tumor
-      - total_tissue_area
-      - tumor_tissue_area
-      - non_tumor_tissue_area
       - percentage_tumor
-      - percentage_stroma
       - sample_preservation
       - comment
   assay:

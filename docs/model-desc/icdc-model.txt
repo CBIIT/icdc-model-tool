@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool
-commit d2e7ec5
+commit 3480455
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -72,6 +72,7 @@ diagnosis	best_response	Not Determined
 diagnosis	best_response	Partial Response
 diagnosis	best_response	Progressive Disease
 diagnosis	best_response	Stable Disease
+diagnosis	best_response	Unknown
 diagnosis	concurrent_disease	No
 diagnosis	concurrent_disease	Unknown
 diagnosis	concurrent_disease	Yes
@@ -79,14 +80,39 @@ diagnosis	concurrent_disease_type	STRING
 diagnosis	crf_id	NA
 diagnosis	date_of_diagnosis	DATETIME
 diagnosis	date_of_histology_confirmation	DATETIME
-diagnosis	disease_term	EXTERNAL
+diagnosis	disease_term	B Cell Lymphoma
+diagnosis	disease_term	Bladder Cancer
+diagnosis	disease_term	Glioma
+diagnosis	disease_term	Healthy Control
+diagnosis	disease_term	Lymphoma
+diagnosis	disease_term	Mammary Cancer
+diagnosis	disease_term	Melanoma
+diagnosis	disease_term	Osteosarcoma
+diagnosis	disease_term	Pulmonary Neoplasms
+diagnosis	disease_term	T Cell Lymphoma
+diagnosis	disease_term	Unknown
 diagnosis	follow_up_data	No
 diagnosis	follow_up_data	Yes
 diagnosis	histological_grade	EXTERNAL
 diagnosis	histology_cytopathology	STRING
 diagnosis	pathology_report	No
 diagnosis	pathology_report	Yes
-diagnosis	primary_disease_site	EXTERNAL
+diagnosis	primary_disease_site	Bladder
+diagnosis	primary_disease_site	Bladder Urethra, Prostate
+diagnosis	primary_disease_site	Bladder, Prostate
+diagnosis	primary_disease_site	Bladder, Urethra
+diagnosis	primary_disease_site	Bladder, Urethra, Vagina
+diagnosis	primary_disease_site	Bone
+diagnosis	primary_disease_site	Bone (Appendicular)
+diagnosis	primary_disease_site	Bone (Axial)
+diagnosis	primary_disease_site	Brain
+diagnosis	primary_disease_site	Lung
+diagnosis	primary_disease_site	Lymph Node
+diagnosis	primary_disease_site	Mammary Gland
+diagnosis	primary_disease_site	Mouth
+diagnosis	primary_disease_site	Not Applicable
+diagnosis	primary_disease_site	Unknown
+diagnosis	primary_disease_site	Urethra, Prostate
 diagnosis	stage_of_disease	I
 diagnosis	stage_of_disease	II
 diagnosis	stage_of_disease	III
@@ -143,7 +169,7 @@ enrollment	registering_institution	STRING
 enrollment	site_short_name	STRING
 enrollment	veterinary_medical_center	STRING
 file	file_description	STRING
-file	file_format	TBD
+file	file_format	STRING
 file	file_location	STRING
 file	file_name	STRING
 file	file_size	NUMBER
@@ -175,7 +201,7 @@ file	file_type	Variant Report
 file	file_type	Whole Exome Sequence File
 file	file_type	Whole Genome Sequence File
 file	md5sum	STRING
-file	uuid	NA
+file	uuid	STRING
 follow_up	contact_type	STRING
 follow_up	crf_id	NA
 follow_up	date_of_last_contact	DATETIME
@@ -247,6 +273,7 @@ prior_therapy	best_response	Not Determined
 prior_therapy	best_response	Partial Response
 prior_therapy	best_response	Progressive Disease
 prior_therapy	best_response	Stable Disease
+prior_therapy	best_response	Unknown
 prior_therapy	date_of_first_dose	DATETIME
 prior_therapy	date_of_last_dose	DATETIME
 prior_therapy	date_of_last_dose_any_therapy	DATETIME
@@ -283,11 +310,6 @@ publication	pubmed_id	NUMBER
 publication	year_of_publication	NUMBER
 registration	registration_id	STRING
 registration	registration_origin	STRING
-sample	analysis_area	NUMBER (mm2)
-sample	analysis_area_percentage_glass	NUMBER
-sample	analysis_area_percentage_pigmented_tumor	NUMBER
-sample	analysis_area_percentage_stroma	NUMBER
-sample	analysis_area_percentage_tumor	NUMBER
 sample	comment	STRING
 sample	date_of_sample_collection	DATETIME
 sample	general_sample_pathology	Benign
@@ -302,8 +324,6 @@ sample	necropsy_sample	No
 sample	necropsy_sample	Not Applicable
 sample	necropsy_sample	Unknown
 sample	necropsy_sample	Yes
-sample	non_tumor_tissue_area	NUMBER (mm2)
-sample	percentage_stroma	NUMBER
 sample	percentage_tumor	STRING
 sample	physical_sample_type	Blood
 sample	physical_sample_type	Cell Line
@@ -324,7 +344,6 @@ sample	sample_preservation	Unknown
 sample	sample_site	STRING
 sample	specific_sample_pathology	STRING
 sample	summarized_sample_type	STRING
-sample	total_tissue_area	NUMBER (mm2)
 sample	tumor_grade	1
 sample	tumor_grade	2
 sample	tumor_grade	3
@@ -338,7 +357,6 @@ sample	tumor_sample_origin	Metastatic
 sample	tumor_sample_origin	Not Applicable
 sample	tumor_sample_origin	Primary
 sample	tumor_sample_origin	Unknown
-sample	tumor_tissue_area	NUMBER (mm2)
 sample	volume_of_tumor	NUMBER (cm3)
 sample	width_of_tumor	NUMBER (mm)
 study	accession_id	STRING
@@ -379,51 +397,51 @@ vital_signs	systolic_bp	NUMBER (mm Hg)
 
 relationship	source_node	destination_node	property	value_or_TYPE
 at_enrollment	physical_exam	enrollment	NA	NA
-at_enrollment	prior_surgery	enrollment	NA	NA
 at_enrollment	prior_therapy	enrollment	NA	NA
+at_enrollment	prior_surgery	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
-member_of	study	program	NA	NA
-member_of	cohort	study	NA	NA
 member_of	cohort	study_arm	NA	NA
-member_of	study_arm	study	NA	NA
+member_of	cohort	study	NA	NA
 member_of	case	cohort	NA	NA
 member_of	case	study	NA	NA
-next	prior_therapy	prior_therapy	NA	NA
-next	visit	visit	NA	NA
+member_of	study_arm	study	NA	NA
+member_of	study	program	NA	NA
 next	sample	sample	NA	NA
-next	prior_surgery	prior_surgery	NA	NA
+next	prior_therapy	prior_therapy	NA	NA
 next	adverse_event	adverse_event	NA	NA
+next	visit	visit	NA	NA
+next	prior_surgery	prior_surgery	NA	NA
 of_agent	adverse_event	agent	NA	NA
 of_agent	agent_administration	agent	NA	NA
-of_assay	file	assay	NA	NA
 of_assay	image	assay	NA	NA
-of_case	registration	case	NA	NA
-of_case	cycle	case	NA	NA
-of_case	follow_up	case	NA	NA
+of_assay	file	assay	NA	NA
 of_case	sample	case	NA	NA
-of_case	diagnosis	case	NA	NA
 of_case	file	case	NA	NA
+of_case	registration	case	NA	NA
 of_case	demographic	case	NA	NA
-of_case	enrollment	case	NA	NA
+of_case	diagnosis	case	NA	NA
 of_case	adverse_event	case	NA	NA
 of_case	visit	case	NA	NA
+of_case	enrollment	case	NA	NA
+of_case	cycle	case	NA	NA
+of_case	follow_up	case	NA	NA
 of_cycle	visit	cycle	NA	NA
-of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
+of_sample	file	sample	NA	NA
+of_study	publication	study	NA	NA
 of_study	study_site	study	NA	NA
+of_study	file	study	NA	NA
 of_study	principal_investigator	study	NA	NA
 of_study	image_collection	study	NA	NA
-of_study	file	study	NA	NA
-of_study	publication	study	NA	NA
 of_study_arm	case	study_arm	NA	NA
 of_study_arm	agent	study_arm	NA	NA
+on_visit	agent_administration	visit	NA	NA
+on_visit	disease_extent	visit	NA	NA
+on_visit	lab_exam	visit	NA	NA
+on_visit	physical_exam	visit	NA	NA
 on_visit	sample	visit	NA	NA
 on_visit	vital_signs	visit	NA	NA
-on_visit	disease_extent	visit	NA	NA
-on_visit	physical_exam	visit	NA	NA
-on_visit	agent_administration	visit	NA	NA
-on_visit	lab_exam	visit	NA	NA
 represents	case	canine_individual	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
@@ -433,17 +451,12 @@ accession_id	A unique, alpha-numeric identifier, in the format of "ICDCxxxxxx", 
 adverse_event_description	freetext
 adverse_event_grade	enum
 agent_units_of_measure	Agent UOM_FUL in form
-analysis_area	for the NCATS study, total area of slide subject to analysis
-analysis_area_percentage_glass	for the NCATS study, percentage of the analysis area represnted by glass
-analysis_area_percentage_pigmented_tumor	for the NCATS study, percentage of the analysis area represnted by pigmented tumor tissue
-analysis_area_percentage_stroma	for the NCATS study, percentage of the analysis area represnted by stromal tissue
-analysis_area_percentage_tumor	for the NCATS study, percentage of the analysis area represnted by tumor tissue
 anatomical_site_of_surgery	Site_FUL on form
 arm	Where applicable, the nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm
 arm_description	Short description of the study arm
 arm_id	A unique identifier via which study arms can be differentiated from one another across studies/trials
 authorship	A list of authors for the cited work, specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
-best_response	indicator as to the best overall response to therapeutic intervention that was observed within an individual patient/subject/donor 
+best_response	Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor
 body_surface_area	Called "bsa" in form
 body_system	Body system examined; up to 12 in a visit
 breed	The specific breed of the canine patient/subject/donor, per the list of breeds officially recognized by the American Kennel Club
@@ -459,57 +472,62 @@ cohort_dose	The intended or protocol dose of the therapeutic agnet used in any g
 cohort_id	A unique identifier via which cohorts can be differentiated from one another across studies/trials
 collection_access	Indicator as to whether the image collection can be accessed via download versus being accessible only via the cloud
 comment	generic comment
-concurrent_disease	Indicator as to whether the patient is has any significant secondary disease condition(s)
-concurrent_disease_type	specifics of any notable secondary disease condition(s) within the patient
+concurrent_disease	An indication as to whether the patient/subject/donor suffers from any significant secondary disease condition(s)
+concurrent_disease_type	The specifics of any notable secondary disease condition(s) observed within the patient/subject/donor
 contact_type	need vocab
 ctep_treatment_assignment_code	TBD
 date_of_birth	The date of birth of the canine patient/subject/donor
+date_of_diagnosis	The date upon which the patient/subject/donor was diagnosed with the primary disease in question
 date_of_evaluation	inferred from evaluation inputs (e.g.,PE)
+date_of_histology_confirmation	The date upon which the results of a histological evaluation of a sample from the patient/subject/donor were confirmed
 date_of_iacuc_approval	Where applicable, the date upon which the study/trial was approved by the IACUC
 date_of_informed_consent	The date upon which the owner of the patient/subject/donor signed an informed consent on behalf of the subject
 date_of_registration	The date upon which the patient/subject/donor was enrolled in the study/trial
-date_of_sample_collection	date upon which a sample was acquired
+date_of_sample_collection	The date upon which the sample was acquired from the patient/subject/donor
 date_of_vital_signs	actually visit date
 dates_of_conduct	An indication of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year
 digital_object_id	Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet
+disease_term	The primary disease condition with which the patient/subject/donor was diagnosed
 document_number	S/N of the executed CRF
 dose_limiting_toxicity	bool
 dose_schedule	Schedule_FUL in form
-file_description	optional description of the file and/or its content, e.g. amended versus original pathology report, low resolution versus high resolution image file, etc.
-file_format	the specific format of the file, e.g. pdf vs. png vs. doc, etc., as derived by the loader
-file_name	name of the file, as provided by the data owner
-file_size	size of the file as derived by the loader
-file_status	enumerated representation of the status of files
-file_type	indicator as to the nature of the file in terms of its content, i.e. what the information contained within the file constitutes
-follow_up_data	Indicator as to whether follow up data for the patient exists
-general_sample_pathology	indicator as to whether a sample represents normal tissue versus having been derived from diseased or tumor tissue
+file_description	An optional description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length
+file_format	The specific format of the file as determined by the data loader
+file_location	The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url
+file_name	The name of the file, maintained exactly as provided by the data submitter
+file_size	The size of the file in bytes
+file_status	An enumerated representation of the status of any given file
+file_type	An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format
+follow_up_data	An indication as to the existence of any follow-up data for the patient/subject/donor, typically in the form of a study-level supplemental data file
+general_sample_pathology	An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue
+histological_grade	The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level
+histology_cytopathology	A narrative summary of the primary observations from the the evaluation of a tumor sample from a patient/subject/donor, in terms of its histology and/or cytopathology
 image_collection_name	The name of the image collection exactly as it appears at the location where the collection can be viewed and/or accessed
 image_collection_url	The external url via which the image collection can be viewed and/or accessed
 image_type_included	A list of the image types included in the image collection, drawn from a list of acceptable values
 initials	The initials of the patient/subject/donor based upon the subject's first or given name, and the last or family name of the subject's owner
 journal_citation	The name of the journal in which the cited work was published, inclusive of the citation itself in terms of journal volume number, part number where applicable, and page numbers
-length_of_tumor	length of the tumor from which a tumor sample was derived
-md5sum	md5 checksum
+length_of_tumor	The length of the tumor from which a tumor sample was derived, as measured in mm
+md5sum	The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC
 medication_missed_dose	Q.- form has "medication"
 missed_dose_units_of_measure	Q.- form has "dose uom_ful"
-molecular_subtype	TBD
-necropsy_sample	Indicator as to whether a sample was acquired as a result of a necropsy examination
+molecular_subtype	Where applicable, the molecular subtype of the tumor sample in question, for example, the tumor being basal versus lumnial in nature
+necropsy_sample	An indication as to whether a sample was acquired as a result of a necropsy examination
 neutered_indicator	Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects)
-non_tumor_tissue_area	for the NCATS study, area within analyzed tissue area represented by non-tumor tissue
-pathology_report	Indicator as to whether a detailed pathology report upon which the diagnosis was based exists
+pathology_report	An indication as to the existence of any detailed pathology evaluation upon which the primary diagnosis was based, either in the form of a formal, subject-specific pathology report, or as detailed in a study-level supplemental data file
 patient_age_at_enrollment	The age the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
 patient_first_name	Where available, the name given to the patient/subject/donor
 patient_id	The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least within a single study/trial, recorded exactly as provided by the data submitter; once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become Case IDs
 patient_status	need vocab
 patient_subgroup	A short description as to the reason for the patient/subject/donor being enrolled in any given study/trial arm or cohort, for example, a clinical trial patient having been enrolled in a dose escalation cohort
 pe_finding	Clinical exam result for the body system examined. Finding_results on form.
-percentage_stroma	percentage of total tissue area represented by stromal tissue
-percentage_tumor	percentage of total tissue area represented by tumor tissue
+percentage_tumor	The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range
 physical_exam_performed	y/n
-physical_sample_type	indicator as to the physical nature of a sample - tissue, blood, urine, etc.
+physical_sample_type	An indication as to the physical nature of any given sample
 pi_first_name	The first or given name of each principal investigator of the study/trial
 pi_last_name	The last or family name of each principal investigator of the study/trial
 pi_middle_initial	Where applicable, the middle initial(s) of each principal investigator of the study/trial
+primary_disease_site	The anatomical location at which the primary disease originated, recorded in relatively general terms at the subject level; the anatomical locations from which tumor samples subject to downstream analysis were acquired is recorded in more detailed terms at the sample level
 program_acronym	The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI
 program_external_url	The external url to which users should be directed in order to learn more about the program
 program_full_description	A more detailed, multiple sentence description of the program
@@ -522,25 +540,25 @@ registering_institution	TBD
 registration_id	Any ID used by a data submitter to identify a patient/subject/donor, either locally or globally
 registration_origin	The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym
 repository_name	The name of the image repository within which the image collection can be found, stated in the form of the appropriate acronym
-sample_chronology	indicator as to when a sample was acquired relative to therapeutic treatment administration and/or key disease outcome observations
-sample_id	globally unqiue ID for a sample, generated from values within the raw data concatenated together to ensure global uniqueness
-sample_preservation	the method by which a sample was preserved
-sample_site	the anatomical location from which a sample was acquired
+sample_chronology	An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations
+sample_id	The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation
+sample_preservation	The method by which a sample was preserved
+sample_site	The specific anatomical location from which any given sample was acquired
 sex	The biological sex of the patient/subject/donor
 site_short_name	The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
-specific_sample_pathology	indicator of the specific pathology associated with a sample, e.g. squamous cell carcinoma
+specific_sample_pathology	Indication as to specific histology and/or pathology associated with a sample
+stage_of_disease	The formal assessment of the extent to which the primary cancer with which the patient/subject/donor has been diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria
 study_disposition	An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public rlease
-summarized_sample_type	summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in three independent properties
+summarized_sample_type	A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin
 surgical_finding	Findings_FUL on form
-total_tissue_area	for the NCATS study, area within the slide's analysis area represented by tissue
-treatment_data	Indicator as to whether treatment data for the patient exists
+treatment_data	An indication as to the existence of any treatment data for the patient/subject/donor, typically in the form of a study-level supplemental data file
 treatment_since_last_contact	y/n
-tumor_grade	grade of the tumor from which a sample was acquired as determined by the evaluation of a pathologist
-tumor_sample_origin	indicator as to whether a tumor sample was derived from a primary versus a metastatic tumor
-tumor_tissue_area	for the NCATS study, area within analyzed tissue area represented by tumor tissue
+tumor_grade	The grade of the tumor from which a sample was acquired, i.e. the dgree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
+tumor_sample_origin	An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor
 unexpected_adverse_event	bool
+uuid	The universally unique alpha-numeric identifier assigned to each file
 veterinary_medical_center	The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
-volume_of_tumor	volume of the tumor from which the sample was derived
+volume_of_tumor	The volume of the tumor from which a tumor sample was derived, as measured in cm3
 weight	The weight of the patient/subject/donor at the time of study/trial enrollment and/or biospecimens being acquired, at least in the case of studies that are not longitudinal in nature
-width_of_tumor	width of the tumor from which a tumor sample was derived
+width_of_tumor	The width of the tumor from which a tumor sample was derived, as measured in mm
 year_of_publication	The year in which the cited work was published
