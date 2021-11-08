@@ -110,6 +110,15 @@ Nodes:
       - registration_origin
       - registration_id
       #- is_primary_id
+  biospecimen_source:
+    Tags:
+      Category: biospecimen
+      Assignment: core
+      Class: secondary
+      Color: black
+    Props:
+      - biospecimen_repository_acronym
+      - biospecimen_repository_full_name
   canine_individual:
     Tags:
       Category: case
