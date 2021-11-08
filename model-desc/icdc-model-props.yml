@@ -168,7 +168,7 @@ PropDefinitions:
     Req: 'Yes'
   biospecimen_repository_full_name:
     Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in full text form
-    Tyoe: string
+    Type: string
     Req: 'Yes'
   # canine individual props
   canine_individual_id:
