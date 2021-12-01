@@ -3,18 +3,6 @@
 # Lower case names are labels for the entities
 # document number - really a property of properties (where did this question appear)
 
-# lesions - extension
-
-# these are the built-in gen3 node categories
-# "category": "administrative",
-# "category": "biospecimen",
-# "category": "clinical",
-# "category": "data_file",
-# "category": "index_file",
-# "category": "internal",
-# "category": "metadata_file",
-# "category": "notation",
-
 Nodes:
   program:
     Tags:
