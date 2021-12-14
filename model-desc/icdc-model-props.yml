@@ -55,7 +55,6 @@ PropDefinitions:
     Desc: What is?
     Src: adverse events form
     Type: TBD
-  # crf_id also included in adverse_event (defined below)
   date_resolved:
     Src: adverse events form
     Type: datetime
@@ -84,7 +83,6 @@ PropDefinitions:
   comment:
     Desc: generic comment
     Type: string
-  # crf_id also included in agent_administration
   date_of_missed_dose:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type: datetime
@@ -183,11 +181,6 @@ PropDefinitions:
       displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation
     Type: string
     Req: 'Yes'
-    #Crf_id:
-    #Desc: globally unique ID for the specific instance of the COTC Enrollment case
-      #report form via which the patient was enrolled into the study/trial
-    #Src: ENROLLMENT/ENROLL/1
-    #Type: TBD
   patient_first_name:
     Desc: Where available, the name given to the patient/subject/donor
     Type: string
@@ -230,14 +223,12 @@ PropDefinitions:
     Type:
       - http://localhost/terms/domain/breed
     Req: 'Yes'
-  # crf_id: included in demographic node, defined elsewhere
   date_of_birth:
     Desc: The date of birth of the canine patient/subject/donor
     Type: datetime
     Req: 'No'
   neutered_indicator:
-    Desc: Indicator as to whether the patient/subject/donor has been either spayed (female
-      subjects) or neutered (male subjects)
+    Desc: Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects)
     Type:
       - 'Yes'
       - 'No'
@@ -295,10 +286,6 @@ PropDefinitions:
     Desc: The specifics of any notable secondary disease condition(s) observed within the patient/subject/donor
     Type: string
     Req: 'No'
-  # crf_id: also included in diagnosis node, defined elsewhere in this document
-  #   Desc: globally unique ID for the specific instance of the COTC Enrollment case report form via which the patient was enrolled into the study/trial, and which records key information as to diagnosis
-  #   Src: ENROLLMENT/ENROLL/1
-  #   Type: TBD
   date_of_diagnosis:
     Desc: The date upon which the patient/subject/donor was diagnosed with the primary disease in question
     Type: datetime
@@ -412,7 +399,6 @@ PropDefinitions:
       - 'No'
     Req: 'No'
   # disease_extent props
-  # crf_id: also included in disease_extent node, defined elsewhere in this document
   date_of_evaluation:
     Desc: inferred from evaluation inputs (e.g.,PE)
     Type: datetime
@@ -567,7 +553,6 @@ PropDefinitions:
     Desc: need vocab
     Src: FOLLOW_UP/FLWU/1
     Type: string
-  # crf_id: also included in follow_up node, defined elsewhere in this document
   date_of_last_contact:
     Src: FOLLOW_UP/FLWU/1
     Type: datetime
@@ -687,7 +672,6 @@ PropDefinitions:
       - Genitourinary
       - Neurologic
       - Other
-  # crf_id: also included in physical_exam node, defined elsewhere in this document
   date_of_examination:
     Src: PHYSICAL_EXAM/PE/1
     Type: datetime
@@ -722,7 +706,6 @@ PropDefinitions:
     Src: PRIOR_SURG_SUPP/PSRG/1
     Type:
       - https://localhost/term/domain/anatomical_site
-  # crf_id: also included in prior_surgery node, defined elsewhere in this document
   date_of_surgery:
     Src: PRIOR_SURG_SUPP/PSRG/1
     Type: datetime
@@ -1119,7 +1102,6 @@ PropDefinitions:
         - degrees F
         - degrees C
       value_type: number
-  # crf_id: also included in physical_exam node, defined elsewhere
   date_of_vital_signs:
     Desc: actually visit date
     Src: PHYSICAL_EXAM/PE/1
