@@ -31,10 +31,6 @@ PropDefinitions:
     Desc: What is?
     Src: adverse events form
     Type: TBD
-  arm_description:
-    Desc: Short description of the study arm
-    Src: ICDC
-    Type: string
   attribution_to_commercial:
     Desc: What is?
     Src: adverse events form
@@ -162,10 +158,12 @@ PropDefinitions:
   # biospecimen_source props
   biospecimen_repository_acronym:
     Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in the form of an acronym
+    Src: Internally-curated
     Type: string
     Req: 'Yes'
   biospecimen_repository_full_name:
     Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in full text form
+    Src: Internally-curated
     Type: string
     Req: 'Yes'
   # canine individual props
@@ -197,7 +195,7 @@ PropDefinitions:
     Type: string
     Req: 'No'
   cohort_dose:
-    Desc: The intended or protocol dose of the therapeutic agnet used in any given cohort
+    Desc: The intended or protocol dose of the therapeutic agent used in any given cohort
     Src: Internally-curated
     Type: string
     # setting this as string so as to accommodate a lack of consistency in the way in which dosing is quoted within the COTC007B study, which will otherwise confound data loading for MVP
@@ -235,7 +233,7 @@ PropDefinitions:
       - Unknown
     Req: 'Yes'
   patient_age_at_enrollment:
-    Desc: The age the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
+    Desc: The age of the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
     Type:
       units:
         - years
@@ -1049,6 +1047,10 @@ PropDefinitions:
   arm:
     Desc: Where applicable, the nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm
     Src: Internally-curated
+    Type: string
+    Req: 'No'
+  arm_description:
+    Desc: A short description of the study arm
     Type: string
     Req: 'No'
   ctep_treatment_assignment_code:
