@@ -218,8 +218,8 @@ PropDefinitions:
   # demographic props
   breed:
     Desc: The specific breed of the canine patient/subject/donor, per the list of breeds officially recognized by the American Kennel Club
-    Type:
-      - http://localhost/terms/domain/breed
+    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
+      #- http://localhost/terms/domain/breed
     Req: 'Yes'
   date_of_birth:
     Desc: The date of birth of the canine patient/subject/donor
@@ -317,8 +317,8 @@ PropDefinitions:
     Req: 'No'
   histological_grade:
     Desc: The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level
-    Type:
-      - http://localhost/terms/domain/histological_grade
+    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
+      #- http://localhost/terms/domain/histological_grade
     Req: 'No'  
   histology_cytopathology:
     Desc: A narrative summary of the primary observations from the the evaluation of a tumor sample from a patient/subject/donor, in terms of its histology and/or cytopathology
@@ -494,7 +494,7 @@ PropDefinitions:
       - Whole Exome Sequence File
       - DNA Methylation Analysis File
       - Index File
-      - Array CGH Analysis File # required for the MGC01 study
+      - Array CGH Analysis File # required for the MGT01 study
       - Variant Call File # for raw .vcf files
       - Mutation Annotation File # for annotated .maf files
       - Variant Report # for reports detailing validated variants
@@ -512,11 +512,11 @@ PropDefinitions:
   file_size:
     Desc: The size of the file in bytes
     Type: number
-    Req: "Yes"
+    Req: 'Yes'
   md5sum:
     Desc: The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC
     Type: string
-    Req: "Yes"
+    Req: 'Yes'
   file_status:
     Desc: An enumerated representation of the status of any given file
     Src: Loader-derived
@@ -944,8 +944,43 @@ PropDefinitions:
     Req: 'Yes'
   sample_site:
     Desc: The specific anatomical location from which any given sample was acquired
-    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
+    Type: #string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
+      - Bladder Mid
+      - Bladder Mid-Trigone
+      - Bladder Mucosa
+      - Bladder Trigone
+      - Bladder Trigone-Urethra
+      - Blood
+      - Bone
+      - Brain
+      - Cerebellar
+      - Femur
+      - Hemispheric
+      - Humerus
+      - Kidney
+      - Liver
+      - Liver, Spleen, Heart
+      - Lung
+      - Lung, Caudal Aspect of Left Caudal Lobe
+      - Lung, Caudal Right Lobe
+      - Lung, Cranial Left Lobe
+      - Lymph Node
+      - Lymph Node, Popliteal
+      - Mammary Gland
+      - Mandible, Mucosa
+      - Midline
+      - Mouth, Lingual
+      - Mouth, Mandible, Mucosa
+      - Mouth, Maxilla, Mucosa
+      - Muscle
+      - Radius
+      - Subcutaneous Tissue
+      - Tibia
+      - Unknown
+      - Urethra
+      - Urethra Mid-distal
+      # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
   physical_sample_type:
     Desc: An indication as to the physical nature of any given sample
@@ -956,16 +991,49 @@ PropDefinitions:
     Req: 'Yes'
   specific_sample_pathology:
     Desc: Indication as to specific histology and/or pathology associated with a sample
-    Type: string # will be superseded by an enumerated list of acceptable valuesas as data submission requirements solidify
+    Type: #string # will be superseded by an enumerated list of acceptable valuesas as data submission requirements solidify
+      - Astrocytoma
+      - B Cell Lymphoma
+      - Carcinoma With Simple And Complex Components
+      - Chondroblastic Osteosarcoma
+      - Complex Carcinoma
+      - Fibroblastic Osteosarcoma
+      - Giant Cell Osteosarcoma
+      - Lymphoma
+      - Melanoma
+      - Not Applicable
+      - Oligodendroglioma
+      - Osteoblastic Osteosarcoma
+      - Osteoblastic and Chrondroblastic Osteosarcoma
+      - Osteosarcoma
+      - Osteosarcoma; Combined Type
+      - Pulmonary Adenocarcinoma
+      - Pulmonary Carcinoma
+      - Simple Carcinoma
+      - Simple Carcinoma,  Ductular, Vascular Invasive
+      - Simple Carcinoma, Ductal
+      - Simple Carcinoma, Ductular
+      - Simple Carcinoma, Inflammatory
+      - Simple Carcinoma, Invasive, Ductal
+      - T Cell Lymphoma
+      - Undefined
+      - Urothelial Carcinoma
+      # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
   summarized_sample_type:
     Desc: A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin
     Src: Internally-curated 
-    Type: string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
+    Type: #string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
+      - Metastatic Tumor Tissue
+      - Normal Cell Line
+      - Normal Tissue
+      - Primary Malignant Tumor Tissue
+      - Whole Blood
+      # these represent the de facto acceptable values, i.e. the values to which we have thus far aligned submitted data
     Req: 'No'
   tumor_grade:
     Desc: The grade of the tumor from which the sample was acquired, i.e. the dgree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
-    Type: # was string, to be superseded by an enumerated list of acceptable values as data submission requirements solidify
+    Type:
       - "1"
       - "2"
       - "3"
