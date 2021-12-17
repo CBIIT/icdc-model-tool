@@ -87,7 +87,6 @@ Nodes:
       - case_id
       - patient_id
       - patient_first_name
-      - crf_id
   registration:
     Tags:
       Category: case
@@ -128,7 +127,6 @@ Nodes:
       - sex
       - weight
       - neutered_indicator
-      - crf_id
   cycle:
     Tags:
       Category: clinical_trial
@@ -178,7 +176,6 @@ Nodes:
       - follow_up_data
       - concurrent_disease
       - concurrent_disease_type
-      - crf_id
   enrollment:
     Tags:
       Category: case
@@ -242,7 +239,6 @@ Nodes:
       - surgical_finding
       - residual_disease
       - therapeutic_indicator
-      - crf_id
   agent_administration:
     Tags:
       Category: clinical_trial
@@ -272,7 +268,6 @@ Nodes:
       - missed_dose_units_of_measure
       - medication_course_number
       - comment
-      - crf_id
   sample:
     Tags:
       Category: biospecimen
@@ -354,7 +349,6 @@ Nodes:
       - pe_comment
       - phase_pe
       - assessment_timepoint
-      - crf_id
   publication:
     Tags:
       Category: study
@@ -388,7 +382,6 @@ Nodes:
       - ecg
       - assessment_timepoint
       - phase
-      - crf_id
   lab_exam:
     Tags:
       Category: clinical_trial
@@ -420,7 +413,6 @@ Nodes:
       - ae_other
       - dose_limiting_toxicity
       - unexpected_adverse_event
-      - crf_id
   disease_extent:
     Tags:
       Category: clinical_trial
@@ -428,7 +420,6 @@ Nodes:
       Class: secondary
       Color: black
     Props: 
-      - crf_id
       - lesion_number
       - lesion_site
       - lesion_description
@@ -457,7 +448,6 @@ Nodes:
       - treatment_since_last_contact
       - physical_exam_performed
       - physical_exam_changes
-      - crf_id
   off_study:
     # off_study, off_treatment -- how related? should be a dependency and normalize properties?
     Tags:

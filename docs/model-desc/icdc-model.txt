@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool
-commit ae8de64
+commit 1f2bedd
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -13,7 +13,6 @@ adverse_event	attribution_to_disease	TBD
 adverse_event	attribution_to_ind	TBD
 adverse_event	attribution_to_other	TBD
 adverse_event	attribution_to_research	TBD
-adverse_event	crf_id	NA
 adverse_event	date_resolved	DATETIME
 adverse_event	day_in_cycle	INTEGER
 adverse_event	dose_limiting_toxicity	TBD
@@ -21,7 +20,6 @@ adverse_event	unexpected_adverse_event	TBD
 agent	document_number	REGEXP /^R[0-9]+$/
 agent	medication	EXTERNAL
 agent_administration	comment	STRING
-agent_administration	crf_id	NA
 agent_administration	date_of_missed_dose	DATETIME
 agent_administration	document_number	REGEXP /^R[0-9]+$/
 agent_administration	dose_level	NUMBER (mg/kg)
@@ -48,7 +46,6 @@ biospecimen_source	biospecimen_repository_acronym	STRING
 biospecimen_source	biospecimen_repository_full_name	STRING
 canine_individual	canine_individual_id	STRING
 case	case_id	STRING
-case	crf_id	NA
 case	patient_first_name	STRING
 case	patient_id	STRING
 cohort	cohort_description	STRING
@@ -57,8 +54,7 @@ cohort	cohort_id	STRING
 cycle	cycle_number	INTEGER
 cycle	date_of_cycle_end	DATETIME
 cycle	date_of_cycle_start	DATETIME
-demographic	breed	EXTERNAL
-demographic	crf_id	NA
+demographic	breed	STRING
 demographic	date_of_birth	DATETIME
 demographic	neutered_indicator	No
 demographic	neutered_indicator	Unknown
@@ -79,7 +75,6 @@ diagnosis	concurrent_disease	No
 diagnosis	concurrent_disease	Unknown
 diagnosis	concurrent_disease	Yes
 diagnosis	concurrent_disease_type	STRING
-diagnosis	crf_id	NA
 diagnosis	date_of_diagnosis	DATETIME
 diagnosis	date_of_histology_confirmation	DATETIME
 diagnosis	disease_term	B Cell Lymphoma
@@ -95,7 +90,7 @@ diagnosis	disease_term	T Cell Lymphoma
 diagnosis	disease_term	Unknown
 diagnosis	follow_up_data	No
 diagnosis	follow_up_data	Yes
-diagnosis	histological_grade	EXTERNAL
+diagnosis	histological_grade	STRING
 diagnosis	histology_cytopathology	STRING
 diagnosis	pathology_report	No
 diagnosis	pathology_report	Yes
@@ -148,7 +143,6 @@ diagnosis	stage_of_disease	Va
 diagnosis	stage_of_disease	Vb
 diagnosis	treatment_data	No
 diagnosis	treatment_data	Yes
-disease_extent	crf_id	NA
 disease_extent	date_of_evaluation	DATETIME
 disease_extent	evaluation_code	TBD
 disease_extent	evaluation_number	TBD
@@ -205,7 +199,6 @@ file	file_type	Whole Genome Sequence File
 file	md5sum	STRING
 file	uuid	STRING
 follow_up	contact_type	STRING
-follow_up	crf_id	NA
 follow_up	date_of_last_contact	DATETIME
 follow_up	document_number	REGEXP /^R[0-9]+$/
 follow_up	explain_unknown_status	STRING
@@ -250,7 +243,6 @@ physical_exam	body_system	Musculoskeletal
 physical_exam	body_system	Neurologic
 physical_exam	body_system	Other
 physical_exam	body_system	Respiratory
-physical_exam	crf_id	NA
 physical_exam	date_of_examination	DATETIME
 physical_exam	day_in_cycle	INTEGER
 physical_exam	pe_comment	STRING
@@ -260,7 +252,6 @@ principal_investigator	pi_first_name	STRING
 principal_investigator	pi_last_name	STRING
 principal_investigator	pi_middle_initial	STRING
 prior_surgery	anatomical_site_of_surgery	EXTERNAL
-prior_surgery	crf_id	NA
 prior_surgery	date_of_surgery	DATETIME
 prior_surgery	procedure	EXTERNAL
 prior_surgery	residual_disease	TBD
@@ -343,9 +334,71 @@ sample	sample_preservation	FFPE
 sample	sample_preservation	Not Applicable
 sample	sample_preservation	Snap Frozen
 sample	sample_preservation	Unknown
-sample	sample_site	STRING
-sample	specific_sample_pathology	STRING
-sample	summarized_sample_type	STRING
+sample	sample_site	Bladder Mid
+sample	sample_site	Bladder Mid-Trigone
+sample	sample_site	Bladder Mucosa
+sample	sample_site	Bladder Trigone
+sample	sample_site	Bladder Trigone-Urethra
+sample	sample_site	Blood
+sample	sample_site	Bone
+sample	sample_site	Brain
+sample	sample_site	Cerebellar
+sample	sample_site	Femur
+sample	sample_site	Hemispheric
+sample	sample_site	Humerus
+sample	sample_site	Kidney
+sample	sample_site	Liver
+sample	sample_site	Liver, Spleen, Heart
+sample	sample_site	Lung
+sample	sample_site	Lung, Caudal Aspect of Left Caudal Lobe
+sample	sample_site	Lung, Caudal Right Lobe
+sample	sample_site	Lung, Cranial Left Lobe
+sample	sample_site	Lymph Node
+sample	sample_site	Lymph Node, Popliteal
+sample	sample_site	Mammary Gland
+sample	sample_site	Mandible, Mucosa
+sample	sample_site	Midline
+sample	sample_site	Mouth, Lingual
+sample	sample_site	Mouth, Mandible, Mucosa
+sample	sample_site	Mouth, Maxilla, Mucosa
+sample	sample_site	Muscle
+sample	sample_site	Radius
+sample	sample_site	Subcutaneous Tissue
+sample	sample_site	Tibia
+sample	sample_site	Unknown
+sample	sample_site	Urethra
+sample	sample_site	Urethra Mid-distal
+sample	specific_sample_pathology	Astrocytoma
+sample	specific_sample_pathology	B Cell Lymphoma
+sample	specific_sample_pathology	Carcinoma With Simple And Complex Components
+sample	specific_sample_pathology	Chondroblastic Osteosarcoma
+sample	specific_sample_pathology	Complex Carcinoma
+sample	specific_sample_pathology	Fibroblastic Osteosarcoma
+sample	specific_sample_pathology	Giant Cell Osteosarcoma
+sample	specific_sample_pathology	Lymphoma
+sample	specific_sample_pathology	Melanoma
+sample	specific_sample_pathology	Not Applicable
+sample	specific_sample_pathology	Oligodendroglioma
+sample	specific_sample_pathology	Osteoblastic Osteosarcoma
+sample	specific_sample_pathology	Osteoblastic and Chrondroblastic Osteosarcoma
+sample	specific_sample_pathology	Osteosarcoma
+sample	specific_sample_pathology	Osteosarcoma; Combined Type
+sample	specific_sample_pathology	Pulmonary Adenocarcinoma
+sample	specific_sample_pathology	Pulmonary Carcinoma
+sample	specific_sample_pathology	Simple Carcinoma
+sample	specific_sample_pathology	Simple Carcinoma, Ductal
+sample	specific_sample_pathology	Simple Carcinoma, Ductular
+sample	specific_sample_pathology	Simple Carcinoma, Inflammatory
+sample	specific_sample_pathology	Simple Carcinoma, Invasive, Ductal
+sample	specific_sample_pathology	Simple Carcinoma,  Ductular, Vascular Invasive
+sample	specific_sample_pathology	T Cell Lymphoma
+sample	specific_sample_pathology	Undefined
+sample	specific_sample_pathology	Urothelial Carcinoma
+sample	summarized_sample_type	Metastatic Tumor Tissue
+sample	summarized_sample_type	Normal Cell Line
+sample	summarized_sample_type	Normal Tissue
+sample	summarized_sample_type	Primary Malignant Tumor Tissue
+sample	summarized_sample_type	Whole Blood
 sample	tumor_grade	1
 sample	tumor_grade	2
 sample	tumor_grade	3
@@ -385,7 +438,6 @@ vital_signs	assessment_timepoint	INTEGER
 vital_signs	body_surface_area	NUMBER (sq meters)
 vital_signs	body_temperature	NUMBER (degrees F)
 vital_signs	body_temperature	NUMBER (degrees C)
-vital_signs	crf_id	NA
 vital_signs	date_of_vital_signs	DATETIME
 vital_signs	ecg	BOOLEAN
 vital_signs	modified_ecog	EXTERNAL
@@ -398,52 +450,52 @@ vital_signs	respiration_rate	NUMBER (breaths/min)
 vital_signs	systolic_bp	NUMBER (mm Hg)
 
 relationship	source_node	destination_node	property	value_or_TYPE
-at_enrollment	prior_surgery	enrollment	NA	NA
-at_enrollment	prior_therapy	enrollment	NA	NA
 at_enrollment	physical_exam	enrollment	NA	NA
+at_enrollment	prior_therapy	enrollment	NA	NA
+at_enrollment	prior_surgery	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
-member_of	study	program	NA	NA
 member_of	study_arm	study	NA	NA
-member_of	cohort	study_arm	NA	NA
-member_of	cohort	study	NA	NA
-member_of	case	cohort	NA	NA
+member_of	study	program	NA	NA
 member_of	case	study	NA	NA
-next	visit	visit	NA	NA
-next	prior_therapy	prior_therapy	NA	NA
-next	adverse_event	adverse_event	NA	NA
-next	sample	sample	NA	NA
+member_of	case	cohort	NA	NA
+member_of	cohort	study	NA	NA
+member_of	cohort	study_arm	NA	NA
 next	prior_surgery	prior_surgery	NA	NA
+next	prior_therapy	prior_therapy	NA	NA
+next	sample	sample	NA	NA
+next	adverse_event	adverse_event	NA	NA
+next	visit	visit	NA	NA
 of_agent	adverse_event	agent	NA	NA
 of_agent	agent_administration	agent	NA	NA
 of_assay	image	assay	NA	NA
 of_assay	file	assay	NA	NA
 of_case	demographic	case	NA	NA
-of_case	follow_up	case	NA	NA
+of_case	diagnosis	case	NA	NA
 of_case	adverse_event	case	NA	NA
-of_case	registration	case	NA	NA
-of_case	visit	case	NA	NA
 of_case	enrollment	case	NA	NA
 of_case	sample	case	NA	NA
+of_case	visit	case	NA	NA
+of_case	follow_up	case	NA	NA
 of_case	cycle	case	NA	NA
 of_case	file	case	NA	NA
-of_case	diagnosis	case	NA	NA
+of_case	registration	case	NA	NA
 of_cycle	visit	cycle	NA	NA
 of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
-of_study	publication	study	NA	NA
-of_study	image_collection	study	NA	NA
-of_study	file	study	NA	NA
 of_study	study_site	study	NA	NA
+of_study	publication	study	NA	NA
+of_study	file	study	NA	NA
 of_study	principal_investigator	study	NA	NA
+of_study	image_collection	study	NA	NA
 of_study_arm	agent	study_arm	NA	NA
 of_study_arm	case	study_arm	NA	NA
-on_visit	physical_exam	visit	NA	NA
 on_visit	vital_signs	visit	NA	NA
 on_visit	agent_administration	visit	NA	NA
-on_visit	sample	visit	NA	NA
-on_visit	lab_exam	visit	NA	NA
 on_visit	disease_extent	visit	NA	NA
+on_visit	sample	visit	NA	NA
+on_visit	physical_exam	visit	NA	NA
+on_visit	lab_exam	visit	NA	NA
 represents	case	canine_individual	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
@@ -455,7 +507,7 @@ adverse_event_grade	enum
 agent_units_of_measure	Agent UOM_FUL in form
 anatomical_site_of_surgery	Site_FUL on form
 arm	Where applicable, the nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm
-arm_description	Short description of the study arm
+arm_description	A short description of the study arm
 arm_id	A unique identifier via which study arms can be differentiated from one another across studies/trials
 authorship	A list of authors for the cited work, specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
 best_response	Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor
@@ -472,7 +524,7 @@ clinical_study_id	Where applicable, the ID for the study/trial as generated by t
 clinical_study_name	A succinct, narrative title for the study/trial, exactly as it should be displayed within the UI
 clinical_study_type	An arbitrary designation of the study/trial to indicate its underlying nature, e.g. Clinical Trial, Transcriptomics, Genomics
 cohort_description	Where applicable, the nature of each cohort into which the study/trial has been divided, e.g. in studies examining the effects of multiple doses of a therapeutic agent, the name and dose of the therapeutic agent used in any given cohort
-cohort_dose	The intended or protocol dose of the therapeutic agnet used in any given cohort
+cohort_dose	The intended or protocol dose of the therapeutic agent used in any given cohort
 cohort_id	A unique identifier via which cohorts can be differentiated from one another across studies/trials
 collection_access	Indicator as to whether the image collection can be accessed via download versus being accessible only via the cloud
 comment	generic comment
@@ -499,7 +551,7 @@ file_description	An optional description of the file and/or its content, as prov
 file_format	The specific format of the file as determined by the data loader
 file_location	The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url
 file_name	The name of the file, maintained exactly as provided by the data submitter
-file_size	The size of the file in bytes
+file_size	The exact size of the file in bytes
 file_status	An enumerated representation of the status of any given file
 file_type	An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format
 follow_up_data	An indication as to the existence of any follow-up data for the patient/subject/donor, typically in the form of a study-level supplemental data file
@@ -519,7 +571,7 @@ molecular_subtype	Where applicable, the molecular subtype of the tumor sample in
 necropsy_sample	An indication as to whether a sample was acquired as a result of a necropsy examination
 neutered_indicator	Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects)
 pathology_report	An indication as to the existence of any detailed pathology evaluation upon which the primary diagnosis was based, either in the form of a formal, subject-specific pathology report, or as detailed in a study-level supplemental data file
-patient_age_at_enrollment	The age the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
+patient_age_at_enrollment	The age of the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
 patient_first_name	Where available, the name given to the patient/subject/donor
 patient_id	The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least within a single study/trial, recorded exactly as provided by the data submitter; once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become Case IDs
 patient_status	need vocab
