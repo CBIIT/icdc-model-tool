@@ -31,10 +31,6 @@ PropDefinitions:
     Desc: What is?
     Src: adverse events form
     Type: TBD
-  arm_description:
-    Desc: Short description of the study arm
-    Src: ICDC
-    Type: string
   attribution_to_commercial:
     Desc: What is?
     Src: adverse events form
@@ -55,7 +51,6 @@ PropDefinitions:
     Desc: What is?
     Src: adverse events form
     Type: TBD
-  # crf_id also included in adverse_event (defined below)
   date_resolved:
     Src: adverse events form
     Type: datetime
@@ -84,7 +79,6 @@ PropDefinitions:
   comment:
     Desc: generic comment
     Type: string
-  # crf_id also included in agent_administration
   date_of_missed_dose:
     Src: STUDY_MED_ADMIN/SDAD/1
     Type: datetime
@@ -164,10 +158,12 @@ PropDefinitions:
   # biospecimen_source props
   biospecimen_repository_acronym:
     Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in the form of an acronym
+    Src: Internally-curated
     Type: string
     Req: 'Yes'
   biospecimen_repository_full_name:
     Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in full text form
+    Src: Internally-curated
     Type: string
     Req: 'Yes'
   # canine individual props
@@ -181,20 +177,18 @@ PropDefinitions:
   case_id:
     Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and
       displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation
+    Src: Internally-generated
     Type: string
     Req: 'Yes'
-    #Crf_id:
-    #Desc: globally unique ID for the specific instance of the COTC Enrollment case
-      #report form via which the patient was enrolled into the study/trial
-    #Src: ENROLLMENT/ENROLL/1
-    #Type: TBD
   patient_first_name:
     Desc: Where available, the name given to the patient/subject/donor
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   patient_id:
     Desc: The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least
       within a single study/trial, recorded exactly as provided by the data submitter; once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become Case IDs
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   # cohort props
@@ -204,7 +198,7 @@ PropDefinitions:
     Type: string
     Req: 'No'
   cohort_dose:
-    Desc: The intended or protocol dose of the therapeutic agnet used in any given cohort
+    Desc: The intended or protocol dose of the therapeutic agent used in any given cohort
     Src: Internally-curated
     Type: string
     # setting this as string so as to accommodate a lack of consistency in the way in which dosing is quoted within the COTC007B study, which will otherwise confound data loading for MVP
@@ -227,24 +221,26 @@ PropDefinitions:
   # demographic props
   breed:
     Desc: The specific breed of the canine patient/subject/donor, per the list of breeds officially recognized by the American Kennel Club
-    Type:
-      - http://localhost/terms/domain/breed
+    Src: Data Owner(s)
+    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
+      #- http://localhost/terms/domain/breed
     Req: 'Yes'
-  # crf_id: included in demographic node, defined elsewhere
   date_of_birth:
     Desc: The date of birth of the canine patient/subject/donor
+    Src: Data Owner(s)
     Type: datetime
     Req: 'No'
   neutered_indicator:
-    Desc: Indicator as to whether the patient/subject/donor has been either spayed (female
-      subjects) or neutered (male subjects)
+    Desc: Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects)
+    Src: Data Owner(s)
     Type:
       - 'Yes'
       - 'No'
       - Unknown
     Req: 'Yes'
   patient_age_at_enrollment:
-    Desc: The age the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
+    Desc: The age of the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
+    Src: Data Owner(s)
     Type:
       units:
         - years
@@ -252,6 +248,7 @@ PropDefinitions:
     Req: 'No'
   sex:
     Desc: The biological sex of the patient/subject/donor
+    Src: Data Owner(s)
     Type:
       - Male
       - Female
@@ -259,6 +256,7 @@ PropDefinitions:
     Req: 'Yes'
   weight:
     Desc: The weight of the patient/subject/donor at the time of study/trial enrollment and/or biospecimens being acquired, at least in the case of studies that are not longitudinal in nature
+    Src: Data Owner(s)
     Type:
       units:
         - kg
@@ -268,6 +266,7 @@ PropDefinitions:
   # diagnosis props
   best_response:
     Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor
+    Src: Data Owner(s)
     Type:
       - Complete Response
       - Partial Response
@@ -286,6 +285,7 @@ PropDefinitions:
     Req: 'Yes' 
   concurrent_disease:
     Desc: An indication as to whether the patient/subject/donor suffers from any significant secondary disease condition(s)
+    Src: Data Owner(s)
     Type:
       - 'Yes'
       - 'No'
@@ -293,22 +293,22 @@ PropDefinitions:
     Req: 'No'
   concurrent_disease_type:
     Desc: The specifics of any notable secondary disease condition(s) observed within the patient/subject/donor
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
-  # crf_id: also included in diagnosis node, defined elsewhere in this document
-  #   Desc: globally unique ID for the specific instance of the COTC Enrollment case report form via which the patient was enrolled into the study/trial, and which records key information as to diagnosis
-  #   Src: ENROLLMENT/ENROLL/1
-  #   Type: TBD
   date_of_diagnosis:
     Desc: The date upon which the patient/subject/donor was diagnosed with the primary disease in question
+    Src: Data Owner(s)
     Type: datetime
     Req: 'No'
   date_of_histology_confirmation:
     Desc: The date upon which the results of a histological evaluation of a sample from the patient/subject/donor were confirmed
+    Src: Data Owner(s)
     Type: datetime
     Req: 'No'
   disease_term:
     Desc: The primary disease condition with which the patient/subject/donor was diagnosed
+    Src: Data Owner(s)
     Type:
       #- http://localhost/terms/domain/disease_term
       - B Cell Lymphoma
@@ -326,27 +326,32 @@ PropDefinitions:
     Req: 'Yes'
   follow_up_data:
     Desc: An indication as to the existence of any follow-up data for the patient/subject/donor, typically in the form of a study-level supplemental data file
+    Src: Data Owner(s)
     Type:
       - 'Yes'
       - 'No'
     Req: 'No'
   histological_grade:
     Desc: The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level
-    Type:
-      - http://localhost/terms/domain/histological_grade
+    Src: Data Owner(s)
+    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
+      #- http://localhost/terms/domain/histological_grade
     Req: 'No'  
   histology_cytopathology:
     Desc: A narrative summary of the primary observations from the the evaluation of a tumor sample from a patient/subject/donor, in terms of its histology and/or cytopathology
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   pathology_report:
     Desc: An indication as to the existence of any detailed pathology evaluation upon which the primary diagnosis was based, either in the form of a formal, subject-specific pathology report, or as detailed in a study-level supplemental data file
+    Src: Data Owner(s)
     Type:
       - 'Yes'
       - 'No'
     Req: 'No'
   primary_disease_site:
     Desc: The anatomical location at which the primary disease originated, recorded in relatively general terms at the subject level; the anatomical locations from which tumor samples subject to downstream analysis were acquired is recorded in more detailed terms at the sample level
+    Src: Data Owner(s)
     Type:
       #- http://localhost/terms/domain/primary_disease_site
       - Bladder
@@ -369,6 +374,7 @@ PropDefinitions:
     Req: 'Yes'
   stage_of_disease:
     Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor has been diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria
+    Src: Data Owner(s)
     Type:
       - I
       - Ia
@@ -407,12 +413,12 @@ PropDefinitions:
     Req: 'Yes'
   treatment_data:
     Desc: An indication as to the existence of any treatment data for the patient/subject/donor, typically in the form of a study-level supplemental data file
+    Src: Data Owner(s)
     Type:
       - 'Yes'
       - 'No'
     Req: 'No'
   # disease_extent props
-  # crf_id: also included in disease_extent node, defined elsewhere in this document
   date_of_evaluation:
     Desc: inferred from evaluation inputs (e.g.,PE)
     Type: datetime
@@ -467,18 +473,22 @@ PropDefinitions:
   #   Type: string
   date_of_informed_consent:
     Desc: The date upon which the owner of the patient/subject/donor signed an informed consent on behalf of the subject
+    Src: Data Owner(s)
     Type: datetime
     Req: 'No'
   date_of_registration:
     Desc: The date upon which the patient/subject/donor was enrolled in the study/trial
+    Src: Data Owner(s)
     Type: datetime
     Req: 'No'
   initials:
     Desc: The initials of the patient/subject/donor based upon the subject's first or given name, and the last or family name of the subject's owner
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   patient_subgroup:
     Desc: A short description as to the reason for the patient/subject/donor being enrolled in any given study/trial arm or cohort, for example, a clinical trial patient having been enrolled in a dose escalation cohort
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   # registering_institution: also included in enrollment node, defined elsewhere
@@ -496,10 +506,12 @@ PropDefinitions:
   # file props
   file_name:
     Desc: The name of the file, maintained exactly as provided by the data submitter
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   file_type:
     Desc: An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format
+    Src: Data Owner(s)
     Type:
       - Study Protocol
       - Supplemental Data File
@@ -510,7 +522,7 @@ PropDefinitions:
       - Whole Exome Sequence File
       - DNA Methylation Analysis File
       - Index File
-      - Array CGH Analysis File # required for the MGC01 study
+      - Array CGH Analysis File # required for the MGT01 study
       - Variant Call File # for raw .vcf files
       - Mutation Annotation File # for annotated .maf files
       - Variant Report # for reports detailing validated variants
@@ -518,6 +530,7 @@ PropDefinitions:
     Req: 'Yes'
   file_description:
     Desc: An optional description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length
+    Src: Data Owner(s)
     Type: string
     Req: Preferred
   file_format:
@@ -526,13 +539,15 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
   file_size:
-    Desc: The size of the file in bytes
+    Desc: The exact size of the file in bytes
+    Src: Data Owner(s)
     Type: number
-    Req: "Yes"
+    Req: 'Yes'
   md5sum:
     Desc: The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC
+    Src: Data Owner(s)
     Type: string
-    Req: "Yes"
+    Req: 'Yes'
   file_status:
     Desc: An enumerated representation of the status of any given file
     Src: Loader-derived
@@ -567,7 +582,6 @@ PropDefinitions:
     Desc: need vocab
     Src: FOLLOW_UP/FLWU/1
     Type: string
-  # crf_id: also included in follow_up node, defined elsewhere in this document
   date_of_last_contact:
     Src: FOLLOW_UP/FLWU/1
     Type: datetime
@@ -687,7 +701,6 @@ PropDefinitions:
       - Genitourinary
       - Neurologic
       - Other
-  # crf_id: also included in physical_exam node, defined elsewhere in this document
   date_of_examination:
     Src: PHYSICAL_EXAM/PE/1
     Type: datetime
@@ -706,14 +719,17 @@ PropDefinitions:
   # principal_investigator props
   pi_first_name:
     Desc: The first or given name of each principal investigator of the study/trial
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   pi_last_name:
     Desc: The last or family name of each principal investigator of the study/trial
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   pi_middle_initial:
     Desc: Where applicable, the middle initial(s) of each principal investigator of the study/trial
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   # prior_surgery props
@@ -722,7 +738,6 @@ PropDefinitions:
     Src: PRIOR_SURG_SUPP/PSRG/1
     Type:
       - https://localhost/term/domain/anatomical_site
-  # crf_id: also included in prior_surgery node, defined elsewhere in this document
   date_of_surgery:
     Src: PRIOR_SURG_SUPP/PSRG/1
     Type: datetime
@@ -859,35 +874,43 @@ PropDefinitions:
   # publication props
   publication_title:
     Desc: The full title of the publication stated exactly as it appears on the published work
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   authorship:
     Desc: A list of authors for the cited work, specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   year_of_publication:
     Desc: The year in which the cited work was published
+    Src: Data Owner(s)
     Type: number
     Req: 'Yes'
   journal_citation:
     Desc: The name of the journal in which the cited work was published, inclusive of the citation itself in terms of journal volume number, part number where applicable, and page numbers
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   digital_object_id:
     Desc: Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet
+    Src: Data Owner(s)
     Type: string
     Req: Preferred
   pubmed_id:
     Desc: Where applicable, the unique numerical identifier assigned to the cited work by PubMed, by which it can be linked to via the internet
+    Src: Data Owner(s)
     Type: number
     Req: Preferred
   # registration props
   registration_origin:
     Desc: The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   registration_id:
     Desc: Any ID used by a data submitter to identify a patient/subject/donor, either locally or globally
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   #is_primary_id:
@@ -902,10 +925,12 @@ PropDefinitions:
   #  Type: string
   date_of_sample_collection:
     Desc: The date upon which the sample was acquired from the patient/subject/donor
+    Src: Data Owner(s)
     Type: datetime
     Req: 'No'
   general_sample_pathology:
     Desc: An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue
+    Src: Data Owner(s)
     Type:
       - Normal
       - Malignant
@@ -916,6 +941,7 @@ PropDefinitions:
     Req: 'Yes'
   length_of_tumor:
     Desc: The length of the tumor from which a tumor sample was derived, as measured in mm
+    Src: Data Owner(s)
     Type:
       units:
         - mm
@@ -923,10 +949,12 @@ PropDefinitions:
     Req: 'No'
   molecular_subtype:
     Desc: Where applicable, the molecular subtype of the tumor sample in question, for example, the tumor being basal versus lumnial in nature
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   necropsy_sample:
     Desc: An indication as to whether a sample was acquired as a result of a necropsy examination
+    Src: Data Owner(s)
     Type:
       - 'Yes'
       - 'No'
@@ -935,10 +963,12 @@ PropDefinitions:
     Req: 'Yes'
   percentage_tumor:
     Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range
+    Src: Data Owner(s)
     Type: string #changed to string in order to accommodate values being quoted in ranges, as greater or less than, or as Unknown
     Req: 'No'
   sample_chronology:
     Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations
+    Src: Data Owner(s)
     Type:
       - Before Treatment
       - During Treatment
@@ -951,10 +981,12 @@ PropDefinitions:
     Req: 'Yes'
   sample_id:
     Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   sample_preservation:
     Desc: The method by which a sample was preserved
+    Src: Data Owner(s)
     Type:
       - FFPE
       - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
@@ -963,11 +995,48 @@ PropDefinitions:
     Req: 'Yes'
   sample_site:
     Desc: The specific anatomical location from which any given sample was acquired
-    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
+    Src: Data Owner(s)
+    Type: #string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
+      - Bladder Mid
+      - Bladder Mid-Trigone
+      - Bladder Mucosa
+      - Bladder Trigone
+      - Bladder Trigone-Urethra
+      - Blood
+      - Bone
+      - Brain
+      - Cerebellar
+      - Femur
+      - Hemispheric
+      - Humerus
+      - Kidney
+      - Liver
+      - Liver, Spleen, Heart
+      - Lung
+      - Lung, Caudal Aspect of Left Caudal Lobe
+      - Lung, Caudal Right Lobe
+      - Lung, Cranial Left Lobe
+      - Lymph Node
+      - Lymph Node, Popliteal
+      - Mammary Gland
+      - Mandible, Mucosa
+      - Midline
+      - Mouth, Lingual
+      - Mouth, Mandible, Mucosa
+      - Mouth, Maxilla, Mucosa
+      - Muscle
+      - Radius
+      - Subcutaneous Tissue
+      - Tibia
+      - Unknown
+      - Urethra
+      - Urethra Mid-distal
+      # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
   physical_sample_type:
     Desc: An indication as to the physical nature of any given sample
+    Src: Data Owner(s)
     Type:
       - Tissue
       - Blood # list of acceptable values will gradually be expanded as data submission requirements solidify
@@ -975,16 +1044,51 @@ PropDefinitions:
     Req: 'Yes'
   specific_sample_pathology:
     Desc: Indication as to specific histology and/or pathology associated with a sample
-    Type: string # will be superseded by an enumerated list of acceptable valuesas as data submission requirements solidify
+    Src: Data Owner(s)
+    Type: #string # will be superseded by an enumerated list of acceptable valuesas as data submission requirements solidify
+      - Astrocytoma
+      - B Cell Lymphoma
+      - Carcinoma With Simple And Complex Components
+      - Chondroblastic Osteosarcoma
+      - Complex Carcinoma
+      - Fibroblastic Osteosarcoma
+      - Giant Cell Osteosarcoma
+      - Lymphoma
+      - Melanoma
+      - Not Applicable
+      - Oligodendroglioma
+      - Osteoblastic Osteosarcoma
+      - Osteoblastic and Chrondroblastic Osteosarcoma
+      - Osteosarcoma
+      - Osteosarcoma; Combined Type
+      - Pulmonary Adenocarcinoma
+      - Pulmonary Carcinoma
+      - Simple Carcinoma
+      - Simple Carcinoma,  Ductular, Vascular Invasive
+      - Simple Carcinoma, Ductal
+      - Simple Carcinoma, Ductular
+      - Simple Carcinoma, Inflammatory
+      - Simple Carcinoma, Invasive, Ductal
+      - T Cell Lymphoma
+      - Undefined
+      - Urothelial Carcinoma
+      # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
   summarized_sample_type:
     Desc: A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin
     Src: Internally-curated 
-    Type: string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
+    Type: #string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
+      - Metastatic Tumor Tissue
+      - Normal Cell Line
+      - Normal Tissue
+      - Primary Malignant Tumor Tissue
+      - Whole Blood
+      # these represent the de facto acceptable values, i.e. the values to which we have thus far aligned submitted data
     Req: 'No'
   tumor_grade:
     Desc: The grade of the tumor from which the sample was acquired, i.e. the dgree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
-    Type: # was string, to be superseded by an enumerated list of acceptable values as data submission requirements solidify
+    Src: Data Owner(s)
+    Type:
       - "1"
       - "2"
       - "3"
@@ -997,6 +1101,7 @@ PropDefinitions:
     Req: 'No'
   tumor_sample_origin:
     Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor
+    Src: Data Owner(s)
     Type:
       - Primary
       - Metastatic
@@ -1005,6 +1110,7 @@ PropDefinitions:
     Req: 'Yes'
   volume_of_tumor:
     Desc: The volume of the tumor from which a tumor sample was derived, as measured in cm3
+    Src: Data Owner(s)
     Type:
       units:
         - cm3
@@ -1012,6 +1118,7 @@ PropDefinitions:
     Req: 'No'   
   width_of_tumor:
     Desc: The width of the tumor from which a tumor sample was derived, as measured in mm
+    Src: Data Owner(s)
     Type:
       units:
         - mm
@@ -1020,6 +1127,7 @@ PropDefinitions:
   # study props
   clinical_study_description:
     Desc: A multiple sentence summary of what the study/trial was intended to determine and how it was conducted
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   clinical_study_designation:
@@ -1029,10 +1137,12 @@ PropDefinitions:
     Req: 'Yes'
   clinical_study_id:
     Desc: Where applicable, the ID for the study/trial as generated by the source database
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   clinical_study_name:
     Desc: A succinct, narrative title for the study/trial, exactly as it should be displayed within the UI
+    Src: Data Owner(s)
     Type: string
     Req: 'Yes'
   clinical_study_type:
@@ -1043,10 +1153,12 @@ PropDefinitions:
     Req: 'Yes'
   date_of_iacuc_approval:
     Desc: Where applicable, the date upon which the study/trial was approved by the IACUC
+    Src: Data Owner(s)
     Type: datetime
     Req: 'No'
   dates_of_conduct:
     Desc: An indication of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   accession_id:
@@ -1068,6 +1180,11 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: 'No'
+  arm_description:
+    Desc: A short description of the study arm
+    Src: Internally-curated
+    Type: string
+    Req: 'No'
   ctep_treatment_assignment_code:
     Desc: TBD
     Src: Internally-curated
@@ -1082,14 +1199,17 @@ PropDefinitions:
   # study_site props
   registering_institution:
     Desc: TBD
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   site_short_name:
     Desc: The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   veterinary_medical_center:
     Desc: The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
+    Src: Data Owner(s)
     Type: string
     Req: 'No'
   # visit props
@@ -1119,7 +1239,6 @@ PropDefinitions:
         - degrees F
         - degrees C
       value_type: number
-  # crf_id: also included in physical_exam node, defined elsewhere
   date_of_vital_signs:
     Desc: actually visit date
     Src: PHYSICAL_EXAM/PE/1
