@@ -221,8 +221,6 @@ Nodes:
       - date_of_informed_consent
       - site_short_name
       - veterinary_medical_center
-      # D/N from ENROLLMENT/ENROLL/1
-      - enrollment_document_number
       - cohort_description
       - patient_subgroup
   prior_therapy:
