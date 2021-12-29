@@ -1,5 +1,5 @@
 repo https://github.com/CBIIT/icdc-model-tool
-commit 1f2bedd
+commit 93ac3b0
 node	property	value_or_TYPE
 adverse_event	adverse_event_description	STRING
 adverse_event	adverse_event_grade	STRING
@@ -158,7 +158,6 @@ disease_extent	target_lesion	TBD
 enrollment	cohort_description	STRING
 enrollment	date_of_informed_consent	DATETIME
 enrollment	date_of_registration	DATETIME
-enrollment	enrollment_document_number	NA
 enrollment	initials	STRING
 enrollment	patient_subgroup	STRING
 enrollment	registering_institution	STRING
@@ -456,46 +455,46 @@ at_enrollment	prior_surgery	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
 member_of	study_arm	study	NA	NA
-member_of	study	program	NA	NA
-member_of	case	study	NA	NA
-member_of	case	cohort	NA	NA
 member_of	cohort	study	NA	NA
 member_of	cohort	study_arm	NA	NA
+member_of	case	study	NA	NA
+member_of	case	cohort	NA	NA
+member_of	study	program	NA	NA
+next	visit	visit	NA	NA
+next	sample	sample	NA	NA
 next	prior_surgery	prior_surgery	NA	NA
 next	prior_therapy	prior_therapy	NA	NA
-next	sample	sample	NA	NA
 next	adverse_event	adverse_event	NA	NA
-next	visit	visit	NA	NA
-of_agent	adverse_event	agent	NA	NA
 of_agent	agent_administration	agent	NA	NA
+of_agent	adverse_event	agent	NA	NA
 of_assay	image	assay	NA	NA
 of_assay	file	assay	NA	NA
 of_case	demographic	case	NA	NA
-of_case	diagnosis	case	NA	NA
-of_case	adverse_event	case	NA	NA
+of_case	registration	case	NA	NA
 of_case	enrollment	case	NA	NA
+of_case	adverse_event	case	NA	NA
+of_case	file	case	NA	NA
+of_case	cycle	case	NA	NA
+of_case	follow_up	case	NA	NA
+of_case	diagnosis	case	NA	NA
 of_case	sample	case	NA	NA
 of_case	visit	case	NA	NA
-of_case	follow_up	case	NA	NA
-of_case	cycle	case	NA	NA
-of_case	file	case	NA	NA
-of_case	registration	case	NA	NA
 of_cycle	visit	cycle	NA	NA
-of_sample	file	sample	NA	NA
 of_sample	assay	sample	NA	NA
+of_sample	file	sample	NA	NA
 of_study	study_site	study	NA	NA
 of_study	publication	study	NA	NA
-of_study	file	study	NA	NA
 of_study	principal_investigator	study	NA	NA
+of_study	file	study	NA	NA
 of_study	image_collection	study	NA	NA
 of_study_arm	agent	study_arm	NA	NA
 of_study_arm	case	study_arm	NA	NA
-on_visit	vital_signs	visit	NA	NA
-on_visit	agent_administration	visit	NA	NA
 on_visit	disease_extent	visit	NA	NA
 on_visit	sample	visit	NA	NA
+on_visit	agent_administration	visit	NA	NA
 on_visit	physical_exam	visit	NA	NA
 on_visit	lab_exam	visit	NA	NA
+on_visit	vital_signs	visit	NA	NA
 represents	case	canine_individual	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
@@ -509,7 +508,7 @@ anatomical_site_of_surgery	Site_FUL on form
 arm	Where applicable, the nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm
 arm_description	A short description of the study arm
 arm_id	A unique identifier via which study arms can be differentiated from one another across studies/trials
-authorship	A list of authors for the cited work, specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
+authorship	A list of authors for the cited work. More specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
 best_response	Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor
 biospecimen_repository_acronym	The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in the form of an acronym
 biospecimen_repository_full_name	The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in full text form
@@ -602,14 +601,14 @@ sample_preservation	The method by which a sample was preserved
 sample_site	The specific anatomical location from which any given sample was acquired
 sex	The biological sex of the patient/subject/donor
 site_short_name	The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
-specific_sample_pathology	Indication as to specific histology and/or pathology associated with a sample
-stage_of_disease	The formal assessment of the extent to which the primary cancer with which the patient/subject/donor has been diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria
-study_disposition	An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public rlease
+specific_sample_pathology	The specific histology and/or pathology associated with a sample
+stage_of_disease	The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria
+study_disposition	An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public release
 summarized_sample_type	A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin
 surgical_finding	Findings_FUL on form
 treatment_data	An indication as to the existence of any treatment data for the patient/subject/donor, typically in the form of a study-level supplemental data file
 treatment_since_last_contact	y/n
-tumor_grade	The grade of the tumor from which the sample was acquired, i.e. the dgree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
+tumor_grade	The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
 tumor_sample_origin	An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor
 unexpected_adverse_event	bool
 uuid	The universally unique alpha-numeric identifier assigned to each file

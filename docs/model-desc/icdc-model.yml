@@ -5,10 +5,12 @@
 
 Nodes:
   program:
+    Desc: TBD
     Tags:
       Category: administrative
       Assignment: core
       Class: primary
+      Template: 'Yes'
       Color: black
     Props:
       - program_name
@@ -18,10 +20,12 @@ Nodes:
       - program_external_url
       - program_sort_order
   study:
+    Desc: TBD
     Tags:
       Category: study
       Assignment: core
       Class: primary
+      Template: 'Yes'
       Color: black
     Props:
       - clinical_study_id
@@ -34,20 +38,24 @@ Nodes:
       - accession_id
       - study_disposition
   study_site:
+    Desc: TBD
     Tags:
       Category: study
       Assignment: core
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - site_short_name
       - veterinary_medical_center
       - registering_institution
   study_arm:
+    Desc: TBD
     Tags:
       Category: study
       Assignment: core
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - arm
@@ -57,20 +65,24 @@ Nodes:
       - arm_description
       - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
   agent:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'No'
       Color: black
     Props:
       - medication
       # d/n from STUDY_MED_ADMIN/SDAD/1      
       - document_number
   cohort:
+    Desc: TBD
     Tags:
       Category: study
       Assignment: core
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - cohort_description
@@ -78,47 +90,57 @@ Nodes:
       - cohort_dose
       - cohort_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
   case:
+    Desc: TBD
     Tags:
       Category: case
       Assignment: core
       Class: primary
+      Template: 'Yes'
       Color: black
     Props:
       - case_id
       - patient_id
       - patient_first_name
   registration:
+    Desc: TBD
     Tags:
       Category: case
       Assignment: core
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props: 
       - registration_origin
       - registration_id
       #- is_primary_id
   biospecimen_source:
+    Desc: TBD
     Tags:
       Category: biospecimen
       Assignment: core
       Class: secondary
+      Template: 'No'
       Color: black
     Props:
       - biospecimen_repository_acronym
       - biospecimen_repository_full_name
   canine_individual:
+    Desc: TBD
     Tags:
       Category: case
       Assignment: core
       Class: secondary
+      Template: 'No'
       Color: black
     Props:
       - canine_individual_id
   demographic:
+    Desc: TBD
     Tags:
       Category: case
       Assignment: core
       Class: primary
+      Template: 'Yes'
       Color: black
     Props:
       - breed
@@ -128,39 +150,47 @@ Nodes:
       - weight
       - neutered_indicator
   cycle:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'          
       Color: black
     Props:
       - cycle_number
       - date_of_cycle_start
       - date_of_cycle_end
   visit:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props: 
       - visit_date
       - visit_number
   principal_investigator:
+    Desc: TBD
     Tags:
       Category: study
       Assignment: core
       Class: primary
+      Template: 'Yes'
       Color: black
     Props:
       - pi_first_name
       - pi_last_name
       - pi_middle_initial
   diagnosis:
+    Desc: TBD
     Tags:
       Category: clinical
       Assignment: core
       Class: primary
+      Template: 'Yes'
       Color: black
     Props:
       - disease_term
@@ -177,10 +207,12 @@ Nodes:
       - concurrent_disease
       - concurrent_disease_type
   enrollment:
+    Desc: TBD
     Tags:
       Category: case
       Assignment: core
       Class: primary
+      Template: 'Yes'
       Color: black
     Props:
       - date_of_registration
@@ -189,15 +221,15 @@ Nodes:
       - date_of_informed_consent
       - site_short_name
       - veterinary_medical_center
-      # D/N from ENROLLMENT/ENROLL/1
-      - enrollment_document_number
       - cohort_description
       - patient_subgroup
   prior_therapy:
+    Desc: TBD
     Tags:
       Category: clinical
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props: 
       - date_of_first_dose
@@ -227,10 +259,12 @@ Nodes:
       - treatment_performed_at_site
       - treatment_performed_in_minimal_residual
   prior_surgery:
+    Desc: TBD
     Tags:
       Category: clinical
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - date_of_surgery
@@ -240,10 +274,12 @@ Nodes:
       - residual_disease
       - therapeutic_indicator
   agent_administration:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       # d/n from STUDY_MED_ADMIN/SDAD/1
@@ -269,10 +305,12 @@ Nodes:
       - medication_course_number
       - comment
   sample:
+    Desc: TBD
     Tags:
       Category: biospecimen
       Assignment: core
       Class: primary
+      Template: 'Yes'
       Color: black
     Props: 
       - sample_id
@@ -294,17 +332,21 @@ Nodes:
       - sample_preservation
       - comment
   assay:
+    Desc: TBD
     Tags:
       Category: analysis
       Assignment: extended
       Class: secondary
+      Template: 'No'
       Color: black
     Props: null
   file:
+    Desc: TBD
     Tags:
       Category: data_file
       Assignment: core
       Class: primary
+      Template: 'No'
       Color: black
     Props:
       - file_name
@@ -317,17 +359,21 @@ Nodes:
       - uuid
       - file_location
   image:
+    Desc: TBD
     Tags:
       Category: data_file
       Assignment: core
       Class: secondary
+      Template: 'No'
       Color: black
     Props: null
   image_collection:
+    Desc: TBD
     Tags:
       Category: study
       Assignment: core
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - image_collection_name
@@ -336,10 +382,12 @@ Nodes:
       - repository_name
       - collection_access
   physical_exam:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - date_of_examination
@@ -350,10 +398,12 @@ Nodes:
       - phase_pe
       - assessment_timepoint
   publication:
+    Desc: TBD
     Tags:
       Category: study
       Assignment: core
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - publication_title
@@ -363,10 +413,12 @@ Nodes:
       - digital_object_id
       - pubmed_id
   vital_signs:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - date_of_vital_signs
@@ -383,18 +435,22 @@ Nodes:
       - assessment_timepoint
       - phase
   lab_exam:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'No'
       Color: black
     Props: null
   adverse_event:
     # how to link? To case and agent? Also to visit/followup?
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       - ae_dose
@@ -414,10 +470,12 @@ Nodes:
       - dose_limiting_toxicity
       - unexpected_adverse_event
   disease_extent:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props: 
       - lesion_number
@@ -433,10 +491,12 @@ Nodes:
       - evaluation_number
       - evaluation_code
   follow_up:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       # d/n from FOLLOW_UP/FLWU/1
@@ -450,10 +510,12 @@ Nodes:
       - physical_exam_changes
   off_study:
     # off_study, off_treatment -- how related? should be a dependency and normalize properties?
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       # d/n from OFF_STUDY/OSSM/1
@@ -467,10 +529,12 @@ Nodes:
       - best_resp_vet_tx_tp_best_response
       - date_of_best_response
   off_treatment:
+    Desc: TBD
     Tags:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
+      Template: 'Yes'
       Color: black
     Props:
       # d/n from OFF_TREATMENT/OTSM/1

@@ -373,7 +373,7 @@ PropDefinitions:
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
   stage_of_disease:
-    Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor has been diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria
+    Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria
     Src: Data Owner(s)
     Type:
       - I
@@ -878,7 +878,7 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
   authorship:
-    Desc: A list of authors for the cited work, specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
+    Desc: A list of authors for the cited work. More specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -1043,7 +1043,7 @@ PropDefinitions:
       - Cell Line # required for the CCL01 and OSA01 studies
     Req: 'Yes'
   specific_sample_pathology:
-    Desc: Indication as to specific histology and/or pathology associated with a sample
+    Desc: The specific histology and/or pathology associated with a sample
     Src: Data Owner(s)
     Type: #string # will be superseded by an enumerated list of acceptable valuesas as data submission requirements solidify
       - Astrocytoma
@@ -1084,9 +1084,9 @@ PropDefinitions:
       - Primary Malignant Tumor Tissue
       - Whole Blood
       # these represent the de facto acceptable values, i.e. the values to which we have thus far aligned submitted data
-    Req: 'No'
+    Req: 'Yes'
   tumor_grade:
-    Desc: The grade of the tumor from which the sample was acquired, i.e. the dgree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
+    Desc: The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
     Src: Data Owner(s)
     Type:
       - "1"
@@ -1167,7 +1167,7 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
   study_disposition:
-    Desc: An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public rlease
+    Desc: An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public release
     Src: Internally-curated
     Type:
       - Unrestricted
