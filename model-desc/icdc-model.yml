@@ -5,7 +5,7 @@
 
 Nodes:
   program:
-    Desc: TBD
+    Desc: Within the Integrated Canine Data Commons, studies are grouped into discrete programs, based upon the origins and/or scientific nature of each study/trial. These programs may or may not directly relate to any official, e.g. NCI, funding program. The Program node contains the properties required to appropriately characterize any given ICDC program.
     Tags:
       Category: administrative
       Assignment: core
@@ -20,7 +20,7 @@ Nodes:
       - program_external_url
       - program_sort_order
   study:
-    Desc: TBD
+    Desc: The Study node contains properties required to characterize each study/trial in terms of a title, how and why the study/trial was conducted, and the results that were generated.
     Tags:
       Category: study
       Assignment: core
@@ -38,7 +38,7 @@ Nodes:
       - accession_id
       - study_disposition
   study_site:
-    Desc: TBD
+    Desc: The Study Site node contains properties which identify the various sites at which any given study/trial was conducted, either in terms of where clinical trial patients were assessed and treated, or in terms of the geographical sites at which biospecimens were acquired from patients/subjects/donors for subsequent analysis.
     Tags:
       Category: study
       Assignment: core
@@ -50,7 +50,7 @@ Nodes:
       - veterinary_medical_center
       - registering_institution
   study_arm:
-    Desc: TBD
+    Desc: The Study Arm node contains properties required to describe the arms into which any given study/trial was divided. Division of a study/trial into multiple arms is optional and is at the discretion of the data owners, based upon the way in which the study/trial in question was structured, and how best that structure can be represented within the ICDC. Where applicable, the appropriate study arms are defined during the study on-boarding process and then created via a specific data loading file.
     Tags:
       Category: study
       Assignment: core
@@ -65,7 +65,7 @@ Nodes:
       - arm_description
       - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
   agent:
-    Desc: TBD
+    Desc: The Agent node documents the name of each therapeutic agent being administered during a clinical trial. In this way, in clinical trials which assess the efficacy of combination therapies, adverse events observed during the trial can be attributed specifically to one or more of the medications being used.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -77,7 +77,7 @@ Nodes:
       # d/n from STUDY_MED_ADMIN/SDAD/1      
       - document_number
   cohort:
-    Desc: TBD
+    Desc: The Cohort node contains properties required to describe the cohorts into which any given study/trial was divided. Division of a study/trial into multiple cohorts is optional and is at the discretion of the data owners, based upon the way in which the study/trial in question was structured, and how best that structure can be represented within the ICDC. Where applicable, the appropriate cohorts are defined during the study on-boarding process and then created via a specific data loading file.
     Tags:
       Category: study
       Assignment: core
@@ -90,7 +90,7 @@ Nodes:
       - cohort_dose
       - cohort_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
   case:
-    Desc: TBD
+    Desc: The Case node contains properties required to unambiguously identify each patient/subject/donor, either based upon the data submitter's original ID, or upon a study-specific Case ID derived from it during data transformation, which prefixes each original ID with a short, study-specific code.
     Tags:
       Category: case
       Assignment: core
@@ -102,7 +102,7 @@ Nodes:
       - patient_id
       - patient_first_name
   registration:
-    Desc: TBD
+    Desc: The Registration node functions to capture multiple IDs that may be associated with any single patient/subject/donor. Specifically, it captures multiple IDs in the form of Key:Value pairs, which represent each alternate ID and the specific source from which that alternate ID originates. These registrations can then be used to identify multi-study participants, i.e. canine individuals enrolled in two or more ICDC studies as study-specific cases, but which nonetheless represent the same underlying patient/subject/donor.
     Tags:
       Category: case
       Assignment: core
@@ -114,7 +114,7 @@ Nodes:
       - registration_id
       #- is_primary_id
   biospecimen_source:
-    Desc: TBD
+    Desc: The Biospecimen Source node functions essentially as a look-up table used by the front-end of the application to convert the names of biobanks and tissue repositories represented in the form of acronyms into human-readable, full text names.
     Tags:
       Category: biospecimen
       Assignment: core
@@ -125,7 +125,7 @@ Nodes:
       - biospecimen_repository_acronym
       - biospecimen_repository_full_name
   canine_individual:
-    Desc: TBD
+    Desc: The Canine Individual node contains only a single property, i.e. canine_individual_id, a loader-generated ID which identifies each underlying canine subject represented by two or more study-specific ICDC cases. This ID functions to map data sets ultimately derived from the same underlying patient/subject/donor, but generated from discrete cases in separate studies, to the underlying canine individual, such that all data sets derived from any given canine individual can be identified within the application’s user interface and combined.
     Tags:
       Category: case
       Assignment: core
@@ -135,7 +135,7 @@ Nodes:
     Props:
       - canine_individual_id
   demographic:
-    Desc: TBD
+    Desc: The Demographic node is comprised of properties which describe the key characteristics of each patient/subject/donor, such as breed, sex and neutered status.
     Tags:
       Category: case
       Assignment: core
@@ -150,7 +150,7 @@ Nodes:
       - weight
       - neutered_indicator
   cycle:
-    Desc: TBD
+    Desc: In clinical trials where therapeutic agents are administered in multiple discrete treatment cycles, the properties within the Cycle node serve to capture the dates upon which each cycle started and ended, providing a detailed timeframe for the therapeutic intervention(s) in question. Adverse events can then be associated with the correct cycle based upon when they were observed.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -162,7 +162,7 @@ Nodes:
       - date_of_cycle_start
       - date_of_cycle_end
   visit:
-    Desc: TBD
+    Desc: Clinical trials typically require the patient to make multiple visits to the study site for clinical evaluation and/or the administration of additional medication(s). Properties within the Visit node serve to capture the date upon which each visit occurs. Adverse events and various clinical assessments can then be associated with the correct visit based upon date.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -173,7 +173,7 @@ Nodes:
       - visit_date
       - visit_number
   principal_investigator:
-    Desc: TBD
+    Desc: The Principal Investigator node contains properties which identify the principal investigator(s) responsible for any given study/trial. A study/trial may have one or more principal investigators, and any given individual may be listed as a principal investigator on more than one study/trial.
     Tags:
       Category: study
       Assignment: core
@@ -185,7 +185,7 @@ Nodes:
       - pi_last_name
       - pi_middle_initial
   diagnosis:
-    Desc: TBD
+    Desc: The Diagnosis node contains numerous properties which fully characterize the type of cancer with which any given patient/subject/donor was diagnosed, inclusive of stage. This node also contains properties pertaining to comorbidities, and the availability of pathology reports, treatment data and follow-up data.
     Tags:
       Category: clinical
       Assignment: core
@@ -207,7 +207,7 @@ Nodes:
       - concurrent_disease
       - concurrent_disease_type
   enrollment:
-    Desc: TBD
+    Desc: The Enrollment node is comprised of properties which document when and where a patient/subject/donor was enrolled onto a study/trial.
     Tags:
       Category: case
       Assignment: core
@@ -224,7 +224,7 @@ Nodes:
       - cohort_description
       - patient_subgroup
   prior_therapy:
-    Desc: TBD
+    Desc: Properties within the Prior Therapy node detail therapies received by the patient/subject/donor prior to being enrolled in the study/trial in question. Clinical trials will typically capture more of this information than will cross-sectional and/or mechanistic studies.
     Tags:
       Category: clinical
       Assignment: extended
@@ -259,7 +259,7 @@ Nodes:
       - treatment_performed_at_site
       - treatment_performed_in_minimal_residual
   prior_surgery:
-    Desc: TBD
+    Desc: Properties within the Prior Surgery node detail surgical procedures that the patient/subject/donor underwent prior to being enrolled in the study/trial in question. Clinical trials will typically capture more of this information than will cross-sectional and/or mechanistic studies.
     Tags:
       Category: clinical
       Assignment: extended
@@ -274,7 +274,7 @@ Nodes:
       - residual_disease
       - therapeutic_indicator
   agent_administration:
-    Desc: TBD
+    Desc: Properties within the Agent Administration node detail the dosing of the therapeutic agent(s) being studied, alongside the specifics of how and when such agents were administered.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -305,7 +305,7 @@ Nodes:
       - medication_course_number
       - comment
   sample:
-    Desc: TBD
+    Desc: The Sample node contains numerous properties which provide an in-depth characterization of the types of samples which were collected from any given patient/subject/donor and subsequently analyzed. Many of these sample annotations are required.
     Tags:
       Category: biospecimen
       Assignment: core
@@ -332,7 +332,7 @@ Nodes:
       - sample_preservation
       - comment
   assay:
-    Desc: TBD
+    Desc: The Assay node does not yet have any properties associated with it and is not currently used.
     Tags:
       Category: analysis
       Assignment: extended
@@ -341,7 +341,7 @@ Nodes:
       Color: black
     Props: null
   file:
-    Desc: TBD
+    Desc: Files can be associated with ICDC study, case, diagnosis and sample records, but are not themselves stored within the application. Instead, the application stores records as to the existence and nature of such files. The File node is comprised of properties which characterize these files in terms of their size, format and content, such that they can be appropriately represented within the application’s UI, and in terms of their storage location, such that they can be retrieved for analysis.
     Tags:
       Category: data_file
       Assignment: core
@@ -359,7 +359,7 @@ Nodes:
       - uuid
       - file_location
   image:
-    Desc: TBD
+    Desc: The Image node does not yet have any properties associated with it and is not currently used.
     Tags:
       Category: data_file
       Assignment: core
@@ -368,7 +368,7 @@ Nodes:
       Color: black
     Props: null
   image_collection:
-    Desc: TBD
+    Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
     Tags:
       Category: study
       Assignment: core
@@ -382,7 +382,7 @@ Nodes:
       - repository_name
       - collection_access
   physical_exam:
-    Desc: TBD
+    Desc: Properties within the Physical Exam node detail observations around the status of multiple body systems as of a patient enrolled in a clinical trial, as of that patient being examined by a veterinarian during a scheduled visit to the appropriate study site.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -398,7 +398,7 @@ Nodes:
       - phase_pe
       - assessment_timepoint
   publication:
-    Desc: TBD
+    Desc: The Publication node is comprised of properties which describe publications that are directly associated with any given study/trial of interest, inclusive of the location(s) at which publications can be viewed in electronic form.
     Tags:
       Category: study
       Assignment: core
@@ -413,7 +413,7 @@ Nodes:
       - digital_object_id
       - pubmed_id
   vital_signs:
-    Desc: TBD
+    Desc: Properties within the Vital Signs node detail observations around the key indicators of the bodily functions of a patient enrolled in a clinical trial, as of that patient being examined by a veterinarian during a scheduled visit to the appropriate study site.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -435,7 +435,7 @@ Nodes:
       - assessment_timepoint
       - phase
   lab_exam:
-    Desc: TBD
+    Desc: The Lab Exam node does not yet have any properties associated with it and is not currently used.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -443,9 +443,9 @@ Nodes:
       Template: 'No'
       Color: black
     Props: null
-  adverse_event:
+  adverse_event: 
     # how to link? To case and agent? Also to visit/followup?
-    Desc: TBD
+    Desc: Properties within the Adverse Event node detail unexpected medical problems occurring during therapy, in terms of what issues are observed, their severity, and what is considered to be their root cause.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -470,7 +470,7 @@ Nodes:
       - dose_limiting_toxicity
       - unexpected_adverse_event
   disease_extent:
-    Desc: TBD
+    Desc: Properties within the Disease Extent node detail the extent to which the disease for which the patient is being treated has either responded to treatment or progressed, based upon observations of one or more specific lesions.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -491,7 +491,7 @@ Nodes:
       - evaluation_number
       - evaluation_code
   follow_up:
-    Desc: TBD
+    Desc: The Follow-up node is comprised of properties which document when a follow-up evaluation was performed, and what observations were made at each follow-up evaluation.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -510,7 +510,7 @@ Nodes:
       - physical_exam_changes
   off_study:
     # off_study, off_treatment -- how related? should be a dependency and normalize properties?
-    Desc: TBD
+    Desc: Properties within the Off Study node detail when a patient was removed from a clinical trial relative to other key dates, and the reason(s) for the patient being removed.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -529,7 +529,7 @@ Nodes:
       - best_resp_vet_tx_tp_best_response
       - date_of_best_response
   off_treatment:
-    Desc: TBD
+    Desc: Properties within the Off Treatment node detail when a clinical trial patient's treatment was curtailed relative to other key dates. Properties also detail the best response to treatment observed to that point, and the reason(s) for treatment being curtailed.
     Tags:
       Category: clinical_trial
       Assignment: extended
