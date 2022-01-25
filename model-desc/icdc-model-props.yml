@@ -173,13 +173,14 @@ PropDefinitions:
     Auto: true
     Type: string
     Req: 'Yes'
+    Key: true
   # case props
   case_id:
-    Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and
-      displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation
+    Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation. This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
     Src: Internally-generated
     Type: string
     Req: 'Yes'
+    Key: true
   patient_first_name:
     Desc: Where available, the name given to the patient/subject/donor
     Src: Data Owner(s)
@@ -187,7 +188,7 @@ PropDefinitions:
     Req: 'No'
   patient_id:
     Desc: The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least
-      within a single study/trial, recorded exactly as provided by the data submitter; once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become Case IDs
+      within a single study/trial, recorded exactly as provided by the data submitter. Once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become values of Case ID.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -196,7 +197,7 @@ PropDefinitions:
     Desc: Where applicable, the nature of each cohort into which the study/trial has been divided, e.g. in studies examining the effects of multiple doses of a therapeutic agent, the name and dose of the therapeutic agent used in any given cohort
     Src: Internally-curated
     Type: string
-    Req: 'No'
+    Req: 'Yes'
   cohort_dose:
     Desc: The intended or protocol dose of the therapeutic agent used in any given cohort
     Src: Internally-curated
@@ -204,10 +205,11 @@ PropDefinitions:
     # setting this as string so as to accommodate a lack of consistency in the way in which dosing is quoted within the COTC007B study, which will otherwise confound data loading for MVP
     Req: 'No'  
   cohort_id:
-    Desc: A unique identifier via which cohorts can be differentiated from one another across studies/trials
+    Desc: A unique identifier via which cohorts can be differentiated from one another across studies/trials. This property is used as the key via which cases can be associated with the appropriate cohort during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
     Type: string
-    Req: 'No'
+    Req: 'Yes'
+    Key: true
   # cycle props
   cycle_number:
     Src: COURSE INIT/CINIT/1
@@ -262,7 +264,6 @@ PropDefinitions:
         - kg
       value_type: number
     Req: 'No'
-
   # diagnosis props
   best_response:
     Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor
@@ -306,6 +307,12 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+  diagnosis_id:
+    Desc: A unique identifier of each diagnosis record, used to associate child records, e.g. pathology reports, with the appropriate parent, and to identify the correct diagnosis records during data updates.
+    Src: Data Owner(s)
+    Type: string
+    Req: 'Yes'
+    Key: true
   disease_term:
     Desc: The primary disease condition with which the patient/subject/donor was diagnosed
     Src: Data Owner(s)
@@ -481,6 +488,12 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+  enrollment_id:
+    Desc: A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates.
+    Src: Data Owner(s)
+    Type: string
+    Req: 'Yes'
+    Key: true
   initials:
     Desc: The initials of the patient/subject/donor based upon the subject's first or given name, and the last or family name of the subject's owner
     Src: Data Owner(s)
@@ -572,6 +585,7 @@ PropDefinitions:
     Src: Loader-derived
     Type: string
     Req: 'Yes'
+    Key: true
   file_location:
     Desc: The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url
     Src: Loader-derived
@@ -842,10 +856,11 @@ PropDefinitions:
     Type: TBD
   # program props
   program_acronym:
-    Desc: The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI
+    Desc: The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI. This property is used as the key via which study records can be associated with the appropriate program during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Key: true
   program_external_url:
     Desc: The external url to which users should be directed in order to learn more about the program
     Src: Internally-curated 
@@ -877,6 +892,7 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Key: true
   authorship:
     Desc: A list of authors for the cited work. More specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
     Src: Data Owner(s)
@@ -980,10 +996,11 @@ PropDefinitions:
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: 'Yes'
   sample_id:
-    Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation
+    Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation. This property is used as the key via which child records, e.g. file records, can be associated with the appropriate sample during data loading, and to identify the correct records during data updates.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Key: true
   sample_preservation:
     Desc: The method by which a sample was preserved
     Src: Data Owner(s)
@@ -1131,10 +1148,11 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
   clinical_study_designation:
-    Desc: A unique, human-friendly, alpha-numeric identifier by which the study/trial will identified within the UI
+    Desc: A unique, human-friendly, alpha-numeric identifier by which the study/trial will be identified within the UI. This property is used as the key via which child records, e.g. case records, can be associated with the appropriate study during data loading, and to identify the correct records during data updates.
     Src: Internally-generated
     Type: string
     Req: 'Yes'
+    Key: true
   clinical_study_id:
     Desc: Where applicable, the ID for the study/trial as generated by the source database
     Src: Data Owner(s)
@@ -1192,10 +1210,11 @@ PropDefinitions:
       pattern: "^.+$\n"
     Req: 'No'
   arm_id:
-    Desc: A unique identifier via which study arms can be differentiated from one another across studies/trials
+    Desc: A unique identifier via which study arms can be differentiated from one another across studies/trials. This property is used as the key via which child records, e.g. cohort records, can be associated with the appropriate study arm during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
     Type: string
-    Req: 'No'
+    Req: 'Yes'
+    Key: true
   # study_site props
   registering_institution:
     Desc: TBD
@@ -1217,6 +1236,12 @@ PropDefinitions:
     Desc: '?'
     Src: '?'
     Type: TBD
+  visit_id:
+    Desc: A unique identifier of each visit record, used to associate child records, e.g. physical examination records, with the appropriate parent, and to identify the correct visit records during data updates.
+    Src: Data Owner(s)
+    Type: string
+    Req: 'Yes'
+    Key: true
   visit_number:
     Desc: '?'
     Src: '?'
