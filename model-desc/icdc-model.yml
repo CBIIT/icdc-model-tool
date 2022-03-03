@@ -221,7 +221,7 @@ Nodes:
       - date_of_informed_consent
       - site_short_name
       - veterinary_medical_center
-      - cohort_description
+      #- cohort_description
       - patient_subgroup
   prior_therapy:
     Desc: Properties within the Prior Therapy node detail therapies received by the patient/subject/donor prior to being enrolled in the study/trial in question. Clinical trials will typically capture more of this information than will cross-sectional and/or mechanistic studies.
@@ -238,7 +238,7 @@ Nodes:
       - dose_schedule
       - total_dose
       - agent_units_of_measure
-      - best_response
+      - best_response_to_prior_therapy
       - nonresponse_therapy_type
       - prior_therapy_type
       - prior_steroid_exposure

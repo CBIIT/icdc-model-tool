@@ -176,7 +176,7 @@ PropDefinitions:
     Key: true
   # case props
   case_id:
-    Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation. This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
+    Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
     Src: Internally-generated
     Type: string
     Req: 'Yes'
@@ -185,7 +185,7 @@ PropDefinitions:
     Desc: Where available, the name given to the patient/subject/donor
     Src: Data Owner(s)
     Type: string
-    Req: 'No'
+    Req: Preferred
   patient_id:
     Desc: The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least
       within a single study/trial, recorded exactly as provided by the data submitter. Once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become values of Case ID.
@@ -205,7 +205,7 @@ PropDefinitions:
     # setting this as string so as to accommodate a lack of consistency in the way in which dosing is quoted within the COTC007B study, which will otherwise confound data loading for MVP
     Req: 'No'  
   cohort_id:
-    Desc: A unique identifier via which cohorts can be differentiated from one another across studies/trials. This property is used as the key via which cases can be associated with the appropriate cohort during data loading, and to identify the correct records during data updates.
+    Desc: A unique identifier via which cohorts can be differentiated from one another across studies/trials. <br>This property is used as the key via which cases can be associated with the appropriate cohort during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
@@ -247,7 +247,7 @@ PropDefinitions:
       units:
         - years
       value_type: number
-    Req: 'No'
+    Req: Preferred
   sex:
     Desc: The biological sex of the patient/subject/donor
     Src: Data Owner(s)
@@ -263,7 +263,7 @@ PropDefinitions:
       units:
         - kg
       value_type: number
-    Req: 'No'
+    Req: Preferred
   # diagnosis props
   best_response:
     Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor
@@ -291,12 +291,12 @@ PropDefinitions:
       - 'Yes'
       - 'No'
       - Unknown
-    Req: 'No'
+    Req: Preferred
   concurrent_disease_type:
     Desc: The specifics of any notable secondary disease condition(s) observed within the patient/subject/donor
     Src: Data Owner(s)
     Type: string
-    Req: 'No'
+    Req: Preferred
   date_of_diagnosis:
     Desc: The date upon which the patient/subject/donor was diagnosed with the primary disease in question
     Src: Data Owner(s)
@@ -337,7 +337,7 @@ PropDefinitions:
     Enum:
       - 'Yes'
       - 'No'
-    Req: 'No'
+    Req: Preferred
   histological_grade:
     Desc: The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level
     Src: Data Owner(s)
@@ -355,7 +355,7 @@ PropDefinitions:
     Enum:
       - 'Yes'
       - 'No'
-    Req: 'No'
+    Req: Preferred
   primary_disease_site:
     Desc: The anatomical location at which the primary disease originated, recorded in relatively general terms at the subject level; the anatomical locations from which tumor samples subject to downstream analysis were acquired is recorded in more detailed terms at the sample level
     Src: Data Owner(s)
@@ -364,7 +364,7 @@ PropDefinitions:
       - Bladder
       - Bladder, Prostate
       - Bladder, Urethra
-      - Bladder Urethra, Prostate
+      - Bladder, Urethra, Prostate
       - Bladder, Urethra, Vagina
       - Bone
       - Bone (Appendicular)
@@ -424,7 +424,7 @@ PropDefinitions:
     Enum:
       - 'Yes'
       - 'No'
-    Req: 'No'
+    Req: Preferred
   # disease_extent props
   date_of_evaluation:
     Desc: inferred from evaluation inputs (e.g.,PE)
@@ -498,7 +498,7 @@ PropDefinitions:
     Desc: The initials of the patient/subject/donor based upon the subject's first or given name, and the last or family name of the subject's owner
     Src: Data Owner(s)
     Type: string
-    Req: 'No'
+    Req: Preferred
   patient_subgroup:
     Desc: A short description as to the reason for the patient/subject/donor being enrolled in any given study/trial arm or cohort, for example, a clinical trial patient having been enrolled in a dose escalation cohort
     Src: Data Owner(s)
@@ -782,6 +782,9 @@ PropDefinitions:
   any_therapy:
     Src: PRIOR_TREAT_SUMM/PTX/1
     Type: boolean
+  best_response_to_prior_therapy:
+    Src: PRIOR_THRPY_SUPP/PTHR/1
+    Type: string
   date_of_first_dose:
     Src: PRIOR_THRPY_SUPP/PTHR/1
     Type: datetime
@@ -856,7 +859,7 @@ PropDefinitions:
     Type: TBD
   # program props
   program_acronym:
-    Desc: The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI. This property is used as the key via which study records can be associated with the appropriate program during data loading, and to identify the correct records during data updates.
+    Desc: The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI. <br>This property is used as the key via which study records can be associated with the appropriate program during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
@@ -865,7 +868,7 @@ PropDefinitions:
     Desc: The external url to which users should be directed in order to learn more about the program
     Src: Internally-curated 
     Type: string
-    Req: 'No'
+    Req: Preferred
   program_full_description:
     Desc: A more detailed, multiple sentence description of the program
     Src: Internally-curated
@@ -981,7 +984,7 @@ PropDefinitions:
     Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range
     Src: Data Owner(s)
     Type: string #changed to string in order to accommodate values being quoted in ranges, as greater or less than, or as Unknown
-    Req: 'No'
+    Req: Preferred
   sample_chronology:
     Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations
     Src: Data Owner(s)
@@ -996,7 +999,7 @@ PropDefinitions:
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: 'Yes'
   sample_id:
-    Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation. This property is used as the key via which child records, e.g. file records, can be associated with the appropriate sample during data loading, and to identify the correct records during data updates.
+    Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. file records, can be associated with the appropriate sample during data loading, and to identify the correct records during data updates.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -1015,6 +1018,8 @@ PropDefinitions:
     Src: Data Owner(s)
     Enum: #string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
+      - Bladder Apex
+      - Bladder Apex-Mid
       - Bladder Mid
       - Bladder Mid-Trigone
       - Bladder Mucosa
@@ -1056,13 +1061,14 @@ PropDefinitions:
     Src: Data Owner(s)
     Enum:
       - Tissue
-      - Blood # list of acceptable values will gradually be expanded as data submission requirements solidify
+      - Blood
       - Cell Line # required for the CCL01 and OSA01 studies
+      # list of acceptable values will gradually be expanded as data submission requirements solidify
     Req: 'Yes'
   specific_sample_pathology:
     Desc: The specific histology and/or pathology associated with a sample
     Src: Data Owner(s)
-    Enum: #string # will be superseded by an enumerated list of acceptable valuesas as data submission requirements solidify
+    Enum:
       - Astrocytoma
       - B Cell Lymphoma
       - Carcinoma With Simple And Complex Components
@@ -1115,7 +1121,7 @@ PropDefinitions:
       - Low
       - Unknown
       - Not Applicable
-    Req: 'No'
+    Req: Preferred
   tumor_sample_origin:
     Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor
     Src: Data Owner(s)
@@ -1148,7 +1154,7 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
   clinical_study_designation:
-    Desc: A unique, human-friendly, alpha-numeric identifier by which the study/trial will be identified within the UI. This property is used as the key via which child records, e.g. case records, can be associated with the appropriate study during data loading, and to identify the correct records during data updates.
+    Desc: A unique, human-friendly, alpha-numeric identifier by which the study/trial will be identified within the UI. <br>This property is used as the key via which child records, e.g. case records, can be associated with the appropriate study during data loading, and to identify the correct records during data updates.
     Src: Internally-generated
     Type: string
     Req: 'Yes'
@@ -1178,9 +1184,9 @@ PropDefinitions:
     Desc: An indication of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year
     Src: Data Owner(s)
     Type: string
-    Req: 'No'
+    Req: Preferred
   accession_id:
-    Desc: A unique, alpha-numeric identifier, in the format of "ICDCxxxxxx", where xxxxxx represents six digits, which is assigned to the study/trial as of it being on-boarded, and which can be resolved by identifiers.org
+    Desc: A unique, alpha-numeric identifier, in the format of six digits, which is assigned to the study/trial as of it being on-boarded, and which can be resolved by identifiers.org when prefixed with "icdc:" to create a compact identifier in the format icdc:xxxxxx
     Src: Internally-curated
     Type: string
     Req: 'Yes'
@@ -1197,12 +1203,12 @@ PropDefinitions:
     Desc: Where applicable, the nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm
     Src: Internally-curated
     Type: string
-    Req: 'No'
+    Req: Preferred
   arm_description:
     Desc: A short description of the study arm
     Src: Internally-curated
     Type: string
-    Req: 'No'
+    Req: Preferred
   ctep_treatment_assignment_code:
     Desc: TBD
     Src: Internally-curated
@@ -1210,7 +1216,7 @@ PropDefinitions:
       pattern: "^.+$\n"
     Req: 'No'
   arm_id:
-    Desc: A unique identifier via which study arms can be differentiated from one another across studies/trials. This property is used as the key via which child records, e.g. cohort records, can be associated with the appropriate study arm during data loading, and to identify the correct records during data updates.
+    Desc: A unique identifier via which study arms can be differentiated from one another across studies/trials. <br>This property is used as the key via which child records, e.g. cohort records, can be associated with the appropriate study arm during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
