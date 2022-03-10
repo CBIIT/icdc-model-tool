@@ -442,7 +442,6 @@ PropDefinitions:
     Req: 'No'
   evaluation_number:
     Desc: The number of the evaluation durinhg which any given lesion was examined, with evaluations numbered according to their chronological order.
-    Src: Data-deived
     Src: Data Owner(s)
     Type: Integer
     Req: 'No'
