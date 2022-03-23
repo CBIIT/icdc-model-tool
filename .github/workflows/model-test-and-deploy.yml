@@ -6,11 +6,10 @@ on:
   pull_request:
     branches:
       - master
-      - develop
 
 jobs:
   validate-and-build:
-    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v1.1.3.1
+    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v1.1.3
     with:
       model_files: |
         icdc-model.yml icdc-model-props.yml
