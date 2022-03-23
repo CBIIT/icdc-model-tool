@@ -172,6 +172,7 @@ Nodes:
     Props: 
       - visit_date
       - visit_number
+      - visit_id
   principal_investigator:
     Desc: The Principal Investigator node contains properties which identify the principal investigator(s) responsible for any given study/trial. A study/trial may have one or more principal investigators, and any given individual may be listed as a principal investigator on more than one study/trial.
     Tags:
@@ -206,6 +207,7 @@ Nodes:
       - follow_up_data
       - concurrent_disease
       - concurrent_disease_type
+      - diagnosis_id
   enrollment:
     Desc: The Enrollment node is comprised of properties which document when and where a patient/subject/donor was enrolled onto a study/trial.
     Tags:
@@ -221,8 +223,9 @@ Nodes:
       - date_of_informed_consent
       - site_short_name
       - veterinary_medical_center
-      - cohort_description
+      #- cohort_description
       - patient_subgroup
+      - enrollment_id
   prior_therapy:
     Desc: Properties within the Prior Therapy node detail therapies received by the patient/subject/donor prior to being enrolled in the study/trial in question. Clinical trials will typically capture more of this information than will cross-sectional and/or mechanistic studies.
     Tags:
@@ -238,7 +241,7 @@ Nodes:
       - dose_schedule
       - total_dose
       - agent_units_of_measure
-      - best_response
+      - best_response_to_prior_therapy
       - nonresponse_therapy_type
       - prior_therapy_type
       - prior_steroid_exposure
