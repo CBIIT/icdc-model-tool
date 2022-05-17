@@ -718,7 +718,7 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: 'Yes'
-   Tags:
+    Tags:
        Labeled: Collection
   image_type_included:
     Desc: A list of the image types included in the image collection, drawn from a list of acceptable values.
