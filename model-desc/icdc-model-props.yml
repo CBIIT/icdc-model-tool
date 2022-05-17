@@ -161,6 +161,8 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Biobank
   biospecimen_repository_full_name:
     Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in full text form.
     Src: Internally-curated
@@ -174,6 +176,8 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Canine ID
   # case props
   case_id:
     Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
@@ -181,11 +185,15 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Case ID
   patient_first_name:
     Desc: Where available, the given name of the patient/subject/donor.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Case Name
   patient_id:
     Desc: The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least
       within a single study/trial, recorded exactly as provided by the data submitter. Once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become values of Case ID.
@@ -198,12 +206,16 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Cohort, Assigned to Cohort
   cohort_dose:
     Desc: The intended or protocol dose of the therapeutic agent used in any given cohort.
     Src: Internally-curated
     Type: string
     # setting this as string so as to accommodate a lack of consistency in the way in which dosing is quoted within the COTC007B study, which will otherwise confound data loading for MVP
-    Req: 'No'  
+    Req: 'No'
+    Tags:
+       Labeled: Cohorts
   cohort_id:
     Desc: A unique identifier via which cohorts can be differentiated from one another across studies/trials. <br>This property is used as the key via which cases can be associated with the appropriate cohort during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
@@ -231,6 +243,8 @@ PropDefinitions:
     Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- https://sts.ctos-data-team.org/v1/model/ICDC/node/demographic/property/breed/terms
     Req: 'Yes'
+    Tags:
+       Labeled: Breed
   date_of_birth:
     Desc: The date of birth of the canine patient/subject/donor.
     Src: Data Owner(s)
@@ -244,6 +258,8 @@ PropDefinitions:
       - 'No'
       - Unknown
     Req: 'Yes'
+    Tags:
+       Labeled: Neutered Status
   patient_age_at_enrollment:
     Desc: The age of the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years.
     Src: Data Owner(s)
@@ -252,6 +268,8 @@ PropDefinitions:
         - years
       value_type: number
     Req: Preferred
+    Tags:
+       Labeled: Age, Age at Enrollment
   sex:
     Desc: The biological sex of the patient/subject/donor.
     Src: Data Owner(s)
@@ -260,6 +278,8 @@ PropDefinitions:
       - Female
       - Unknown
     Req: 'Yes'
+    Tags:
+       Labeled: Sex
   weight:
     Desc: The weight of the patient/subject/donor at the time of study/trial enrollment and/or biospecimens being acquired, at least in the case of studies that are not longitudinal in nature.
     Src: Data Owner(s)
@@ -268,6 +288,8 @@ PropDefinitions:
         - kg
       value_type: number
     Req: Preferred
+    Tags:
+       Labeled: Weight (kg)
   # diagnosis props
   best_response:
     Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor.
@@ -287,7 +309,9 @@ PropDefinitions:
       # therapeutic intervention
       - Unknown
       # included to accommodate situations where a value for stage of disease simply isn't available
-    Req: 'Yes' 
+    Req: 'Yes'
+    Tags:
+       Labeled: Response to Treatment
   concurrent_disease:
     Desc: An indication as to whether the patient/subject/donor suffers from any significant secondary disease condition(s).
     Src: Data Owner(s)
@@ -296,16 +320,22 @@ PropDefinitions:
       - 'No'
       - Unknown
     Req: Preferred
+    Tags:
+       Labeled: Concurrent Disease(s)
   concurrent_disease_type:
     Desc: The specifics of any notable secondary disease condition(s) observed within the patient/subject/donor.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Concurrent Disease Specifics
   date_of_diagnosis:
     Desc: The date upon which the patient/subject/donor was diagnosed with the primary disease in question.
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+    Tags:
+       Labeled: Date of Diagnosis
   date_of_histology_confirmation:
     Desc: The date upon which the results of a histological evaluation of a sample from the patient/subject/donor were confirmed.
     Src: Data Owner(s)
@@ -335,6 +365,8 @@ PropDefinitions:
       - Unknown
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
+    Tags:
+       Labeled: Diagnosis, Disease
   follow_up_data:
     Desc: An indication as to the existence of any follow-up data for the patient/subject/donor, typically in the form of a study-level supplemental data file.
     Src: Data Owner(s)
@@ -342,17 +374,23 @@ PropDefinitions:
       - 'Yes'
       - 'No'
     Req: Preferred
+    Tags:
+       Labeled: Follow Up Data Available
   histological_grade:
     Desc: The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level.
     Src: Data Owner(s)
     Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/histological_grade
-    Req: 'No'  
+    Req: 'No'
+    Tags:
+       Labeled: Histological Grade
   histology_cytopathology:
     Desc: A narrative summary of the primary observations from the the evaluation of a tumor sample from a patient/subject/donor, in terms of its histology and/or cytopathology.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+    Tags:
+       Labeled: Histology/Cytology, Histology/Cytopathology
   pathology_report:
     Desc: An indication as to the existence of any detailed pathology evaluation upon which the primary diagnosis was based, either in the form of a formal, subject-specific pathology report, or as detailed in a study-level supplemental data file.
     Src: Data Owner(s)
@@ -360,6 +398,8 @@ PropDefinitions:
       - 'Yes'
       - 'No'
     Req: Preferred
+    Tags:
+       Labeled: Detailed Pathology Evaluation Available
   primary_disease_site:
     Desc: The anatomical location at which the primary disease originated, recorded in relatively general terms at the subject level; the anatomical locations from which tumor samples subject to downstream analysis were acquired is recorded in more detailed terms at the sample level.
     Src: Data Owner(s)
@@ -383,6 +423,8 @@ PropDefinitions:
       - Urethra, Prostate
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
+    Tags:
+       Labeled: Primary Disease Site, Disease Site, Primary Site
   stage_of_disease:
     Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria.
     Src: Data Owner(s)
@@ -422,6 +464,8 @@ PropDefinitions:
       - Unknown
       # to accommodate situations where a value for stage of disease simply isn't available
     Req: 'Yes'
+    Tags:
+       Labeled: Stage of Disease
   treatment_data:
     Desc: An indication as to the existence of any treatment data for the patient/subject/donor, typically in the form of a study-level supplemental data file.
     Src: Data Owner(s)
@@ -429,6 +473,8 @@ PropDefinitions:
       - 'Yes'
       - 'No'
     Req: Preferred
+    Tags:
+       Labeled: Treatment Data Available
   # disease_extent props
   date_of_evaluation:
     Desc: The date upon which the extent of disease evaluation was conducted.
@@ -503,11 +549,15 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+    Tags:
+       Labeled: Date of Informed Consent
   date_of_registration:
     Desc: The date upon which the patient/subject/donor was enrolled in the study/trial.
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+    Tags:
+       Labeled: Date of Registration
   enrollment_id:
     Desc: A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates.
     Src: Data Owner(s)
@@ -519,11 +569,15 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Initials
   patient_subgroup:
     Desc: A short description as to the reason for the patient/subject/donor being enrolled in any given study/trial arm or cohort, for example, a clinical trial patient having been enrolled in a dose escalation cohort.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+    Tags:
+       Labeled: Patient Subgroup
   # registering_institution: also included in enrollment node, defined elsewhere
   #   Src: ENROLLMENT/ENROLL/1
   #   Type: string
@@ -542,6 +596,8 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: File Name
   file_type:
     Desc: An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format.
     Src: Data Owner(s)
@@ -561,26 +617,36 @@ PropDefinitions:
       - Variant Report # for reports detailing validated variants
       - Data Analysis Whitepaper # for any document detailing a data analysis pipeline and/or methodology
     Req: 'Yes'
+    Tags:
+       Labeled: File Type
   file_description:
     Desc: An optional description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Description
   file_format:
     Desc: The specific format of the file as determined by the data loader.
     Src: Loader-derived
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Format
   file_size:
     Desc: The exact size of the file in bytes.
     Src: Data Owner(s)
     Type: number
     Req: 'Yes'
+    Tags:
+       Labeled: Size
   md5sum:
     Desc: The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Md5sum
   file_status:
     Desc: An enumerated representation of the status of any given file.
     Src: Loader-derived
@@ -606,6 +672,8 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: File UUID, File ID
   file_location:
     Desc: The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url.
     Src: Loader-derived
@@ -650,6 +718,8 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+   Tags:
+       Labeled: Collection
   image_type_included:
     Desc: A list of the image types included in the image collection, drawn from a list of acceptable values.
     Src: Internally-curated
@@ -664,6 +734,8 @@ PropDefinitions:
         - Optical
         - Ultrasound
     Req: 'Yes'
+    Tags:
+       Labeled: Image Types
   image_collection_url:
     Desc: The external url via which the image collection can be viewed and/or accessed.
     Src: Internally-curated
@@ -762,16 +834,22 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Principal Investigators
   pi_last_name:
     Desc: The last or family name of each principal investigator of the study/trial.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Principal Investigators
   pi_middle_initial:
     Desc: Where applicable, the middle initial(s) of each principal investigator of the study/trial.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+    Tags:
+       Labeled: Principal Investigators
   # prior_surgery props
   anatomical_site_of_surgery:
     Desc: The anatomical location at which the prior surgery in question occurred. 
@@ -899,6 +977,8 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Program
   program_external_url:
     Desc: The external url to which users should be directed in order to learn more about the program.
     Src: Internally-curated 
@@ -936,26 +1016,36 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Authorship
   year_of_publication:
     Desc: The year in which the cited work was published.
     Src: Data Owner(s)
     Type: number
     Req: 'Yes'
+    Tags:
+       Labeled: Year of Publication
   journal_citation:
     Desc: The name of the journal in which the cited work was published, inclusive of the citation itself in terms of journal volume number, part number where applicable, and page numbers.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Journal
   digital_object_id:
     Desc: Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: DOI
   pubmed_id:
     Desc: Where applicable, the unique numerical identifier assigned to the cited work by PubMed, by which it can be linked to via the internet.
     Src: Data Owner(s)
     Type: number
     Req: Preferred
+    Tags:
+       Labeled: PubMed ID
   # registration props
   registration_origin:
     Desc: The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym.
@@ -993,6 +1083,8 @@ PropDefinitions:
       - Diseased
       - Not Applicable # included to accommodate the inevitable ambiguity in assigning a general sample pathology to certain sample types, e.g. blood
     Req: 'Yes'
+    Tags:
+       Labeled: General Sample Pathology
   length_of_tumor:
     Desc: The length of the tumor from which a tumor sample was derived, as measured in mm.
     Src: Data Owner(s)
@@ -1015,11 +1107,15 @@ PropDefinitions:
       - Unknown
       - Not Applicable # included to accommodate cell line samples
     Req: 'Yes'
+    Tags:
+       Labeled: Necropsy Sample
   percentage_tumor:
     Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range.
     Src: Data Owner(s)
     Type: string #changed to string in order to accommodate values being quoted in ranges, as greater or less than, or as Unknown
     Req: Preferred
+    Tags:
+       Labeled: Percentage Tumor
   sample_chronology:
     Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations.
     Src: Data Owner(s)
@@ -1033,21 +1129,28 @@ PropDefinitions:
       - Not Applicable # included to accommodate samples being acquired via a study which did not assess the effects of any therapeutic intervention
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: 'Yes'
+    Tags:
+       Labeled: Sample Chronology
   sample_id:
     Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. file records, can be associated with the appropriate sample during data loading, and to identify the correct records during data updates.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Sample ID
   sample_preservation:
     Desc: The method by which a sample was preserved.
     Src: Data Owner(s)
     Enum:
+      - EDTA
       - FFPE
       - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
       - Not Applicable # included to accommodate cell line samples, which will generally be processed absent interim preservation and storage
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: 'Yes'
+    Tags:
+       Labeled: Sample Preservation
   sample_site:
     Desc: The specific anatomical location from which any given sample was acquired.
     Src: Data Owner(s)
@@ -1091,6 +1194,8 @@ PropDefinitions:
       - Urethra Mid-distal
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
+    Tags:
+       Labeled: Sample Site
   physical_sample_type:
     Desc: An indication as to the physical nature of any given sample.
     Src: Data Owner(s)
@@ -1098,8 +1203,11 @@ PropDefinitions:
       - Tissue
       - Blood
       - Cell Line # required for the CCL01 and OSA01 studies
+      - Whole Blood
       # list of acceptable values will gradually be expanded as data submission requirements solidify
     Req: 'Yes'
+    Tags:
+       Labeled: Physical Sample Type
   specific_sample_pathology:
     Desc: The specific histology and/or pathology associated with a sample.
     Src: Data Owner(s)
@@ -1132,6 +1240,8 @@ PropDefinitions:
       - Urothelial Carcinoma
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
+    Tags:
+       Labeled: Pathology/Morphology
   summarized_sample_type:
     Desc: A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin.
     Src: Internally-curated 
@@ -1140,9 +1250,13 @@ PropDefinitions:
       - Normal Cell Line
       - Normal Tissue
       - Primary Malignant Tumor Tissue
+      - Tumor Cell Line
+      - Tumor Cell Line (metastasis-derived)
       - Whole Blood
       # these represent the de facto acceptable values, i.e. the values to which we have thus far aligned submitted data
     Req: 'Yes'
+    Tags:
+       Labeled: Sample Type
   tumor_grade:
     Desc: The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation.
     Src: Data Owner(s)
@@ -1157,6 +1271,8 @@ PropDefinitions:
       - Unknown
       - Not Applicable
     Req: Preferred
+    Tags:
+       Labeled: Tumor Grade
   tumor_sample_origin:
     Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor.
     Src: Data Owner(s)
@@ -1166,6 +1282,8 @@ PropDefinitions:
       - Not Applicable # included to accommodate samples not derived from tumors
       - Unknown # included to accommodate the almost inevitable case where the origin of a tumor sample is uncertain
     Req: 'Yes'
+    Tags:
+       Labeled: Tumor Sample Origin
   volume_of_tumor:
     Desc: The volume of the tumor from which a tumor sample was derived, as measured in cubic centimeters.
     Src: Data Owner(s)
@@ -1188,12 +1306,16 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Description
   clinical_study_designation:
     Desc: A unique, human-friendly, alpha-numeric identifier by which the study/trial will be identified within the UI. <br>This property is used as the key via which child records, e.g. case records, can be associated with the appropriate study during data loading, and to identify the correct records during data updates.
     Src: Internally-generated
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Study Code, Assigned to Study
   clinical_study_id:
     Desc: Where applicable, the ID for the study/trial as generated by the source database.
     Src: Data Owner(s)
@@ -1204,27 +1326,37 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Study Name
   clinical_study_type:
     Desc: An arbitrary designation of the study/trial to indicate its underlying.
       nature, e.g. Clinical Trial, Transcriptomics, Genomics.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Study Type
   date_of_iacuc_approval:
     Desc: Where applicable, the date upon which the study/trial was approved by the IACUC.
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+    Tags:
+       Labeled: Date of IACUC Approval
   dates_of_conduct:
     Desc: An indication of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Conducted
   accession_id:
     Desc: A unique, alpha-numeric identifier, in the format of six digits, which is assigned to the study/trial as of it being on-boarded, and which can be resolved by identifiers.org when prefixed with "icdc:" to create a compact identifier in the format icdc:xxxxxx.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Accession ID
   study_disposition:
     Desc: An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public release.
     Src: Internally-curated
@@ -1239,6 +1371,8 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Arm, Assigned to Arm
   arm_description:
     Desc: A short description of the study arm.
     Src: Internally-curated
@@ -1267,6 +1401,8 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+    Tags:
+       Labeled: Study Site
   veterinary_medical_center:
     Desc: The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
     Src: Data Owner(s)
