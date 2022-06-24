@@ -354,14 +354,24 @@ PropDefinitions:
       #- http://localhost/terms/domain/disease_term
       - B Cell Lymphoma
       - Bladder Cancer
+      - Fibrolipoma
       - Glioma
       - Healthy Control
+      - Hemangiosarcoma
+      - Histiocytic Sarcoma
+      - Lipoma
       - Lymphoma
       - Mammary Cancer
+      - Mast Cell Tumor
       - Melanoma
       - Osteosarcoma
       - Pulmonary Neoplasms
+      - Soft Tissue Sarcoma
+      - Splenic Hematoma
+      - Splenic Hyperplasia
+      - T Cell Leukemia
       - T Cell Lymphoma
+      - Thyroid Cancer
       - Unknown
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
@@ -413,12 +423,23 @@ PropDefinitions:
       - Bone
       - Bone (Appendicular)
       - Bone (Axial)
+      - Bone Marrow
       - Brain
+      - Carpus
+      - Chest Wall
+      - Distal Urethra
+      - Kidney
       - Lung
       - Lymph Node
       - Mammary Gland
       - Mouth
       - Not Applicable
+      - Pleural Cavity
+      - Shoulder
+      - Skin
+      - Spleen
+      - Subcutis
+      - Thyroid Gland
       - Unknown
       - Urethra, Prostate
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
@@ -1165,8 +1186,12 @@ PropDefinitions:
       - Bladder Trigone-Urethra
       - Blood
       - Bone
+      - Bone Marrow
       - Brain
+      - Carpus
       - Cerebellar
+      - Cutis
+      - Distal Urethra
       - Femur
       - Hemispheric
       - Humerus
@@ -1182,12 +1207,17 @@ PropDefinitions:
       - Mammary Gland
       - Mandible, Mucosa
       - Midline
+      - Mouth
       - Mouth, Lingual
       - Mouth, Mandible, Mucosa
       - Mouth, Maxilla, Mucosa
       - Muscle
+      - Pleural Effusion
       - Radius
+      - Skin
+      - Spleen
       - Subcutaneous Tissue
+      - Thyroid Gland
       - Tibia
       - Unknown
       - Urethra
@@ -1214,12 +1244,16 @@ PropDefinitions:
     Enum:
       - Astrocytoma
       - B Cell Lymphoma
+      - Carcinoma
       - Carcinoma With Simple And Complex Components
       - Chondroblastic Osteosarcoma
       - Complex Carcinoma
       - Fibroblastic Osteosarcoma
       - Giant Cell Osteosarcoma
+      - Hemangiosarcoma
+      - Histiocytic Sarcoma
       - Lymphoma
+      - Mast Cell Tumor
       - Melanoma
       - Not Applicable
       - Oligodendroglioma
@@ -1227,6 +1261,7 @@ PropDefinitions:
       - Osteoblastic and Chrondroblastic Osteosarcoma
       - Osteosarcoma
       - Osteosarcoma; Combined Type
+      - Primitive T-Cell Leukemia
       - Pulmonary Adenocarcinoma
       - Pulmonary Carcinoma
       - Simple Carcinoma
@@ -1235,6 +1270,7 @@ PropDefinitions:
       - Simple Carcinoma, Ductular
       - Simple Carcinoma, Inflammatory
       - Simple Carcinoma, Invasive, Ductal
+      - Soft Tissue Sarcoma
       - T Cell Lymphoma
       - Undefined
       - Urothelial Carcinoma
