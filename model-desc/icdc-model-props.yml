@@ -1177,6 +1177,7 @@ PropDefinitions:
     Src: Data Owner(s)
     Enum: #string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
+      - Bladder
       - Bladder Apex
       - Bladder Apex-Mid
       - Bladder Mid
