@@ -49,7 +49,6 @@ PropDefinitions:
   adverse_event_grade_description: # may not be needed, because enumerated grades are standard adverse_event reporting terms
     Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).# may not be needed, because enumerated grades are standard adverse_event reporting terms
     Src: Data Owner(s)
-    Type: string
     Enum:
       - Mild
       - Moderate
