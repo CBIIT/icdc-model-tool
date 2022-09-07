@@ -448,7 +448,7 @@ Nodes:
     Props: null
   adverse_event: 
     # how to link? To case and agent? Also to visit/followup?
-    Desc: Properties within the Adverse Event node detail unexpected medical problems occurring during therapy, in terms of what issues are observed, their severity, and what is considered to be their root cause.
+    Desc: Properties within the Adverse Event node detail unexpected medical, physical and behavioral problems occurring during therapy, in terms of what issues are observed, their severity, and what is considered to be their root cause.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -456,20 +456,23 @@ Nodes:
       Template: 'Yes'
       Color: black
     Props:
-      - ae_dose
-      - ae_agent_name
       - day_in_cycle
-      - date_resolved
+      - date_of_onset
+      - onset_description
+      - date_of_resolution
+      - resolution_description
       - adverse_event_term
       - adverse_event_description
       - adverse_event_grade
       - adverse_event_grade_description
+      - adverse_event_agent_name
+      - adverse_event_agent_dose
       - attribution_to_research
       - attribution_to_ind
       - attribution_to_disease
       - attribution_to_commercial
       - attribution_to_other
-      - ae_other
+      - other_attribution_description
       - dose_limiting_toxicity
       - unexpected_adverse_event
   disease_extent:

@@ -1,70 +1,145 @@
 PropDefinitions:
   # adverse_event props
-  adverse_event_description:
-    Desc: freetext
-    Src: adverse events form
+  day_in_cycle:
+    Desc: Numerically, the day in the treatment cycle upon which any given adverse event was first observed, where Day 1 is the first day of the treatment cycle within which the adverse event was observed. Some patients/subjects may undergo multiple treatment cycles, such that two or more adverse events may be observed on the same day in cycle, but actually be observed on different dates, because they occur in different treatment cycles.  
+    Src: Data Owner(s)
+    Type: integer
+    Req: Preferred
+  date_of_onset:
+    Desc: The date upon which any given adverse event was first observed.
+    Src: Data Owner(s)
+    Type: datetime
+    Req: Preferred # per Jim's input, gaps in the data are inevitable, meaning that this can't be required
+  onset_description:
+    Desc: In the case of adverse events which have occurred prior to the enrollment of a patient/subject into clinical trial, and/or which are ongoing at the time of trial enrollment, a simple statement to that effect.
+    Src: Data Owner(s)
     Type: string
-  adverse_event_grade:
-    Desc: enum
-    Src: adverse events form
+    Req: Preferred # this can't be required, because there will only be data values when adverse events occur prior to the trial and/or are ongoing
+  date_of_resolution:
+    Desc: The date upon which any given adverse event resolved. If an adverse event is ongong at the time of death, the date of death should be used as the value date_of_resolution.
+    Src: Data Owner(s)
+    Type: string 
+    Req: Preferred # per Jim's input, gaps in the data are inevitable, meaning that this can't be required
+  resolution_description:
+    Desc: In the case of adverse events which are onging as of the end of a treatment cycle, the end of the trial itself, or the patient/subject being taken off study, a simple statement to that effect.
+    Src: Data Owner(s)
     Type: string
-  adverse_event_grade_description:
-    Desc: enum (nec?)
-    Src: adverse events form
-    Type: string
+    Req: Preferred # this can't be required, because there will only be data values when adverse events are unresolved and therefore ongoing as of the end of the trial or the patient going off study
   adverse_event_term:
-    Desc: enum vocab?
-    Src: adverse events form
+    Desc: The specific controlled vocabulary term for any given adverse event, as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).
+    Src: Data Owner(s)
     Type:
       - http://localhost/terms/domain/adverse_events
-  ae_agent_name:
-    Src: adverse events form
+    Req: 'Yes'
+  adverse_event_description:
+    Desc: A narrative description of any given adverse event which provides extra details as to its associated clinical, physical and behavioral observations, and/or mitigations for the adverse event. 
+    Src: Data Owner(s)
+    Type: string
+    Req: Preferred
+  adverse_event_grade:
+    Desc: The grade of any given adverse event, reported as an enumerated value corresponding to one of the five distinct grades as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).
+    Src: Data Owner(s)
+    Enum:
+      - "1" # Mild
+      - "2" # Moderate
+      - "3" # Severe
+      - "4" # Life-threatening
+      - "5" # Death
+    Req: 'Yes'
+  adverse_event_grade_description: # may not be needed, because enumerated grades are standard adverse_event reporting terms
+    Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).# may not be needed, because enumerated grades are standard adverse_event reporting terms
+    Src: Data Owner(s)
+    Type: string
+    Enum:
+      - Mild
+      - Moderate
+      - Severe
+      - Life-threatening
+      - Death
+    Req: Preferred  
+  adverse_event_agent_name:
+    Desc: The name of any investigational new drug being administered at the time of any given adverse event being observed.
+    Src: Data Owner(s)
     Type:
       - http://localhost/terms/domain/agent_name
-  ae_dose:
-    Src: adverse events form
+    Req: 'Yes'
+  adverse_event_agent_dose:
+    Desc: The corresponding dose of any investigational new drug being administered at the time of any given adverse event being observed.
+    Src: Data Owner(s)
     Type:
       units:
-        - mg/kg
+        - mg/kg # there's no way we can specify all of the possible dosage rates - they vary wildly
       value_type: number
-  ae_other:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  attribution_to_commercial:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  attribution_to_disease:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  attribution_to_ind:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  attribution_to_other:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
+     Req: 'Yes'
   attribution_to_research:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  date_resolved:
-    Src: adverse events form
-    Type: datetime
-  day_in_cycle:
-    Src: adverse events form
-    Type: integer
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the clinical trial/research environment in general, or is unrelated to it.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated # the adverse event is clearly not related to the research/clinical enviroment
+      - Unlikely  # the adverse event is doubtfully related to the research/clinical enviroment
+      - Possible  # the adverse event may be not related to the research/clinical enviroment
+      - Probable  # the adverse event is likely related to the research/clinical enviroment
+      - Definite  # the adverse event is clearly related to the research/clinical enviroment
+    Req: 'Yes'
+  attribution_to_ind:
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by any investigational new drugs being administered as part of the clinical trial, or is unrelated to it.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated
+      - Unlikely
+      - Possible
+      - Probable
+      - Definite
+    Req: 'Yes'
+  attribution_to_disease:
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the disease for which the patient/subject is being treated, or is unrelated to it.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated
+      - Unlikely
+      - Possible
+      - Probable
+      - Definite
+    Req: 'Yes'
+  attribution_to_commercial:
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by NEED INPUT ON THIS, or is unrelated to it.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated
+      - Unlikely
+      - Possible
+      - Probable
+      - Definite
+    Req: 'Yes'
+  attribution_to_other:
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by some other factor(s), as described by the other_attribution_description property, or is unrelated to such other factors.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated
+      - Unlikely
+      - Possible
+      - Probable
+      - Definite
+    Req: 'Yes'
+  other_attribution_description:
+    Desc: A description of any other factor or factors to which any given adverse event has been attributed. Where an adverse event is attributed to factors other than the standard factors of research, disease, IND or commercial, a description of the other factor(s) to which the adverse event was attributed is required.
+    Src: Data Owner(s)
+    Type: string
+    Req: 'No' #although not strictly required, if attribution_to_other is anything other than unlikely, the other attribution must be stated
   dose_limiting_toxicity:
-    Desc: bool
-    Src: adverse events form
-    Type: TBD
+    Desc: An indication as to whether any given adverse event observed during the clinical trial is indicative of the dose of the therapeutic agent under test being limiting in terms of its toxicity.
+    Src: Data Owner(s)
+    Enum:
+      - 'Yes'
+      - 'No'
+    Req: 'Yes'
   unexpected_adverse_event:
-    Desc: bool
-    Src: adverse events form
-    Type: TBD
+    Desc: An indication as to whether any given adverse event observed during the clinical trial is completely unanticipated and therefore considered novel.
+    Src: Data Owner(s)
+    Enum:
+      - 'Yes'
+      - 'No'
+    Req: 'Yes'
   # agent props
   document_number:
     Desc: S/N of the executed CRF
