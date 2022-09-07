@@ -70,7 +70,7 @@ PropDefinitions:
       units:
         - mg/kg # there's no way we can specify all of the possible dosage rates - they vary wildly
       value_type: number
-     Req: 'Yes'
+    Req: 'Yes'
   attribution_to_research:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the clinical trial/research environment in general, or is unrelated to it.
     Src: Data Owner(s)
