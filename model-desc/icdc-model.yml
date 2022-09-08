@@ -143,6 +143,7 @@ Nodes:
       Template: 'Yes'
       Color: black
     Props:
+      - demographic_id
       - breed
       - patient_age_at_enrollment
       - date_of_birth
@@ -194,6 +195,7 @@ Nodes:
       Template: 'Yes'
       Color: black
     Props:
+      - diagnosis_id
       - disease_term
       - primary_disease_site
       - stage_of_disease
@@ -207,7 +209,6 @@ Nodes:
       - follow_up_data
       - concurrent_disease
       - concurrent_disease_type
-      - diagnosis_id
   enrollment:
     Desc: The Enrollment node is comprised of properties which document when and where a patient/subject/donor was enrolled onto a study/trial.
     Tags:
@@ -217,6 +218,7 @@ Nodes:
       Template: 'Yes'
       Color: black
     Props:
+      - enrollment_id
       - date_of_registration
       - registering_institution
       - initials
@@ -225,7 +227,6 @@ Nodes:
       - veterinary_medical_center
       #- cohort_description
       - patient_subgroup
-      - enrollment_id
   prior_therapy:
     Desc: Properties within the Prior Therapy node detail therapies received by the patient/subject/donor prior to being enrolled in the study/trial in question. Clinical trials will typically capture more of this information than will cross-sectional and/or mechanistic studies.
     Tags:
@@ -349,7 +350,7 @@ Nodes:
       Category: data_file
       Assignment: core
       Class: primary
-      Template: 'No'
+      Template: 'Yes'
       Color: black
     Props:
       - file_name
