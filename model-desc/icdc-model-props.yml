@@ -254,7 +254,7 @@ PropDefinitions:
        Labeled: Canine ID
   # case props
   case_id:
-    Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
+    Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data alignment and/or transformation. <br>This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
     Src: Internally-generated
     Type: string
     Req: 'Yes'
@@ -270,7 +270,7 @@ PropDefinitions:
        Labeled: Case Name
   patient_id:
     Desc: The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least
-      within a single study/trial, recorded exactly as provided by the data submitter. Once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become values of Case ID.
+      within a single study/trial, recorded exactly as provided by the data submitter. Once prefixed with the appropriate ICDC study code during data alignment and/or transformation, values of Patient ID become values of Case ID.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -324,6 +324,12 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+  demographic_id:
+    Desc: A unique identifier of each demographic record, used to identify the correct demographic records during data updates. The value of this property will generally be the same as the value of the case_id property.
+    Src: Data Owner(s)
+    Type: string
+    Req: 'Yes'
+    Key: true
   neutered_indicator:
     Desc: Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects).
     Src: Data Owner(s)
@@ -416,7 +422,7 @@ PropDefinitions:
     Type: datetime
     Req: 'No'
   diagnosis_id:
-    Desc: A unique identifier of each diagnosis record, used to associate child records, e.g. pathology reports, with the appropriate parent, and to identify the correct diagnosis records during data updates.
+    Desc: A unique identifier of each diagnosis record, used to associate child records, e.g. pathology reports, with the appropriate parent, and to identify the correct diagnosis records during data updates. The value of this property will generally be the same as the value of the case_id property.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -654,7 +660,7 @@ PropDefinitions:
     Tags:
        Labeled: Date of Registration
   enrollment_id:
-    Desc: A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates.
+    Desc: A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates. The value of this property will generally be the same as the value of the case_id property.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -730,14 +736,14 @@ PropDefinitions:
        Labeled: Format
   file_size:
     Desc: The exact size of the file in bytes.
-    Src: Data Owner(s)
+    Src: Loader-derived
     Type: number
     Req: 'Yes'
     Tags:
        Labeled: Size
   md5sum:
     Desc: The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC.
-    Src: Data Owner(s)
+    Src: Loader-derived
     Type: string
     Req: 'Yes'
     Tags:
@@ -974,7 +980,7 @@ PropDefinitions:
     Req: Preferred
   therapeutic_indicator:
     Desc: TBD
-    Src: Data Owner
+    Src: Data Owner(s)
     Type: TBD
     Req: 'No'
   # prior_therapy props
@@ -1101,7 +1107,7 @@ PropDefinitions:
     Req: 'No'
   # publication props
   publication_title:
-    Desc: The full title of the publication stated exactly as it appears on the published work.
+    Desc: The full title of the publication stated exactly as it appears on the published work. <br>This property is used as the key via which to identify the correct records during data updates.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -1355,7 +1361,7 @@ PropDefinitions:
        Labeled: Pathology/Morphology
   summarized_sample_type:
     Desc: A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin.
-    Src: Internally-curated 
+    Src: Data Owner(s) 
     Enum: #string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
       - Metastatic Tumor Tissue
       - Normal Cell Line
@@ -1508,14 +1514,14 @@ PropDefinitions:
     Type: string
     Req: 'No'
   site_short_name:
-    Desc: The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
+    Desc: The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
     Tags:
        Labeled: Study Site
   veterinary_medical_center:
-    Desc: The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
+    Desc: The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
