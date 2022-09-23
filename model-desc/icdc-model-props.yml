@@ -10,20 +10,24 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: datetime
     Req: Preferred # per Jim's input, gaps in the data are inevitable, meaning that this can't be required
-  onset_description:
-    Desc: In the case of adverse events which have occurred prior to the enrollment of a patient/subject into clinical trial, and/or which are ongoing at the time of trial enrollment, a simple statement to that effect.
+  existing_adverse_event
+    Desc: An indication as to whether any given adverse event occurred prior to the enrollment of a patient/subject into the clinical trial in question, and/or was ongoing at the time of trial enrollment.
     Src: Data Owner(s)
-    Type: string
+    Enum: 
+      - 'Yes'
+      - 'No'
     Req: Preferred # this can't be required, because there will only be data values when adverse events occur prior to the trial and/or are ongoing
   date_of_resolution:
-    Desc: The date upon which any given adverse event resolved. If an adverse event is ongong at the time of death, the date of death should be used as the value date_of_resolution.
+    Desc: The date upon which any given adverse event resolved. If an adverse event was ongong at the time of death, the date of death should be used as the value date_of_resolution.
     Src: Data Owner(s)
     Type: string 
     Req: Preferred # per Jim's input, gaps in the data are inevitable, meaning that this can't be required
-  resolution_description:
-    Desc: In the case of adverse events which are onging as of the end of a treatment cycle, the end of the trial itself, or the patient/subject being taken off study, a simple statement to that effect.
+  ongoing_adverse_event
+    Desc:  An indication as to whether any given adverse event was ongoing as of the end of a treatment cycle, the end of the clinical trial itself, or the patient/subject being taken off study.
     Src: Data Owner(s)
-    Type: string
+    Enum:
+      - 'Yes'
+      - 'No'
     Req: Preferred # this can't be required, because there will only be data values when adverse events are unresolved and therefore ongoing as of the end of the trial or the patient going off study
   adverse_event_term:
     Desc: The specific controlled vocabulary term for any given adverse event, as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).
@@ -46,8 +50,8 @@ PropDefinitions:
       - "4" # Life-threatening
       - "5" # Death
     Req: 'Yes'
-  adverse_event_grade_description: # may not be needed, because enumerated grades are standard adverse_event reporting terms
-    Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).# may not be needed, because enumerated grades are standard adverse_event reporting terms
+  adverse_event_grade_description: 
+    Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE). This may not be needed, because enumerated grades are standard adverse_event reporting terms, although the narrative terms will be useful to users not already familiar with adverse event grading.
     Src: Data Owner(s)
     Enum:
       - Mild
@@ -89,6 +93,7 @@ PropDefinitions:
       - Possible
       - Probable
       - Definite
+      - Not Applicable #needed to accommodate clinical trials which don't assess the effects of an investigational new drug
     Req: 'Yes'
   attribution_to_disease:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the disease for which the patient/subject is being treated, or is unrelated to it.
@@ -109,6 +114,7 @@ PropDefinitions:
       - Possible
       - Probable
       - Definite
+      - Not Applicable #needed to accommodate clinical trials which don't directly assess the effects of any commercially available therapeutic agent or use such agents as part of the therapy
     Req: 'Yes'
   attribution_to_other:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by some other factor(s), as described by the other_attribution_description property, or is unrelated to such other factors.
