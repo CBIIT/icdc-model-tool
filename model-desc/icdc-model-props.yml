@@ -10,7 +10,7 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: datetime
     Req: Preferred # per Jim's input, gaps in the data are inevitable, meaning that this can't be required
-  existing_adverse_event
+  existing_adverse_event:
     Desc: An indication as to whether any given adverse event occurred prior to the enrollment of a patient/subject into the clinical trial in question, and/or was ongoing at the time of trial enrollment.
     Src: Data Owner(s)
     Enum: 
@@ -22,7 +22,7 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string 
     Req: Preferred # per Jim's input, gaps in the data are inevitable, meaning that this can't be required
-  ongoing_adverse_event
+  ongoing_adverse_event:
     Desc:  An indication as to whether any given adverse event was ongoing as of the end of a treatment cycle, the end of the clinical trial itself, or the patient/subject being taken off study.
     Src: Data Owner(s)
     Enum:
