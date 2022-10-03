@@ -336,6 +336,11 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+  mixed_breed_detail:
+    Desc: For patients/subjects/donors formally designated as Mixed Breed, any available detail as to the breeds contributing to the overall mix of breeds. Values for this field are therefore not relevant to pure-bred patients/subjects/donors, but for those of mixed breed origins, values are definitely preferred wherever available.
+    Src: Data Owner(s)
+    Type: string
+    Req: Preferred
   neutered_indicator:
     Desc: Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects).
     Src: Data Owner(s)
