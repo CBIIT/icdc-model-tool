@@ -145,6 +145,7 @@ Nodes:
     Props:
       - demographic_id
       - breed
+      - mixed_breed_detail
       - patient_age_at_enrollment
       - date_of_birth
       - sex
@@ -459,9 +460,9 @@ Nodes:
     Props:
       - day_in_cycle
       - date_of_onset
-      - onset_description
+      - existing_adverse_event
       - date_of_resolution
-      - resolution_description
+      - ongoing_adverse_event
       - adverse_event_term
       - adverse_event_description
       - adverse_event_grade
