@@ -143,7 +143,9 @@ Nodes:
       Template: 'Yes'
       Color: black
     Props:
+      - demographic_id
       - breed
+      - additional_breed_detail
       - patient_age_at_enrollment
       - date_of_birth
       - sex
@@ -194,6 +196,7 @@ Nodes:
       Template: 'Yes'
       Color: black
     Props:
+      - diagnosis_id
       - disease_term
       - primary_disease_site
       - stage_of_disease
@@ -207,7 +210,6 @@ Nodes:
       - follow_up_data
       - concurrent_disease
       - concurrent_disease_type
-      - diagnosis_id
   enrollment:
     Desc: The Enrollment node is comprised of properties which document when and where a patient/subject/donor was enrolled onto a study/trial.
     Tags:
@@ -217,6 +219,7 @@ Nodes:
       Template: 'Yes'
       Color: black
     Props:
+      - enrollment_id
       - date_of_registration
       - registering_institution
       - initials
@@ -225,7 +228,6 @@ Nodes:
       - veterinary_medical_center
       #- cohort_description
       - patient_subgroup
-      - enrollment_id
   prior_therapy:
     Desc: Properties within the Prior Therapy node detail therapies received by the patient/subject/donor prior to being enrolled in the study/trial in question. Clinical trials will typically capture more of this information than will cross-sectional and/or mechanistic studies.
     Tags:
@@ -349,7 +351,7 @@ Nodes:
       Category: data_file
       Assignment: core
       Class: primary
-      Template: 'No'
+      Template: 'Yes'
       Color: black
     Props:
       - file_name
@@ -448,7 +450,7 @@ Nodes:
     Props: null
   adverse_event: 
     # how to link? To case and agent? Also to visit/followup?
-    Desc: Properties within the Adverse Event node detail unexpected medical problems occurring during therapy, in terms of what issues are observed, their severity, and what is considered to be their root cause.
+    Desc: Properties within the Adverse Event node detail unexpected medical, physical and behavioral problems occurring during therapy, in terms of what issues are observed, their severity, and what is considered to be their root cause.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -456,20 +458,23 @@ Nodes:
       Template: 'Yes'
       Color: black
     Props:
-      - ae_dose
-      - ae_agent_name
       - day_in_cycle
-      - date_resolved
+      - date_of_onset
+      - existing_adverse_event
+      - date_of_resolution
+      - ongoing_adverse_event
       - adverse_event_term
       - adverse_event_description
       - adverse_event_grade
       - adverse_event_grade_description
+      - adverse_event_agent_name
+      - adverse_event_agent_dose
       - attribution_to_research
       - attribution_to_ind
       - attribution_to_disease
       - attribution_to_commercial
       - attribution_to_other
-      - ae_other
+      - other_attribution_description
       - dose_limiting_toxicity
       - unexpected_adverse_event
   disease_extent:

@@ -1,70 +1,150 @@
 PropDefinitions:
   # adverse_event props
-  adverse_event_description:
-    Desc: freetext
-    Src: adverse events form
-    Type: string
-  adverse_event_grade:
-    Desc: enum
-    Src: adverse events form
-    Type: string
-  adverse_event_grade_description:
-    Desc: enum (nec?)
-    Src: adverse events form
-    Type: string
+  day_in_cycle:
+    Desc: Numerically, the day in the treatment cycle upon which any given adverse event was first observed, where Day 1 is the first day of the treatment cycle within which the adverse event was observed. Some patients/subjects may undergo multiple treatment cycles, such that two or more adverse events may be observed on the same day in cycle, but actually be observed on different dates, because they occur in different treatment cycles.  
+    Src: Data Owner(s)
+    Type: integer
+    Req: Preferred
+  date_of_onset:
+    Desc: The date upon which any given adverse event was first observed.
+    Src: Data Owner(s)
+    Type: datetime
+    Req: Preferred # per Jim's input, gaps in the data are inevitable, meaning that this can't be required
+  existing_adverse_event:
+    Desc: An indication as to whether any given adverse event occurred prior to the enrollment of a patient/subject into the clinical trial in question, and/or was ongoing at the time of trial enrollment.
+    Src: Data Owner(s)
+    Enum: 
+      - 'Yes'
+      - 'No'
+    Req: Preferred # this can't be required, because there will only be data values when adverse events occur prior to the trial and/or are ongoing
+  date_of_resolution:
+    Desc: The date upon which any given adverse event resolved. If an adverse event was ongong at the time of death, the date of death should be used as the value date_of_resolution.
+    Src: Data Owner(s)
+    Type: string 
+    Req: Preferred # per Jim's input, gaps in the data are inevitable, meaning that this can't be required
+  ongoing_adverse_event:
+    Desc:  An indication as to whether any given adverse event was ongoing as of the end of a treatment cycle, the end of the clinical trial itself, or the patient/subject being taken off study.
+    Src: Data Owner(s)
+    Enum:
+      - 'Yes'
+      - 'No'
+    Req: Preferred # this can't be required, because there will only be data values when adverse events are unresolved and therefore ongoing as of the end of the trial or the patient going off study
   adverse_event_term:
-    Desc: enum vocab?
-    Src: adverse events form
+    Desc: The specific controlled vocabulary term for any given adverse event, as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).
+    Src: Data Owner(s)
     Type:
       - http://localhost/terms/domain/adverse_events
-  ae_agent_name:
-    Src: adverse events form
+    Req: 'Yes'
+  adverse_event_description:
+    Desc: A narrative description of any given adverse event which provides extra details as to its associated clinical, physical and behavioral observations, and/or mitigations for the adverse event. 
+    Src: Data Owner(s)
+    Type: string
+    Req: Preferred
+  adverse_event_grade:
+    Desc: The grade of any given adverse event, reported as an enumerated value corresponding to one of the five distinct grades as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).
+    Src: Data Owner(s)
+    Enum:
+      - "1" # Mild
+      - "2" # Moderate
+      - "3" # Severe
+      - "4" # Life-threatening
+      - "5" # Death
+    Req: 'Yes'
+  adverse_event_grade_description: 
+    Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE). This may not be needed, because enumerated grades are standard adverse_event reporting terms, although the narrative terms will be useful to users not already familiar with adverse event grading.
+    Src: Data Owner(s)
+    Enum:
+      - Mild
+      - Moderate
+      - Severe
+      - Life-threatening
+      - Death
+    Req: Preferred  
+  adverse_event_agent_name:
+    Desc: The name of any investigational new drug being administered at the time of any given adverse event being observed.
+    Src: Data Owner(s)
     Type:
       - http://localhost/terms/domain/agent_name
-  ae_dose:
-    Src: adverse events form
+    Req: 'Yes'
+  adverse_event_agent_dose:
+    Desc: The corresponding dose of any investigational new drug being administered at the time of any given adverse event being observed.
+    Src: Data Owner(s)
     Type:
       units:
-        - mg/kg
+        - mg/kg # there's no way we can specify all of the possible dosage rates - they vary wildly
       value_type: number
-  ae_other:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  attribution_to_commercial:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  attribution_to_disease:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  attribution_to_ind:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  attribution_to_other:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
+    Req: 'Yes'
   attribution_to_research:
-    Desc: What is?
-    Src: adverse events form
-    Type: TBD
-  date_resolved:
-    Src: adverse events form
-    Type: datetime
-  day_in_cycle:
-    Src: adverse events form
-    Type: integer
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the clinical trial/research environment in general, or is unrelated to it.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated # the adverse event is clearly not related to the research/clinical enviroment
+      - Unlikely  # the adverse event is doubtfully related to the research/clinical enviroment
+      - Possible  # the adverse event may be not related to the research/clinical enviroment
+      - Probable  # the adverse event is likely related to the research/clinical enviroment
+      - Definite  # the adverse event is clearly related to the research/clinical enviroment
+    Req: 'Yes'
+  attribution_to_ind:
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by any investigational new drugs being administered as part of the clinical trial, or is unrelated to it.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated
+      - Unlikely
+      - Possible
+      - Probable
+      - Definite
+      - Not Applicable #needed to accommodate clinical trials which don't assess the effects of an investigational new drug
+    Req: 'Yes'
+  attribution_to_disease:
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the disease for which the patient/subject is being treated, or is unrelated to it.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated
+      - Unlikely
+      - Possible
+      - Probable
+      - Definite
+    Req: 'Yes'
+  attribution_to_commercial:
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by NEED INPUT ON THIS, or is unrelated to it.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated
+      - Unlikely
+      - Possible
+      - Probable
+      - Definite
+      - Not Applicable #needed to accommodate clinical trials which don't directly assess the effects of any commercially available therapeutic agent or use such agents as part of the therapy
+    Req: 'Yes'
+  attribution_to_other:
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by some other factor(s), as described by the other_attribution_description property, or is unrelated to such other factors.
+    Src: Data Owner(s)
+    Enum:
+      - Unrelated
+      - Unlikely
+      - Possible
+      - Probable
+      - Definite
+    Req: 'Yes'
+  other_attribution_description:
+    Desc: A description of any other factor or factors to which any given adverse event has been attributed. Where an adverse event is attributed to factors other than the standard factors of research, disease, IND or commercial, a description of the other factor(s) to which the adverse event was attributed is required.
+    Src: Data Owner(s)
+    Type: string
+    Req: 'No' #although not strictly required, if attribution_to_other is anything other than unlikely, the other attribution must be stated
   dose_limiting_toxicity:
-    Desc: bool
-    Src: adverse events form
-    Type: TBD
+    Desc: An indication as to whether any given adverse event observed during the clinical trial is indicative of the dose of the therapeutic agent under test being limiting in terms of its toxicity.
+    Src: Data Owner(s)
+    Enum:
+      - 'Yes'
+      - 'No'
+    Req: 'Yes'
   unexpected_adverse_event:
-    Desc: bool
-    Src: adverse events form
-    Type: TBD
+    Desc: An indication as to whether any given adverse event observed during the clinical trial is completely unanticipated and therefore considered novel.
+    Src: Data Owner(s)
+    Enum:
+      - 'Yes'
+      - 'No'
+    Req: 'Yes'
   # agent props
   document_number:
     Desc: S/N of the executed CRF
@@ -161,6 +241,8 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Biobank
   biospecimen_repository_full_name:
     Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in full text form.
     Src: Internally-curated
@@ -174,21 +256,27 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Canine ID
   # case props
   case_id:
-    Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
+    Desc: The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data alignment and/or transformation. <br>This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
     Src: Internally-generated
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Case ID
   patient_first_name:
     Desc: Where available, the given name of the patient/subject/donor.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Case Name
   patient_id:
     Desc: The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least
-      within a single study/trial, recorded exactly as provided by the data submitter. Once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become values of Case ID.
+      within a single study/trial, recorded exactly as provided by the data submitter. Once prefixed with the appropriate ICDC study code during data alignment and/or transformation, values of Patient ID become values of Case ID.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -198,12 +286,16 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Cohort, Assigned to Cohort
   cohort_dose:
     Desc: The intended or protocol dose of the therapeutic agent used in any given cohort.
     Src: Internally-curated
     Type: string
     # setting this as string so as to accommodate a lack of consistency in the way in which dosing is quoted within the COTC007B study, which will otherwise confound data loading for MVP
-    Req: 'No'  
+    Req: 'No'
+    Tags:
+       Labeled: Cohorts
   cohort_id:
     Desc: A unique identifier via which cohorts can be differentiated from one another across studies/trials. <br>This property is used as the key via which cases can be associated with the appropriate cohort during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
@@ -225,17 +317,311 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: datetime
   # demographic props
+  additional_breed_detail:
+    Desc: For patients/subjects/donors formally designated as either Mixed Breed or Other, any available detail as to the breeds contributing to the overall mix of breeds or clarification of the nature of the Other breed. Values for this field are therefore not relevant to pure-bred patients/subjects/donors, but for those of mixed breed or other origins, values are definitely preferred wherever available.
+    Src: Data Owner(s)
+    Type: string
+    Req: Preferred
   breed:
     Desc: The specific breed of the canine patient/subject/donor, per the list of breeds officially recognized by the American Kennel Club.
     Src: Data Owner(s)
-    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
-      #- https://sts.ctos-data-team.org/v1/model/ICDC/node/demographic/property/breed/terms
+    Enum: # temporarily, to facilitate data loading with validation on, until STS is in place at https://sts.ctos-data-team.org/v1/model/ICDC/node/demographic/property/breed/terms
+      - Affenpinscher
+      - Afghan Hound
+      - Airedale Terrier
+      - Akita
+      - Alaskan Klee Kai
+      - Alaskan Malamute
+      - American Bulldog
+      - American English Coonhound
+      - American Eskimo Dog
+      - American Foxhound
+      - American Hairless Terrier
+      - American Leopard Hound
+      - American Staffordshire Terrier
+      - American Water Spaniel
+      - Anatolian Shepherd Dog
+      - Appenzeller Sennenhunde
+      - Australian Cattle Dog
+      - Australian Kelpie
+      - Australian Shepherd
+      - Australian Stumpy Tail Cattle Dog
+      - Australian Terrier
+      - Azawakh
+      - Barbado da Terceira
+      - Barbet
+      - Basenji
+      - Basset Fauve de Bretagne
+      - Basset Hound
+      - Bavarian Mountain Scent Hound
+      - Beagle
+      - Bearded Collie
+      - Beauceron
+      - Bedlington Terrier
+      - Belgian Laekenois
+      - Belgian Malinois
+      - Belgian Sheepdog
+      - Belgian Tervuren
+      - Bergamasco Sheepdog
+      - Berger Picard
+      - Bernese Mountain Dog
+      - Bichon Frise
+      - Biewer Terrier
+      - Black Russian Terrier
+      - Black and Tan Coonhound
+      - Bloodhound
+      - Bluetick Coonhound
+      - Boerboel
+      - Bohemian Shepherd
+      - Bolognese
+      - Border Collie
+      - Border Terrier
+      - Borzoi
+      - Boston Terrier
+      - Bouvier des Flandres
+      - Boxer
+      - Boykin Spaniel
+      - Bracco Italiano
+      - Braque Francais Pyrenean
+      - Braque du Bourbonnais
+      - Briard
+      - Brittany
+      - Broholmer
+      - Brussels Griffon
+      - Bull Terrier
+      - Bulldog
+      - Bullmastiff
+      - Cairn Terrier
+      - Canaan Dog
+      - Cane Corso
+      - Cardigan Welsh Corgi
+      - Carolina Dog
+      - Catahoula Hound
+      - Catahoula Leopard Dog
+      - Caucasian Shepherd Dog
+      - Cavalier King Charles Spaniel
+      - Central Asian Shepherd Dog
+      - Cesky Terrier
+      - Chesapeake Bay Retriever
+      - Chihuahua
+      - Chinese Crested
+      - Chinese Shar-Pei
+      - Chinook
+      - Chow Chow
+      - Cirneco dell'Etna
+      - Clumber Spaniel
+      - Cocker Spaniel
+      - Collie
+      - Coton de Tulear
+      - Croatian Sheepdog
+      - Curly-Coated Retriever
+      - Czechoslovakian Vlcak
+      - Dachshund
+      - Dalmatian
+      - Dandie Dinmont Terrier
+      - Danish-Swedish Farmdog
+      - Deutscher Wachtelhund
+      - Doberman Pinscher
+      - Dogo Argentino
+      - Dogue de Bordeaux
+      - Drentsche Patrijshond
+      - Drever
+      - Dutch Shepherd
+      - English Cocker Spaniel
+      - English Foxhound
+      - English Setter
+      - English Springer Spaniel
+      - English Toy Spaniel
+      - Entlebucher Mountain Dog
+      - Estrela Mountain Dog
+      - Eurasier
+      - Field Spaniel
+      - Finnish Lapphund
+      - Finnish Spitz
+      - Flat-Coated Retriever
+      - French Bulldog
+      - French Spaniel
+      - German Longhaired Pointer
+      - German Pinscher
+      - German Shepherd Dog
+      - German Shorthaired Pointer
+      - German Spitz
+      - German Wirehaired Pointer
+      - Giant Schnauzer
+      - Glen of Imaal Terrier
+      - Golden Retriever
+      - Gordon Setter
+      - Grand Basset Griffon Vendeen
+      - Great Dane
+      - Great Pyrenees
+      - Greater Swiss Mountain Dog
+      - Greyhound
+      - Hamiltonstovare
+      - Hanoverian Scenthound
+      - Harrier
+      - Havanese
+      - Hokkaido
+      - Hovawart
+      - Ibizan Hound
+      - Icelandic Sheepdog
+      - Irish Red and White Setter
+      - Irish Setter
+      - Irish Terrier
+      - Irish Water Spaniel
+      - Irish Wolfhound
+      - Italian Greyhound
+      - Jagdterrier
+      - Japanese Akitainu
+      - Japanese Chin
+      - Japanese Spitz
+      - Japanese Terrier
+      - Jindo
+      - Kai Ken
+      - Karelian Bear Dog
+      - Keeshond
+      - Kerry Blue Terrier
+      - Kishu Ken
+      - Komondor
+      - Kromfohrlander
+      - Kuvasz
+      - Labrador Retriever
+      - Lagotto Romagnolo
+      - Lakeland Terrier
+      - Lancashire Heeler
+      - Lapponian Herder
+      - Leonberger
+      - Lhasa Apso
+      - Lowchen
+      - Maltese
+      - Manchester Terrier
+      - Mastiff
+      - Miniature American Shepherd
+      - Miniature Bull Terrier
+      - Miniature Pinscher
+      - Miniature Schnauzer
+      - Mixed Breed
+      - Mountain Cur
+      - Mudi
+      - Neapolitan Mastiff
+      - Nederlandse Kooikerhondje
+      - Newfoundland
+      - Norfolk Terrier
+      - Norrbottenspets
+      - Norwegian Buhund
+      - Norwegian Elkhound
+      - Norwegian Lundehund
+      - Norwich Terrier
+      - Nova Scotia Duck Tolling Retriever
+      - Old English Sheepdog
+      - Other
+      - Otterhound
+      - Papillon
+      - Parson Russell Terrier
+      - Pekingese
+      - Pembroke Welsh Corgi
+      - Perro de Presa Canario
+      - Peruvian Inca Orchid
+      - Petit Basset Griffon Vendeen
+      - Pharaoh Hound
+      - Plott Hound
+      - Pointer
+      - Polish Lowland Sheepdog
+      - Pomeranian
+      - Poodle
+      - Porcelaine
+      - Portuguese Podengo
+      - Portuguese Podengo Pequeno
+      - Portuguese Pointer
+      - Portuguese Sheepdog
+      - Portuguese Water Dog
+      - Pudelpointer
+      - Pug
+      - Puli
+      - Pumi
+      - Pyrenean Mastiff
+      - Pyrenean Shepherd
+      - Rafeiro do Alentejo
+      - Rat Terrier
+      - Redbone Coonhound
+      - Rhodesian Ridgeback
+      - Romanian Mioritic Shepherd Dog
+      - Rottweiler
+      - Russell Terrier
+      - Russian Toy
+      - Russian Tsvetnaya Bolonka
+      - Saint Bernard
+      - Saluki
+      - Samoyed
+      - Schapendoes
+      - Schipperke
+      - Scottish Deerhound
+      - Scottish Terrier
+      - Sealyham Terrier
+      - Segugio Italiano
+      - Shetland Sheepdog
+      - Shiba Inu
+      - Shih Tzu
+      - Shikoku
+      - Siberian Husky
+      - Silky Terrier
+      - Skye Terrier
+      - Sloughi
+      - Slovakian Wirehaired Pointer
+      - Slovensky Cuvac
+      - Slovensky Kopov
+      - Small Munsterlander Pointer
+      - Smooth Fox Terrier
+      - Soft Coated Wheaten Terrier
+      - Spanish Mastiff
+      - Spanish Water Dog
+      - Spinone Italiano
+      - Stabyhoun
+      - Staffordshire Bull Terrier
+      - Standard Schnauzer
+      - Sussex Spaniel
+      - Swedish Lapphund
+      - Swedish Vallhund
+      - Taiwan Dog
+      - Teddy Roosevelt Terrier
+      - Thai Ridgeback
+      - Tibetan Mastiff
+      - Tibetan Spaniel
+      - Tibetan Terrier
+      - Tornjak
+      - Tosa
+      - Toy Fox Terrier
+      - Transylvanian Hound
+      - Treeing Tennessee Brindle Coonhound
+      - Treeing Walker Coonhound
+      - Unknown
+      - Vizsla
+      - Weimaraner
+      - Welsh Springer Spaniel
+      - Welsh Terrier
+      - West Highland White Terrier
+      - Wetterhoun
+      - Whippet
+      - Wire Fox Terrier
+      - Wirehaired Pointing Griffon
+      - Wirehaired Vizsla
+      - Working Kelpie
+      - Xoloitzcuintli
+      - Yakutian Laika
+      - Yorkshire Terrier
     Req: 'Yes'
+    Tags:
+       Labeled: Breed
   date_of_birth:
     Desc: The date of birth of the canine patient/subject/donor.
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+  demographic_id:
+    Desc: A unique identifier of each demographic record, used to identify the correct demographic records during data updates. The value of this property will generally be the same as the value of the case_id property.
+    Src: Data Owner(s)
+    Type: string
+    Req: 'Yes'
+    Key: true
   neutered_indicator:
     Desc: Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects).
     Src: Data Owner(s)
@@ -244,6 +630,8 @@ PropDefinitions:
       - 'No'
       - Unknown
     Req: 'Yes'
+    Tags:
+       Labeled: Neutered Status
   patient_age_at_enrollment:
     Desc: The age of the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years.
     Src: Data Owner(s)
@@ -252,6 +640,8 @@ PropDefinitions:
         - years
       value_type: number
     Req: Preferred
+    Tags:
+       Labeled: Age, Age at Enrollment
   sex:
     Desc: The biological sex of the patient/subject/donor.
     Src: Data Owner(s)
@@ -260,6 +650,8 @@ PropDefinitions:
       - Female
       - Unknown
     Req: 'Yes'
+    Tags:
+       Labeled: Sex
   weight:
     Desc: The weight of the patient/subject/donor at the time of study/trial enrollment and/or biospecimens being acquired, at least in the case of studies that are not longitudinal in nature.
     Src: Data Owner(s)
@@ -268,6 +660,8 @@ PropDefinitions:
         - kg
       value_type: number
     Req: Preferred
+    Tags:
+       Labeled: Weight (kg)
   # diagnosis props
   best_response:
     Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor.
@@ -287,7 +681,9 @@ PropDefinitions:
       # therapeutic intervention
       - Unknown
       # included to accommodate situations where a value for stage of disease simply isn't available
-    Req: 'Yes' 
+    Req: 'Yes'
+    Tags:
+       Labeled: Response to Treatment
   concurrent_disease:
     Desc: An indication as to whether the patient/subject/donor suffers from any significant secondary disease condition(s).
     Src: Data Owner(s)
@@ -296,23 +692,29 @@ PropDefinitions:
       - 'No'
       - Unknown
     Req: Preferred
+    Tags:
+       Labeled: Concurrent Disease(s)
   concurrent_disease_type:
     Desc: The specifics of any notable secondary disease condition(s) observed within the patient/subject/donor.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Concurrent Disease Specifics
   date_of_diagnosis:
     Desc: The date upon which the patient/subject/donor was diagnosed with the primary disease in question.
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+    Tags:
+       Labeled: Date of Diagnosis
   date_of_histology_confirmation:
     Desc: The date upon which the results of a histological evaluation of a sample from the patient/subject/donor were confirmed.
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
   diagnosis_id:
-    Desc: A unique identifier of each diagnosis record, used to associate child records, e.g. pathology reports, with the appropriate parent, and to identify the correct diagnosis records during data updates.
+    Desc: A unique identifier of each diagnosis record, used to associate child records, e.g. pathology reports, with the appropriate parent, and to identify the correct diagnosis records during data updates. The value of this property will generally be the same as the value of the case_id property.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -324,17 +726,29 @@ PropDefinitions:
       #- http://localhost/terms/domain/disease_term
       - B Cell Lymphoma
       - Bladder Cancer
+      - Fibrolipoma
       - Glioma
       - Healthy Control
+      - Hemangiosarcoma
+      - Histiocytic Sarcoma
+      - Lipoma
       - Lymphoma
       - Mammary Cancer
+      - Mast Cell Tumor
       - Melanoma
       - Osteosarcoma
       - Pulmonary Neoplasms
+      - Soft Tissue Sarcoma
+      - Splenic Hematoma
+      - Splenic Hyperplasia
+      - T Cell Leukemia
       - T Cell Lymphoma
+      - Thyroid Cancer
       - Unknown
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
+    Tags:
+       Labeled: Diagnosis, Disease
   follow_up_data:
     Desc: An indication as to the existence of any follow-up data for the patient/subject/donor, typically in the form of a study-level supplemental data file.
     Src: Data Owner(s)
@@ -342,17 +756,23 @@ PropDefinitions:
       - 'Yes'
       - 'No'
     Req: Preferred
+    Tags:
+       Labeled: Follow Up Data Available
   histological_grade:
     Desc: The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level.
     Src: Data Owner(s)
     Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/histological_grade
-    Req: 'No'  
+    Req: 'No'
+    Tags:
+       Labeled: Histological Grade
   histology_cytopathology:
     Desc: A narrative summary of the primary observations from the the evaluation of a tumor sample from a patient/subject/donor, in terms of its histology and/or cytopathology.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+    Tags:
+       Labeled: Histology/Cytology, Histology/Cytopathology
   pathology_report:
     Desc: An indication as to the existence of any detailed pathology evaluation upon which the primary diagnosis was based, either in the form of a formal, subject-specific pathology report, or as detailed in a study-level supplemental data file.
     Src: Data Owner(s)
@@ -360,6 +780,8 @@ PropDefinitions:
       - 'Yes'
       - 'No'
     Req: Preferred
+    Tags:
+       Labeled: Detailed Pathology Evaluation Available
   primary_disease_site:
     Desc: The anatomical location at which the primary disease originated, recorded in relatively general terms at the subject level; the anatomical locations from which tumor samples subject to downstream analysis were acquired is recorded in more detailed terms at the sample level.
     Src: Data Owner(s)
@@ -373,16 +795,29 @@ PropDefinitions:
       - Bone
       - Bone (Appendicular)
       - Bone (Axial)
+      - Bone Marrow
       - Brain
+      - Carpus
+      - Chest Wall
+      - Distal Urethra
+      - Kidney
       - Lung
       - Lymph Node
       - Mammary Gland
       - Mouth
       - Not Applicable
+      - Pleural Cavity
+      - Shoulder
+      - Skin
+      - Spleen
+      - Subcutis
+      - Thyroid Gland
       - Unknown
       - Urethra, Prostate
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
+    Tags:
+       Labeled: Primary Disease Site, Disease Site, Primary Site
   stage_of_disease:
     Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria.
     Src: Data Owner(s)
@@ -422,6 +857,8 @@ PropDefinitions:
       - Unknown
       # to accommodate situations where a value for stage of disease simply isn't available
     Req: 'Yes'
+    Tags:
+       Labeled: Stage of Disease
   treatment_data:
     Desc: An indication as to the existence of any treatment data for the patient/subject/donor, typically in the form of a study-level supplemental data file.
     Src: Data Owner(s)
@@ -429,6 +866,8 @@ PropDefinitions:
       - 'Yes'
       - 'No'
     Req: Preferred
+    Tags:
+       Labeled: Treatment Data Available
   # disease_extent props
   date_of_evaluation:
     Desc: The date upon which the extent of disease evaluation was conducted.
@@ -503,13 +942,17 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+    Tags:
+       Labeled: Date of Informed Consent
   date_of_registration:
     Desc: The date upon which the patient/subject/donor was enrolled in the study/trial.
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+    Tags:
+       Labeled: Date of Registration
   enrollment_id:
-    Desc: A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates.
+    Desc: A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates. The value of this property will generally be the same as the value of the case_id property.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -519,11 +962,15 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Initials
   patient_subgroup:
     Desc: A short description as to the reason for the patient/subject/donor being enrolled in any given study/trial arm or cohort, for example, a clinical trial patient having been enrolled in a dose escalation cohort.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+    Tags:
+       Labeled: Patient Subgroup
   # registering_institution: also included in enrollment node, defined elsewhere
   #   Src: ENROLLMENT/ENROLL/1
   #   Type: string
@@ -542,6 +989,8 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: File Name
   file_type:
     Desc: An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format.
     Src: Data Owner(s)
@@ -560,27 +1009,38 @@ PropDefinitions:
       - Mutation Annotation File # for annotated .maf files
       - Variant Report # for reports detailing validated variants
       - Data Analysis Whitepaper # for any document detailing a data analysis pipeline and/or methodology
+      - Affymetrix GeneChip Analysis File
     Req: 'Yes'
+    Tags:
+       Labeled: File Type
   file_description:
     Desc: An optional description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Description
   file_format:
     Desc: The specific format of the file as determined by the data loader.
     Src: Loader-derived
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Format
   file_size:
     Desc: The exact size of the file in bytes.
-    Src: Data Owner(s)
+    Src: Loader-derived
     Type: number
     Req: 'Yes'
+    Tags:
+       Labeled: Size
   md5sum:
     Desc: The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC.
-    Src: Data Owner(s)
+    Src: Loader-derived
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Md5sum
   file_status:
     Desc: An enumerated representation of the status of any given file.
     Src: Loader-derived
@@ -606,6 +1066,8 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: File UUID, File ID
   file_location:
     Desc: The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url.
     Src: Loader-derived
@@ -650,6 +1112,8 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Collection
   image_type_included:
     Desc: A list of the image types included in the image collection, drawn from a list of acceptable values.
     Src: Internally-curated
@@ -664,6 +1128,8 @@ PropDefinitions:
         - Optical
         - Ultrasound
     Req: 'Yes'
+    Tags:
+       Labeled: Image Types
   image_collection_url:
     Desc: The external url via which the image collection can be viewed and/or accessed.
     Src: Internally-curated
@@ -762,16 +1228,22 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Principal Investigators
   pi_last_name:
     Desc: The last or family name of each principal investigator of the study/trial.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Principal Investigators
   pi_middle_initial:
     Desc: Where applicable, the middle initial(s) of each principal investigator of the study/trial.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+    Tags:
+       Labeled: Principal Investigators
   # prior_surgery props
   anatomical_site_of_surgery:
     Desc: The anatomical location at which the prior surgery in question occurred. 
@@ -801,7 +1273,7 @@ PropDefinitions:
     Req: Preferred
   therapeutic_indicator:
     Desc: TBD
-    Src: Data Owner
+    Src: Data Owner(s)
     Type: TBD
     Req: 'No'
   # prior_therapy props
@@ -899,6 +1371,8 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Program
   program_external_url:
     Desc: The external url to which users should be directed in order to learn more about the program.
     Src: Internally-curated 
@@ -926,7 +1400,7 @@ PropDefinitions:
     Req: 'No'
   # publication props
   publication_title:
-    Desc: The full title of the publication stated exactly as it appears on the published work.
+    Desc: The full title of the publication stated exactly as it appears on the published work. <br>This property is used as the key via which to identify the correct records during data updates.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -936,26 +1410,36 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Authorship
   year_of_publication:
     Desc: The year in which the cited work was published.
     Src: Data Owner(s)
     Type: number
     Req: 'Yes'
+    Tags:
+       Labeled: Year of Publication
   journal_citation:
     Desc: The name of the journal in which the cited work was published, inclusive of the citation itself in terms of journal volume number, part number where applicable, and page numbers.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Journal
   digital_object_id:
     Desc: Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: DOI
   pubmed_id:
     Desc: Where applicable, the unique numerical identifier assigned to the cited work by PubMed, by which it can be linked to via the internet.
     Src: Data Owner(s)
     Type: number
     Req: Preferred
+    Tags:
+       Labeled: PubMed ID
   # registration props
   registration_origin:
     Desc: The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym.
@@ -993,6 +1477,8 @@ PropDefinitions:
       - Diseased
       - Not Applicable # included to accommodate the inevitable ambiguity in assigning a general sample pathology to certain sample types, e.g. blood
     Req: 'Yes'
+    Tags:
+       Labeled: General Sample Pathology
   length_of_tumor:
     Desc: The length of the tumor from which a tumor sample was derived, as measured in mm.
     Src: Data Owner(s)
@@ -1015,11 +1501,15 @@ PropDefinitions:
       - Unknown
       - Not Applicable # included to accommodate cell line samples
     Req: 'Yes'
+    Tags:
+       Labeled: Necropsy Sample
   percentage_tumor:
     Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range.
     Src: Data Owner(s)
     Type: string #changed to string in order to accommodate values being quoted in ranges, as greater or less than, or as Unknown
     Req: Preferred
+    Tags:
+       Labeled: Percentage Tumor
   sample_chronology:
     Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations.
     Src: Data Owner(s)
@@ -1033,26 +1523,34 @@ PropDefinitions:
       - Not Applicable # included to accommodate samples being acquired via a study which did not assess the effects of any therapeutic intervention
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: 'Yes'
+    Tags:
+       Labeled: Sample Chronology
   sample_id:
     Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. file records, can be associated with the appropriate sample during data loading, and to identify the correct records during data updates.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Sample ID
   sample_preservation:
     Desc: The method by which a sample was preserved.
     Src: Data Owner(s)
     Enum:
+      - EDTA
       - FFPE
       - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
       - Not Applicable # included to accommodate cell line samples, which will generally be processed absent interim preservation and storage
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: 'Yes'
+    Tags:
+       Labeled: Sample Preservation
   sample_site:
     Desc: The specific anatomical location from which any given sample was acquired.
     Src: Data Owner(s)
     Enum: #string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
+      - Bladder
       - Bladder Apex
       - Bladder Apex-Mid
       - Bladder Mid
@@ -1062,8 +1560,12 @@ PropDefinitions:
       - Bladder Trigone-Urethra
       - Blood
       - Bone
+      - Bone Marrow
       - Brain
+      - Carpus
       - Cerebellar
+      - Cutis
+      - Distal Urethra
       - Femur
       - Hemispheric
       - Humerus
@@ -1079,18 +1581,25 @@ PropDefinitions:
       - Mammary Gland
       - Mandible, Mucosa
       - Midline
+      - Mouth
       - Mouth, Lingual
       - Mouth, Mandible, Mucosa
       - Mouth, Maxilla, Mucosa
       - Muscle
+      - Pleural Effusion
       - Radius
+      - Skin
+      - Spleen
       - Subcutaneous Tissue
+      - Thyroid Gland
       - Tibia
       - Unknown
       - Urethra
       - Urethra Mid-distal
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
+    Tags:
+       Labeled: Sample Site
   physical_sample_type:
     Desc: An indication as to the physical nature of any given sample.
     Src: Data Owner(s)
@@ -1098,20 +1607,27 @@ PropDefinitions:
       - Tissue
       - Blood
       - Cell Line # required for the CCL01 and OSA01 studies
+      - Whole Blood
       # list of acceptable values will gradually be expanded as data submission requirements solidify
     Req: 'Yes'
+    Tags:
+       Labeled: Physical Sample Type
   specific_sample_pathology:
     Desc: The specific histology and/or pathology associated with a sample.
     Src: Data Owner(s)
     Enum:
       - Astrocytoma
       - B Cell Lymphoma
+      - Carcinoma
       - Carcinoma With Simple And Complex Components
       - Chondroblastic Osteosarcoma
       - Complex Carcinoma
       - Fibroblastic Osteosarcoma
       - Giant Cell Osteosarcoma
+      - Hemangiosarcoma
+      - Histiocytic Sarcoma
       - Lymphoma
+      - Mast Cell Tumor
       - Melanoma
       - Not Applicable
       - Oligodendroglioma
@@ -1119,6 +1635,7 @@ PropDefinitions:
       - Osteoblastic and Chrondroblastic Osteosarcoma
       - Osteosarcoma
       - Osteosarcoma; Combined Type
+      - Primitive T-Cell Leukemia
       - Pulmonary Adenocarcinoma
       - Pulmonary Carcinoma
       - Simple Carcinoma
@@ -1127,22 +1644,29 @@ PropDefinitions:
       - Simple Carcinoma, Ductular
       - Simple Carcinoma, Inflammatory
       - Simple Carcinoma, Invasive, Ductal
+      - Soft Tissue Sarcoma
       - T Cell Lymphoma
       - Undefined
       - Urothelial Carcinoma
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
+    Tags:
+       Labeled: Pathology/Morphology
   summarized_sample_type:
     Desc: A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin.
-    Src: Internally-curated 
+    Src: Data Owner(s) 
     Enum: #string # will be superseded by an enumerated list of acceptable values as data submission requirements solidify
       - Metastatic Tumor Tissue
       - Normal Cell Line
       - Normal Tissue
       - Primary Malignant Tumor Tissue
+      - Tumor Cell Line
+      - Tumor Cell Line (metastasis-derived)
       - Whole Blood
       # these represent the de facto acceptable values, i.e. the values to which we have thus far aligned submitted data
     Req: 'Yes'
+    Tags:
+       Labeled: Sample Type
   tumor_grade:
     Desc: The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation.
     Src: Data Owner(s)
@@ -1157,6 +1681,8 @@ PropDefinitions:
       - Unknown
       - Not Applicable
     Req: Preferred
+    Tags:
+       Labeled: Tumor Grade
   tumor_sample_origin:
     Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor.
     Src: Data Owner(s)
@@ -1166,6 +1692,8 @@ PropDefinitions:
       - Not Applicable # included to accommodate samples not derived from tumors
       - Unknown # included to accommodate the almost inevitable case where the origin of a tumor sample is uncertain
     Req: 'Yes'
+    Tags:
+       Labeled: Tumor Sample Origin
   volume_of_tumor:
     Desc: The volume of the tumor from which a tumor sample was derived, as measured in cubic centimeters.
     Src: Data Owner(s)
@@ -1188,12 +1716,16 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Description
   clinical_study_designation:
     Desc: A unique, human-friendly, alpha-numeric identifier by which the study/trial will be identified within the UI. <br>This property is used as the key via which child records, e.g. case records, can be associated with the appropriate study during data loading, and to identify the correct records during data updates.
     Src: Internally-generated
     Type: string
     Req: 'Yes'
     Key: true
+    Tags:
+       Labeled: Study Code, Assigned to Study
   clinical_study_id:
     Desc: Where applicable, the ID for the study/trial as generated by the source database.
     Src: Data Owner(s)
@@ -1204,27 +1736,37 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Study Name
   clinical_study_type:
     Desc: An arbitrary designation of the study/trial to indicate its underlying.
       nature, e.g. Clinical Trial, Transcriptomics, Genomics.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Study Type
   date_of_iacuc_approval:
     Desc: Where applicable, the date upon which the study/trial was approved by the IACUC.
     Src: Data Owner(s)
     Type: datetime
     Req: 'No'
+    Tags:
+       Labeled: Date of IACUC Approval
   dates_of_conduct:
     Desc: An indication of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Conducted
   accession_id:
     Desc: A unique, alpha-numeric identifier, in the format of six digits, which is assigned to the study/trial as of it being on-boarded, and which can be resolved by identifiers.org when prefixed with "icdc:" to create a compact identifier in the format icdc:xxxxxx.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
+    Tags:
+       Labeled: Accession ID
   study_disposition:
     Desc: An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public release.
     Src: Internally-curated
@@ -1239,6 +1781,8 @@ PropDefinitions:
     Src: Internally-curated
     Type: string
     Req: Preferred
+    Tags:
+       Labeled: Arm, Assigned to Arm
   arm_description:
     Desc: A short description of the study arm.
     Src: Internally-curated
@@ -1263,12 +1807,14 @@ PropDefinitions:
     Type: string
     Req: 'No'
   site_short_name:
-    Desc: The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
+    Desc: The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+    Tags:
+       Labeled: Study Site
   veterinary_medical_center:
-    Desc: The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
+    Desc: The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state.
     Src: Data Owner(s)
     Type: string
     Req: 'No'
