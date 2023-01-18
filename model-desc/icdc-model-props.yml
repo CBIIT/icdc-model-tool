@@ -16,7 +16,7 @@ PropDefinitions:
     Enum: 
       - 'Yes'
       - 'No'
-    Req: Preferred # this can't be required, because there will only be data values when adverse events occur prior to the trial and/or are ongoing
+    Req: Preferred # this can't be required, because there will only be data values when adverse events occur prior to the trial or are ongoing
   date_of_resolution:
     Desc: The date upon which any given adverse event resolved. If an adverse event was ongong at the time of death, the date of death should be used as the value date_of_resolution.
     Src: Data Owner(s)
@@ -32,8 +32,8 @@ PropDefinitions:
   adverse_event_term:
     Desc: The specific controlled vocabulary term for any given adverse event, as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).
     Src: Data Owner(s)
-    Type:
-      - http://localhost/terms/domain/adverse_events
+    Type: string # changing this to string at least temporarily
+      #- http://localhost/terms/domain/adverse_events
     Req: 'Yes'
   adverse_event_description:
     Desc: A narrative description of any given adverse event which provides extra details as to its associated clinical, physical and behavioral observations, and/or mitigations for the adverse event. 
@@ -51,7 +51,7 @@ PropDefinitions:
       - "5" # Death
     Req: 'Yes'
   adverse_event_grade_description: 
-    Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE). This may not be needed, because enumerated grades are standard adverse_event reporting terms, although the narrative terms will be useful to users not already familiar with adverse event grading.
+    Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE). Although enumerated grades are standard terms for the reporting of adverse event, the narrative form of adverse event grades will be useful to users not already familiar with adverse event grading.
     Src: Data Owner(s)
     Enum:
       - Mild
@@ -63,16 +63,16 @@ PropDefinitions:
   adverse_event_agent_name:
     Desc: The name of any investigational new drug being administered at the time of any given adverse event being observed.
     Src: Data Owner(s)
-    Type:
-      - http://localhost/terms/domain/agent_name
+    Type: string # changing this to string at least temporarily
+      #- http://localhost/terms/domain/agent_name
     Req: 'Yes'
   adverse_event_agent_dose:
     Desc: The corresponding dose of any investigational new drug being administered at the time of any given adverse event being observed.
     Src: Data Owner(s)
-    Type:
-      units:
-        - mg/kg # there's no way we can specify all of the possible dosage rates - they vary wildly
-      value_type: number
+    Type: string # changing this to string in order to accomodate the wide range of dosing units that we will be encountering
+      #units:
+        #- mg/kg # there's no way we can specify all of the possible dosage rates - they vary wildly
+      #value_type: number
     Req: 'Yes'
   attribution_to_research:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the clinical trial/research environment in general, or is unrelated to it.
@@ -106,7 +106,7 @@ PropDefinitions:
       - Definite
     Req: 'Yes'
   attribution_to_commercial:
-    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by NEED INPUT ON THIS, or is unrelated to it.
+    Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by a commercially-available, FDA-approved therapeutic agent, used within the confines of the clinical trial either for its FDA-approved indication or in an off-label manner, but not as the investigational new drug or part of the investigational new therapy, versus the adverse event in question being unrelated to it.
     Src: Data Owner(s)
     Enum:
       - Unrelated
@@ -672,13 +672,9 @@ PropDefinitions:
       - Stable Disease
       - Progressive Disease
       - Not Determined
-      # included to accommodate situations either where the study in question 
-      # does not assess the effects of any therapeutic intervention, or where 
-      # the response to therapeutic intervention could not be determined
+      # included to accommodate situations either where the study in question does not assess the effects of any therapeutic intervention, or where the response to therapeutic intervention could not be determined
       - Not Applicable
-      # included to accommodate situations in which healthy control subjects
-      # are included within a study that does assess the effects of a
-      # therapeutic intervention
+      # included to accommodate situations in which healthy control subjects are included within a study that does assess the effects of a therapeutic intervention
       - Unknown
       # included to accommodate situations where a value for stage of disease simply isn't available
     Req: 'Yes'
@@ -755,6 +751,7 @@ PropDefinitions:
     Enum:
       - 'Yes'
       - 'No'
+      - Not Applicable # to accommodate situations where the subject is a healthy control
     Req: Preferred
     Tags:
        Labeled: Follow Up Data Available
@@ -779,6 +776,7 @@ PropDefinitions:
     Enum:
       - 'Yes'
       - 'No'
+      - Not Applicable # to accommodate situations where the subject is a healthy control
     Req: Preferred
     Tags:
        Labeled: Detailed Pathology Evaluation Available
@@ -814,6 +812,7 @@ PropDefinitions:
       - Thyroid Gland
       - Unknown
       - Urethra, Prostate
+      - Urinary Tract
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
     Tags:
@@ -865,6 +864,7 @@ PropDefinitions:
     Enum:
       - 'Yes'
       - 'No'
+      - Not Applicable # to accommodate situations where the subject is a healthy control
     Req: Preferred
     Tags:
        Labeled: Treatment Data Available
@@ -1539,6 +1539,7 @@ PropDefinitions:
     Enum:
       - EDTA
       - FFPE
+      - RNAlater
       - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
       - Not Applicable # included to accommodate cell line samples, which will generally be processed absent interim preservation and storage
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
@@ -1596,6 +1597,7 @@ PropDefinitions:
       - Unknown
       - Urethra
       - Urethra Mid-distal
+      - Urinary Tract
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
     Tags:
@@ -1607,6 +1609,8 @@ PropDefinitions:
       - Tissue
       - Blood
       - Cell Line # required for the CCL01 and OSA01 studies
+      - Organoid
+      - Urine Sediment
       - Whole Blood
       # list of acceptable values will gradually be expanded as data submission requirements solidify
     Req: 'Yes'
@@ -1626,13 +1630,14 @@ PropDefinitions:
       - Giant Cell Osteosarcoma
       - Hemangiosarcoma
       - Histiocytic Sarcoma
+      - Induced Endometrium
       - Lymphoma
       - Mast Cell Tumor
       - Melanoma
       - Not Applicable
       - Oligodendroglioma
       - Osteoblastic Osteosarcoma
-      - Osteoblastic and Chrondroblastic Osteosarcoma
+      - Osteoblastic and Chondroblastic Osteosarcoma
       - Osteosarcoma
       - Osteosarcoma; Combined Type
       - Primitive T-Cell Leukemia
@@ -1659,9 +1664,16 @@ PropDefinitions:
       - Metastatic Tumor Tissue
       - Normal Cell Line
       - Normal Tissue
+      - Organoid (ASC-derived)
+      - Patient-Derived Organoid
+      - Patient-Derived Organoid (Urine-derived)
+      - PDO
       - Primary Malignant Tumor Tissue
+      - Urine Sediment
       - Tumor Cell Line
       - Tumor Cell Line (metastasis-derived)
+      - Tumoroid
+      - Tumoroid (Urine-derived)
       - Whole Blood
       # these represent the de facto acceptable values, i.e. the values to which we have thus far aligned submitted data
     Req: 'Yes'
