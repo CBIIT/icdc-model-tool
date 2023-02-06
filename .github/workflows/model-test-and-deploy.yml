@@ -16,8 +16,4 @@ jobs:
         icdc-model.yml icdc-model-props.yml
       model_prefix: icdc-model
       event_name: ${{ github.event_name }}
-    secrets:
-      docker_repo: ${{ secrets.REPO }}
-      docker_svc: ${{ secrets.RSVC }}
-      repo_user: ${{ secrets.REPO_USER }}
-      repo_pw: ${{ secrets.REPO_PW }}
+      
