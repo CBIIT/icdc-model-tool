@@ -19,6 +19,5 @@ jobs:
         icdc-model.yml icdc-model-props.yml
       model_prefix: icdc-model
       event_name: ${{ github.event_name }}
-    secrets:
-      PAT: ${{ secrets.PAT }}
+
       
