@@ -13,7 +13,7 @@ jobs:
     permissions:
         packages: read
         contents: write
-    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v2.1.6
+    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v2.1.7
     with:
       model_files: |
         icdc-model.yml icdc-model-props.yml
