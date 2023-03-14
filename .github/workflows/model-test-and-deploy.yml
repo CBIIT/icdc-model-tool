@@ -13,10 +13,11 @@ jobs:
     permissions:
         packages: read
         contents: write
-    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v2.1.5
+    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v2.1.6
     with:
       model_files: |
         icdc-model.yml icdc-model-props.yml
       model_prefix: icdc-model
       event_name: ${{ github.event_name }}
+    secrets:
       token: ${{ secrets.PAT }}
