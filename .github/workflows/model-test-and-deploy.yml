@@ -10,7 +10,10 @@ on:
 
 jobs:
   validate-and-build:
-    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v1.1.4.5
+    permissions:
+        packages: read
+        contents: write
+    uses: CBIIT/bento-workflows/.github/workflows/model-test-and-deploy.yml@v2.1.2
     with:
       model_files: |
         icdc-model.yml icdc-model-props.yml
