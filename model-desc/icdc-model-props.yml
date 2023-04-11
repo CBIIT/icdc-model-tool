@@ -142,7 +142,7 @@ PropDefinitions:
     Enum:
       - 'Yes'
       - 'No'
-      - Not Applicable # accommodates situations where an adverse event is not atrributed to any therapeutic agent and cannot therefore be limiting in terms of dosage
+      - Not Applicable # accommodates situations where an adverse event is not attributed to any therapeutic agent and cannot therefore be limiting in terms of dosage
     Req: 'Yes'
   unexpected_adverse_event:
     Desc: An indication as to whether any given adverse event observed during the clinical trial is completely unanticipated and therefore considered novel.
@@ -504,6 +504,7 @@ PropDefinitions:
       - Mastiff
       - Miniature American Shepherd
       - Miniature Bull Terrier
+      - Miniature Dachshund
       - Miniature Pinscher
       - Miniature Schnauzer
       - Mixed Breed
@@ -597,6 +598,7 @@ PropDefinitions:
       - Tornjak
       - Tosa
       - Toy Fox Terrier
+      - Toy Poodle
       - Transylvanian Hound
       - Treeing Tennessee Brindle Coonhound
       - Treeing Walker Coonhound
