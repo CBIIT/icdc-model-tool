@@ -11,7 +11,6 @@ Nodes:
       Assignment: core
       Class: primary
       Template: 'Yes'
-      Color: black
     Props:
       - program_name
       - program_acronym
@@ -26,7 +25,6 @@ Nodes:
       Assignment: core
       Class: primary
       Template: 'Yes'
-      Color: black
     Props:
       - clinical_study_id
       - clinical_study_designation
@@ -44,7 +42,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'Yes'
-      Color: black
     Props:
       - site_short_name
       - veterinary_medical_center
@@ -56,7 +53,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'Yes'
-      Color: black
     Props:
       - arm
       - ctep_treatment_assignment_code
@@ -71,7 +67,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'No'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       - medication
       # d/n from STUDY_MED_ADMIN/SDAD/1      
@@ -83,7 +79,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'Yes'
-      Color: black
     Props:
       - cohort_description
       # the intended or protocol dose
@@ -96,7 +91,6 @@ Nodes:
       Assignment: core
       Class: primary
       Template: 'Yes'
-      Color: black
     Props:
       - case_id
       - patient_id
@@ -108,7 +102,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'Yes'
-      Color: black
     Props: 
       - registration_origin
       - registration_id
@@ -120,7 +113,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'No'
-      Color: black
     Props:
       - biospecimen_repository_acronym
       - biospecimen_repository_full_name
@@ -131,7 +123,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'No'
-      Color: black
     Props:
       - canine_individual_id
   demographic:
@@ -141,7 +132,6 @@ Nodes:
       Assignment: core
       Class: primary
       Template: 'Yes'
-      Color: black
     Props:
       - demographic_id
       - breed
@@ -157,8 +147,8 @@ Nodes:
       Category: clinical_trial
       Assignment: extended
       Class: secondary
-      Template: 'Yes'          
-      Color: black
+      Template: 'Yes'
+      Clinical_Data_Export: 'Yes'         
     Props:
       - cycle_number
       - date_of_cycle_start
@@ -170,7 +160,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props: 
       - visit_date
       - visit_number
@@ -182,7 +172,6 @@ Nodes:
       Assignment: core
       Class: primary
       Template: 'Yes'
-      Color: black
     Props:
       - pi_first_name
       - pi_last_name
@@ -194,7 +183,7 @@ Nodes:
       Assignment: core
       Class: primary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'No'
     Props:
       - diagnosis_id
       - disease_term
@@ -217,7 +206,6 @@ Nodes:
       Assignment: core
       Class: primary
       Template: 'Yes'
-      Color: black
     Props:
       - enrollment_id
       - date_of_registration
@@ -235,7 +223,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props: 
       - date_of_first_dose
       - date_of_last_dose
@@ -270,7 +258,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       - date_of_surgery
       - procedure
@@ -285,7 +273,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       # d/n from STUDY_MED_ADMIN/SDAD/1
       - document_number
@@ -316,7 +304,6 @@ Nodes:
       Assignment: core
       Class: primary
       Template: 'Yes'
-      Color: black
     Props: 
       - sample_id
       - sample_site
@@ -343,7 +330,6 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'No'
-      Color: black
     Props: null
   file:
     Desc: Files can be associated with ICDC study, case, diagnosis and sample records, but are not themselves stored within the application. Instead, the application stores records as to the existence and nature of such files. The File node is comprised of properties which characterize these files in terms of their size, format and content, such that they can be appropriately represented within the application’s UI, and in terms of their storage location, such that they can be retrieved for analysis.
@@ -351,8 +337,7 @@ Nodes:
       Category: data_file
       Assignment: core
       Class: primary
-      Template: 'Yes'
-      Color: black
+      Template: 'No' # Temporarily setting this to 'No' in order to reproduce the defect whereby the File node gets a template download option regardless of the node even having a Template tag, let alone the tag value being set to Yes
     Props:
       - file_name
       - file_type
@@ -370,7 +355,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'No'
-      Color: black
     Props: null
   image_collection:
     Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
@@ -379,7 +363,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'Yes'
-      Color: black
     Props:
       - image_collection_name
       - image_type_included
@@ -393,7 +376,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       - date_of_examination
       - day_in_cycle
@@ -409,7 +392,6 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'Yes'
-      Color: black
     Props:
       - publication_title
       - authorship
@@ -424,7 +406,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       - date_of_vital_signs
       - body_temperature
@@ -446,7 +428,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'No'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props: null
   adverse_event: 
     # how to link? To case and agent? Also to visit/followup?
@@ -456,7 +438,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       - day_in_cycle
       - date_of_onset
@@ -484,7 +466,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props: 
       - lesion_number
       - lesion_site
@@ -505,7 +487,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       # d/n from FOLLOW_UP/FLWU/1
       - document_number
@@ -524,7 +506,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       # d/n from OFF_STUDY/OSSM/1
       - document_number
@@ -543,7 +525,7 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'Yes'
-      Color: black
+      Clinical_Data_Export: 'Yes'
     Props:
       # d/n from OFF_TREATMENT/OTSM/1
       - document_number
