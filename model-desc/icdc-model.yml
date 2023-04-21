@@ -337,7 +337,7 @@ Nodes:
       Category: data_file
       Assignment: core
       Class: primary
-      Template: 'No' # Temporarily setting this to 'No' in order to reproduce the defect whereby the File node gets a template download option regardless of the node even having a Template tag, let alone the tag value being set to Yes
+      Template: 'Yes'
     Props:
       - file_name
       - file_type
