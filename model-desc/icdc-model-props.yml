@@ -848,12 +848,14 @@ PropDefinitions:
       - Va
       - Vb
       - TisN0M0
+      - TisN1M1 #added per ORGANOIDS01
       - T1N0M0
       - T1NXM0
       - T2N0M0
       - T2N0M1
       - T2N1M0
-      - T2N1M1
+      - T2N1M1 #added per ORGANOIDS01
+      - T2N2M1
       - T3N0M0
       - T3N0M1
       - T3N1M0
@@ -1599,6 +1601,7 @@ PropDefinitions:
       - Mouth, Mandible, Mucosa
       - Mouth, Maxilla, Mucosa
       - Muscle
+      - Pancreas
       - Pleural Effusion
       - Radius
       - Skin
@@ -1609,8 +1612,9 @@ PropDefinitions:
       - Unknown
       - Urethra
       - Urethra Mid-distal
-      - Urinary Tract
+      - Urinary Bladder
       - Urogenital Tract
+      - Uterus
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
     Tags:
@@ -1639,11 +1643,14 @@ PropDefinitions:
       - Carcinoma With Simple And Complex Components
       - Chondroblastic Osteosarcoma
       - Complex Carcinoma
+      - Endometrium (organoid)
       - Fibroblastic Osteosarcoma
       - Giant Cell Osteosarcoma
       - Hemangiosarcoma
       - Histiocytic Sarcoma
       - Induced Endometrium
+      - Liver (organoid)
+      - Lung (organoid)
       - Lymphoma
       - Mast Cell Tumor
       - Melanoma
@@ -1653,6 +1660,7 @@ PropDefinitions:
       - Osteoblastic and Chondroblastic Osteosarcoma
       - Osteosarcoma
       - Osteosarcoma; Combined Type
+      - Pancreas (organoid)
       - Primitive T-Cell Leukemia
       - Pulmonary Adenocarcinoma
       - Pulmonary Carcinoma
@@ -1664,8 +1672,10 @@ PropDefinitions:
       - Simple Carcinoma, Invasive, Ductal
       - Soft Tissue Sarcoma
       - T Cell Lymphoma
+      - Urinary Bladder (organoid)
       - Undefined
       - Urothelial Carcinoma
+      - Urothelial Carcinoma (organoid)
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
     Tags:
@@ -1678,9 +1688,9 @@ PropDefinitions:
       - Normal Cell Line
       - Normal Tissue
       - Organoid (ASC-derived)
-      - Patient-Derived Organoid
-      - Patient-Derived Organoid (urine-derived)
-      - PDO
+      - #Patient-Derived Organoid
+      - #Patient-Derived Organoid (urine-derived)
+      - #PDO
       - Primary Malignant Tumor Tissue
       - Urine Sediment
       - Tumor Cell Line
