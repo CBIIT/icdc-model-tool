@@ -1688,9 +1688,9 @@ PropDefinitions:
       - Normal Cell Line
       - Normal Tissue
       - Organoid (ASC-derived)
-      - #Patient-Derived Organoid
-      - #Patient-Derived Organoid (urine-derived)
-      - #PDO
+      #- Patient-Derived Organoid
+      #- Patient-Derived Organoid (urine-derived)
+      #- PDO
       - Primary Malignant Tumor Tissue
       - Urine Sediment
       - Tumor Cell Line
