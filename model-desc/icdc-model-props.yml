@@ -1554,6 +1554,7 @@ PropDefinitions:
       - FFPE
       - RNAlater
       - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
+      - TRIzol
       - Not Applicable # included to accommodate cell line samples, which will generally be processed absent interim preservation and storage
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: 'Yes'
