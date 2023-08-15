@@ -1,22 +1,59 @@
 repo https://github.com/CBIIT/icdc-model-tool
-commit 93ac3b0
+commit 53a3687
 node	property	value_or_TYPE
+adverse_event	adverse_event_agent_dose	STRING
+adverse_event	adverse_event_agent_name	STRING
 adverse_event	adverse_event_description	STRING
-adverse_event	adverse_event_grade	STRING
-adverse_event	adverse_event_grade_description	STRING
-adverse_event	adverse_event_term	EXTERNAL
-adverse_event	ae_agent_name	EXTERNAL
-adverse_event	ae_dose	NUMBER (mg/kg)
-adverse_event	ae_other	TBD
-adverse_event	attribution_to_commercial	TBD
-adverse_event	attribution_to_disease	TBD
-adverse_event	attribution_to_ind	TBD
-adverse_event	attribution_to_other	TBD
-adverse_event	attribution_to_research	TBD
-adverse_event	date_resolved	DATETIME
+adverse_event	adverse_event_grade	1
+adverse_event	adverse_event_grade	2
+adverse_event	adverse_event_grade	3
+adverse_event	adverse_event_grade	4
+adverse_event	adverse_event_grade	5
+adverse_event	adverse_event_grade_description	Death
+adverse_event	adverse_event_grade_description	Life-threatening
+adverse_event	adverse_event_grade_description	Mild
+adverse_event	adverse_event_grade_description	Moderate
+adverse_event	adverse_event_grade_description	Severe
+adverse_event	adverse_event_term	STRING
+adverse_event	attribution_to_commercial	Definite
+adverse_event	attribution_to_commercial	Not Applicable
+adverse_event	attribution_to_commercial	Possible
+adverse_event	attribution_to_commercial	Probable
+adverse_event	attribution_to_commercial	Unlikely
+adverse_event	attribution_to_commercial	Unrelated
+adverse_event	attribution_to_disease	Definite
+adverse_event	attribution_to_disease	Possible
+adverse_event	attribution_to_disease	Probable
+adverse_event	attribution_to_disease	Unlikely
+adverse_event	attribution_to_disease	Unrelated
+adverse_event	attribution_to_ind	Definite
+adverse_event	attribution_to_ind	Not Applicable
+adverse_event	attribution_to_ind	Possible
+adverse_event	attribution_to_ind	Probable
+adverse_event	attribution_to_ind	Unlikely
+adverse_event	attribution_to_ind	Unrelated
+adverse_event	attribution_to_other	Definite
+adverse_event	attribution_to_other	Possible
+adverse_event	attribution_to_other	Probable
+adverse_event	attribution_to_other	Unlikely
+adverse_event	attribution_to_other	Unrelated
+adverse_event	attribution_to_research	Definite
+adverse_event	attribution_to_research	Possible
+adverse_event	attribution_to_research	Probable
+adverse_event	attribution_to_research	Unlikely
+adverse_event	attribution_to_research	Unrelated
+adverse_event	date_of_onset	DATETIME
+adverse_event	date_of_resolution	STRING
 adverse_event	day_in_cycle	INTEGER
-adverse_event	dose_limiting_toxicity	TBD
-adverse_event	unexpected_adverse_event	TBD
+adverse_event	dose_limiting_toxicity	No
+adverse_event	dose_limiting_toxicity	Yes
+adverse_event	existing_adverse_event	No
+adverse_event	existing_adverse_event	Yes
+adverse_event	ongoing_adverse_event	No
+adverse_event	ongoing_adverse_event	Yes
+adverse_event	other_attribution_description	STRING
+adverse_event	unexpected_adverse_event	No
+adverse_event	unexpected_adverse_event	Yes
 agent	document_number	REGEXP /^R[0-9]+$/
 agent	medication	EXTERNAL
 agent_administration	comment	STRING
@@ -54,8 +91,291 @@ cohort	cohort_id	STRING
 cycle	cycle_number	INTEGER
 cycle	date_of_cycle_end	DATETIME
 cycle	date_of_cycle_start	DATETIME
-demographic	breed	STRING
+demographic	additional_breed_detail	STRING
+demographic	breed	Affenpinscher
+demographic	breed	Afghan Hound
+demographic	breed	Airedale Terrier
+demographic	breed	Akita
+demographic	breed	Alaskan Klee Kai
+demographic	breed	Alaskan Malamute
+demographic	breed	American Bulldog
+demographic	breed	American English Coonhound
+demographic	breed	American Eskimo Dog
+demographic	breed	American Foxhound
+demographic	breed	American Hairless Terrier
+demographic	breed	American Leopard Hound
+demographic	breed	American Staffordshire Terrier
+demographic	breed	American Water Spaniel
+demographic	breed	Anatolian Shepherd Dog
+demographic	breed	Appenzeller Sennenhunde
+demographic	breed	Australian Cattle Dog
+demographic	breed	Australian Kelpie
+demographic	breed	Australian Shepherd
+demographic	breed	Australian Stumpy Tail Cattle Dog
+demographic	breed	Australian Terrier
+demographic	breed	Azawakh
+demographic	breed	Barbado da Terceira
+demographic	breed	Barbet
+demographic	breed	Basenji
+demographic	breed	Basset Fauve de Bretagne
+demographic	breed	Basset Hound
+demographic	breed	Bavarian Mountain Scent Hound
+demographic	breed	Beagle
+demographic	breed	Bearded Collie
+demographic	breed	Beauceron
+demographic	breed	Bedlington Terrier
+demographic	breed	Belgian Laekenois
+demographic	breed	Belgian Malinois
+demographic	breed	Belgian Sheepdog
+demographic	breed	Belgian Tervuren
+demographic	breed	Bergamasco Sheepdog
+demographic	breed	Berger Picard
+demographic	breed	Bernese Mountain Dog
+demographic	breed	Bichon Frise
+demographic	breed	Biewer Terrier
+demographic	breed	Black Russian Terrier
+demographic	breed	Black and Tan Coonhound
+demographic	breed	Bloodhound
+demographic	breed	Bluetick Coonhound
+demographic	breed	Boerboel
+demographic	breed	Bohemian Shepherd
+demographic	breed	Bolognese
+demographic	breed	Border Collie
+demographic	breed	Border Terrier
+demographic	breed	Borzoi
+demographic	breed	Boston Terrier
+demographic	breed	Bouvier des Flandres
+demographic	breed	Boxer
+demographic	breed	Boykin Spaniel
+demographic	breed	Bracco Italiano
+demographic	breed	Braque Francais Pyrenean
+demographic	breed	Braque du Bourbonnais
+demographic	breed	Briard
+demographic	breed	Brittany
+demographic	breed	Broholmer
+demographic	breed	Brussels Griffon
+demographic	breed	Bull Terrier
+demographic	breed	Bulldog
+demographic	breed	Bullmastiff
+demographic	breed	Cairn Terrier
+demographic	breed	Canaan Dog
+demographic	breed	Cane Corso
+demographic	breed	Cardigan Welsh Corgi
+demographic	breed	Carolina Dog
+demographic	breed	Catahoula Hound
+demographic	breed	Catahoula Leopard Dog
+demographic	breed	Caucasian Shepherd Dog
+demographic	breed	Cavalier King Charles Spaniel
+demographic	breed	Central Asian Shepherd Dog
+demographic	breed	Cesky Terrier
+demographic	breed	Chesapeake Bay Retriever
+demographic	breed	Chihuahua
+demographic	breed	Chinese Crested
+demographic	breed	Chinese Shar-Pei
+demographic	breed	Chinook
+demographic	breed	Chow Chow
+demographic	breed	Cirneco dell'Etna
+demographic	breed	Clumber Spaniel
+demographic	breed	Cocker Spaniel
+demographic	breed	Collie
+demographic	breed	Coton de Tulear
+demographic	breed	Croatian Sheepdog
+demographic	breed	Curly-Coated Retriever
+demographic	breed	Czechoslovakian Vlcak
+demographic	breed	Dachshund
+demographic	breed	Dalmatian
+demographic	breed	Dandie Dinmont Terrier
+demographic	breed	Danish-Swedish Farmdog
+demographic	breed	Deutscher Wachtelhund
+demographic	breed	Doberman Pinscher
+demographic	breed	Dogo Argentino
+demographic	breed	Dogue de Bordeaux
+demographic	breed	Drentsche Patrijshond
+demographic	breed	Drever
+demographic	breed	Dutch Shepherd
+demographic	breed	English Cocker Spaniel
+demographic	breed	English Foxhound
+demographic	breed	English Setter
+demographic	breed	English Springer Spaniel
+demographic	breed	English Toy Spaniel
+demographic	breed	Entlebucher Mountain Dog
+demographic	breed	Estrela Mountain Dog
+demographic	breed	Eurasier
+demographic	breed	Field Spaniel
+demographic	breed	Finnish Lapphund
+demographic	breed	Finnish Spitz
+demographic	breed	Flat-Coated Retriever
+demographic	breed	French Bulldog
+demographic	breed	French Spaniel
+demographic	breed	German Longhaired Pointer
+demographic	breed	German Pinscher
+demographic	breed	German Shepherd Dog
+demographic	breed	German Shorthaired Pointer
+demographic	breed	German Spitz
+demographic	breed	German Wirehaired Pointer
+demographic	breed	Giant Schnauzer
+demographic	breed	Glen of Imaal Terrier
+demographic	breed	Golden Retriever
+demographic	breed	Gordon Setter
+demographic	breed	Grand Basset Griffon Vendeen
+demographic	breed	Great Dane
+demographic	breed	Great Pyrenees
+demographic	breed	Greater Swiss Mountain Dog
+demographic	breed	Greyhound
+demographic	breed	Hamiltonstovare
+demographic	breed	Hanoverian Scenthound
+demographic	breed	Harrier
+demographic	breed	Havanese
+demographic	breed	Hokkaido
+demographic	breed	Hovawart
+demographic	breed	Ibizan Hound
+demographic	breed	Icelandic Sheepdog
+demographic	breed	Irish Red and White Setter
+demographic	breed	Irish Setter
+demographic	breed	Irish Terrier
+demographic	breed	Irish Water Spaniel
+demographic	breed	Irish Wolfhound
+demographic	breed	Italian Greyhound
+demographic	breed	Jagdterrier
+demographic	breed	Japanese Akitainu
+demographic	breed	Japanese Chin
+demographic	breed	Japanese Spitz
+demographic	breed	Japanese Terrier
+demographic	breed	Jindo
+demographic	breed	Kai Ken
+demographic	breed	Karelian Bear Dog
+demographic	breed	Keeshond
+demographic	breed	Kerry Blue Terrier
+demographic	breed	Kishu Ken
+demographic	breed	Komondor
+demographic	breed	Kromfohrlander
+demographic	breed	Kuvasz
+demographic	breed	Labrador Retriever
+demographic	breed	Lagotto Romagnolo
+demographic	breed	Lakeland Terrier
+demographic	breed	Lancashire Heeler
+demographic	breed	Lapponian Herder
+demographic	breed	Leonberger
+demographic	breed	Lhasa Apso
+demographic	breed	Lowchen
+demographic	breed	Maltese
+demographic	breed	Manchester Terrier
+demographic	breed	Mastiff
+demographic	breed	Miniature American Shepherd
+demographic	breed	Miniature Bull Terrier
+demographic	breed	Miniature Pinscher
+demographic	breed	Miniature Schnauzer
+demographic	breed	Mixed Breed
+demographic	breed	Mountain Cur
+demographic	breed	Mudi
+demographic	breed	Neapolitan Mastiff
+demographic	breed	Nederlandse Kooikerhondje
+demographic	breed	Newfoundland
+demographic	breed	Norfolk Terrier
+demographic	breed	Norrbottenspets
+demographic	breed	Norwegian Buhund
+demographic	breed	Norwegian Elkhound
+demographic	breed	Norwegian Lundehund
+demographic	breed	Norwich Terrier
+demographic	breed	Nova Scotia Duck Tolling Retriever
+demographic	breed	Old English Sheepdog
+demographic	breed	Other
+demographic	breed	Otterhound
+demographic	breed	Papillon
+demographic	breed	Parson Russell Terrier
+demographic	breed	Pekingese
+demographic	breed	Pembroke Welsh Corgi
+demographic	breed	Perro de Presa Canario
+demographic	breed	Peruvian Inca Orchid
+demographic	breed	Petit Basset Griffon Vendeen
+demographic	breed	Pharaoh Hound
+demographic	breed	Plott Hound
+demographic	breed	Pointer
+demographic	breed	Polish Lowland Sheepdog
+demographic	breed	Pomeranian
+demographic	breed	Poodle
+demographic	breed	Porcelaine
+demographic	breed	Portuguese Podengo
+demographic	breed	Portuguese Podengo Pequeno
+demographic	breed	Portuguese Pointer
+demographic	breed	Portuguese Sheepdog
+demographic	breed	Portuguese Water Dog
+demographic	breed	Pudelpointer
+demographic	breed	Pug
+demographic	breed	Puli
+demographic	breed	Pumi
+demographic	breed	Pyrenean Mastiff
+demographic	breed	Pyrenean Shepherd
+demographic	breed	Rafeiro do Alentejo
+demographic	breed	Rat Terrier
+demographic	breed	Redbone Coonhound
+demographic	breed	Rhodesian Ridgeback
+demographic	breed	Romanian Mioritic Shepherd Dog
+demographic	breed	Rottweiler
+demographic	breed	Russell Terrier
+demographic	breed	Russian Toy
+demographic	breed	Russian Tsvetnaya Bolonka
+demographic	breed	Saint Bernard
+demographic	breed	Saluki
+demographic	breed	Samoyed
+demographic	breed	Schapendoes
+demographic	breed	Schipperke
+demographic	breed	Scottish Deerhound
+demographic	breed	Scottish Terrier
+demographic	breed	Sealyham Terrier
+demographic	breed	Segugio Italiano
+demographic	breed	Shetland Sheepdog
+demographic	breed	Shiba Inu
+demographic	breed	Shih Tzu
+demographic	breed	Shikoku
+demographic	breed	Siberian Husky
+demographic	breed	Silky Terrier
+demographic	breed	Skye Terrier
+demographic	breed	Sloughi
+demographic	breed	Slovakian Wirehaired Pointer
+demographic	breed	Slovensky Cuvac
+demographic	breed	Slovensky Kopov
+demographic	breed	Small Munsterlander Pointer
+demographic	breed	Smooth Fox Terrier
+demographic	breed	Soft Coated Wheaten Terrier
+demographic	breed	Spanish Mastiff
+demographic	breed	Spanish Water Dog
+demographic	breed	Spinone Italiano
+demographic	breed	Stabyhoun
+demographic	breed	Staffordshire Bull Terrier
+demographic	breed	Standard Schnauzer
+demographic	breed	Sussex Spaniel
+demographic	breed	Swedish Lapphund
+demographic	breed	Swedish Vallhund
+demographic	breed	Taiwan Dog
+demographic	breed	Teddy Roosevelt Terrier
+demographic	breed	Thai Ridgeback
+demographic	breed	Tibetan Mastiff
+demographic	breed	Tibetan Spaniel
+demographic	breed	Tibetan Terrier
+demographic	breed	Tornjak
+demographic	breed	Tosa
+demographic	breed	Toy Fox Terrier
+demographic	breed	Transylvanian Hound
+demographic	breed	Treeing Tennessee Brindle Coonhound
+demographic	breed	Treeing Walker Coonhound
+demographic	breed	Unknown
+demographic	breed	Vizsla
+demographic	breed	Weimaraner
+demographic	breed	Welsh Springer Spaniel
+demographic	breed	Welsh Terrier
+demographic	breed	West Highland White Terrier
+demographic	breed	Wetterhoun
+demographic	breed	Whippet
+demographic	breed	Wire Fox Terrier
+demographic	breed	Wirehaired Pointing Griffon
+demographic	breed	Wirehaired Vizsla
+demographic	breed	Working Kelpie
+demographic	breed	Xoloitzcuintli
+demographic	breed	Yakutian Laika
+demographic	breed	Yorkshire Terrier
 demographic	date_of_birth	DATETIME
+demographic	demographic_id	STRING
 demographic	neutered_indicator	No
 demographic	neutered_indicator	Unknown
 demographic	neutered_indicator	Yes
@@ -77,39 +397,64 @@ diagnosis	concurrent_disease	Yes
 diagnosis	concurrent_disease_type	STRING
 diagnosis	date_of_diagnosis	DATETIME
 diagnosis	date_of_histology_confirmation	DATETIME
+diagnosis	diagnosis_id	STRING
 diagnosis	disease_term	B Cell Lymphoma
 diagnosis	disease_term	Bladder Cancer
+diagnosis	disease_term	Fibrolipoma
 diagnosis	disease_term	Glioma
 diagnosis	disease_term	Healthy Control
+diagnosis	disease_term	Hemangiosarcoma
+diagnosis	disease_term	Histiocytic Sarcoma
+diagnosis	disease_term	Lipoma
 diagnosis	disease_term	Lymphoma
 diagnosis	disease_term	Mammary Cancer
+diagnosis	disease_term	Mast Cell Tumor
 diagnosis	disease_term	Melanoma
 diagnosis	disease_term	Osteosarcoma
 diagnosis	disease_term	Pulmonary Neoplasms
+diagnosis	disease_term	Soft Tissue Sarcoma
+diagnosis	disease_term	Splenic Hematoma
+diagnosis	disease_term	Splenic Hyperplasia
+diagnosis	disease_term	T Cell Leukemia
 diagnosis	disease_term	T Cell Lymphoma
+diagnosis	disease_term	Thyroid Cancer
 diagnosis	disease_term	Unknown
 diagnosis	follow_up_data	No
+diagnosis	follow_up_data	Not Applicable
 diagnosis	follow_up_data	Yes
 diagnosis	histological_grade	STRING
 diagnosis	histology_cytopathology	STRING
 diagnosis	pathology_report	No
+diagnosis	pathology_report	Not Applicable
 diagnosis	pathology_report	Yes
 diagnosis	primary_disease_site	Bladder
-diagnosis	primary_disease_site	Bladder Urethra, Prostate
 diagnosis	primary_disease_site	Bladder, Prostate
 diagnosis	primary_disease_site	Bladder, Urethra
+diagnosis	primary_disease_site	Bladder, Urethra, Prostate
 diagnosis	primary_disease_site	Bladder, Urethra, Vagina
 diagnosis	primary_disease_site	Bone
 diagnosis	primary_disease_site	Bone (Appendicular)
 diagnosis	primary_disease_site	Bone (Axial)
+diagnosis	primary_disease_site	Bone Marrow
 diagnosis	primary_disease_site	Brain
+diagnosis	primary_disease_site	Carpus
+diagnosis	primary_disease_site	Chest Wall
+diagnosis	primary_disease_site	Distal Urethra
+diagnosis	primary_disease_site	Kidney
 diagnosis	primary_disease_site	Lung
 diagnosis	primary_disease_site	Lymph Node
 diagnosis	primary_disease_site	Mammary Gland
 diagnosis	primary_disease_site	Mouth
 diagnosis	primary_disease_site	Not Applicable
+diagnosis	primary_disease_site	Pleural Cavity
+diagnosis	primary_disease_site	Shoulder
+diagnosis	primary_disease_site	Skin
+diagnosis	primary_disease_site	Spleen
+diagnosis	primary_disease_site	Subcutis
+diagnosis	primary_disease_site	Thyroid Gland
 diagnosis	primary_disease_site	Unknown
 diagnosis	primary_disease_site	Urethra, Prostate
+diagnosis	primary_disease_site	Urinary Tract
 diagnosis	stage_of_disease	I
 diagnosis	stage_of_disease	II
 diagnosis	stage_of_disease	III
@@ -142,22 +487,23 @@ diagnosis	stage_of_disease	V
 diagnosis	stage_of_disease	Va
 diagnosis	stage_of_disease	Vb
 diagnosis	treatment_data	No
+diagnosis	treatment_data	Not Applicable
 diagnosis	treatment_data	Yes
 disease_extent	date_of_evaluation	DATETIME
-disease_extent	evaluation_code	TBD
-disease_extent	evaluation_number	TBD
-disease_extent	lesion_description	TBD
-disease_extent	lesion_number	TBD
-disease_extent	lesion_site	TBD
-disease_extent	longest_measurement	TBD
+disease_extent	evaluation_code	STRING
+disease_extent	evaluation_number	INTEGER
+disease_extent	lesion_description	STRING
+disease_extent	lesion_number	INTEGER
+disease_extent	lesion_site	STRING
+disease_extent	longest_measurement	NUMBER (TBD)
 disease_extent	measurable_lesion	TBD
-disease_extent	measured_how	TBD
+disease_extent	measured_how	STRING
 disease_extent	previously_irradiated	TBD
 disease_extent	previously_treated	TBD
 disease_extent	target_lesion	TBD
-enrollment	cohort_description	STRING
 enrollment	date_of_informed_consent	DATETIME
 enrollment	date_of_registration	DATETIME
+enrollment	enrollment_id	STRING
 enrollment	initials	STRING
 enrollment	patient_subgroup	STRING
 enrollment	registering_institution	STRING
@@ -181,6 +527,7 @@ file	file_status	uploaded
 file	file_status	uploading
 file	file_status	validated
 file	file_status	validating
+file	file_type	Affymetrix GeneChip Analysis File
 file	file_type	Array CGH Analysis File
 file	file_type	DNA Methylation Analysis File
 file	file_type	Data Analysis Whitepaper
@@ -233,7 +580,7 @@ physical_exam	assessment_timepoint	INTEGER
 physical_exam	body_system	Attitude
 physical_exam	body_system	Cardiovascular
 physical_exam	body_system	Endocrine
-physical_exam	body_system	Eyes/Ears/Nose/Throat
+physical_exam	body_system	Eyes, Ears, Nose and Throat
 physical_exam	body_system	Gastrointestinal
 physical_exam	body_system	Genitourinary
 physical_exam	body_system	Integumentary
@@ -245,7 +592,9 @@ physical_exam	body_system	Respiratory
 physical_exam	date_of_examination	DATETIME
 physical_exam	day_in_cycle	INTEGER
 physical_exam	pe_comment	STRING
-physical_exam	pe_finding	STRING
+physical_exam	pe_finding	Abnormal
+physical_exam	pe_finding	Normal
+physical_exam	pe_finding	Not examined
 physical_exam	phase_pe	TBD
 principal_investigator	pi_first_name	STRING
 principal_investigator	pi_last_name	STRING
@@ -259,13 +608,7 @@ prior_surgery	therapeutic_indicator	TBD
 prior_therapy	agent_name	EXTERNAL
 prior_therapy	agent_units_of_measure	STRING
 prior_therapy	any_therapy	BOOLEAN
-prior_therapy	best_response	Complete Response
-prior_therapy	best_response	Not Applicable
-prior_therapy	best_response	Not Determined
-prior_therapy	best_response	Partial Response
-prior_therapy	best_response	Progressive Disease
-prior_therapy	best_response	Stable Disease
-prior_therapy	best_response	Unknown
+prior_therapy	best_response_to_prior_therapy	STRING
 prior_therapy	date_of_first_dose	DATETIME
 prior_therapy	date_of_last_dose	DATETIME
 prior_therapy	date_of_last_dose_any_therapy	DATETIME
@@ -319,7 +662,10 @@ sample	necropsy_sample	Yes
 sample	percentage_tumor	STRING
 sample	physical_sample_type	Blood
 sample	physical_sample_type	Cell Line
+sample	physical_sample_type	Organoid
 sample	physical_sample_type	Tissue
+sample	physical_sample_type	Urine Sediment
+sample	physical_sample_type	Whole Blood
 sample	sample_chronology	After Treatment
 sample	sample_chronology	Before Treatment
 sample	sample_chronology	During Treatment
@@ -329,10 +675,15 @@ sample	sample_chronology	Upon Death
 sample	sample_chronology	Upon Progression
 sample	sample_chronology	Upon Relapse
 sample	sample_id	STRING
+sample	sample_preservation	EDTA
 sample	sample_preservation	FFPE
 sample	sample_preservation	Not Applicable
+sample	sample_preservation	RNAlater
 sample	sample_preservation	Snap Frozen
 sample	sample_preservation	Unknown
+sample	sample_site	Bladder
+sample	sample_site	Bladder Apex
+sample	sample_site	Bladder Apex-Mid
 sample	sample_site	Bladder Mid
 sample	sample_site	Bladder Mid-Trigone
 sample	sample_site	Bladder Mucosa
@@ -340,8 +691,12 @@ sample	sample_site	Bladder Trigone
 sample	sample_site	Bladder Trigone-Urethra
 sample	sample_site	Blood
 sample	sample_site	Bone
+sample	sample_site	Bone Marrow
 sample	sample_site	Brain
+sample	sample_site	Carpus
 sample	sample_site	Cerebellar
+sample	sample_site	Cutis
+sample	sample_site	Distal Urethra
 sample	sample_site	Femur
 sample	sample_site	Hemispheric
 sample	sample_site	Humerus
@@ -357,31 +712,43 @@ sample	sample_site	Lymph Node, Popliteal
 sample	sample_site	Mammary Gland
 sample	sample_site	Mandible, Mucosa
 sample	sample_site	Midline
+sample	sample_site	Mouth
 sample	sample_site	Mouth, Lingual
 sample	sample_site	Mouth, Mandible, Mucosa
 sample	sample_site	Mouth, Maxilla, Mucosa
 sample	sample_site	Muscle
+sample	sample_site	Pleural Effusion
 sample	sample_site	Radius
+sample	sample_site	Skin
+sample	sample_site	Spleen
 sample	sample_site	Subcutaneous Tissue
+sample	sample_site	Thyroid Gland
 sample	sample_site	Tibia
 sample	sample_site	Unknown
 sample	sample_site	Urethra
 sample	sample_site	Urethra Mid-distal
+sample	sample_site	Urinary Tract
 sample	specific_sample_pathology	Astrocytoma
 sample	specific_sample_pathology	B Cell Lymphoma
+sample	specific_sample_pathology	Carcinoma
 sample	specific_sample_pathology	Carcinoma With Simple And Complex Components
 sample	specific_sample_pathology	Chondroblastic Osteosarcoma
 sample	specific_sample_pathology	Complex Carcinoma
 sample	specific_sample_pathology	Fibroblastic Osteosarcoma
 sample	specific_sample_pathology	Giant Cell Osteosarcoma
+sample	specific_sample_pathology	Hemangiosarcoma
+sample	specific_sample_pathology	Histiocytic Sarcoma
+sample	specific_sample_pathology	Induced Endometrium
 sample	specific_sample_pathology	Lymphoma
+sample	specific_sample_pathology	Mast Cell Tumor
 sample	specific_sample_pathology	Melanoma
 sample	specific_sample_pathology	Not Applicable
 sample	specific_sample_pathology	Oligodendroglioma
 sample	specific_sample_pathology	Osteoblastic Osteosarcoma
-sample	specific_sample_pathology	Osteoblastic and Chrondroblastic Osteosarcoma
+sample	specific_sample_pathology	Osteoblastic and Chondroblastic Osteosarcoma
 sample	specific_sample_pathology	Osteosarcoma
 sample	specific_sample_pathology	Osteosarcoma; Combined Type
+sample	specific_sample_pathology	Primitive T-Cell Leukemia
 sample	specific_sample_pathology	Pulmonary Adenocarcinoma
 sample	specific_sample_pathology	Pulmonary Carcinoma
 sample	specific_sample_pathology	Simple Carcinoma
@@ -390,13 +757,23 @@ sample	specific_sample_pathology	Simple Carcinoma, Ductular
 sample	specific_sample_pathology	Simple Carcinoma, Inflammatory
 sample	specific_sample_pathology	Simple Carcinoma, Invasive, Ductal
 sample	specific_sample_pathology	Simple Carcinoma,  Ductular, Vascular Invasive
+sample	specific_sample_pathology	Soft Tissue Sarcoma
 sample	specific_sample_pathology	T Cell Lymphoma
 sample	specific_sample_pathology	Undefined
 sample	specific_sample_pathology	Urothelial Carcinoma
 sample	summarized_sample_type	Metastatic Tumor Tissue
 sample	summarized_sample_type	Normal Cell Line
 sample	summarized_sample_type	Normal Tissue
+sample	summarized_sample_type	Organoid (ASC-derived)
+sample	summarized_sample_type	PDO
+sample	summarized_sample_type	Patient-Derived Organoid
+sample	summarized_sample_type	Patient-Derived Organoid (Urine-derived)
 sample	summarized_sample_type	Primary Malignant Tumor Tissue
+sample	summarized_sample_type	Tumor Cell Line
+sample	summarized_sample_type	Tumor Cell Line (metastasis-derived)
+sample	summarized_sample_type	Tumoroid
+sample	summarized_sample_type	Tumoroid (Urine-derived)
+sample	summarized_sample_type	Urine Sediment
 sample	summarized_sample_type	Whole Blood
 sample	tumor_grade	1
 sample	tumor_grade	2
@@ -431,14 +808,15 @@ study_arm	ctep_treatment_assignment_code	REGEXP /^.+$/
 study_site	registering_institution	STRING
 study_site	site_short_name	STRING
 study_site	veterinary_medical_center	STRING
-visit	visit_date	TBD
-visit	visit_number	TBD
+visit	visit_date	DATETIME
+visit	visit_id	STRING
+visit	visit_number	INTEGER
 vital_signs	assessment_timepoint	INTEGER
 vital_signs	body_surface_area	NUMBER (sq meters)
 vital_signs	body_temperature	NUMBER (degrees F)
 vital_signs	body_temperature	NUMBER (degrees C)
 vital_signs	date_of_vital_signs	DATETIME
-vital_signs	ecg	BOOLEAN
+vital_signs	ecg	TBD
 vital_signs	modified_ecog	EXTERNAL
 vital_signs	patient_weight	NUMBER (kg)
 vital_signs	phase	TBD
@@ -449,171 +827,224 @@ vital_signs	respiration_rate	NUMBER (breaths/min)
 vital_signs	systolic_bp	NUMBER (mm Hg)
 
 relationship	source_node	destination_node	property	value_or_TYPE
-at_enrollment	physical_exam	enrollment	NA	NA
-at_enrollment	prior_therapy	enrollment	NA	NA
 at_enrollment	prior_surgery	enrollment	NA	NA
+at_enrollment	prior_therapy	enrollment	NA	NA
+at_enrollment	physical_exam	enrollment	NA	NA
 from_diagnosis	file	diagnosis	NA	NA
 had_adverse_event	case	adverse_event	NA	NA
-member_of	study_arm	study	NA	NA
+member_of	case	cohort	NA	NA
+member_of	case	study	NA	NA
+member_of	study	program	NA	NA
 member_of	cohort	study	NA	NA
 member_of	cohort	study_arm	NA	NA
-member_of	case	study	NA	NA
-member_of	case	cohort	NA	NA
-member_of	study	program	NA	NA
-next	visit	visit	NA	NA
+member_of	study_arm	study	NA	NA
 next	sample	sample	NA	NA
-next	prior_surgery	prior_surgery	NA	NA
 next	prior_therapy	prior_therapy	NA	NA
+next	visit	visit	NA	NA
+next	prior_surgery	prior_surgery	NA	NA
 next	adverse_event	adverse_event	NA	NA
 of_agent	agent_administration	agent	NA	NA
 of_agent	adverse_event	agent	NA	NA
-of_assay	image	assay	NA	NA
 of_assay	file	assay	NA	NA
-of_case	demographic	case	NA	NA
-of_case	registration	case	NA	NA
-of_case	enrollment	case	NA	NA
-of_case	adverse_event	case	NA	NA
+of_assay	image	assay	NA	NA
 of_case	file	case	NA	NA
-of_case	cycle	case	NA	NA
-of_case	follow_up	case	NA	NA
 of_case	diagnosis	case	NA	NA
 of_case	sample	case	NA	NA
+of_case	follow_up	case	NA	NA
+of_case	demographic	case	NA	NA
+of_case	enrollment	case	NA	NA
+of_case	registration	case	NA	NA
+of_case	adverse_event	case	NA	NA
+of_case	cycle	case	NA	NA
 of_case	visit	case	NA	NA
 of_cycle	visit	cycle	NA	NA
 of_sample	assay	sample	NA	NA
 of_sample	file	sample	NA	NA
 of_study	study_site	study	NA	NA
-of_study	publication	study	NA	NA
-of_study	principal_investigator	study	NA	NA
 of_study	file	study	NA	NA
+of_study	principal_investigator	study	NA	NA
+of_study	publication	study	NA	NA
 of_study	image_collection	study	NA	NA
-of_study_arm	agent	study_arm	NA	NA
 of_study_arm	case	study_arm	NA	NA
-on_visit	disease_extent	visit	NA	NA
-on_visit	sample	visit	NA	NA
-on_visit	agent_administration	visit	NA	NA
-on_visit	physical_exam	visit	NA	NA
+of_study_arm	agent	study_arm	NA	NA
 on_visit	lab_exam	visit	NA	NA
+on_visit	disease_extent	visit	NA	NA
+on_visit	physical_exam	visit	NA	NA
+on_visit	agent_administration	visit	NA	NA
 on_visit	vital_signs	visit	NA	NA
+on_visit	sample	visit	NA	NA
 represents	case	canine_individual	NA	NA
 went_off_study	case	off_study	NA	NA
 went_off_treatment	case	off_treatment	NA	NA
 
 property	description
-accession_id	A unique, alpha-numeric identifier, in the format of "ICDCxxxxxx", where xxxxxx represents six digits, which is assigned to the study/trial as of it being on-boarded, and which can be resolved by identifiers.org
-adverse_event_description	freetext
-adverse_event_grade	enum
+accession_id	A unique, alpha-numeric identifier, in the format of six digits, which is assigned to the study/trial as of it being on-boarded, and which can be resolved by identifiers.org when prefixed with "icdc:" to create a compact identifier in the format icdc:xxxxxx.
+additional_breed_detail	For patients/subjects/donors formally designated as either Mixed Breed or Other, any available detail as to the breeds contributing to the overall mix of breeds or clarification of the nature of the Other breed. Values for this field are therefore not relevant to pure-bred patients/subjects/donors, but for those of mixed breed or other origins, values are definitely preferred wherever available.
+adverse_event_agent_dose	The corresponding dose of any investigational new drug being administered at the time of any given adverse event being observed.
+adverse_event_agent_name	The name of any investigational new drug being administered at the time of any given adverse event being observed.
+adverse_event_description	A narrative description of any given adverse event which provides extra details as to its associated clinical, physical and behavioral observations, and/or mitigations for the adverse event.
+adverse_event_grade	The grade of any given adverse event, reported as an enumerated value corresponding to one of the five distinct grades as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).
+adverse_event_grade_description	The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE). Although enumerated grades are standard terms for the reporting of adverse event, the narrative form of adverse event grades will be useful to users not already familiar with adverse event grading.
+adverse_event_term	The specific controlled vocabulary term for any given adverse event, as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE).
 agent_units_of_measure	Agent UOM_FUL in form
-anatomical_site_of_surgery	Site_FUL on form
-arm	Where applicable, the nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm
-arm_description	A short description of the study arm
-arm_id	A unique identifier via which study arms can be differentiated from one another across studies/trials
-authorship	A list of authors for the cited work. More specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al
-best_response	Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor
-biospecimen_repository_acronym	The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in the form of an acronym
-biospecimen_repository_full_name	The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in full text form
-body_surface_area	Called "bsa" in form
-body_system	Body system examined; up to 12 in a visit
-breed	The specific breed of the canine patient/subject/donor, per the list of breeds officially recognized by the American Kennel Club
-canine_individual_id	A unique numerical ID, which, based upon the existence of registration-based matches between two or more study-specific cases, is auto-generated by the data loader, and which thereby tethers matching cases to the single underlying multi-study participant
-case_id	The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data transformation
-clinical_study_description	A multiple sentence summary of what the study/trial was intended to determine and how it was conducted
-clinical_study_designation	A unique, human-friendly, alpha-numeric identifier by which the study/trial will identified within the UI
-clinical_study_id	Where applicable, the ID for the study/trial as generated by the source database
-clinical_study_name	A succinct, narrative title for the study/trial, exactly as it should be displayed within the UI
-clinical_study_type	An arbitrary designation of the study/trial to indicate its underlying nature, e.g. Clinical Trial, Transcriptomics, Genomics
-cohort_description	Where applicable, the nature of each cohort into which the study/trial has been divided, e.g. in studies examining the effects of multiple doses of a therapeutic agent, the name and dose of the therapeutic agent used in any given cohort
-cohort_dose	The intended or protocol dose of the therapeutic agent used in any given cohort
-cohort_id	A unique identifier via which cohorts can be differentiated from one another across studies/trials
-collection_access	Indicator as to whether the image collection can be accessed via download versus being accessible only via the cloud
+anatomical_site_of_surgery	The anatomical location at which the prior surgery in question occurred.
+arm	Where applicable, the nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm.
+arm_description	A short description of the study arm.
+arm_id	A unique identifier via which study arms can be differentiated from one another across studies/trials. <br>This property is used as the key via which child records, e.g. cohort records, can be associated with the appropriate study arm during data loading, and to identify the correct records during data updates.
+assessment_timepoint	Pending
+attribution_to_commercial	A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by a commercially-available, FDA-approved therapeutic agent, used within the confines of the clinical trial either for its FDA-approved indication or in an off-label manner, but not as the investigational new drug or part of the investigational new therapy, versus the adverse event in question being unrelated to it.
+attribution_to_disease	A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the disease for which the patient/subject is being treated, or is unrelated to it.
+attribution_to_ind	A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by any investigational new drugs being administered as part of the clinical trial, or is unrelated to it.
+attribution_to_other	A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by some other factor(s), as described by the other_attribution_description property, or is unrelated to such other factors.
+attribution_to_research	A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the clinical trial/research environment in general, or is unrelated to it.
+authorship	A list of authors for the cited work. More specifically, for publications with no more than three authors, authorship quoted in full; for publications with more than three authors, authorship abbreviated to first author et al.
+best_response	Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor.
+biospecimen_repository_acronym	The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in the form of an acronym.
+biospecimen_repository_full_name	The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in full text form.
+body_surface_area	The body surface area of the patient/subject/donor at the time of the vital signs evaluation, expressed in square meters.
+body_system	Major organ system or physiological characteristic assessed during the examination of the patient/subject/donor during a follow-up visit. Observations are reported independently on each organ system or physiological characteristic.
+body_temperature	The temperature of the patient/subject/donor at the time of the vital signs evaluation.
+breed	The specific breed of the canine patient/subject/donor, per the list of breeds officially recognized by the American Kennel Club.
+canine_individual_id	A unique numerical ID, which, based upon the existence of registration-based matches between two or more study-specific cases, is auto-generated by the data loader, and which thereby tethers matching cases to the single underlying multi-study participant.
+case_id	The globally unique ID by which any given patient/subject/donor can be unambiguously identified and displayed across studies/trials; specifically the value of patient_id as supplied by the data submitter, prefixed with the appropriate ICDC study code during data alignment and/or transformation. <br>This property is used as the key via which child records, e.g. sample records, can be associated with the appropriate case during data loading, and to identify the correct records during data updates.
+clinical_study_description	A multiple sentence summary of what the study/trial was intended to determine and how it was conducted.
+clinical_study_designation	A unique, human-friendly, alpha-numeric identifier by which the study/trial will be identified within the UI. <br>This property is used as the key via which child records, e.g. case records, can be associated with the appropriate study during data loading, and to identify the correct records during data updates.
+clinical_study_id	Where applicable, the ID for the study/trial as generated by the source database.
+clinical_study_name	A succinct, narrative title for the study/trial, exactly as it should be displayed within the application's UI.
+clinical_study_type	An arbitrary designation of the study/trial to indicate its underlying. nature, e.g. Clinical Trial, Transcriptomics, Genomics.
+cohort_description	Where applicable, the nature of each cohort into which the study/trial has been divided, e.g. in studies examining the effects of multiple doses of a therapeutic agent, the name and dose of the therapeutic agent used in any given cohort.
+cohort_dose	The intended or protocol dose of the therapeutic agent used in any given cohort.
+cohort_id	A unique identifier via which cohorts can be differentiated from one another across studies/trials. <br>This property is used as the key via which cases can be associated with the appropriate cohort during data loading, and to identify the correct records during data updates.
+collection_access	Indicator as to whether the image collection can be accessed via download versus being accessible only via the cloud.
 comment	generic comment
-concurrent_disease	An indication as to whether the patient/subject/donor suffers from any significant secondary disease condition(s)
-concurrent_disease_type	The specifics of any notable secondary disease condition(s) observed within the patient/subject/donor
+concurrent_disease	An indication as to whether the patient/subject/donor suffers from any significant secondary disease condition(s).
+concurrent_disease_type	The specifics of any notable secondary disease condition(s) observed within the patient/subject/donor.
 contact_type	need vocab
 ctep_treatment_assignment_code	TBD
-date_of_birth	The date of birth of the canine patient/subject/donor
-date_of_diagnosis	The date upon which the patient/subject/donor was diagnosed with the primary disease in question
-date_of_evaluation	inferred from evaluation inputs (e.g.,PE)
-date_of_histology_confirmation	The date upon which the results of a histological evaluation of a sample from the patient/subject/donor were confirmed
-date_of_iacuc_approval	Where applicable, the date upon which the study/trial was approved by the IACUC
-date_of_informed_consent	The date upon which the owner of the patient/subject/donor signed an informed consent on behalf of the subject
-date_of_registration	The date upon which the patient/subject/donor was enrolled in the study/trial
-date_of_sample_collection	The date upon which the sample was acquired from the patient/subject/donor
-date_of_vital_signs	actually visit date
-dates_of_conduct	An indication of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year
-digital_object_id	Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet
-disease_term	The primary disease condition with which the patient/subject/donor was diagnosed
+cycle_number	For a patient/subject/donor enrolled in a clinical trial evaluating the effects of therapy administered in multiple cycles, the number of the treatment cycle during which visits occurred such that therapy could be administered and/or clinical observations could be made, with cycles numbered according to their chronological order.
+date_of_birth	The date of birth of the canine patient/subject/donor.
+date_of_cycle_end	The date upon which the treatent cycle in question ended.
+date_of_cycle_start	The date upon which the treament cycle in question began.
+date_of_diagnosis	The date upon which the patient/subject/donor was diagnosed with the primary disease in question.
+date_of_evaluation	The date upon which the extent of disease evaluation was conducted.
+date_of_examination	The date upon which the physical examination in question was conducted.
+date_of_histology_confirmation	The date upon which the results of a histological evaluation of a sample from the patient/subject/donor were confirmed.
+date_of_iacuc_approval	Where applicable, the date upon which the study/trial was approved by the IACUC.
+date_of_informed_consent	The date upon which the owner of the patient/subject/donor signed an informed consent on behalf of the subject.
+date_of_onset	The date upon which any given adverse event was first observed.
+date_of_registration	The date upon which the patient/subject/donor was enrolled in the study/trial.
+date_of_resolution	The date upon which any given adverse event resolved. If an adverse event was ongong at the time of death, the date of death should be used as the value date_of_resolution.
+date_of_sample_collection	The date upon which the sample was acquired from the patient/subject/donor.
+date_of_surgery	The date upon which the prior surgery in question occurred.
+date_of_vital_signs	The date upon which the vital signs evaluation in question was conducted.
+dates_of_conduct	An indication of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year.
+day_in_cycle	Numerically, the day in the treatment cycle upon which any given adverse event was first observed, where Day 1 is the first day of the treatment cycle within which the adverse event was observed. Some patients/subjects may undergo multiple treatment cycles, such that two or more adverse events may be observed on the same day in cycle, but actually be observed on different dates, because they occur in different treatment cycles.
+demographic_id	A unique identifier of each demographic record, used to identify the correct demographic records during data updates. The value of this property will generally be the same as the value of the case_id property.
+diagnosis_id	A unique identifier of each diagnosis record, used to associate child records, e.g. pathology reports, with the appropriate parent, and to identify the correct diagnosis records during data updates. The value of this property will generally be the same as the value of the case_id property.
+digital_object_id	Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet.
+disease_term	The primary disease condition with which the patient/subject/donor was diagnosed.
 document_number	S/N of the executed CRF
-dose_limiting_toxicity	bool
+dose_limiting_toxicity	An indication as to whether any given adverse event observed during the clinical trial is indicative of the dose of the therapeutic agent under test being limiting in terms of its toxicity.
 dose_schedule	Schedule_FUL in form
-file_description	An optional description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length
-file_format	The specific format of the file as determined by the data loader
-file_location	The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url
-file_name	The name of the file, maintained exactly as provided by the data submitter
-file_size	The exact size of the file in bytes
-file_status	An enumerated representation of the status of any given file
-file_type	An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format
-follow_up_data	An indication as to the existence of any follow-up data for the patient/subject/donor, typically in the form of a study-level supplemental data file
-general_sample_pathology	An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue
-histological_grade	The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level
-histology_cytopathology	A narrative summary of the primary observations from the the evaluation of a tumor sample from a patient/subject/donor, in terms of its histology and/or cytopathology
-image_collection_name	The name of the image collection exactly as it appears at the location where the collection can be viewed and/or accessed
-image_collection_url	The external url via which the image collection can be viewed and/or accessed
-image_type_included	A list of the image types included in the image collection, drawn from a list of acceptable values
-initials	The initials of the patient/subject/donor based upon the subject's first or given name, and the last or family name of the subject's owner
-journal_citation	The name of the journal in which the cited work was published, inclusive of the citation itself in terms of journal volume number, part number where applicable, and page numbers
-length_of_tumor	The length of the tumor from which a tumor sample was derived, as measured in mm
-md5sum	The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC
+ecg	Indication as to the normality of the electrocardiogram conducted during the vital signs evaluation.
+enrollment_id	A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates. The value of this property will generally be the same as the value of the case_id property.
+evaluation_code	An indication as to the status of any given lesion being evaluated, in terms of the evaluation establishing a baseline for the lesion, versus the lesion subject to evaluation being new, being stable in size, decreasing in size, increasing in size or having resolved.
+evaluation_number	The number of the evaluation durinhg which any given lesion was examined, with evaluations numbered according to their chronological order.
+existing_adverse_event	An indication as to whether any given adverse event occurred prior to the enrollment of a patient/subject into the clinical trial in question, and/or was ongoing at the time of trial enrollment.
+file_description	An optional description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length.
+file_format	The specific format of the file as determined by the data loader.
+file_location	The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url.
+file_name	The name of the file, maintained exactly as provided by the data submitter.
+file_size	The exact size of the file in bytes.
+file_status	An enumerated representation of the status of any given file.
+file_type	An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format.
+follow_up_data	An indication as to the existence of any follow-up data for the patient/subject/donor, typically in the form of a study-level supplemental data file.
+general_sample_pathology	An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue.
+histological_grade	The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level.
+histology_cytopathology	A narrative summary of the primary observations from the the evaluation of a tumor sample from a patient/subject/donor, in terms of its histology and/or cytopathology.
+image_collection_name	The name of the image collection exactly as it appears at the location where the collection can be viewed and/or accessed.
+image_collection_url	The external url via which the image collection can be viewed and/or accessed.
+image_type_included	A list of the image types included in the image collection, drawn from a list of acceptable values.
+initials	The initials of the patient/subject/donor based upon the subject's first or given name, and the last or family name of the subject's owner.
+journal_citation	The name of the journal in which the cited work was published, inclusive of the citation itself in terms of journal volume number, part number where applicable, and page numbers.
+length_of_tumor	The length of the tumor from which a tumor sample was derived, as measured in mm.
+lesion_description	Additional detail as to the specific location of the lesion subject to evaluation. For example, in the case of a lymph node lesion, the specific lymph node in which the lesion is located.
+lesion_number	An arbitrary numerical designation for each lesion subject to evaluation, by which that lesion can be unambiguously identified.
+lesion_site	The overall anatomical location of the lesion being assessed in terms of the organ or organ system in which it is located. For example, lung, lymph node, etc.
+longest_measurement	The longest dimension of the lesion subject to evaluation, as measured in (units TBD)
+md5sum	The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC.
+measurable_lesion	Pending
+measured_how	The method by which the size of any given lesion was determined.
 medication_missed_dose	Q.- form has "medication"
 missed_dose_units_of_measure	Q.- form has "dose uom_ful"
-molecular_subtype	Where applicable, the molecular subtype of the tumor sample in question, for example, the tumor being basal versus lumnial in nature
-necropsy_sample	An indication as to whether a sample was acquired as a result of a necropsy examination
-neutered_indicator	Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects)
-pathology_report	An indication as to the existence of any detailed pathology evaluation upon which the primary diagnosis was based, either in the form of a formal, subject-specific pathology report, or as detailed in a study-level supplemental data file
-patient_age_at_enrollment	The age of the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years
-patient_first_name	Where available, the name given to the patient/subject/donor
-patient_id	The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least within a single study/trial, recorded exactly as provided by the data submitter; once prefixed with the appropriate ICDC study code during data transformation, values of Patient ID become Case IDs
+modified_ecog	The Eastern Cooperative Oncology Group (ECOG) performance status of the patient/subject/donor at the time of the vital signs evaluation. The value of this metric indicates the overall function of the patient/subject/donor and his/her ability to tolerate therapy.
+molecular_subtype	Where applicable, the molecular subtype of the tumor sample in question, for example, the tumor being basal versus lumnial in nature.
+necropsy_sample	An indication as to whether a sample was acquired as a result of a necropsy examination.
+neutered_indicator	Indicator as to whether the patient/subject/donor has been either spayed (female subjects) or neutered (male subjects).
+ongoing_adverse_event	An indication as to whether any given adverse event was ongoing as of the end of a treatment cycle, the end of the clinical trial itself, or the patient/subject being taken off study.
+other_attribution_description	A description of any other factor or factors to which any given adverse event has been attributed. Where an adverse event is attributed to factors other than the standard factors of research, disease, IND or commercial, a description of the other factor(s) to which the adverse event was attributed is required.
+pathology_report	An indication as to the existence of any detailed pathology evaluation upon which the primary diagnosis was based, either in the form of a formal, subject-specific pathology report, or as detailed in a study-level supplemental data file.
+patient_age_at_enrollment	The age of the canine patient/subject/donor as of study/trial enrollment, expressed in standard human years, as opposed to dog years.
+patient_first_name	Where available, the given name of the patient/subject/donor.
+patient_id	The preferred ID by which the data submitter uniquely identifies any given patient/subject/donor, at least within a single study/trial, recorded exactly as provided by the data submitter. Once prefixed with the appropriate ICDC study code during data alignment and/or transformation, values of Patient ID become values of Case ID.
 patient_status	need vocab
-patient_subgroup	A short description as to the reason for the patient/subject/donor being enrolled in any given study/trial arm or cohort, for example, a clinical trial patient having been enrolled in a dose escalation cohort
-pe_finding	Clinical exam result for the body system examined. Finding_results on form.
-percentage_tumor	The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range
+patient_subgroup	A short description as to the reason for the patient/subject/donor being enrolled in any given study/trial arm or cohort, for example, a clinical trial patient having been enrolled in a dose escalation cohort.
+patient_weight	The weight of the patient/subject/donor at the time of the vital signs evaluation, measured in kilograms.
+pe_comment	Narrative comment describing any notable observations concerning any given major organ system or physiological status assessed.
+pe_finding	Indication as to the normal versus abnormal function of the major organ system or physiological characteristic assessed.
+percentage_tumor	The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range.
+phase_pe	Pending
 physical_exam_performed	y/n
-physical_sample_type	An indication as to the physical nature of any given sample
-pi_first_name	The first or given name of each principal investigator of the study/trial
-pi_last_name	The last or family name of each principal investigator of the study/trial
-pi_middle_initial	Where applicable, the middle initial(s) of each principal investigator of the study/trial
-primary_disease_site	The anatomical location at which the primary disease originated, recorded in relatively general terms at the subject level; the anatomical locations from which tumor samples subject to downstream analysis were acquired is recorded in more detailed terms at the sample level
-program_acronym	The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI
-program_external_url	The external url to which users should be directed in order to learn more about the program
-program_full_description	A more detailed, multiple sentence description of the program
-program_name	The name of the program under which related studies will be grouped, in full text and unabbreviated form, exactly as it will be displayed within the UI
-program_short_description	An abbreviated, single sentence description of the program
-program_sort_order	An arbitrarily-assigned value used to dictate the order in which programs are displayed within the UI
-publication_title	The full title of the publication stated exactly as it appears on the published work
-pubmed_id	Where applicable, the unique numerical identifier assigned to the cited work by PubMed, by which it can be linked to via the internet
-registering_institution	TBD
-registration_id	Any ID used by a data submitter to identify a patient/subject/donor, either locally or globally
-registration_origin	The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym
-repository_name	The name of the image repository within which the image collection can be found, stated in the form of the appropriate acronym
-sample_chronology	An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations
-sample_id	The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation
-sample_preservation	The method by which a sample was preserved
-sample_site	The specific anatomical location from which any given sample was acquired
-sex	The biological sex of the patient/subject/donor
-site_short_name	The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
-specific_sample_pathology	The specific histology and/or pathology associated with a sample
-stage_of_disease	The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria
-study_disposition	An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public release
-summarized_sample_type	A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin
-surgical_finding	Findings_FUL on form
-treatment_data	An indication as to the existence of any treatment data for the patient/subject/donor, typically in the form of a study-level supplemental data file
+physical_sample_type	An indication as to the physical nature of any given sample.
+pi_first_name	The first or given name of each principal investigator of the study/trial.
+pi_last_name	The last or family name of each principal investigator of the study/trial.
+pi_middle_initial	Where applicable, the middle initial(s) of each principal investigator of the study/trial.
+previously_irradiated	Pending
+previously_treated	Pending
+primary_disease_site	The anatomical location at which the primary disease originated, recorded in relatively general terms at the subject level; the anatomical locations from which tumor samples subject to downstream analysis were acquired is recorded in more detailed terms at the sample level.
+procedure	The type of procedure performed during the prior surgery in question.
+program_acronym	The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI. <br>This property is used as the key via which study records can be associated with the appropriate program during data loading, and to identify the correct records during data updates.
+program_external_url	The external url to which users should be directed in order to learn more about the program.
+program_full_description	A more detailed, multiple sentence description of the program.
+program_name	The name of the program under which related studies will be grouped, in full text and unabbreviated form, exactly as it will be displayed within the UI.
+program_short_description	An abbreviated, single sentence description of the program.
+program_sort_order	An arbitrarily-assigned value used to dictate the order in which programs are displayed within the application's UI.
+publication_title	The full title of the publication stated exactly as it appears on the published work. <br>This property is used as the key via which to identify the correct records during data updates.
+pubmed_id	Where applicable, the unique numerical identifier assigned to the cited work by PubMed, by which it can be linked to via the internet.
+pulse	The heart rate of the patient/subject/donor at the time of the vital signs evaluation, measured in beats per minute.
+pulse_ox	The level of oxygen saturation in the blood of the patient/subject/donor at the time of the vital signs evaluation, expressed in terms of the percentage saturation.
+registering_institution	Pending
+registration_id	Any ID used by a data submitter to identify a patient/subject/donor, either locally or globally.
+registration_origin	The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym.
+repository_name	The name of the image repository within which the image collection can be found, stated in the form of the appropriate acronym.
+residual_disease	TBD
+respiration_pattern	An indication as to the normality of the breathing pattern of the patient/subject/donor at the time of the vital signs evaluation.
+respiration_rate	The rate of respiration of the patient/subject/donor at the time of the vital signs evaluation, measured in the number of breaths taken per minute.
+sample_chronology	An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations.
+sample_id	The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. file records, can be associated with the appropriate sample during data loading, and to identify the correct records during data updates.
+sample_preservation	The method by which a sample was preserved.
+sample_site	The specific anatomical location from which any given sample was acquired.
+sex	The biological sex of the patient/subject/donor.
+site_short_name	The widely-accepted acronym for the institution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program.
+specific_sample_pathology	The specific histology and/or pathology associated with a sample.
+stage_of_disease	The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria.
+study_disposition	An arbitrarily-assigned value used to dictate how the study/trial is displayed via the ICDC Production environment, based upon the degree to which the data has been on-boarded and/or whether the data is subject to any temporary embargo which prevents its public release.
+summarized_sample_type	A summarized representation of a sample's physical nature, normality, and derivation from a primary versus a metastatic tumor, based upon the combination of values in the three independent properties of physical_sample_type, general_sample_pathology and tumor_sample_origin.
+surgical_finding	A narrative description of any notable observations made during the prior surgery in question.
+systolic_bp	The systolic blood pressure of the patient/subject/donor at the time of the vital signs evaluation, measured in mm of mercury.
+target_lesion	Pending
+therapeutic_indicator	TBD
+treatment_data	An indication as to the existence of any treatment data for the patient/subject/donor, typically in the form of a study-level supplemental data file.
 treatment_since_last_contact	y/n
-tumor_grade	The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation
-tumor_sample_origin	An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor
-unexpected_adverse_event	bool
-uuid	The universally unique alpha-numeric identifier assigned to each file
-veterinary_medical_center	The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
-volume_of_tumor	The volume of the tumor from which a tumor sample was derived, as measured in cm3
-weight	The weight of the patient/subject/donor at the time of study/trial enrollment and/or biospecimens being acquired, at least in the case of studies that are not longitudinal in nature
-width_of_tumor	The width of the tumor from which a tumor sample was derived, as measured in mm
-year_of_publication	The year in which the cited work was published
+tumor_grade	The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation.
+tumor_sample_origin	An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor.
+unexpected_adverse_event	An indication as to whether any given adverse event observed during the clinical trial is completely unanticipated and therefore considered novel.
+uuid	The universally unique alpha-numeric identifier assigned to each file.
+veterinary_medical_center	The full name of the insitution at which the patient/subject/donor was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state.
+visit_date	The date upon which the visit occurred.
+visit_id	A globally unique identifier of each visit record; specifically the value of case_id concatenated with the value of visit_date, the date upon which the visit occurred. <br>This property is used as the key via which child records, e.g. physical examination records, can be associated with the appropriate visit, and to identify the correct visit records during data updates.
+visit_number	The number of the visit during which therapy was administered and/or clinical observations were made, with visits numbered according to their chronological order.
+volume_of_tumor	The volume of the tumor from which a tumor sample was derived, as measured in cubic centimeters.
+weight	The weight of the patient/subject/donor at the time of study/trial enrollment and/or biospecimens being acquired, at least in the case of studies that are not longitudinal in nature.
+width_of_tumor	The width of the tumor from which a tumor sample was derived, as measured in mm.
+year_of_publication	The year in which the cited work was published.

@@ -20,4 +20,5 @@ jobs:
       model_prefix: icdc-model
       event_name: ${{ github.event_name }}
     secrets:
-      token: ${{ secrets.token }}
+      token: ${{ secrets.PAT }}
+
