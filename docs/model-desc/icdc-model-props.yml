@@ -49,9 +49,10 @@ PropDefinitions:
       - "3" # Severe
       - "4" # Life-threatening
       - "5" # Death
+      - Unknown # accommodates situations where an adverse event is described in detail but somehow not assigned any grade
     Req: 'Yes'
   adverse_event_grade_description: 
-    Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades defined by as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE). Although enumerated grades are standard terms for the reporting of adverse event, the narrative form of adverse event grades will be useful to users not already familiar with adverse event grading.
+    Desc: The grade of any given adverse event, reported in the form of a single descriptive term corresponding to one of the five enumerated grades as defined by the Veterinary Comparative Oncology Group's Common Terminology Criteria for Adverse Events (VCOG-CTCAE). Although numerical values for grade are standard terms for the reporting of adverse events, the narrative form of adverse event grades will be useful to users not already familiar with adverse event grading.
     Src: Data Owner(s)
     Enum:
       - Mild
@@ -59,13 +60,14 @@ PropDefinitions:
       - Severe
       - Life-threatening
       - Death
+      - Unknown # accommodates situations where an adverse event is described in detail but somehow not assigned any grade
     Req: Preferred  
   adverse_event_agent_name:
     Desc: The name of any investigational new drug being administered at the time of any given adverse event being observed.
     Src: Data Owner(s)
     Type: string # changing this to string at least temporarily
       #- http://localhost/terms/domain/agent_name
-    Req: 'Yes'
+    Req: 'No'
   adverse_event_agent_dose:
     Desc: The corresponding dose of any investigational new drug being administered at the time of any given adverse event being observed.
     Src: Data Owner(s)
@@ -73,16 +75,17 @@ PropDefinitions:
       #units:
         #- mg/kg # there's no way we can specify all of the possible dosage rates - they vary wildly
       #value_type: number
-    Req: 'Yes'
+    Req: 'No'
   attribution_to_research:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the clinical trial/research environment in general, or is unrelated to it.
     Src: Data Owner(s)
     Enum:
       - Unrelated # the adverse event is clearly not related to the research/clinical enviroment
       - Unlikely  # the adverse event is doubtfully related to the research/clinical enviroment
-      - Possible  # the adverse event may be not related to the research/clinical enviroment
+      - Possible  # the adverse event may be related to the research/clinical enviroment
       - Probable  # the adverse event is likely related to the research/clinical enviroment
       - Definite  # the adverse event is clearly related to the research/clinical enviroment
+      - Undefined # the adverse event cannot be assigned any of the five definitive attribution probabilities with sufficient confidence
     Req: 'Yes'
   attribution_to_ind:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by any investigational new drugs being administered as part of the clinical trial, or is unrelated to it.
@@ -93,7 +96,7 @@ PropDefinitions:
       - Possible
       - Probable
       - Definite
-      - Not Applicable #needed to accommodate clinical trials which don't assess the effects of an investigational new drug
+      - Not Applicable # needed to accommodate clinical trials which don't assess the effects of an investigational new drug
     Req: 'Yes'
   attribution_to_disease:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by the disease for which the patient/subject is being treated, or is unrelated to it.
@@ -104,6 +107,7 @@ PropDefinitions:
       - Possible
       - Probable
       - Definite
+      - Undefined # the adverse event cannot be assigned any of the five definitive attribution probabilities with sufficient confidence
     Req: 'Yes'
   attribution_to_commercial:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by a commercially-available, FDA-approved therapeutic agent, used within the confines of the clinical trial either for its FDA-approved indication or in an off-label manner, but not as the investigational new drug or part of the investigational new therapy, versus the adverse event in question being unrelated to it.
@@ -114,7 +118,7 @@ PropDefinitions:
       - Possible
       - Probable
       - Definite
-      - Not Applicable #needed to accommodate clinical trials which don't directly assess the effects of any commercially available therapeutic agent or use such agents as part of the therapy
+      - Not Applicable # needed to accommodate clinical trials which don't directly assess the effects of any commercially available therapeutic agent or use such agents as part of the therapy
     Req: 'Yes'
   attribution_to_other:
     Desc: A qualitative indication as to whether any given adverse event is likely, possibly, probably or definitely caused by some other factor(s), as described by the other_attribution_description property, or is unrelated to such other factors.
@@ -125,18 +129,20 @@ PropDefinitions:
       - Possible
       - Probable
       - Definite
+      - Undefined # the adverse event cannot be assigned any of the five definitive attribution probabilities with sufficient confidence
     Req: 'Yes'
   other_attribution_description:
     Desc: A description of any other factor or factors to which any given adverse event has been attributed. Where an adverse event is attributed to factors other than the standard factors of research, disease, IND or commercial, a description of the other factor(s) to which the adverse event was attributed is required.
     Src: Data Owner(s)
     Type: string
-    Req: 'No' #although not strictly required, if attribution_to_other is anything other than unlikely, the other attribution must be stated
+    Req: 'No' # although not strictly required, if attribution_to_other is anything other than unlikely, the other attribution must be stated
   dose_limiting_toxicity:
     Desc: An indication as to whether any given adverse event observed during the clinical trial is indicative of the dose of the therapeutic agent under test being limiting in terms of its toxicity.
     Src: Data Owner(s)
     Enum:
       - 'Yes'
       - 'No'
+      - Not Applicable # accommodates situations where an adverse event is not attributed to any therapeutic agent and cannot therefore be limiting in terms of dosage
     Req: 'Yes'
   unexpected_adverse_event:
     Desc: An indication as to whether any given adverse event observed during the clinical trial is completely unanticipated and therefore considered novel.
@@ -144,6 +150,7 @@ PropDefinitions:
     Enum:
       - 'Yes'
       - 'No'
+      - Undefined # accommodates situations where there is any ambiguity in terms of an adverse event being expected or not
     Req: 'Yes'
   # agent props
   document_number:
@@ -497,6 +504,7 @@ PropDefinitions:
       - Mastiff
       - Miniature American Shepherd
       - Miniature Bull Terrier
+      - Miniature Dachshund
       - Miniature Pinscher
       - Miniature Schnauzer
       - Mixed Breed
@@ -590,6 +598,7 @@ PropDefinitions:
       - Tornjak
       - Tosa
       - Toy Fox Terrier
+      - Toy Poodle
       - Transylvanian Hound
       - Treeing Tennessee Brindle Coonhound
       - Treeing Walker Coonhound
@@ -741,6 +750,7 @@ PropDefinitions:
       - T Cell Lymphoma
       - Thyroid Cancer
       - Unknown
+      - Urothelial Carcinoma
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
     Tags:
@@ -813,6 +823,7 @@ PropDefinitions:
       - Unknown
       - Urethra, Prostate
       - Urinary Tract
+      - Urogenital Tract
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
     Tags:
@@ -837,12 +848,14 @@ PropDefinitions:
       - Va
       - Vb
       - TisN0M0
+      - TisN1M1 #added per ORGANOIDS01
       - T1N0M0
       - T1NXM0
       - T2N0M0
       - T2N0M1
       - T2N1M0
-      - T2N1M1
+      - T2N1M1 #added per ORGANOIDS01
+      - T2N2M1
       - T3N0M0
       - T3N0M1
       - T3N1M0
@@ -1541,6 +1554,7 @@ PropDefinitions:
       - FFPE
       - RNAlater
       - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
+      - TRIzol
       - Not Applicable # included to accommodate cell line samples, which will generally be processed absent interim preservation and storage
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
     Req: 'Yes'
@@ -1568,6 +1582,7 @@ PropDefinitions:
       - Cutis
       - Distal Urethra
       - Femur
+      - Genitourinary Tract
       - Hemispheric
       - Humerus
       - Kidney
@@ -1587,6 +1602,7 @@ PropDefinitions:
       - Mouth, Mandible, Mucosa
       - Mouth, Maxilla, Mucosa
       - Muscle
+      - Pancreas
       - Pleural Effusion
       - Radius
       - Skin
@@ -1597,7 +1613,9 @@ PropDefinitions:
       - Unknown
       - Urethra
       - Urethra Mid-distal
-      - Urinary Tract
+      - Urinary Bladder
+      - Urogenital Tract
+      - Uterus
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
     Tags:
@@ -1626,11 +1644,14 @@ PropDefinitions:
       - Carcinoma With Simple And Complex Components
       - Chondroblastic Osteosarcoma
       - Complex Carcinoma
+      - Endometrium (organoid)
       - Fibroblastic Osteosarcoma
       - Giant Cell Osteosarcoma
       - Hemangiosarcoma
       - Histiocytic Sarcoma
       - Induced Endometrium
+      - Liver (organoid)
+      - Lung (organoid)
       - Lymphoma
       - Mast Cell Tumor
       - Melanoma
@@ -1640,6 +1661,7 @@ PropDefinitions:
       - Osteoblastic and Chondroblastic Osteosarcoma
       - Osteosarcoma
       - Osteosarcoma; Combined Type
+      - Pancreas (organoid)
       - Primitive T-Cell Leukemia
       - Pulmonary Adenocarcinoma
       - Pulmonary Carcinoma
@@ -1651,8 +1673,10 @@ PropDefinitions:
       - Simple Carcinoma, Invasive, Ductal
       - Soft Tissue Sarcoma
       - T Cell Lymphoma
+      - Urinary Bladder (organoid)
       - Undefined
       - Urothelial Carcinoma
+      - Urothelial Carcinoma (organoid)
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
     Req: 'Yes'
     Tags:
@@ -1665,15 +1689,15 @@ PropDefinitions:
       - Normal Cell Line
       - Normal Tissue
       - Organoid (ASC-derived)
-      - Patient-Derived Organoid
-      - Patient-Derived Organoid (Urine-derived)
-      - PDO
+      #- Patient-Derived Organoid
+      #- Patient-Derived Organoid (urine-derived)
+      #- PDO
       - Primary Malignant Tumor Tissue
       - Urine Sediment
       - Tumor Cell Line
       - Tumor Cell Line (metastasis-derived)
       - Tumoroid
-      - Tumoroid (Urine-derived)
+      - Tumoroid (urine-derived)
       - Whole Blood
       # these represent the de facto acceptable values, i.e. the values to which we have thus far aligned submitted data
     Req: 'Yes'
