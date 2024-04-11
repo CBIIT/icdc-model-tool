@@ -1604,13 +1604,17 @@ PropDefinitions:
       - Mouth, Maxilla, Mucosa
       - Muscle
       - Pancreas
+      - Phalange
       - Pleural Effusion
       - Radius
+      - Scapula
       - Skin
+      - Skin and Muscle
       - Spleen
       - Subcutaneous Tissue
       - Thyroid Gland
       - Tibia
+      - Ulna
       - Unknown
       - Urethra
       - Urethra Mid-distal
@@ -1674,6 +1678,7 @@ PropDefinitions:
       - Simple Carcinoma, Invasive, Ductal
       - Soft Tissue Sarcoma
       - T Cell Lymphoma
+      - Telangiectatic Osteosarcoma
       - Urinary Bladder (organoid)
       - Undefined
       - Urothelial Carcinoma
@@ -1717,6 +1722,7 @@ PropDefinitions:
       - Low
       - Unknown
       - Not Applicable
+      - Not Determined
     Req: Preferred
     Tags:
        Labeled: Tumor Grade
