@@ -54,12 +54,10 @@ Nodes:
       Class: secondary
       Template: 'Yes'
     Props:
-      - arm
-      - ctep_treatment_assignment_code
-      # arm has no example in the data, putting cohort_description in here
-      # to help define study_arm
+      - arm # arm name
       - arm_description
       - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
+      - ctep_treatment_assignment_code
   agent:
     Desc: The Agent node documents the name of each therapeutic agent being administered during a clinical trial. In this way, in clinical trials which assess the efficacy of combination therapies, adverse events observed during the trial can be attributed specifically to one or more of the medications being used.
     Tags:
@@ -80,10 +78,9 @@ Nodes:
       Class: secondary
       Template: 'Yes'
     Props:
-      - cohort_description
-      # the intended or protocol dose
-      - cohort_dose
+      - cohort_description # cohort name generally inclusive of some detail as to agent and dose
       - cohort_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
+      - cohort_dose # the intended or protocol dose
   case:
     Desc: The Case node contains properties required to unambiguously identify each patient/subject/donor, either based upon the data submitter's original ID, or upon a study-specific Case ID derived from it during data transformation, which prefixes each original ID with a short, study-specific code.
     Tags:
@@ -410,15 +407,15 @@ Nodes:
     Props:
       - date_of_vital_signs
       - body_temperature
-      - pulse
       - respiration_rate
       - respiration_pattern
-      - systolic_bp
+      - pulse
       - pulse_ox
+      - systolic_bp
+      - ecg
       - patient_weight
       - body_surface_area
       - modified_ecog
-      - ecg
       - assessment_timepoint
       - phase
   lab_exam:
