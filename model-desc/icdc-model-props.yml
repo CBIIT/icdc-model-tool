@@ -673,7 +673,7 @@ PropDefinitions:
        Labeled: Weight (kg)
   # diagnosis props
   best_response:
-    Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor. EXPLAIN HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which response to therapeutic intervention was either deliberately not assessed because no therapeutic intervention was being tested by the study/trial in question, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
+    Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which response to therapeutic intervention was either deliberately not assessed because no therapeutic intervention was being tested by the study/trial in question, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - Complete Response
@@ -765,7 +765,7 @@ PropDefinitions:
        Labeled: Follow Up Data Available
   histological_grade:
     Desc: The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level.
-    Src: Data Owner(s) EXPLAIN HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which histological grade was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
+    Src: Data Owner(s) GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which histological grade was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
     #Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/histological_grade
     Enum:
@@ -838,7 +838,7 @@ PropDefinitions:
     Tags:
        Labeled: Primary Disease Site, Disease Site, Primary Site
   stage_of_disease:
-    Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria. EXPLAIN HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which stage of disease was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
+    Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which stage of disease was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - I
@@ -1486,7 +1486,7 @@ PropDefinitions:
     Type: datetime
     Req: 'No'
   general_sample_pathology:
-    Desc: An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue. EXPLAIN HERE <br>For any type of blood sample, the value of this property should be "Not Applicable", unless the patient/subject/donor in question has been diagnosed with any type of hematological malignancy that would render the blood abnormal.
+    Desc: An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue. GUIDANCE ADDED HERE<br>For any type of blood sample, the value of this property should be "Not Applicable", unless the patient/subject/donor in question has been diagnosed with any type of hematological malignancy that would render the blood abnormal.
     Src: Data Owner(s)
     Enum:
       - Normal
@@ -1512,7 +1512,7 @@ PropDefinitions:
     Type: string
     Req: 'No'
   necropsy_sample:
-    Desc: An indication as to whether a sample was acquired as a result of a necropsy examination. EXPLAIN HERE<br>For cell line samples, the value of this property should be "Not Applicable".
+    Desc: An indication as to whether a sample was acquired as a result of a necropsy examination. GUIDANCE ADDED HERE<br>For cell line samples, the value of this property should be "Not Applicable".
     Src: Data Owner(s)
     Enum:
       - 'Yes'
@@ -1523,14 +1523,14 @@ PropDefinitions:
     Tags:
        Labeled: Necropsy Sample
   percentage_tumor:
-    Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range. EXPLAIN HERE<br>The value of this property should be "Not Applicable" for normal samples and blood samples, "Not Determined" for tumor samples in which percentage tumor was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for samples where no other definitive value can be assigned.
+    Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for normal samples and blood samples, "Not Determined" for tumor samples in which percentage tumor was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Type: string #changed to string in order to accommodate values being quoted in ranges, as greater or less than, or as Unknown
     Req: 'Yes'
     Tags:
        Labeled: Percentage Tumor
   sample_chronology:
-    Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations. EXPLAIN HERE<br>The value of this property should be "Not Applicable" for samples acquired via a study/trial that did not asses the effects of any therapeutic intervention, and "Unknown" for samples where no other definitive value can be assigned.
+    Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for samples acquired via a study/trial that did not asses the effects of any therapeutic intervention, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - Before Treatment
@@ -1553,7 +1553,7 @@ PropDefinitions:
     Tags:
        Labeled: Sample ID
   sample_preservation:
-    Desc: The method by which a sample was preserved. EXPLAIN HERE<br>The value of this property should be "Not Applicable" for cell line samples not subject to any interim preservation and storage, and "Unknown" for samples where no other definitive value can be assigned.
+    Desc: The method by which a sample was preserved. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for cell line samples not subject to any interim preservation and storage, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - EDTA
@@ -1712,7 +1712,7 @@ PropDefinitions:
     Tags:
        Labeled: Sample Type
   tumor_grade:
-    Desc: The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation. EXPLAIN HERE<br>The value of this property should be "Not Applicable" for normal samples and blood samples, "Not Determined" for tumor samples in which grade was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for samples where no other definitive value can be assigned.
+    Desc: The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for normal samples and blood samples, "Not Determined" for tumor samples in which grade was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - "1"
@@ -1729,7 +1729,7 @@ PropDefinitions:
     Tags:
        Labeled: Tumor Grade
   tumor_sample_origin:
-    Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor. EXPLAIN HERE<br>The value of this property should be "Not Applicable" for any sample not derived from tumor tissue, and "Unknown" for samples where no other definitive value can be assigned.
+    Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for any sample not derived from tumor tissue, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - Primary
