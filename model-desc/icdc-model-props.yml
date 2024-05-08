@@ -1793,7 +1793,7 @@ PropDefinitions:
   date_of_iacuc_approval:
     Desc: Where applicable, the date upon which the study/trial was approved by the IACUC.
     Src: Data Owner(s)
-    Type: datetime
+    Type: string # changing this from datetime to string in order to accommodate studies having more than one IACUC approval date, with the OSA02 study being a prime example of that situation
     Req: 'No'
     Tags:
        Labeled: Date of IACUC Approval
