@@ -22,7 +22,7 @@ Nodes:
   study:
     StaticProps:
       - clinical_study_designation
-    Export:
+    ExportProps:
       - clinical_study_designation
       - case_id
       - patient_id
@@ -31,7 +31,7 @@ Nodes:
       - cohort_dose
       - cohort_id
   demographic:
-    Export:
+    ExportProps:
       - demographic_id
       - breed
       - additional_breed_detail
@@ -53,7 +53,7 @@ Nodes:
       - concurrent_disease
       - concurrent_disease_type
   sample:
-    Export:
+    ExportProps:
       - sample_id
       - sample_site
       - physical_sample_type
@@ -74,4 +74,3 @@ Nodes:
 
 
 
-      
