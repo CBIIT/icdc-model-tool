@@ -1,0 +1,76 @@
+# ICDC nodes and props for the file manifest
+# Title case names are "reserved" (meaningful to the parser)
+# Lower case names are labels for the entities
+# The first 4 properties listed in the File Manifest are designated in StaticProps. The file properties are required by the CGC and the others are designated for context. These will not change and do not need to be read dynamically.
+   
+Nodes:
+  file:
+    StaticProps:
+      - file_name
+      - drs_uri
+    ExportProps:
+      - file_type
+      - file_description
+      - file_format
+      - file_size
+      - md5sum
+      - uuid
+      - file_location
+  case:
+    StaticProps:
+      - case_id
+  study:
+    StaticProps:
+      - clinical_study_designation
+    ExportProps:
+      - clinical_study_designation
+      - case_id
+      - patient_id
+      - patient_first_name
+      - cohort_description
+      - cohort_dose
+      - cohort_id
+  demographic:
+    ExportProps:
+      - demographic_id
+      - breed
+      - additional_breed_detail
+      - patient_age_at_enrollment
+      - date_of_birth
+      - sex
+      - weight
+      - neutered_indicator
+      - diagnosis_id
+      - disease_term
+      - stage_of_disease
+      - histology_cytopathology
+      - date_of_histology_confirmation
+      - histological_grade
+      - best_response
+      - pathology_report
+      - treatment_data
+      - follow_up_data
+      - concurrent_disease
+      - concurrent_disease_type
+  sample:
+    ExportProps:
+      - sample_id
+      - sample_site
+      - physical_sample_type
+      - general_sample_pathology
+      - tumor_sample_origin
+      - summarized_sample_type
+      - molecular_subtype
+      - specific_sample_pathology
+      - date_of_sample_collection
+      - sample_chronology
+      - necropsy_sample
+      - tumor_grade
+      - length_of_tumor
+      - width_of_tumor
+      - volume_of_tumor
+      - percentage_tumor
+      - sample_preservation
+
+
+
