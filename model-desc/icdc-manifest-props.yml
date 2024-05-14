@@ -1,22 +1,14 @@
 # ICDC nodes and props for the file manifest
 # Title case names are "reserved" (meaningful to the parser)
 # Lower case names are labels for the entities
-
-
-Static_Props:
-# The first 4 properties included in a file manifest will not change and are listed in this block.
-# These properties are required by the CGC
-  file:
-    - file_name
-    - drs_uri
-# These properties are ordered for context
-  study: 
-    - clinical_study_designation
-  case:
-    - case_id
+# The first 4 properties listed in the File Manifest are designated in StaticProps. The file properties are required by the CGC and the others are designated for context. These will not change and do not need to be read dynamically.
+   
 Nodes:
   file:
-    Export:
+    StaticProps:
+      - file_name
+      - drs_uri
+    ExportProps:
       - file_type
       - file_description
       - file_format
@@ -24,7 +16,12 @@ Nodes:
       - md5sum
       - uuid
       - file_location
+  case:
+    StaticProps:
+      - case_id
   study:
+    StaticProps:
+      - clinical_study_designation
     Export:
       - clinical_study_designation
       - case_id
@@ -75,6 +72,6 @@ Nodes:
       - percentage_tumor
       - sample_preservation
 
-    
-  
- 
+
+
+      
