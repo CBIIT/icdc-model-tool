@@ -3,20 +3,18 @@
 # Lower case names are labels for the entities
 
 
-Nodes:
-# These properties are required by the CGC 
+Static_Props:
+# The first 4 properties included in a file manifest will not change and are listed in this block.
+# These properties are required by the CGC
   file:
-    Export:
-      - file_name
-      - drs_uri
-# This property is ordered for context
-  study:
-    Export:
-      - clinical_study_designation
-# This property is ordered for context
+    - file_name
+    - drs_uri
+# These properties are ordered for context
+  study: 
+    - clinical_study_designation
   case:
-    Export:
-      - case_id
+    - case_id
+Nodes:
   file:
     Export:
       - file_type
