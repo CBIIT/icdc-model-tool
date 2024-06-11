@@ -673,19 +673,16 @@ PropDefinitions:
        Labeled: Weight (kg)
   # diagnosis props
   best_response:
-    Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor.
+    Desc: Where applicable, an indication as to the best overall response to therapeutic intervention observed within an individual patient/subject/donor. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which response to therapeutic intervention was either deliberately not assessed because no therapeutic intervention was being tested by the study/trial in question, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - Complete Response
       - Partial Response
       - Stable Disease
       - Progressive Disease
-      - Not Determined
-      # included to accommodate situations either where the study in question does not assess the effects of any therapeutic intervention, or where the response to therapeutic intervention could not be determined
-      - Not Applicable
-      # included to accommodate situations in which healthy control subjects are included within a study that does assess the effects of a therapeutic intervention
-      - Unknown
-      # included to accommodate situations where a value for stage of disease simply isn't available
+      - Not Determined # included to accommodate situations either where the study in question does not assess the effects of any therapeutic intervention, or where the response to therapeutic intervention could not be determined
+      - Not Applicable # included to accommodate situations in which healthy control subjects are included within a study that does assess the effects of a therapeutic intervention
+      - Unknown # included to accommodate situations where a value for stage of disease simply isn't available
     Req: 'Yes'
     Tags:
        Labeled: Response to Treatment
@@ -731,6 +728,7 @@ PropDefinitions:
       #- http://localhost/terms/domain/disease_term
       - B Cell Lymphoma
       - Bladder Cancer
+      - Diffuse Large B Cell Lymphoma
       - Fibrolipoma
       - Glioma
       - Healthy Control
@@ -767,10 +765,21 @@ PropDefinitions:
        Labeled: Follow Up Data Available
   histological_grade:
     Desc: The histological grading of the tumor(s) present in the patient/subject/donor, based upon microscopic evaluation(s), and recorded at the subject level; grading of specific tumor samples subject to downstream analysis is recorded at the sample level.
-    Src: Data Owner(s)
-    Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
+    Src: Data Owner(s) GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which histological grade was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
+    #Type: string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/histological_grade
-    Req: 'No'
+    Enum:
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      - High
+      - Medium
+      - Low
+      - Unknown
+      - Not Applicable
+      - Not Determined
+    Req: Preferred
     Tags:
        Labeled: Histological Grade
   histology_cytopathology:
@@ -829,7 +838,7 @@ PropDefinitions:
     Tags:
        Labeled: Primary Disease Site, Disease Site, Primary Site
   stage_of_disease:
-    Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria.
+    Desc: The formal assessment of the extent to which the primary cancer with which the patient/subject/donor was diagnosed has progressed, according to the TNM staging or cancer stage grouping criteria. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for healthy control patients/subjects/donors, "Not Determined" for patients/subjects/donors in which stage of disease was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for patients/subjects/donors where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - I
@@ -862,12 +871,9 @@ PropDefinitions:
       - T3N1M1
       - T3NXM1
       - TXN0M0
-      - Not Applicable
-      # to accommodate situations where the subject is a healthy control
-      - Not Determined
-      # to accommodate situations where stage of disease was deliberately not assessed
-      - Unknown
-      # to accommodate situations where a value for stage of disease simply isn't available
+      - Not Applicable # to accommodate situations where the subject is a healthy control
+      - Not Determined # to accommodate situations where stage of disease was deliberately not assessed
+      - Unknown # to accommodate situations where a value for stage of disease simply isn't available
     Req: 'Yes'
     Tags:
        Labeled: Stage of Disease
@@ -921,7 +927,7 @@ PropDefinitions:
       value_type: number
     Req: 'No'
   measurable_lesion:
-    Desc: Pending #An indication as to whether any given lesion is large enough for its size to be determined with any accuracy.
+    Desc: Pending # An indication as to whether any given lesion is large enough for its size to be determined with any accuracy.
     Src: Data Owner(s)
     Type: TBD
     Req: 'No'
@@ -998,7 +1004,7 @@ PropDefinitions:
   # removed residual evaluation props from here
   # file props
   file_name:
-    Desc: The name of the file, maintained exactly as provided by the data submitter.
+    Desc: The name of the file, inclusive of file extension(s), maintained exactly as provided by the data submitter.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -1027,10 +1033,10 @@ PropDefinitions:
     Tags:
        Labeled: File Type
   file_description:
-    Desc: An optional description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length.
+    Desc: A narrative description of the file and/or its content, as provided by the data submitter, preferably limited to no more than 60 characters in length. The file description should clarify the derivation of the file in question, for example, as having been derived from normal tissue versus primary tumor tissue versus metastatic tumor tissue, and do so independently of the file name which may or may not already illustrate file derivation via easily discernable terms. <br>For genomic analysis files, the file description should indicate what rereference genome was used for any alignment of raw sequence data.
     Src: Data Owner(s)
     Type: string
-    Req: Preferred
+    Req: 'Yes'
     Tags:
        Labeled: Description
   file_format:
@@ -1041,14 +1047,14 @@ PropDefinitions:
     Tags:
        Labeled: Format
   file_size:
-    Desc: The exact size of the file in bytes.
+    Desc: The exact size of the file quoted in bytes, used to confirm the integrity of files submitted to the ICDC. Although file sizes are re-generated by the ICDC data loader during the downstream processing and validation of all files submitted for ingestion, file sizes calculated by the data submitter immediately prior to file transfer must nonetheless be specified in the File Transfer Manifest as the values for original_file_size. <br>Submitter-side file sizes quoted in bytes and presented in the form of purely numerical strings are absolutely required for the confirmation of file integrity.
     Src: Loader-derived
-    Type: number
+    Type: integer
     Req: 'Yes'
     Tags:
        Labeled: Size
   md5sum:
-    Desc: The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC.
+    Desc: The 32-character hexadecimal md5 checksum value of the file, used to confirm the integrity of files submitted to the ICDC. Although md5 checksum values are re-generated by the ICDC data loader during the downstream processing and validation of all files submitted for ingestion, md5 checksum values calculated by the data submitter immediately prior to file transfer must nonetheless be specified in the File Transfer Manifest as the values for original_md5sum. <br>Submitter-side md5 checksum values are absolutely required for the confirmation of file integrity.
     Src: Loader-derived
     Type: string
     Req: 'Yes'
@@ -1196,9 +1202,9 @@ PropDefinitions:
     Type: string
   # physical_exam props
   assessment_timepoint:
-    Desc: Pending
+    Desc: An indication as to the timing of the visit during which the physical examination was conducted. This could be a visit number indicative of physical examination's chronology, a narrative statement/description of the vist, or a combination of both. 
     Src: Data Owner(s)
-    Type: integer
+    Type: string
   body_system:
     Desc: Major organ system or physiological characteristic assessed during the examination of the patient/subject/donor during a follow-up visit. Observations are reported independently on each organ system or physiological characteristic.
     Src: Data Owner(s)
@@ -1440,14 +1446,14 @@ PropDefinitions:
     Tags:
        Labeled: Journal
   digital_object_id:
-    Desc: Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet.
+    Desc: Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet. <br>Values of this property must contain only the alphanumeric string of the digital object identifier itself, exclusive of any prefix such as "DOI:", such that values can be correctly interpreted and displayed as hyperlinks within the application.
     Src: Data Owner(s)
     Type: string
     Req: Preferred
     Tags:
        Labeled: DOI
   pubmed_id:
-    Desc: Where applicable, the unique numerical identifier assigned to the cited work by PubMed, by which it can be linked to via the internet.
+    Desc: Where applicable, the unique numerical identifier assigned to the cited work by PubMed, by which it can be linked to via the internet. <br>Values of this property must contain only the numeric string of the PubMed ID itself, exclusive of any prefix such as "PMID:", such that values can be correctly interpreted and displayed as hyperlinks within the application. 
     Src: Data Owner(s)
     Type: number
     Req: Preferred
@@ -1480,7 +1486,7 @@ PropDefinitions:
     Type: datetime
     Req: 'No'
   general_sample_pathology:
-    Desc: An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue.
+    Desc: An indication as to whether a sample represents normal tissue versus representing diseased or tumor tissue. GUIDANCE ADDED HERE<br>For any type of blood sample, the value of this property should be "Not Applicable", unless the patient/subject/donor in question has been diagnosed with any type of hematological malignancy that would render the blood abnormal.
     Src: Data Owner(s)
     Enum:
       - Normal
@@ -1506,7 +1512,7 @@ PropDefinitions:
     Type: string
     Req: 'No'
   necropsy_sample:
-    Desc: An indication as to whether a sample was acquired as a result of a necropsy examination.
+    Desc: An indication as to whether a sample was acquired as a result of a necropsy examination. GUIDANCE ADDED HERE<br>For cell line samples, the value of this property should be "Not Applicable".
     Src: Data Owner(s)
     Enum:
       - 'Yes'
@@ -1517,14 +1523,14 @@ PropDefinitions:
     Tags:
        Labeled: Necropsy Sample
   percentage_tumor:
-    Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range.
+    Desc: The purity of a sample of tumor tissue in terms of the percentage of the sample that is represnted by tumor cells, expressed either as a discrete percentage or as a percentage range. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for normal samples and blood samples, "Not Determined" for tumor samples in which percentage tumor was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Type: string #changed to string in order to accommodate values being quoted in ranges, as greater or less than, or as Unknown
-    Req: Preferred
+    Req: 'Yes'
     Tags:
        Labeled: Percentage Tumor
   sample_chronology:
-    Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations.
+    Desc: An indication as to when a sample was acquired relative to any therapeutic intervention and/or key disease outcome observations. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for samples acquired via a study/trial that did not asses the effects of any therapeutic intervention, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - Before Treatment
@@ -1539,7 +1545,7 @@ PropDefinitions:
     Tags:
        Labeled: Sample Chronology
   sample_id:
-    Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code during data transformation. <br>This property is used as the key via which child records, e.g. file records, can be associated with the appropriate sample during data loading, and to identify the correct records during data updates.
+    Desc: The globally unique ID by which any given sample can be unambiguously identified and displayed across studies/trials; specifically the preferred value of the sample identifier used by the data submitter, prefixed with the appropriate ICDC study code. <br>This property is used as the key via which child records, e.g. file records, can be associated with the appropriate sample during data loading, and to identify the correct records during data updates.
     Src: Data Owner(s)
     Type: string
     Req: 'Yes'
@@ -1547,13 +1553,13 @@ PropDefinitions:
     Tags:
        Labeled: Sample ID
   sample_preservation:
-    Desc: The method by which a sample was preserved.
+    Desc: The method by which a sample was preserved. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for cell line samples not subject to any interim preservation and storage, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - EDTA
       - FFPE
       - RNAlater
-      - Snap Frozen # list of acceptable values will gradually be expanded as data submission requirements solidify
+      - Snap Frozen
       - TRIzol
       - Not Applicable # included to accommodate cell line samples, which will generally be processed absent interim preservation and storage
       - Unknown # included to accommodate the inevitable ambiguity about the correct value for a required field
@@ -1603,13 +1609,17 @@ PropDefinitions:
       - Mouth, Maxilla, Mucosa
       - Muscle
       - Pancreas
+      - Phalange
       - Pleural Effusion
       - Radius
+      - Scapula
       - Skin
+      - Skin and Muscle
       - Spleen
       - Subcutaneous Tissue
       - Thyroid Gland
       - Tibia
+      - Ulna
       - Unknown
       - Urethra
       - Urethra Mid-distal
@@ -1626,7 +1636,7 @@ PropDefinitions:
     Enum:
       - Tissue
       - Blood
-      - Cell Line # required for the CCL01 and OSA01 studies
+      - Cell Line
       - Organoid
       - Urine Sediment
       - Whole Blood
@@ -1666,13 +1676,14 @@ PropDefinitions:
       - Pulmonary Adenocarcinoma
       - Pulmonary Carcinoma
       - Simple Carcinoma
-      - Simple Carcinoma,  Ductular, Vascular Invasive
       - Simple Carcinoma, Ductal
       - Simple Carcinoma, Ductular
+      - Simple Carcinoma, Ductular, Vascular Invasive #removed errant double whitespace and then re-ordered values
       - Simple Carcinoma, Inflammatory
       - Simple Carcinoma, Invasive, Ductal
       - Soft Tissue Sarcoma
       - T Cell Lymphoma
+      - Telangiectatic Osteosarcoma
       - Urinary Bladder (organoid)
       - Undefined
       - Urothelial Carcinoma
@@ -1689,9 +1700,6 @@ PropDefinitions:
       - Normal Cell Line
       - Normal Tissue
       - Organoid (ASC-derived)
-      #- Patient-Derived Organoid
-      #- Patient-Derived Organoid (urine-derived)
-      #- PDO
       - Primary Malignant Tumor Tissue
       - Urine Sediment
       - Tumor Cell Line
@@ -1704,7 +1712,7 @@ PropDefinitions:
     Tags:
        Labeled: Sample Type
   tumor_grade:
-    Desc: The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation.
+    Desc: The grade of the tumor from which the sample was acquired, i.e. the degree of cellular differentiation within the tumor in question, as determined by a pathologist's evaluation. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for normal samples and blood samples, "Not Determined" for tumor samples in which grade was either deliberately not assessed, or could not be assessed for any reason, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - "1"
@@ -1716,11 +1724,12 @@ PropDefinitions:
       - Low
       - Unknown
       - Not Applicable
-    Req: Preferred
+      - Not Determined
+    Req: 'Yes'
     Tags:
        Labeled: Tumor Grade
   tumor_sample_origin:
-    Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor.
+    Desc: An indication as to whether a tumor sample was derived from a primary versus a metastatic tumor. GUIDANCE ADDED HERE<br>The value of this property should be "Not Applicable" for any sample not derived from tumor tissue, and "Unknown" for samples where no other definitive value can be assigned.
     Src: Data Owner(s)
     Enum:
       - Primary
@@ -1775,22 +1784,21 @@ PropDefinitions:
     Tags:
        Labeled: Study Name
   clinical_study_type:
-    Desc: An arbitrary designation of the study/trial to indicate its underlying.
-      nature, e.g. Clinical Trial, Transcriptomics, Genomics.
+    Desc: An arbitrary designation of the study/trial to indicate its underlying nature, e.g. Clinical Trial, Transcriptomics, Genomics.
     Src: Internally-curated
-    Type: string
+    Type: string # convert this to a list type property, where multiple values are supported, provided that listed values are all in the associated controlled vocabulary
     Req: 'Yes'
     Tags:
        Labeled: Study Type
   date_of_iacuc_approval:
     Desc: Where applicable, the date upon which the study/trial was approved by the IACUC.
     Src: Data Owner(s)
-    Type: datetime
+    Type: string # changing this from datetime to string in order to accommodate studies having more than one IACUC approval date, with the OSA02 study being a prime example of that situation
     Req: 'No'
     Tags:
        Labeled: Date of IACUC Approval
   dates_of_conduct:
-    Desc: An indication of the general time period during which the study/trial was active, e.g. (from) month and year (to) month and year.
+    Desc: An indication of the general time period during which the study/trial was active, e.g. "January 2021 to March 2023".
     Src: Data Owner(s)
     Type: string
     Req: Preferred
@@ -1813,7 +1821,7 @@ PropDefinitions:
     Req: 'Yes'
   # study_arm props
   arm:
-    Desc: Where applicable, the nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm.
+    Desc: Where applicable, the name and/or nature of each arm into which the study/trial has been divided. For example, in multiple agent clinical trials, the name of the therapeutic agent used in any given study arm.
     Src: Internally-curated
     Type: string
     Req: Preferred
@@ -1882,12 +1890,11 @@ PropDefinitions:
         - sq meters
       value_type: number
   body_temperature:
-    Desc: The temperature of the patient/subject/donor at the time of the vital signs evaluation.
+    Desc: The temperature of the patient/subject/donor at the time of the vital signs evaluation, measured in degrees Fahrenheit.
     Src: Data Owner(s)
     Type:
       units:
         - degrees F
-        - degrees C
       value_type: number
   date_of_vital_signs:
     Desc: The date upon which the vital signs evaluation in question was conducted.
