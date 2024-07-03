@@ -1010,7 +1010,7 @@ PropDefinitions:
   # removed residual evaluation props from here
   # file props
   file_id:
-    Desc: DCF GUID (including "dg.4DFC/" prefix)supplied by the CRDC Data Hub.
+    Desc: DCF GUID (including dg.4DFC/ prefix)supplied by the CRDC Data Hub.
   file_name:
     Desc: The name of the file, inclusive of file extension(s), maintained exactly as provided by the data submitter.
     Src: Data Owner(s)
