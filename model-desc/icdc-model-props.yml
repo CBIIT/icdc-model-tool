@@ -1091,6 +1091,7 @@ PropDefinitions:
     Req: 'Yes'
     Key: true
     Tags:
+       Template: 'No'
        Labeled: File UUID, File ID
   file_location:
     Desc: The specific location within the ICDC S3 storage bucket at which the file is stored, expressed in terms of a unique url.
