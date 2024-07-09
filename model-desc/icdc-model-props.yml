@@ -1009,11 +1009,6 @@ PropDefinitions:
   #   Type: string
   # removed residual evaluation props from here
   # file props
-  file_id:
-    Desc: DCF GUID (including dg.4DFC/ prefix)supplied by the CRDC Data Hub.
-    Src: Data Hub Loader
-    Type: string
-    Req: 'No'
   file_name:
     Desc: The name of the file, inclusive of file extension(s), maintained exactly as provided by the data submitter.
     Src: Data Owner(s)
@@ -1093,7 +1088,7 @@ PropDefinitions:
     Desc: The universally unique alpha-numeric identifier assigned to each file.
     Src: Loader-derived
     Type: string
-    Req: 'No'
+    Req: 'Yes'
     Key: true
     Tags:
        Labeled: File UUID, File ID
