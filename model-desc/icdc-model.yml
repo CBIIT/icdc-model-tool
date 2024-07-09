@@ -2,7 +2,8 @@
 # Title case names are "reserved" (meaningful to the parser)
 # Lower case names are labels for the entities
 # document number - really a property of properties (where did this question appear)
-
+Handle: ICDC
+Version: v1.0.0
 Nodes:
   program:
     Desc: Within the Integrated Canine Data Commons, studies are grouped into discrete programs, based upon the origins and/or scientific nature of each study/trial. These programs may or may not directly relate to any official, e.g. NCI, funding program. The Program node contains the properties required to appropriately characterize any given ICDC program.
@@ -18,6 +19,7 @@ Nodes:
       - program_full_description
       - program_external_url
       - program_sort_order
+      - crdc_id
   study:
     Desc: The Study node contains properties required to characterize each study/trial in terms of a title, how and why the study/trial was conducted, and the results that were generated.
     Tags:
@@ -35,6 +37,7 @@ Nodes:
       - dates_of_conduct
       - accession_id
       - study_disposition
+      - crdc_id
   study_site:
     Desc: The Study Site node contains properties which identify the various sites at which any given study/trial was conducted, either in terms of where clinical trial patients were assessed and treated, or in terms of the geographical sites at which biospecimens were acquired from patients/subjects/donors for subsequent analysis.
     Tags:
@@ -46,6 +49,7 @@ Nodes:
       - site_short_name
       - veterinary_medical_center
       - registering_institution
+      - crdc_id
   study_arm:
     Desc: The Study Arm node contains properties required to describe the arms into which any given study/trial was divided. Division of a study/trial into multiple arms is optional and is at the discretion of the data owners, based upon the way in which the study/trial in question was structured, and how best that structure can be represented within the ICDC. Where applicable, the appropriate study arms are defined during the study on-boarding process and then created via a specific data loading file.
     Tags:
@@ -58,6 +62,7 @@ Nodes:
       - arm_description
       - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
       - ctep_treatment_assignment_code
+      - crdc_id
   agent:
     Desc: The Agent node documents the name of each therapeutic agent being administered during a clinical trial. In this way, in clinical trials which assess the efficacy of combination therapies, adverse events observed during the trial can be attributed specifically to one or more of the medications being used.
     Tags:
@@ -70,6 +75,7 @@ Nodes:
       - medication
       # d/n from STUDY_MED_ADMIN/SDAD/1      
       - document_number
+      - crdc_id
   cohort:
     Desc: The Cohort node contains properties required to describe the cohorts into which any given study/trial was divided. Division of a study/trial into multiple cohorts is optional and is at the discretion of the data owners, based upon the way in which the study/trial in question was structured, and how best that structure can be represented within the ICDC. Where applicable, the appropriate cohorts are defined during the study on-boarding process and then created via a specific data loading file.
     Tags:
@@ -81,6 +87,7 @@ Nodes:
       - cohort_description # cohort name generally inclusive of some detail as to agent and dose
       - cohort_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
       - cohort_dose # the intended or protocol dose
+      - crdc_id
   case:
     Desc: The Case node contains properties required to unambiguously identify each patient/subject/donor, either based upon the data submitter's original ID, or upon a study-specific Case ID derived from it during data transformation, which prefixes each original ID with a short, study-specific code.
     Tags:
@@ -92,6 +99,7 @@ Nodes:
       - case_id
       - patient_id
       - patient_first_name
+      - crdc_id
   registration:
     Desc: The Registration node functions to capture multiple IDs that may be associated with any single patient/subject/donor. Specifically, it captures multiple IDs in the form of Key:Value pairs, which represent each alternate ID and the specific source from which that alternate ID originates. These registrations can then be used to identify multi-study participants, i.e. canine individuals enrolled in two or more ICDC studies as study-specific cases, but which nonetheless represent the same underlying patient/subject/donor.
     Tags:
@@ -102,7 +110,8 @@ Nodes:
     Props: 
       - registration_origin
       - registration_id
-      #- is_primary_id
+      - crdc_id
+      # - is_primary_id
   biospecimen_source:
     Desc: The Biospecimen Source node functions essentially as a look-up table used by the front-end of the application to convert the names of biobanks and tissue repositories represented in the form of acronyms into human-readable, full text names.
     Tags:
@@ -113,6 +122,7 @@ Nodes:
     Props:
       - biospecimen_repository_acronym
       - biospecimen_repository_full_name
+      - crdc_id
   canine_individual:
     Desc: The Canine Individual node contains only a single property, i.e. canine_individual_id, a loader-generated ID which identifies each underlying canine subject represented by two or more study-specific ICDC cases. This ID functions to map data sets ultimately derived from the same underlying patient/subject/donor, but generated from discrete cases in separate studies, to the underlying canine individual, such that all data sets derived from any given canine individual can be identified within the application’s user interface and combined.
     Tags:
@@ -122,6 +132,7 @@ Nodes:
       Template: 'No'
     Props:
       - canine_individual_id
+      - crdc_id
   demographic:
     Desc: The Demographic node is comprised of properties which describe the key characteristics of each patient/subject/donor, such as breed, sex and neutered status.
     Tags:
@@ -138,6 +149,7 @@ Nodes:
       - sex
       - weight
       - neutered_indicator
+      - crdc_id
   cycle:
     Desc: In clinical trials where therapeutic agents are administered in multiple discrete treatment cycles, the properties within the Cycle node serve to capture the dates upon which each cycle started and ended, providing a detailed timeframe for the therapeutic intervention(s) in question. Adverse events can then be associated with the correct cycle based upon when they were observed.
     Tags:
@@ -150,6 +162,7 @@ Nodes:
       - cycle_number
       - date_of_cycle_start
       - date_of_cycle_end
+      - crdc_id
   visit:
     Desc: Clinical trials typically require the patient to make multiple visits to the study site for clinical evaluation and/or the administration of additional medication(s). Properties within the Visit node serve to capture the date upon which each visit occurs. Adverse events and various clinical assessments can then be associated with the correct visit based upon date.
     Tags:
@@ -162,6 +175,7 @@ Nodes:
       - visit_date
       - visit_number
       - visit_id
+      - crdc_id
   principal_investigator:
     Desc: The Principal Investigator node contains properties which identify the principal investigator(s) responsible for any given study/trial. A study/trial may have one or more principal investigators, and any given individual may be listed as a principal investigator on more than one study/trial.
     Tags:
@@ -173,6 +187,7 @@ Nodes:
       - pi_first_name
       - pi_last_name
       - pi_middle_initial
+      - crdc_id
   diagnosis:
     Desc: The Diagnosis node contains numerous properties which fully characterize the type of cancer with which any given patient/subject/donor was diagnosed, inclusive of stage. This node also contains properties pertaining to comorbidities, and the availability of pathology reports, treatment data and follow-up data.
     Tags:
@@ -196,6 +211,7 @@ Nodes:
       - follow_up_data
       - concurrent_disease
       - concurrent_disease_type
+      - crdc_id
   enrollment:
     Desc: The Enrollment node is comprised of properties which document when and where a patient/subject/donor was enrolled onto a study/trial.
     Tags:
@@ -213,6 +229,7 @@ Nodes:
       - veterinary_medical_center
       #- cohort_description
       - patient_subgroup
+      - crdc_id
   prior_therapy:
     Desc: Properties within the Prior Therapy node detail therapies received by the patient/subject/donor prior to being enrolled in the study/trial in question. Clinical trials will typically capture more of this information than will cross-sectional and/or mechanistic studies.
     Tags:
@@ -248,6 +265,7 @@ Nodes:
       - date_of_last_dose_any_therapy
       - treatment_performed_at_site
       - treatment_performed_in_minimal_residual
+      - crdc_id
   prior_surgery:
     Desc: Properties within the Prior Surgery node detail surgical procedures that the patient/subject/donor underwent prior to being enrolled in the study/trial in question. Clinical trials will typically capture more of this information than will cross-sectional and/or mechanistic studies.
     Tags:
@@ -263,6 +281,7 @@ Nodes:
       - surgical_finding
       - residual_disease
       - therapeutic_indicator
+      - crdc_id
   agent_administration:
     Desc: Properties within the Agent Administration node detail the dosing of the therapeutic agent(s) being studied, alongside the specifics of how and when such agents were administered.
     Tags:
@@ -294,6 +313,7 @@ Nodes:
       - missed_dose_units_of_measure
       - medication_course_number
       - comment
+      - crdc_id
   sample:
     Desc: The Sample node contains numerous properties which provide an in-depth characterization of the types of samples which were collected from any given patient/subject/donor and subsequently analyzed. Many of these sample annotations are required.
     Tags:
@@ -320,6 +340,7 @@ Nodes:
       - percentage_tumor
       - sample_preservation
       - comment
+      - crdc_id
   assay:
     Desc: The Assay node does not yet have any properties associated with it and is not currently used.
     Tags:
@@ -345,6 +366,8 @@ Nodes:
       - file_status
       - uuid
       - file_location
+      - crdc_id
+      - file_id
   image:
     Desc: The Image node does not yet have any properties associated with it and is not currently used.
     Tags:
@@ -366,6 +389,7 @@ Nodes:
       - image_collection_url
       - repository_name
       - collection_access
+      - crdc_id
   physical_exam:
     Desc: Properties within the Physical Exam node detail observations around the status of multiple body systems as of a patient enrolled in a clinical trial, as of that patient being examined by a veterinarian during a scheduled visit to the appropriate study site.
     Tags:
@@ -382,6 +406,7 @@ Nodes:
       - pe_comment
       - phase_pe
       - assessment_timepoint
+      - crdc_id
   publication:
     Desc: The Publication node is comprised of properties which describe publications that are directly associated with any given study/trial of interest, inclusive of the location(s) at which publications can be viewed in electronic form.
     Tags:
@@ -396,6 +421,7 @@ Nodes:
       - journal_citation
       - digital_object_id
       - pubmed_id
+      - crdc_id
   vital_signs:
     Desc: Properties within the Vital Signs node detail observations around the key indicators of the bodily functions of a patient enrolled in a clinical trial, as of that patient being examined by a veterinarian during a scheduled visit to the appropriate study site.
     Tags:
@@ -418,6 +444,7 @@ Nodes:
       - modified_ecog
       - assessment_timepoint
       - phase
+      - crdc_id
   lab_exam:
     Desc: The Lab Exam node does not yet have any properties associated with it and is not currently used.
     Tags:
@@ -456,6 +483,7 @@ Nodes:
       - other_attribution_description
       - dose_limiting_toxicity
       - unexpected_adverse_event
+      - crdc_id
   disease_extent:
     Desc: Properties within the Disease Extent node detail the extent to which the disease for which the patient is being treated has either responded to treatment or progressed, based upon observations of one or more specific lesions.
     Tags:
@@ -477,6 +505,7 @@ Nodes:
       - longest_measurement
       - evaluation_number
       - evaluation_code
+      - crdc_id
   follow_up:
     Desc: The Follow-up node is comprised of properties which document when a follow-up evaluation was performed, and what observations were made at each follow-up evaluation.
     Tags:
@@ -495,6 +524,7 @@ Nodes:
       - treatment_since_last_contact
       - physical_exam_performed
       - physical_exam_changes
+      - crdc_id
   off_study:
     # off_study, off_treatment -- how related? should be a dependency and normalize properties?
     Desc: Properties within the Off Study node detail when a patient was removed from a clinical trial relative to other key dates, and the reason(s) for the patient being removed.
@@ -515,6 +545,7 @@ Nodes:
       - date_last_medication_administration
       - best_resp_vet_tx_tp_best_response
       - date_of_best_response
+      - crdc_id
   off_treatment:
     Desc: Properties within the Off Treatment node detail when a clinical trial patient's treatment was curtailed relative to other key dates. Properties also detail the best response to treatment observed to that point, and the reason(s) for treatment being curtailed.
     Tags:
@@ -533,6 +564,7 @@ Nodes:
       - date_last_medication_administration
       - best_resp_vet_tx_tp_best_response
       - date_of_best_response
+      - crdc_id
 Relationships:
   member_of:
     Mul: many_to_one
