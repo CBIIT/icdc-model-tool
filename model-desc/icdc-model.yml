@@ -367,7 +367,6 @@ Nodes:
       - uuid
       - file_location
       - crdc_id
-      - file_id
   image:
     Desc: The Image node does not yet have any properties associated with it and is not currently used.
     Tags:
