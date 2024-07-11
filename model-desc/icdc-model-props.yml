@@ -1084,6 +1084,8 @@ PropDefinitions:
       - submitted
       - released
     Req: 'No'
+    Tags:
+       Template: 'No'
   uuid:
     Desc: The universally unique alpha-numeric identifier assigned to each file.
     Src: Loader-derived
@@ -1098,6 +1100,8 @@ PropDefinitions:
     Src: Loader-derived
     Type: string
     Req: 'No'
+    Tags:
+       Template: 'No'
   # follow_up props
   contact_type:
     Desc: need vocab
