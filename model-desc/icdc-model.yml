@@ -63,19 +63,20 @@ Nodes:
       - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
       - ctep_treatment_assignment_code
       - crdc_id
-  agent:
-    Desc: The Agent node documents the name of each therapeutic agent being administered during a clinical trial. In this way, in clinical trials which assess the efficacy of combination therapies, adverse events observed during the trial can be attributed specifically to one or more of the medications being used.
-    Tags:
-      Category: clinical_trial
-      Assignment: extended
-      Class: secondary
-      Template: 'No'
-      Clinical_Data_Export: 'Yes'
-    Props:
-      - medication
-      # d/n from STUDY_MED_ADMIN/SDAD/1      
-      - document_number
-      - crdc_id
+  # proposing deprecation or removal of the agent node as it contains no data across ingested studies as of 7/16/24.
+  # agent:
+  #   Desc: The Agent node documents the name of each therapeutic agent being administered during a clinical trial. In this way, in clinical trials which assess the efficacy of combination therapies, adverse events observed during the trial can be attributed specifically to one or more of the medications being used.
+  #   Tags:
+  #     Category: clinical_trial
+  #     Assignment: extended
+  #     Class: secondary
+  #     Template: 'No'
+  #     Clinical_Data_Export: 'Yes'
+  #   Props:
+  #     - medication
+  #     # d/n from STUDY_MED_ADMIN/SDAD/1      
+  #     - document_number
+  #     - crdc_id
   cohort:
     Desc: The Cohort node contains properties required to describe the cohorts into which any given study/trial was divided. Division of a study/trial into multiple cohorts is optional and is at the discretion of the data owners, based upon the way in which the study/trial in question was structured, and how best that structure can be represented within the ICDC. Where applicable, the appropriate cohorts are defined during the study on-boarding process and then created via a specific data loading file.
     Tags:
@@ -375,20 +376,21 @@ Nodes:
       Class: secondary
       Template: 'No'
     Props: null
-  image_collection:
-    Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
-    Tags:
-      Category: study
-      Assignment: core
-      Class: secondary
-      Template: 'Yes'
-    Props:
-      - image_collection_name
-      - image_type_included
-      - image_collection_url
-      - repository_name
-      - collection_access
-      - crdc_id
+  # proposing deprecation or removal the image_collection node as it contains no data across ingested studies as of 7/16/24
+  # image_collection:
+  #   Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
+  #   Tags:
+  #     Category: study
+  #     Assignment: core
+  #     Class: secondary
+  #     Template: 'Yes'
+  #   Props:
+  #     - image_collection_name
+  #     - image_type_included
+  #     - image_collection_url
+  #     - repository_name
+  #     - collection_access
+  #     - crdc_id
   physical_exam:
     Desc: Properties within the Physical Exam node detail observations around the status of multiple body systems as of a patient enrolled in a clinical trial, as of that patient being examined by a veterinarian during a scheduled visit to the appropriate study site.
     Tags:
@@ -505,65 +507,68 @@ Nodes:
       - evaluation_number
       - evaluation_code
       - crdc_id
-  follow_up:
-    Desc: The Follow-up node is comprised of properties which document when a follow-up evaluation was performed, and what observations were made at each follow-up evaluation.
-    Tags:
-      Category: clinical_trial
-      Assignment: extended
-      Class: secondary
-      Template: 'Yes'
-      Clinical_Data_Export: 'Yes'
-    Props:
-      # d/n from FOLLOW_UP/FLWU/1
-      - document_number
-      - date_of_last_contact
-      - patient_status
-      - explain_unknown_status
-      - contact_type
-      - treatment_since_last_contact
-      - physical_exam_performed
-      - physical_exam_changes
-      - crdc_id
-  off_study:
-    # off_study, off_treatment -- how related? should be a dependency and normalize properties?
-    Desc: Properties within the Off Study node detail when a patient was removed from a clinical trial relative to other key dates, and the reason(s) for the patient being removed.
-    Tags:
-      Category: clinical_trial
-      Assignment: extended
-      Class: secondary
-      Template: 'Yes'
-      Clinical_Data_Export: 'Yes'
-    Props:
-      # d/n from OFF_STUDY/OSSM/1
-      - document_number
-      - date_off_study
-      - reason_off_study
-      - date_of_disease_progression
-      - date_off_treatment
-      - best_resp_vet_tx_tp_secondary_response
-      - date_last_medication_administration
-      - best_resp_vet_tx_tp_best_response
-      - date_of_best_response
-      - crdc_id
-  off_treatment:
-    Desc: Properties within the Off Treatment node detail when a clinical trial patient's treatment was curtailed relative to other key dates. Properties also detail the best response to treatment observed to that point, and the reason(s) for treatment being curtailed.
-    Tags:
-      Category: clinical_trial
-      Assignment: extended
-      Class: secondary
-      Template: 'Yes'
-      Clinical_Data_Export: 'Yes'
-    Props:
-      # d/n from OFF_TREATMENT/OTSM/1
-      - document_number
-      - date_off_treatment
-      - reason_off_treatment
-      - date_of_disease_progression
-      - best_resp_vet_tx_tp_secondary_response
-      - date_last_medication_administration
-      - best_resp_vet_tx_tp_best_response
-      - date_of_best_response
-      - crdc_id
+  # proposing deprecation or removal of the follow-up node as it contains no data across ingested studies as of 7/16/24.
+  # follow_up:
+  #   Desc: The Follow-up node is comprised of properties which document when a follow-up evaluation was performed, and what observations were made at each follow-up evaluation.
+  #   Tags:
+  #     Category: clinical_trial
+  #     Assignment: extended
+  #     Class: secondary
+  #     Template: 'Yes'
+  #     Clinical_Data_Export: 'Yes'
+  #   Props:
+  #     # d/n from FOLLOW_UP/FLWU/1
+  #     - document_number
+  #     - date_of_last_contact
+  #     - patient_status
+  #     - explain_unknown_status
+  #     - contact_type
+  #     - treatment_since_last_contact
+  #     - physical_exam_performed
+  #     - physical_exam_changes
+  #     - crdc_id
+  # proposing deprecation or removal off_study node as it contains no data across ingested studies as of 7/16/24.
+  # off_study:
+  #   # off_study, off_treatment -- how related? should be a dependency and normalize properties?
+  #   Desc: Properties within the Off Study node detail when a patient was removed from a clinical trial relative to other key dates, and the reason(s) for the patient being removed.
+  #   Tags:
+  #     Category: clinical_trial
+  #     Assignment: extended
+  #     Class: secondary
+  #     Template: 'Yes'
+  #     Clinical_Data_Export: 'Yes'
+  #   Props:
+  #     # d/n from OFF_STUDY/OSSM/1
+  #     - document_number
+  #     - date_off_study
+  #     - reason_off_study
+  #     - date_of_disease_progression
+  #     - date_off_treatment
+  #     - best_resp_vet_tx_tp_secondary_response
+  #     - date_last_medication_administration
+  #     - best_resp_vet_tx_tp_best_response
+  #     - date_of_best_response
+  #     - crdc_id
+  # proposing deprecation or removal of the off_treatment node as it contains no data across ingested studies as of 7/16/24.
+  # off_treatment:
+  #   Desc: Properties within the Off Treatment node detail when a clinical trial patient's treatment was curtailed relative to other key dates. Properties also detail the best response to treatment observed to that point, and the reason(s) for treatment being curtailed.
+  #   Tags:
+  #     Category: clinical_trial
+  #     Assignment: extended
+  #     Class: secondary
+  #     Template: 'Yes'
+  #     Clinical_Data_Export: 'Yes'
+  #   Props:
+  #     # d/n from OFF_TREATMENT/OTSM/1
+  #     - document_number
+  #     - date_off_treatment
+  #     - reason_off_treatment
+  #     - date_of_disease_progression
+  #     - best_resp_vet_tx_tp_secondary_response
+  #     - date_last_medication_administration
+  #     - best_resp_vet_tx_tp_best_response
+  #     - date_of_best_response
+  #     - crdc_id
 Relationships:
   member_of:
     Mul: many_to_one
