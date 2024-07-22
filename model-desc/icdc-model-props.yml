@@ -1280,6 +1280,10 @@ PropDefinitions:
   # principal_investigator props
   pi_id: 
     Desc: A globally unique identifier via which principle investigator can be differentiated across studies; specifically the value of study_id concatenated with the value of pi_last_name, <br>This property is used as the key via which child records, e.g. cohort records, can be associated with the appropriate principle investigator, and to identify the correct principle investigator records during data updates.
+    Src: Data Onwer(s)
+    Type: string
+    Req: 'Yes'
+    Key: true
   pi_first_name:
     Desc: The first or given name of each principal investigator of the study/trial.
     Src: Data Owner(s)
