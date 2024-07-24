@@ -23,8 +23,6 @@ Nodes:
     StaticProps:
       - clinical_study_designation
     ExportProps:
-      - clinical_study_designation
-      - case_id
       - patient_id
       - patient_first_name
       - cohort_description
