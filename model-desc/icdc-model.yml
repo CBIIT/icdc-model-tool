@@ -283,38 +283,38 @@ Nodes:
       - residual_disease
       - therapeutic_indicator
       - crdc_id
-  agent_administration:
-    Desc: Properties within the Agent Administration node detail the dosing of the therapeutic agent(s) being studied, alongside the specifics of how and when such agents were administered.
-    Tags:
-      Category: clinical_trial
-      Assignment: extended
-      Class: secondary
-      Template: 'Yes'
-      Clinical_Data_Export: 'Yes'
-    Props:
-      # d/n from STUDY_MED_ADMIN/SDAD/1
-      - document_number
-      - medication
-      - route_of_administration
-      - medication_lot_number
-      - medication_vial_id
-      - medication_actual_units_of_measure
-      - medication_duration
-      - medication_units_of_measure
-      - medication_actual_dose
-      # what is phase?
-      - phase
-      - start_time
-      - stop_time
-      - dose_level
-      - dose_units_of_measure
-      - date_of_missed_dose
-      - medication_missed_dose
-      - missed_dose_amount
-      - missed_dose_units_of_measure
-      - medication_course_number
-      - comment
-      - crdc_id
+  # agent_administration:
+  #   Desc: Properties within the Agent Administration node detail the dosing of the therapeutic agent(s) being studied, alongside the specifics of how and when such agents were administered.
+  #   Tags:
+  #     Category: clinical_trial
+  #     Assignment: extended
+  #     Class: secondary
+  #     Template: 'Yes'
+  #     Clinical_Data_Export: 'Yes'
+  #   Props:
+  #     # d/n from STUDY_MED_ADMIN/SDAD/1
+  #     - document_number
+  #     - medication
+  #     - route_of_administration
+  #     - medication_lot_number
+  #     - medication_vial_id
+  #     - medication_actual_units_of_measure
+  #     - medication_duration
+  #     - medication_units_of_measure
+  #     - medication_actual_dose
+  #     # what is phase?
+  #     - phase
+  #     - start_time
+  #     - stop_time
+  #     - dose_level
+  #     - dose_units_of_measure
+  #     - date_of_missed_dose
+  #     - medication_missed_dose
+  #     - missed_dose_amount
+  #     - missed_dose_units_of_measure
+  #     - medication_course_number
+  #     - comment
+  #     - crdc_id
   sample:
     Desc: The Sample node contains numerous properties which provide an in-depth characterization of the types of samples which were collected from any given patient/subject/donor and subsequently analyzed. Many of these sample annotations are required.
     Tags:
