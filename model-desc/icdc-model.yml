@@ -86,7 +86,7 @@ Nodes:
       Template: 'Yes'
     Props:
       - cohort_description # cohort name generally inclusive of some detail as to agent and dose
-      - cohort_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
+      - cohort_record_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
       - cohort_dose # the intended or protocol dose
       - crdc_id
   case:
@@ -97,7 +97,7 @@ Nodes:
       Class: primary
       Template: 'Yes'
     Props:
-      - case_id
+      - case_record_id
       - patient_id
       - patient_first_name
       - crdc_id
@@ -110,7 +110,7 @@ Nodes:
       Template: 'Yes'
     Props: 
       - registration_origin
-      - registration_id
+      - registration_record_id
       - crdc_id
       # - is_primary_id
   biospecimen_source:
@@ -142,7 +142,7 @@ Nodes:
       Class: primary
       Template: 'Yes'
     Props:
-      - demographic_id
+      - demographic_record_id
       - breed
       - additional_breed_detail
       - patient_age_at_enrollment
@@ -160,6 +160,7 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'Yes'         
     Props:
+      - cycle_record_id
       - cycle_number
       - date_of_cycle_start
       - date_of_cycle_end
@@ -175,7 +176,7 @@ Nodes:
     Props: 
       - visit_date
       - visit_number
-      - visit_id
+      - visit_record_id
       - crdc_id
   principal_investigator:
     Desc: The Principal Investigator node contains properties which identify the principal investigator(s) responsible for any given study/trial. A study/trial may have one or more principal investigators, and any given individual may be listed as a principal investigator on more than one study/trial.
@@ -185,6 +186,7 @@ Nodes:
       Class: primary
       Template: 'Yes'
     Props:
+      - person_record_id
       - pi_first_name
       - pi_last_name
       - pi_middle_initial
@@ -198,7 +200,7 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'No'
     Props:
-      - diagnosis_id
+      - diagnosis_record_id
       - disease_term
       - primary_disease_site
       - stage_of_disease
@@ -221,7 +223,7 @@ Nodes:
       Class: primary
       Template: 'Yes'
     Props:
-      - enrollment_id
+      - enrollment_record_id
       - date_of_registration
       - registering_institution
       - initials
@@ -240,6 +242,7 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'Yes'
     Props: 
+      - prior_therapy_record_id
       - date_of_first_dose
       - date_of_last_dose
       - agent_name
@@ -276,6 +279,7 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'Yes'
     Props:
+      - prior_surgery_record_id
       - date_of_surgery
       - procedure
       - anatomical_site_of_surgery
@@ -283,38 +287,38 @@ Nodes:
       - residual_disease
       - therapeutic_indicator
       - crdc_id
-  agent_administration:
-    Desc: Properties within the Agent Administration node detail the dosing of the therapeutic agent(s) being studied, alongside the specifics of how and when such agents were administered.
-    Tags:
-      Category: clinical_trial
-      Assignment: extended
-      Class: secondary
-      Template: 'Yes'
-      Clinical_Data_Export: 'Yes'
-    Props:
-      # d/n from STUDY_MED_ADMIN/SDAD/1
-      - document_number
-      - medication
-      - route_of_administration
-      - medication_lot_number
-      - medication_vial_id
-      - medication_actual_units_of_measure
-      - medication_duration
-      - medication_units_of_measure
-      - medication_actual_dose
-      # what is phase?
-      - phase
-      - start_time
-      - stop_time
-      - dose_level
-      - dose_units_of_measure
-      - date_of_missed_dose
-      - medication_missed_dose
-      - missed_dose_amount
-      - missed_dose_units_of_measure
-      - medication_course_number
-      - comment
-      - crdc_id
+  # agent_administration:proposing deprecation of this node.
+  #   Desc: Properties within the Agent Administration node detail the dosing of the therapeutic agent(s) being studied, alongside the specifics of how and when such agents were administered.
+  #   Tags:
+  #     Category: clinical_trial
+  #     Assignment: extended
+  #     Class: secondary
+  #     Template: 'Yes'
+  #     Clinical_Data_Export: 'Yes'
+  #   Props:
+  #     # d/n from STUDY_MED_ADMIN/SDAD/1
+  #     - document_number
+  #     - medication
+  #     - route_of_administration
+  #     - medication_lot_number
+  #     - medication_vial_id
+  #     - medication_actual_units_of_measure
+  #     - medication_duration
+  #     - medication_units_of_measure
+  #     - medication_actual_dose
+  #     # what is phase?
+  #     - phase
+  #     - start_time
+  #     - stop_time
+  #     - dose_level
+  #     - dose_units_of_measure
+  #     - date_of_missed_dose
+  #     - medication_missed_dose
+  #     - missed_dose_amount
+  #     - missed_dose_units_of_measure
+  #     - medication_course_number
+  #     - comment
+  #     - crdc_id
   sample:
     Desc: The Sample node contains numerous properties which provide an in-depth characterization of the types of samples which were collected from any given patient/subject/donor and subsequently analyzed. Many of these sample annotations are required.
     Tags:
@@ -349,7 +353,8 @@ Nodes:
       Assignment: extended
       Class: secondary
       Template: 'No'
-    Props: null
+    Props: 
+      - assay_record_id
   file:
     Desc: Files can be associated with ICDC study, case, diagnosis and sample records, but are not themselves stored within the application. Instead, the application stores records as to the existence and nature of such files. The File node is comprised of properties which characterize these files in terms of their size, format and content, such that they can be appropriately represented within the application’s UI, and in terms of their storage location, such that they can be retrieved for analysis.
     Tags:
@@ -368,14 +373,15 @@ Nodes:
       - uuid
       - file_location
       - crdc_id
-  image:
-    Desc: The Image node does not yet have any properties associated with it and is not currently used.
-    Tags:
-      Category: data_file
-      Assignment: core
-      Class: secondary
-      Template: 'No'
-    Props: null
+  # proposing deprecation or removal of the image node.
+  # image:
+  #   Desc: The Image node does not yet have any properties associated with it and is not currently used.
+  #   Tags:
+  #     Category: data_file
+  #     Assignment: core
+  #     Class: secondary
+  #     Template: 'No'
+  #   Props: null
   # proposing deprecation or removal the image_collection node as it contains no data across ingested studies as of 7/16/24
   # image_collection:
   #   Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
@@ -400,6 +406,7 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'Yes'
     Props:
+      - physical_exam_record_id
       - date_of_examination
       - day_in_cycle
       - body_system
@@ -432,6 +439,7 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'Yes'
     Props:
+      - vital_signs_record_id
       - date_of_vital_signs
       - body_temperature
       - respiration_rate
@@ -454,7 +462,8 @@ Nodes:
       Class: secondary
       Template: 'No'
       Clinical_Data_Export: 'Yes'
-    Props: null
+    Props: 
+      - lab_exam_record_id
   adverse_event: 
     # how to link? To case and agent? Also to visit/followup?
     Desc: Properties within the Adverse Event node detail unexpected medical, physical and behavioral problems occurring during therapy, in terms of what issues are observed, their severity, and what is considered to be their root cause.
@@ -465,6 +474,7 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'Yes'
     Props:
+      - adverse_event_record_id
       - day_in_cycle
       - date_of_onset
       - existing_adverse_event
@@ -494,6 +504,7 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'Yes'
     Props: 
+      - disease_extent_record_id
       - lesion_number
       - lesion_site
       - lesion_description

@@ -32,7 +32,7 @@ Nodes:
       - cohort_id
   demographic:
     ExportProps:
-      - demographic_id
+      - demographic_record_id
       - breed
       - additional_breed_detail
       - patient_age_at_enrollment
