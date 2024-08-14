@@ -633,8 +633,6 @@ Relationships:
   of_study_arm:
     Mul: many_to_many
     Ends:
-      - Src: agent
-        Dst: study_arm
       - Src: case
         Dst: study_arm
         Mul: many_to_one
@@ -655,14 +653,6 @@ Relationships:
       - Src: publication
         Dst: study
         Mul: many_to_one
-    Props: null
-  of_agent:
-    Mul: many_to_one
-    Ends:
-      - Src: agent_administration
-        Dst: agent
-      - Src: adverse_event
-        Dst: agent
     Props: null
   had_adverse_event:
     Mul: many_to_one
@@ -725,18 +715,6 @@ Relationships:
     Ends:
       - Src: file
         Dst: diagnosis
-    Props: null
-  went_off_study:
-    Mul: one_to_one
-    Ends:
-      - Src: case
-        Dst: off_study
-    Props: null
-  went_off_treatment:
-    Mul: one_to_one
-    Ends:
-      - Src: case
-        Dst: off_treatment
     Props: null
   next:
     Mul: one_to_one
