@@ -228,7 +228,6 @@ Nodes:
       - registering_institution
       - initials
       - date_of_informed_consent
-      - site_short_name
       - veterinary_medical_center
       #- cohort_description
       - patient_subgroup
