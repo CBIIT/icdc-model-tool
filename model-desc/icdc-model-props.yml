@@ -825,6 +825,7 @@ PropDefinitions:
     Enum:
       #- http://localhost/terms/domain/primary_disease_site
       - Bladder
+      - Urethra
       - Bladder, Prostate
       - Bladder, Urethra
       - Bladder, Urethra, Prostate
