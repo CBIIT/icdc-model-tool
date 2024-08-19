@@ -940,7 +940,6 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: Integer
     Req: 'Yes'
-    Key: true
   lesion_site:
     Desc: The overall anatomical location of the lesion being assessed in terms of the organ or organ system in which it is located. For example, lung, lymph node, etc.
     Src: Data Owner(s)
