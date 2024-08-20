@@ -2000,8 +2000,8 @@ PropDefinitions:
   respiration_pattern:
     Desc: An indication as to the normality of the breathing pattern of the patient/subject/donor at the time of the vital signs evaluation.
     Src: Data Owner(s)
-    Type:
-      - http://localhost/terms/domain/respiration_pattern
+    Type: string
+      # - http://localhost/terms/domain/respiration_pattern
   respiration_rate:
     Desc: The rate of respiration of the patient/subject/donor at the time of the vital signs evaluation, measured in the number of breaths taken per minute.
     Src: Data Owner(s)
