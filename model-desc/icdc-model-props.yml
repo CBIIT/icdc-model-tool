@@ -1316,8 +1316,8 @@ PropDefinitions:
   anatomical_site_of_surgery:
     Desc: The anatomical location at which the prior surgery in question occurred. 
     Src: Data Owner(s)
-    Type:
-      - https://localhost/term/domain/anatomical_site
+    Type: string
+      # - https://localhost/term/domain/anatomical_site
     Req: 'Yes'
   date_of_surgery:
     Desc: The date upon which the prior surgery in question occurred.
