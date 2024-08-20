@@ -1327,8 +1327,8 @@ PropDefinitions:
   procedure:
     Desc: The type of procedure performed during the prior surgery in question.
     Src: Data Owner(s)
-    Type:
-      - https://localhost/term/domain/procedure
+    Type: string
+      # - https://localhost/term/domain/procedure
     Req: 'Yes'
   residual_disease:
     Desc: TBD
