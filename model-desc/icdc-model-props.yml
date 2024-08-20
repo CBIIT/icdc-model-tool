@@ -1970,8 +1970,8 @@ PropDefinitions:
   modified_ecog:
     Desc: The Eastern Cooperative Oncology Group (ECOG) performance status of the patient/subject/donor at the time of the vital signs evaluation. The value of this metric indicates the overall function of the patient/subject/donor and his/her ability to tolerate therapy.
     Src: Data Owner(s)
-    Type:
-      - http://localhost/terms/domain/modified_ecog
+    Type: string
+      # - http://localhost/terms/domain/modified_ecog
   patient_weight:
     Desc: The weight of the patient/subject/donor at the time of the vital signs evaluation, measured in kilograms.
     Src: Data Owner(s)
