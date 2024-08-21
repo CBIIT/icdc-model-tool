@@ -50,75 +50,75 @@ Nodes:
         display: "Demographic ID"
       - property: breed
         display: "Breed"
-      # - property: additional_breed_detail
-      #   display: "Additional Breed Detail"
-      # - property: patient_age_at_enrollment
-      #   display: "Age (years)"
-      # - property: date_of_birth
-      #   display: "Date of Birth"
-      # - property: sex
-      #   display: "Sex"
-      # - property: weight
-      #   display: "Weight (kg)"
-      # - property: neutered_indicator
-      #   display: "Neutered Status"
-      # - property: diagnosis_id
-      #   display: "Diagnosis ID"
-      # - property: disease_term
-      #   display: "Disease Term"
-      # - property: stage_of_disease
-      #   display: "Stage of Disease"
-      # - property: histology_cytopathology
-      #   display: "Histology"
-      # - property: date_of_histology_confirmation
-      #   display: "Histology Date"
-      # - property: histological_grade
-      #   display: "Histological Grade"
-      # - property: best_response
-      #   display: "Best Response"
-      # - property: pathology_report
-      #   display: "Pathology Report"
-      # - property: treatment_data
-      #   display: "Treatment Data"
-      # - property: follow_up_data
-      #   display: "Follow Up Data"
-      # - property: concurrent_disease
-      #   display: "Concurrent Disease"
-      # - property: concurrent_disease_type
-      #   display: "Concurrent Disease Type"
+      - property: additional_breed_detail
+        display: "Additional Breed Detail"
+      - property: patient_age_at_enrollment
+        display: "Age (years)"
+      - property: date_of_birth
+        display: "Date of Birth"
+      - property: sex
+        display: "Sex"
+      - property: weight
+        display: "Weight (kg)"
+      - property: neutered_indicator
+        display: "Neutered Status"
+      - property: diagnosis_id
+        display: "Diagnosis ID"
+      - property: disease_term
+        display: "Disease Term"
+      - property: stage_of_disease
+        display: "Stage of Disease"
+      - property: histology_cytopathology
+        display: "Histology"
+      - property: date_of_histology_confirmation
+        display: "Histology Date"
+      - property: histological_grade
+        display: "Histological Grade"
+      - property: best_response
+        display: "Best Response"
+      - property: pathology_report
+        display: "Pathology Report"
+      - property: treatment_data
+        display: "Treatment Data"
+      - property: follow_up_data
+        display: "Follow Up Data"
+      - property: concurrent_disease
+        display: "Concurrent Disease"
+      - property: concurrent_disease_type
+        display: "Concurrent Disease Type"
   sample:
     ExportProps:
       - property: sample_id
         display: "Sample ID"
-      # - property: sample_site
-      #   display: "Sample Site"
-      # - property: physical_sample_type
-      #   display: "Physical Sample Type"
-      # - property: general_sample_pathology
-      #   display: "Sample Pathology"
-      # - property: tumor_sample_origin
-      #   display: "Tumor Sample Origin"
-      # - property: summarized_sample_type
-      #   display: "Sample Type"
-      # - property: molecular_subtype
-      #   display: "Molecular Subtype"
-      # - property: specific_sample_pathology
-      #   display: "Pathology/Morphology"
-      # - property: date_of_sample_collection
-      #   display: "Date of Sample Collection"
-      # - property: sample_chronology
-      #   display: "Sample Chronology"
-      # - property: necropsy_sample
-      #   display: "Necropsy Sample"
-      # - property: tumor_grade
-      #   display: "Tumor Grade"
-      # - property: length_of_tumor
-      #   display: "Tumor Length"
-      # - property: width_of_tumor
-      #   display: "Tumor Width"
-      # - property: volume_of_tumor
-      #   display: "Tumor Volume"
-      # - property: percentage_tumor
-      #   display: "Percentage Tumor"
-      # - property: sample_preservation
-      #   display: "Sample Preservation"
+      - property: sample_site
+        display: "Sample Site"
+      - property: physical_sample_type
+        display: "Physical Sample Type"
+      - property: general_sample_pathology
+        display: "Sample Pathology"
+      - property: tumor_sample_origin
+        display: "Tumor Sample Origin"
+      - property: summarized_sample_type
+        display: "Sample Type"
+      - property: molecular_subtype
+        display: "Molecular Subtype"
+      - property: specific_sample_pathology
+        display: "Pathology/Morphology"
+      - property: date_of_sample_collection
+        display: "Date of Sample Collection"
+      - property: sample_chronology
+        display: "Sample Chronology"
+      - property: necropsy_sample
+        display: "Necropsy Sample"
+      - property: tumor_grade
+        display: "Tumor Grade"
+      - property: length_of_tumor
+        display: "Tumor Length"
+      - property: width_of_tumor
+        display: "Tumor Width"
+      - property: volume_of_tumor
+        display: "Tumor Volume"
+      - property: percentage_tumor
+        display: "Percentage Tumor"
+      - property: sample_preservation
+        display: "Sample Preservation"
