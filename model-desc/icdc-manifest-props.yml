@@ -10,21 +10,21 @@ Nodes:
         display: "name"
       - property: drs_uri
         display: "drs_uri"
-    # ExportProps:
-    #   - property: file_type
-    #     display: "File Type"
-    #   - property: file_description
-    #     display: "File Description"
-    #   - property: file_format
-    #     display: "File Format"
-    #   - property: file_size
-    #     display: "File Size"
-    #   - property: md5sum
-    #     display: "md5sum"
-    #   - property: uuid
-    #     display: "File UUID"
-    #   - property: file_location
-    #     display: "File Location"
+    ExportProps:
+      - property: file_type
+        display: "File Type"
+      - property: file_description
+        display: "File Description"
+      - property: file_format
+        display: "File Format"
+      - property: file_size
+        display: "File Size"
+      - property: md5sum
+        display: "md5sum"
+      - property: uuid
+        display: "File UUID"
+      - property: file_location
+        display: "File Location"
   case:
     StaticProps:
       - property: case_id
