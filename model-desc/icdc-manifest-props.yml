@@ -86,8 +86,6 @@ Nodes:
         display: "Concurrent Disease"
       - property: concurrent_disease_type
         display: "Concurrent Disease Type"
-      - property: test_property
-        display: "Test Property"
   sample:
     ExportProps:
       - property: sample_id
