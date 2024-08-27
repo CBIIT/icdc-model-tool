@@ -38,6 +38,8 @@ Nodes:
         display: "Patient ID"
       - property: patient_first_name
         display: "Case Name"
+  cohort:
+    ExportProps:
       - property: cohort_description
         display: "Cohort"
       - property: cohort_dose
