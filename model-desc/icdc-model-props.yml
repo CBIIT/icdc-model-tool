@@ -810,6 +810,7 @@ PropDefinitions:
     Src: Data Owner(s)
     Enum:
       #- http://localhost/terms/domain/primary_disease_site
+      - Abdomen
       - Bladder
       - Bladder, Prostate
       - Bladder, Urethra
@@ -822,18 +823,35 @@ PropDefinitions:
       - Brain
       - Carpus
       - Chest Wall
+      - Cranial Sternum
       - Distal Urethra
+      - Elbow Joint
+      - Femur
+      - Flank
+      - Hip
+      - Hock
+      - Humerus
+      - Inguinal Region
       - Kidney
+      - Knee Region
+      - Lip
       - Lung
       - Lymph Node
       - Mammary Gland
+      - Mandible
+      - Maxilla
       - Mouth
+      - Neck
       - Not Applicable
       - Pleural Cavity
+      - Rib Region
       - Shoulder
       - Skin
       - Spleen
       - Subcutis
+      - Tarsus
+      - Thigh
+      - Thorax
       - Thyroid Gland
       - Unknown
       - Urethra, Prostate
@@ -1035,6 +1053,9 @@ PropDefinitions:
       - Variant Report # for reports detailing validated variants
       - Data Analysis Whitepaper # for any document detailing a data analysis pipeline and/or methodology
       - Affymetrix GeneChip Analysis File
+      - scATAC Sequence File # required for the OSA04 study
+      - scH5 Matrix File # required for the OSA04 study
+      - scRNA Sequence File # required for the OSA04 study
     Req: 'Yes'
     Tags:
        Labeled: File Type
@@ -1581,6 +1602,7 @@ PropDefinitions:
     Src: Data Owner(s)
     Enum: #string # temporarily, to facilitate data loading with validation on, until STS is in place
       #- http://localhost/terms/domain/anatomical_location
+      - Abdomen
       - Bladder
       - Bladder Apex
       - Bladder Apex-Mid
@@ -1595,13 +1617,21 @@ PropDefinitions:
       - Brain
       - Carpus
       - Cerebellar
+      - Cranial Sternum
       - Cutis
       - Distal Urethra
+      - Elbow Joint
       - Femur
+      - Flank
       - Genitourinary Tract
       - Hemispheric
+      - Hip
+      - Hock
       - Humerus
+      - Inguinal Region
       - Kidney
+      - Knee Region
+      - Lip
       - Liver
       - Liver, Spleen, Heart
       - Lung
@@ -1611,22 +1641,30 @@ PropDefinitions:
       - Lymph Node
       - Lymph Node, Popliteal
       - Mammary Gland
+      - Mandible
       - Mandible, Mucosa
+      - Maxilla
       - Midline
       - Mouth
       - Mouth, Lingual
       - Mouth, Mandible, Mucosa
       - Mouth, Maxilla, Mucosa
       - Muscle
+      - Neck
       - Pancreas
       - Phalange
       - Pleural Effusion
       - Radius
+      - Rib Region
       - Scapula
+      - Skeletal Muscle
       - Skin
       - Skin and Muscle
       - Spleen
       - Subcutaneous Tissue
+      - Tarsus 
+      - Thigh
+      - Thorax
       - Thyroid Gland
       - Tibia
       - Ulna
@@ -1647,6 +1685,7 @@ PropDefinitions:
       - Tissue
       - Blood
       - Cell Line
+      - Fractionated Blood (PBMNC)
       - Organoid
       - Urine Sediment
       - Whole Blood
@@ -1666,6 +1705,7 @@ PropDefinitions:
       - Complex Carcinoma
       - Endometrium (organoid)
       - Fibroblastic Osteosarcoma
+      - Fibrosarcoma
       - Giant Cell Osteosarcoma
       - Hemangiosarcoma
       - Histiocytic Sarcoma
@@ -1682,6 +1722,7 @@ PropDefinitions:
       - Osteosarcoma
       - Osteosarcoma; Combined Type
       - Pancreas (organoid)
+      - Peripheral Nerve Sheath Tumor
       - Primitive T-Cell Leukemia
       - Pulmonary Adenocarcinoma
       - Pulmonary Carcinoma
@@ -1696,6 +1737,7 @@ PropDefinitions:
       - Telangiectatic Osteosarcoma
       - Urinary Bladder (organoid)
       - Undefined
+      - Undifferentiated Pleiomorphic Sarcoma
       - Urothelial Carcinoma
       - Urothelial Carcinoma (organoid)
       # these represent the de facto acceptable values, i.e. the values that our data submitters have used thus far
@@ -1710,6 +1752,7 @@ PropDefinitions:
       - Normal Cell Line
       - Normal Tissue
       - Organoid (ASC-derived)
+      - Peripheral Blood Mononuclear Cells
       - Primary Malignant Tumor Tissue
       - Urine Sediment
       - Tumor Cell Line
