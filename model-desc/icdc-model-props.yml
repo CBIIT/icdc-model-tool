@@ -925,7 +925,7 @@ PropDefinitions:
   evaluation_number:
     Desc: The number of the evaluation durinhg which any given lesion was examined, with evaluations numbered according to their chronological order.
     Src: Data Owner(s)
-    Type: Integer
+    Type: integer
     Req: 'No'
   lesion_description:
     Desc: Additional detail as to the specific location of the lesion subject to evaluation. For example, in the case of a lymph node lesion, the specific lymph node in which the lesion is located.
@@ -935,7 +935,7 @@ PropDefinitions:
   lesion_number:
     Desc: An arbitrary numerical designation for each lesion subject to evaluation, by which that lesion can be unambiguously identified.
     Src: Data Owner(s)
-    Type: Integer
+    Type: integer
     Req: 'No'
   lesion_site:
     Desc: The overall anatomical location of the lesion being assessed in terms of the organ or organ system in which it is located. For example, lung, lymph node, etc.
@@ -1930,7 +1930,7 @@ PropDefinitions:
   visit_number:
     Desc: The number of the visit during which therapy was administered and/or clinical observations were made, with visits numbered according to their chronological order.
     Src: Data-deived
-    Type: Integer
+    Type: integer
   # vital_signs props
   # assessment_timepoint: also included in vital_signs node, defined elsewhere
   #   Src: PHYSICAL_EXAM/PE/1
