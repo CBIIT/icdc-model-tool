@@ -1038,24 +1038,24 @@ PropDefinitions:
     Desc: An indication as to the nature of the file in terms of its content, i.e. what type of information the file contains, as opposed to the file's format.
     Src: Data Owner(s)
     Enum:
-      - Study Protocol
-      - Supplemental Data File
-      - Pathology Report
-      - Image File
-      - RNA Sequence File
-      - Whole Genome Sequence File
-      - Whole Exome Sequence File
-      - DNA Methylation Analysis File
-      - Index File
-      - Array CGH Analysis File # required for the MGT01 study
-      - Variant Call File # for raw .vcf files
-      - Mutation Annotation File # for annotated .maf files
-      - Variant Report # for reports detailing validated variants
-      - Data Analysis Whitepaper # for any document detailing a data analysis pipeline and/or methodology
       - Affymetrix GeneChip Analysis File
+      - Array CGH Analysis File # required for the MGT01 study
+      - Data Analysis Whitepaper # for any document detailing a data analysis pipeline and/or methodology
+      - DNA Methylation Analysis File
+      - Image File
+      - Index File
+      - Mutation Annotation File # for annotated .maf files
+      - Pathology Report
+      - RNA Sequence File
       - scATAC Sequence File # required for the OSA04 study
       - scH5 Matrix File # required for the OSA04 study
       - scRNA Sequence File # required for the OSA04 study
+      - Study Protocol
+      - Supplemental Data File
+      - Variant Call File # for raw .vcf files
+      - Variant Report # for reports detailing validated variants
+      - Whole Exome Sequence File
+      - Whole Genome Sequence File
     Req: 'Yes'
     Tags:
        Labeled: File Type
