@@ -149,7 +149,7 @@ PropDefinitions:
       - 'Yes'
       - 'No'
       - Not Applicable # accommodates situations where an adverse event is not attributed to any therapeutic agent and cannot therefore be limiting in terms of dosage
-    Req: 'Yes'
+    Req: Preferred # preferred instead of required accommodates siutations where the source data simply doesn't have any values, but if values are available, they must be compliant with the controlled vocabulary defined above
   unexpected_adverse_event:
     Desc: An indication as to whether any given adverse event observed during the clinical trial is completely unanticipated and therefore considered novel.
     Src: Data Owner(s)
@@ -157,7 +157,7 @@ PropDefinitions:
       - 'Yes'
       - 'No'
       - Undefined # accommodates situations where there is any ambiguity in terms of an adverse event being expected or not
-    Req: 'Yes'
+    Req: Preferred # preferred instead of required accommodates siutations where the source data simply doesn't have any values, but if values are available, they must be compliant with the controlled vocabulary defined above 
   # agent props
   document_number:
     Desc: S/N of the executed CRF

@@ -594,6 +594,7 @@ Relationships:
         Mul: one_to_one
       - Src: diagnosis
         Dst: case
+        Mul: one_to_one # changed form many_to_one to one_to_one given that thus far, we've only ever needed to define a single primary  diagnosis, and as elegant as supporting multiple diagnoses might appear, it is becoming more trouble than it's worth
       - Src: cycle
         Dst: case
       - Src: follow_up
