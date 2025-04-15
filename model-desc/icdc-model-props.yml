@@ -912,6 +912,44 @@ PropDefinitions:
     Req: Preferred
     Tags:
        Labeled: Treatment Data Available
+  # human_relevance props
+  human_relevance_record_id:
+    Desc: A unique identifier via which human relevance records can be differentiated from one another across studies/trials. Specifically, this value should be equivalent to study_code. <br>This property is used as the key to identify the correct human relevance records during data updates.
+    Src: Internally-curated
+    Type: string
+    Req: 'Yes'
+    Key: true
+  human_relevance_statement:
+    Desc: A brief (2 sentences and high-level statement of a study's relevance to human cancer research using words that are understandable to the lay public. 
+    Src: Data Owner(s)
+    Type: string
+    Req: 'Yes'
+  applicable_human_cancer:
+    Desc: The applicable human cancer relevant to the canine study.
+    Src: Data Owner(s)
+    Type: 
+      value_type: list
+      item_type: string
+    Req: 'No'
+  experimental_therapy:
+    Desc: The experimental therapy or therapies relevant to the canine study if applicable.
+    Type: 
+      value_type: list
+      item_type: string
+    Req: 'No'
+  experimental_treatment:
+    Desc: The experimental treatment or treatments relevant to the canine study if applicable.
+    Type: 
+      value_type: list
+      item_type: string
+    Req: 'No'
+
+  relevant_human_genes:
+    Desc: The human genes relevant to the canine study if applicable.
+    Type: 
+      value_type: list
+      item_type: string
+    Req: 'No'
   # disease_extent props
   date_of_evaluation:
     Desc: The date upon which the extent of disease evaluation was conducted.

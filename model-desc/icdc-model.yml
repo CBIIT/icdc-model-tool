@@ -38,6 +38,20 @@ Nodes:
       - accession_id
       - study_disposition
       - crdc_id
+  human_relevance:
+    Desc: The Human Relevance node contains properties required to demonstrate how each study/trial offers unique opportunities for the cancer research community to gain significant insights into understanding human cancer biology (including initiation, progression, metastases), developing new treatments, mitigating toxicities, and improving outcomes for both canines and humans.
+    Tags:
+      Category: study
+      Assignment: core
+      Class: primary
+      Template: 'Yes'
+    Props:
+      - human_relevance_record_id
+      - human_relevance_statement
+      - applicable_human_cancer
+      - experimental_therapy
+      - experimental_treatment
+      - relevant_human_genes
   study_site:
     Desc: The Study Site node contains properties which identify the various sites at which any given study/trial was conducted, either in terms of where clinical trial patients were assessed and treated, or in terms of the geographical sites at which biospecimens were acquired from patients/subjects/donors for subsequent analysis.
     Tags:
@@ -627,6 +641,9 @@ Relationships:
   of_study:
     Mul: many_to_many
     Ends:
+      - Src: human_relevance
+        Dst: study
+        Mul: one_to_one
       - Src: study_site
         Dst: study
       - Src: principal_investigator
