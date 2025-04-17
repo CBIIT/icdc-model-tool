@@ -912,6 +912,48 @@ PropDefinitions:
     Req: Preferred
     Tags:
        Labeled: Treatment Data Available
+  # human_relevance props
+  human_relevance_record_id:
+    Desc: A unique identifier via which human relevance records can be differentiated from one another across studies/trials. Specifically, this value should be the same as the study's Study Code, i.e. the value of the clinical_study_designation property. <br>This property is used as the key to identify the correct human relevance records during data updates.
+    Src: Internally-curated
+    Type: string
+    Req: 'Yes'
+    Key: true
+  human_relevance_statement:
+    Desc: A brief (2-3 sentence) and high-level statement of a study's relevance to human cancer research, using words that are understandable to the lay public. 
+    Src: Data Owner(s)
+    Type: string
+    Req: 'Yes'
+  relevant_human_cancer:
+    Desc: The human cancer or cancers to which the canine study directly relates.
+    Src: Data Owner(s)
+    Type: 
+      value_type: list
+      item_type: string
+    Req: 'No'
+  relevant_experimental_therapeutic_intervention:
+    Desc: Where applicable, the experimental therapeutic intervention or interventions being investigated in canine subjects, but which are nonetheless relevant to human therapeutic interventions.
+    Type: 
+      value_type: list
+      item_type: string
+    Req: 'No'
+  relevant_human_genes:
+    Desc: Where applicable, the human genes corresponding to the canine genes being examined as potential disease drivers and/or biomarkers and/or novel therapeutic targets.
+    Type: 
+      value_type: list
+      item_type: string
+    Req: 'No'
+  relevant_human_pathways:
+    Desc: Where applicable, the human pathway or pathways corresponding to the canine pathways being examined and/or elucidated as potential disease drivers and/or novel therapeutic targets.
+    Type: 
+      value_type: list
+      item_type: string
+    Req: 'No'
+  nci_link_to_relevant_human_cancer:
+    Desc: A link to general information about the relevant cancer type from the NCI. For example, https://www.cancer.gov/types/bladder
+    Src: Internally-curated
+    Type: string
+    Req: 'No'
   # disease_extent props
   date_of_evaluation:
     Desc: The date upon which the extent of disease evaluation was conducted.
