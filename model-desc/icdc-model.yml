@@ -396,21 +396,20 @@ Nodes:
   #     Class: secondary
   #     Template: 'No'
   #   Props: null
-  # proposing deprecation or removal the image_collection node as it contains no data across ingested studies as of 7/16/24
-  # image_collection:
-  #   Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
-  #   Tags:
-  #     Category: study
-  #     Assignment: core
-  #     Class: secondary
-  #     Template: 'Yes'
-  #   Props:
-  #     - image_collection_name
-  #     - image_type_included
-  #     - image_collection_url
-  #     - repository_name
-  #     - collection_access
-  #     - crdc_id
+  image_collection:
+     Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
+     Tags:
+       Category: study
+       Assignment: core
+       Class: secondary
+       Template: 'Yes'
+     Props:
+       - image_collection_name
+       - image_type_included
+       - image_collection_url
+       - repository_name
+       - collection_access
+       - crdc_id
   physical_exam:
     Desc: Properties within the Physical Exam node detail observations around the status of multiple body systems as of a patient enrolled in a clinical trial, as of that patient being examined by a veterinarian during a scheduled visit to the appropriate study site.
     Tags:
