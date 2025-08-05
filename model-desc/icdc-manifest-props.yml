@@ -2,34 +2,50 @@
 # Title case names are "reserved" (meaningful to the parser)
 # Lower case names are labels for the entities
 # The first 4 properties to be listed in the File Manifest are designated in StaticProps. The file node properties are required by the CGC for mapping and the others are designated for context. These will not change and do not need to be read dynamically.
-   
+
 Nodes:
   file:
     StaticProps:
-      - file_name
-      - drs_uri
+      - property: file_name
+        display: "name"
+      - property: drs_uri
+        display: "drs_uri"
     ExportProps:
-      - file_type
-      - file_description
-      - file_format
-      - file_size
-      - md5sum
-      - uuid
-      - file_location
+      - property: file_type
+        display: "File Type"
+      - property: file_description
+        display: "File Description"
+      - property: file_format
+        display: "File Format"
+      - property: file_size
+        display: "File Size"
+      - property: md5sum
+        display: "md5sum"
+      - property: uuid
+        display: "File UUID"
+      - property: file_location
+        display: "File Location"
   case:
     StaticProps:
-      - case_id
+      - property: case_id
+        display: "Case ID"
   study:
     StaticProps:
-      - clinical_study_designation
+      - property: clinical_study_designation
+        display: "Study Code"
     ExportProps:
-      - clinical_study_designation
-      - case_id
-      - patient_id
-      - patient_first_name
-      - cohort_description
-      - cohort_dose
-      - cohort_id
+      - property: patient_id
+        display: "Patient ID"
+      - property: patient_first_name
+        display: "Case Name"
+  cohort:
+    ExportProps:
+      - property: cohort_description
+        display: "Cohort"
+      - property: cohort_dose
+        display: "Cohort Dose"
+      - property: cohort_id
+        display: "Cohort ID"
   demographic:
     ExportProps:
       - demographic_record_id
@@ -54,23 +70,37 @@ Nodes:
       - concurrent_disease_type
   sample:
     ExportProps:
-      - sample_id
-      - sample_site
-      - physical_sample_type
-      - general_sample_pathology
-      - tumor_sample_origin
-      - summarized_sample_type
-      - molecular_subtype
-      - specific_sample_pathology
-      - date_of_sample_collection
-      - sample_chronology
-      - necropsy_sample
-      - tumor_grade
-      - length_of_tumor
-      - width_of_tumor
-      - volume_of_tumor
-      - percentage_tumor
-      - sample_preservation
-
-
-
+      - property: sample_id
+        display: "Sample ID"
+      - property: sample_site
+        display: "Sample Site"
+      - property: physical_sample_type
+        display: "Physical Sample Type"
+      - property: general_sample_pathology
+        display: "Sample Pathology"
+      - property: tumor_sample_origin
+        display: "Tumor Sample Origin"
+      - property: summarized_sample_type
+        display: "Sample Type"
+      - property: molecular_subtype
+        display: "Molecular Subtype"
+      - property: specific_sample_pathology
+        display: "Pathology/Morphology"
+      - property: date_of_sample_collection
+        display: "Date of Sample Collection"
+      - property: sample_chronology
+        display: "Sample Chronology"
+      - property: necropsy_sample
+        display: "Necropsy Sample"
+      - property: tumor_grade
+        display: "Tumor Grade"
+      - property: length_of_tumor
+        display: "Tumor Length"
+      - property: width_of_tumor
+        display: "Tumor Width"
+      - property: volume_of_tumor
+        display: "Tumor Volume"
+      - property: percentage_tumor
+        display: "Percentage Tumor"
+      - property: sample_preservation
+        display: "Sample Preservation"
