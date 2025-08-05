@@ -694,8 +694,8 @@ Relationships:
   on_visit:
     Mul: many_to_one
     Ends:
-      - Src: agent_administration
-        Dst: visit
+      # - Src: agent_administration
+      #   Dst: visit
       - Src: sample
         Dst: visit
       - Src: physical_exam
