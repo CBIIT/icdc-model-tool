@@ -722,8 +722,8 @@ Relationships:
     Ends:
       - Src: file
         Dst: assay
-      - Src: image
-        Dst: assay
+      # - Src: image
+      #   Dst: assay
     Props: null
   from_diagnosis:
     Mul: many_to_one
