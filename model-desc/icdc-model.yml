@@ -642,9 +642,9 @@ Relationships:
       - Src: file
         Dst: study
         Mul: many_to_one
-      - Src: image_collection
-        Dst: study
-        Mul: many_to_one
+      # - Src: image_collection
+      #   Dst: study
+        # Mul: many_to_one
       - Src: publication
         Dst: study
         Mul: many_to_one
