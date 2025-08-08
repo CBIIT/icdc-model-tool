@@ -48,7 +48,7 @@ Nodes:
     Props:
       - human_relevance_record_id
       - human_relevance_statement
-      - applicable_human_cancer
+      - relevant_human_cancer
       - experimental_therapeutic_intervention
       - relevant_human_genes
       - relevant_human_pathways
