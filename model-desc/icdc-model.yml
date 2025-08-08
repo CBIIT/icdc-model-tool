@@ -689,20 +689,20 @@ Relationships:
   of_sample:
     Mul: many_to_one
     Ends:
-      - Src: assay
-        Dst: sample
+      # - Src: assay
+      #   Dst: sample
       - Src: file
         Dst: sample
     # added primarily to support direct association of sequence files with the primary samples to which they relate, when we have no data around the processing intermediates    
     Props: null
-  of_assay:
-    Mul: many_to_one
-    Ends:
-      - Src: file
-        Dst: assay
+  # of_assay:
+  #   Mul: many_to_one
+  #   Ends:
+  #     - Src: file
+  #       Dst: assay
       # - Src: image
       #   Dst: assay
-    Props: null
+    # Props: null
   from_diagnosis:
     Mul: many_to_one
     Ends:
