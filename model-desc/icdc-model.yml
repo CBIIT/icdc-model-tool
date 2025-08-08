@@ -680,8 +680,6 @@ Relationships:
         Dst: visit
       - Src: physical_exam
         Dst: visit
-      - Src: lab_exam
-        Dst: visit
     # removed relationship between adverse event and visit because adverse events are tied to date of onset rather than being tied to the date of the visit at which they were reported 
       - Src: disease_extent
         Dst: visit
