@@ -48,8 +48,8 @@ Nodes:
     Props:
       - human_relevance_record_id
       - human_relevance_statement
-      - applicable_human_cancer
-      - experimental_therapeutic_intervention
+      - relevant_human_cancer
+      - relevant_experimental_therapeutic_intervention
       - relevant_human_genes
       - relevant_human_pathways
       - nci_link_to_relevant_human_cancer
@@ -360,15 +360,6 @@ Nodes:
       - sample_preservation
       - comment
       - crdc_id
-  assay:
-    Desc: The Assay node does not yet have any properties associated with it and is not currently used.
-    Tags:
-      Category: analysis
-      Assignment: extended
-      Class: secondary
-      Template: 'No'
-    Props: 
-      - assay_record_id
   file:
     Desc: Files can be associated with ICDC study, case, diagnosis and sample records, but are not themselves stored within the application. Instead, the application stores records as to the existence and nature of such files. The File node is comprised of properties which characterize these files in terms of their size, format and content, such that they can be appropriately represented within the application’s UI, and in terms of their storage location, such that they can be retrieved for analysis.
     Tags:
@@ -396,20 +387,20 @@ Nodes:
   #     Class: secondary
   #     Template: 'No'
   #   Props: null
-  image_collection:
-     Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
-     Tags:
-       Category: study
-       Assignment: core
-       Class: secondary
-       Template: 'Yes'
-     Props:
-       - image_collection_name
-       - image_type_included
-       - image_collection_url
-       - repository_name
-       - collection_access
-       - crdc_id
+  # image_collection:
+  #    Desc: The Image Collection node is comprised of properties which describe collections of images that are associated with any given study/trial. These properties characterize such image collections in terms of the types of images they contain, where the collections are hosted, and how they can be accessed.
+  #    Tags:
+  #      Category: study
+  #      Assignment: core
+  #      Class: secondary
+  #      Template: 'Yes'
+  #    Props:
+  #      - image_collection_name
+  #      - image_type_included
+  #      - image_collection_url
+  #      - repository_name
+  #      - collection_access
+  #      - crdc_id
   physical_exam:
     Desc: Properties within the Physical Exam node detail observations around the status of multiple body systems as of a patient enrolled in a clinical trial, as of that patient being examined by a veterinarian during a scheduled visit to the appropriate study site.
     Tags:
@@ -465,18 +456,7 @@ Nodes:
       - body_surface_area
       - modified_ecog
       - assessment_timepoint
-      - phase
       - crdc_id
-  lab_exam:
-    Desc: The Lab Exam node does not yet have any properties associated with it and is not currently used.
-    Tags:
-      Category: clinical_trial
-      Assignment: extended
-      Class: secondary
-      Template: 'No'
-      Clinical_Data_Export: 'Yes'
-    Props: 
-      - lab_exam_record_id
   adverse_event: 
     # how to link? To case and agent? Also to visit/followup?
     Desc: Properties within the Adverse Event node detail unexpected medical, physical and behavioral problems occurring during therapy, in terms of what issues are observed, their severity, and what is considered to be their root cause.
@@ -662,9 +642,9 @@ Relationships:
       - Src: file
         Dst: study
         Mul: many_to_one
-      - Src: image_collection
-        Dst: study
-        Mul: many_to_one
+      # - Src: image_collection
+      #   Dst: study
+        # Mul: many_to_one
       - Src: publication
         Dst: study
         Mul: many_to_one
@@ -700,8 +680,6 @@ Relationships:
         Dst: visit
       - Src: physical_exam
         Dst: visit
-      - Src: lab_exam
-        Dst: visit
     # removed relationship between adverse event and visit because adverse events are tied to date of onset rather than being tied to the date of the visit at which they were reported 
       - Src: disease_extent
         Dst: visit
@@ -711,20 +689,20 @@ Relationships:
   of_sample:
     Mul: many_to_one
     Ends:
-      - Src: assay
-        Dst: sample
+      # - Src: assay
+      #   Dst: sample
       - Src: file
         Dst: sample
     # added primarily to support direct association of sequence files with the primary samples to which they relate, when we have no data around the processing intermediates    
     Props: null
-  of_assay:
-    Mul: many_to_one
-    Ends:
-      - Src: file
-        Dst: assay
+  # of_assay:
+  #   Mul: many_to_one
+  #   Ends:
+  #     - Src: file
+  #       Dst: assay
       # - Src: image
       #   Dst: assay
-    Props: null
+    # Props: null
   from_diagnosis:
     Mul: many_to_one
     Ends:
