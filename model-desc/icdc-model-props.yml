@@ -1597,9 +1597,11 @@ PropDefinitions:
      # - 'No'
     #Req: 'Yes'
   # sample props
-  # comment: also included in sample node, defined elsewhere
-  #  Desc: generic comment concerning the preparation and/or annotation of the sample
-  #  Type: string
+  comment: 
+   Desc: generic comment concerning the preparation and/or annotation of the sample
+   Src: Data Owner(s)
+   Type: string
+   Req: 'No'
   date_of_sample_collection:
     Desc: The date upon which the sample was acquired from the patient/subject/donor.
     Src: Data Owner(s)
@@ -2065,10 +2067,6 @@ PropDefinitions:
       units:
         - kg
       value_type: number
-  # phase:
-  #   Desc: Where should this live?/What is?
-  #   Src: COURSE INIT/CINIT/1
-  #   Type: TBD
   pulse:
     Desc: The heart rate of the patient/subject/donor at the time of the vital signs evaluation, measured in beats per minute. 
     Src: Data Owner(s)
@@ -2102,32 +2100,3 @@ PropDefinitions:
       units:
         - mm Hg
       value_type: integer
-  # lab_exam props
-  lab_exam: 
-    Desc: Any procedure that involves testing or manipulating a sample of blood, urine, or other body substance in a laboratory setting. Tests can help determine a diagnosis, plan treatment, check to see if treatment is working, or monitor the disease over time.
-    Src: Data Owner(s)
-    Type: string
-    Req: 'Yes'
-  lab_exam_record_id:
-    Desc: A unique identifier of each lab exam record; specifically the value of case_id concatenated with the value of lab_exam_date, the date upon which the lab exam occurred. <br>This property is used as the key to identify the correct lab exam records during data updates.
-    Src: Data Owner(s)
-    Type: string
-    Req: 'Yes'
-    Key: true
-  lab_exam_date:
-    Desc:  The date upon which the lab exam occurred.
-    Src: Data Owner(s)
-    Type: datetime
-    Req: 'Yes'
-  # assay props
-  assay_record_id:
-    Desc: A unique identifier of each assay record; specifically the value of case_id concatenated with the value of assay type. <br>This property is used as the key to identify the correct physical exam records during data updates.
-    Src: Data Owner(s)
-    Type: string
-    Req: 'Yes'
-    Key: true
-  assay_type: 
-    Desc: The type of assay being conducted.
-    Src: Data Owner(s)
-    Type: string
-    Req: 'Yes'
