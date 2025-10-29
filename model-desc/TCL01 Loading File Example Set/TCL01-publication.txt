@@ -1,0 +1,2 @@
+type	 study.clinical_study_designation	publication_title	authorship	year_of_publication	journal_citation	digital_object_id	pubmed_id
+publication	TCL01	 Identifying Candidate Druggable Targets in Canine Cancer Cell Lines Using Whole-Exome Sequencing	Das S et al	2019	Mol Cancer Ther 18 (8): 1460-1471.	10.1158/1535-7163.MCT-18-1346	31175136 

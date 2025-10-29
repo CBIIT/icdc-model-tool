@@ -1,0 +1,46 @@
+type	case.case_id	diagnosis_id	disease_term	primary_disease_site	stage_of_disease	best_response	treatment_data	follow_up_data	pathology_report	concurrent_disease	concurrent_disease_type
+diagnosis	TCL01-Angus	TCL01-Angus	Bladder Cancer	Unknown	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Bliley	TCL01-Bliley	Bladder Cancer	Distal Urethra	Unknown	Not Applicable	Yes	No	No 	No	
+diagnosis	TCL01-Kinsey	TCL01-Kinsey	Bladder Cancer	Unknown	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Tyler	TCL01-Tyler	Bladder Cancer	Urethra, Prostate	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Cindy	TCL01-Cindy	Hemangiosarcoma	Unknown	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-DEN-HSA	TCL01-DEN-HSA	Hemangiosarcoma	Kidney	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-SB	TCL01-SB	Hemangiosarcoma	Subcutis	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-DH82	TCL01-DH82	Histiocytic Sarcoma	Bone Marrow	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Nike 	TCL01-Nike 	Histiocytic Sarcoma	Unknown	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-CLL-1390	TCL01-CLL-1390	T Cell Leukemia	Unknown	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-17-71	TCL01-17-71	B Cell Lymphoma	Lymph Node	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-CLBL1	TCL01-CLBL1	B Cell Lymphoma	Lymph Node	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-OSW	TCL01-OSW	Lymphoma	Pleural Cavity 	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-CMT12	TCL01-CMT12	Mammary Cancer	Mammary Gland	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-BRMCT	TCL01-BRMCT	Mast Cell Tumor	Subcutis	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-C2	TCL01-C2	Mast Cell Tumor	Subcutis	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-17CM98	TCL01-17CM98	Melanoma	Mouth	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-CML-10C2	TCL01-CML-10C2	Melanoma	Skin	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-CML-6M	TCL01-CML-6M	Melanoma	Skin	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Jones	TCL01-Jones	Melanoma	Mouth	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Parks	TCL01-Parks	Melanoma	Mouth	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Abrams	TCL01-Abrams	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-D-17	TCL01-D-17	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Gracie	TCL01-Gracie	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-HMPOS	TCL01-HMPOS	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-McKinley	TCL01-McKinley	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Moresco	TCL01-Moresco	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-OS2.4	TCL01-OS2.4	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-OSA8	TCL01-OSA8	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-Vogel	TCL01-Vogel	Osteosarcoma	Bone (Appendicular)	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-STSA-1	TCL01-STSA-1	Soft Tissue Sarcoma	Carpus	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-CTAC	TCL01-CTAC	Thyroid Cancer	Thyroid Gland	Unknown	Not Applicable	Yes	No	No 	Unknown	
+diagnosis	TCL01-N-1344	TCL01-N-1344	Splenic Hyperplasia	Spleen	Not Applicable	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-1866	TCL01-N-1866	Splenic Hematoma	Spleen	Not Applicable	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-1146	TCL01-N-1146	Lipoma	Chest Wall	Not Applicable	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-1776	TCL01-N-1776	Fibrolipoma	Shoulder	Not Applicable	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-353	TCL01-N-353	Bladder Cancer	Bladder	Unknown	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-166408	TCL01-N-166408	Bladder Cancer	Bladder	Unknown	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-172160	TCL01-N-172160	Bladder Cancer	Bladder	Unknown	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-Bella	TCL01-N-Bella	B Cell Lymphoma	Lymph Node	Unknown	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-Zada	TCL01-N-Zada	B Cell Lymphoma	Lymph Node	Unknown	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-CSU7	TCL01-N-CSU7	B Cell Lymphoma	Lymph Node	Unknown	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-CSU9	TCL01-N-CSU9	B Cell Lymphoma	Lymph Node	Unknown	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-VRCC3	TCL01-N-VRCC3	B Cell Lymphoma	Lymph Node	Unknown	Not Applicable	No 	No	No 	Unknown	
+diagnosis	TCL01-N-VRCC7	TCL01-N-VRCC7	B Cell Lymphoma	Lymph Node	Unknown	Not Applicable	No 	No	No 	Unknown	

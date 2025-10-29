@@ -1,0 +1,46 @@
+type	study.clinical_study_designation	case_id	patient_id	patient_first_name
+case	TCL01	TCL01-Angus	Angus	Angus
+case	TCL01	TCL01-Bliley	Bliley	Socks
+case	TCL01	TCL01-Kinsey	Kinsey	Kinsey
+case	TCL01	TCL01-Tyler	Tyler	Tyler
+case	TCL01	TCL01-Cindy	Cindy	Cindy
+case	TCL01	TCL01-DEN-HSA	DEN-HSA	
+case	TCL01	TCL01-SB	SB	
+case	TCL01	TCL01-DH82	DH82	
+case	TCL01	TCL01-Nike 	Nike 	Nike 
+case	TCL01	TCL01-CLL-1390	CLL-1390	
+case	TCL01	TCL01-17-71	17-71	
+case	TCL01	TCL01-CLBL1	CLBL1	
+case	TCL01	TCL01-OSW	OSW	
+case	TCL01	TCL01-CMT12	CMT12	
+case	TCL01	TCL01-BRMCT	BRMCT	
+case	TCL01	TCL01-C2	C2	
+case	TCL01	TCL01-17CM98	17CM98	
+case	TCL01	TCL01-CML-10C2	CML-10C2	
+case	TCL01	TCL01-CML-6M	CML-6M	
+case	TCL01	TCL01-Jones	Jones	
+case	TCL01	TCL01-Parks	Parks	
+case	TCL01	TCL01-Abrams	Abrams	
+case	TCL01	TCL01-D-17	D-17	
+case	TCL01	TCL01-Gracie	Gracie	Gracie
+case	TCL01	TCL01-HMPOS	HMPOS	
+case	TCL01	TCL01-McKinley	McKinley	
+case	TCL01	TCL01-Moresco	Moresco	
+case	TCL01	TCL01-OS2.4	OS2.4	
+case	TCL01	TCL01-OSA8	OSA8	
+case	TCL01	TCL01-Vogel	Vogel	
+case	TCL01	TCL01-STSA-1	STSA-1	
+case	TCL01	TCL01-CTAC	CTAC	
+case	TCL01	TCL01-N-1344	N-1344	
+case	TCL01	TCL01-N-1866	N-1866	
+case	TCL01	TCL01-N-1146	N-1146	
+case	TCL01	TCL01-N-1776	N-1776	
+case	TCL01	TCL01-N-353	N-353	
+case	TCL01	TCL01-N-166408	N-166408	
+case	TCL01	TCL01-N-172160	N-172160	
+case	TCL01	TCL01-N-Bella	N-Bella	Bella
+case	TCL01	TCL01-N-Zada	N-Zada	Zada
+case	TCL01	TCL01-N-CSU7	N-CSU7	
+case	TCL01	TCL01-N-CSU9	N-CSU9	
+case	TCL01	TCL01-N-VRCC3	N-VRCC3	
+case	TCL01	TCL01-N-VRCC7	N-VRCC7	

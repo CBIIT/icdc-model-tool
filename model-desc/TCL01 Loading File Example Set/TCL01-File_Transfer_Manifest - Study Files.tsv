@@ -1,0 +1,4 @@
+"type"	" case.case_id"	" study.clinical_study_designation"	" sample.sample_id"	" diagnosis.diagnosis_id"	"file_name"	"file_type"	"file_description"	"original_file_size"	"original_md5sum"
+"file"		"TCL01"			"TCL01_CellLine_CDS_Variants.csv"	"Supplemental Data File"	"Cell line coding region somatic variants "	4173475	"b6cb025a2062a8f88f17e6314e6be44c"
+"file"		"TCL01"			"TCL01_CellLineSourcing_STRs_DrugSensitivity.xlsx"	"Supplemental Data File"	"Cell line sourcing data, STR analysis, and drug sensitivity assay"	41862	"fc07413be62d11ff99ad33899b6fbfe7"
+"file"		"TCL01"			"TCL01_Study_Protocol.docx"	"Study Protocol"	"Background, methods, and key results"	219492	"148ab1ba4faf414842cbf64750cd3a7a"

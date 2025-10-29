@@ -1,0 +1,46 @@
+type	case.case_id	demographic_id	breed	patient_age_at_enrollment	sex	neutered_indicator	weight
+demographic	TCL01-Angus	TCL01-Angus	Scottish Terrier		Male	Unknown	
+demographic	TCL01-Bliley	TCL01-Bliley	Basenji	10	Female 	Yes	17
+demographic	TCL01-Kinsey	TCL01-Kinsey	Australian Shepherd		Unknown	Unknown	
+demographic	TCL01-Tyler	TCL01-Tyler	Beagle	8	Male	Yes	
+demographic	TCL01-Cindy	TCL01-Cindy	Labrador Retriever	3	Female	Unknown	
+demographic	TCL01-DEN-HSA	TCL01-DEN-HSA	Golden Retriever	11	Male 	Yes	
+demographic	TCL01-SB	TCL01-SB	German Shepherd Dog	9	Male	Unknown	
+demographic	TCL01-DH82	TCL01-DH82	Golden Retriever	10	Male 	No	
+demographic	TCL01-Nike 	TCL01-Nike 	Unknown		Unknown	Unknown	
+demographic	TCL01-CLL-1390	TCL01-CLL-1390	Unknown		Unknown	Unknown	
+demographic	TCL01-17-71	TCL01-17-71	Unknown		Unknown	Unknown	
+demographic	TCL01-CLBL1	TCL01-CLBL1	Bernese Mountain Dog	8	Male	Unknown	
+demographic	TCL01-OSW	TCL01-OSW	Airedale Terrier	5.5	Male	Unknown	
+demographic	TCL01-CMT12	TCL01-CMT12	Poodle		Female	Unknown	
+demographic	TCL01-BRMCT	TCL01-BRMCT	Unknown		Unknown	Unknown	
+demographic	TCL01-C2	TCL01-C2	Unknown		Female	Unknown	
+demographic	TCL01-17CM98	TCL01-17CM98	Unknown		Unknown	Unknown	
+demographic	TCL01-CML-10C2	TCL01-CML-10C2	Unknown		Unknown	Unknown	
+demographic	TCL01-CML-6M	TCL01-CML-6M	Mixed Breed	8	Unknown	Unknown	
+demographic	TCL01-Jones	TCL01-Jones	Miniature Dachshund	14	Female	Yes	6.2
+demographic	TCL01-Parks	TCL01-Parks	Labrador Retriever	12	Female	Yes	32
+demographic	TCL01-Abrams	TCL01-Abrams	Rottweiler	2.5	Male	Unknown	40.8
+demographic	TCL01-D-17	TCL01-D-17	Poodle	11	Female	Unknown	
+demographic	TCL01-Gracie	TCL01-Gracie	Unknown		Unknown	Unknown	
+demographic	TCL01-HMPOS	TCL01-HMPOS	Mixed Breed	1.5	Male	Unknown	
+demographic	TCL01-McKinley	TCL01-McKinley	Unknown		Unknown	Unknown	
+demographic	TCL01-Moresco	TCL01-Moresco	Unknown		Unknown	Unknown	
+demographic	TCL01-OS2.4	TCL01-OS2.4	Golden Retriever	5	Unknown	Unknown	
+demographic	TCL01-OSA8	TCL01-OSA8	Rottweiler	2	Male	Unknown	
+demographic	TCL01-Vogel	TCL01-Vogel	Unknown		Unknown	Unknown	
+demographic	TCL01-STSA-1	TCL01-STSA-1	Golden Retriever	7	Male	Yes	
+demographic	TCL01-CTAC	TCL01-CTAC	Boxer	7	Female	Unknown	
+demographic	TCL01-N-1344	TCL01-N-1344	Labrador Retriever		Male	Yes	42.8
+demographic	TCL01-N-1866	TCL01-N-1866	Greyhound		Female	Yes	23.4
+demographic	TCL01-N-1146	TCL01-N-1146	Bernese Mountain Dog		Male	Yes	47.2
+demographic	TCL01-N-1776	TCL01-N-1776	Rottweiler		Female	Yes	36
+demographic	TCL01-N-353	TCL01-N-353	Mixed Breed		Male	Yes	23.6
+demographic	TCL01-N-166408	TCL01-N-166408	Mixed Breed		Male	Yes	47
+demographic	TCL01-N-172160	TCL01-N-172160	Shetland Sheepdog		Female	Yes	16
+demographic	TCL01-N-Bella	TCL01-N-Bella	Golden Retriever		Female	Yes	34
+demographic	TCL01-N-Zada	TCL01-N-Zada	Rhodesian Ridgeback		Female	Yes	38.8
+demographic	TCL01-N-CSU7	TCL01-N-CSU7	Golden Retriever		Male	Yes	27.4
+demographic	TCL01-N-CSU9	TCL01-N-CSU9	Cocker Spaniel		Female	Yes	13.3
+demographic	TCL01-N-VRCC3	TCL01-N-VRCC3	Golden Retriever		Female	Yes	
+demographic	TCL01-N-VRCC7	TCL01-N-VRCC7	Boxer		Female	Yes	

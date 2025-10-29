@@ -1,0 +1,93 @@
+type	sample.sample_id	file_name	file_type	file_description	original_file_size	original_md5sum
+file	TCL01-17-71	1771_recal_reads.bai	Index File	tumor cell line sample, TCL01-17-71: bam index of WES reads	6193232	09ed1edc79ec99b73833b08833ee401f
+file	TCL01-17-71	1771_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-17-71: WES reads to CanFam3.1	15575029136	8bafe042b0763e32b45ba2c0b9b080fe
+file	TCL01-17CM98	17CM98_recal_reads.bai	Index File	tumor cell line sample, TCL01-17CM98: bam index of WES reads	6154544	9c3b9c02db8d16dc0796e77ec36c802b
+file	TCL01-17CM98	17CM98_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-17CM98: WES reads to CanFam3.1	15935376497	c480c22d6eb7560b1e406767fc7069bb
+file	TCL01-Abrams	ABRAMS_recal_reads.bai	Index File	tumor cell line sample, TCL01-Abrams: bam index of WES reads	6129784	7eaac5b155f96e16af9545e456244e29
+file	TCL01-Abrams	ABRAMS_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Abrams: WES reads to CanFam3.1	14521128290	679600426205d8a7bf5e98cf26a4e6b1
+file	TCL01-Angus	ANGUS_recal_reads.bai	Index File	tumor cell line sample, TCL01-Angus: bam index of WES reads	6007608	cd8d7f8babd7c827acf63809c6000b83
+file	TCL01-Angus	ANGUS_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Angus: WES reads to CanFam3.1	12309776649	a91d206c8d7612143f350d03f559a717
+file	TCL01-Bliley	BLILEY_recal_reads.bai	Index File	tumor cell line sample, TCL01-Bliley: bam index of WES reads	6190512	083f20373c0274ce6908276abb980360
+file	TCL01-Bliley	BLILEY_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Bliley: WES reads to CanFam3.1	12379230451	eb7fb184c629ef4a7cbd1062c39adefe
+file	TCL01-BRMCT	BRMCT_recal_reads.bai	Index File	tumor cell line sample, TCL01-BRMCT: bam index of WES reads	5993984	75a569264267e649c6f673593d227f2e
+file	TCL01-BRMCT	BRMCT_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-BRMCT: WES reads to CanFam3.1	12734958795	7dd610733ab4a545ed180b839557d742
+file	TCL01-C2	C2_recal_reads.bai	Index File	tumor cell line sample, TCL01-C2: bam index of WES reads	5952792	bcb37314c12165b79fff0af32b954e2d
+file	TCL01-C2	C2_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-C2: WES reads to CanFam3.1	14206860537	2732ae20e0d04330ff8d6dcae56fc541
+file	TCL01-Cindy	CINDY_recal_reads.bai	Index File	tumor cell line sample, TCL01-Cindy: bam index of WES reads	6045320	70f7cb898b5bc9dae2a6e0f776d2f25e
+file	TCL01-Cindy	CINDY_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Cindy: WES reads to CanFam3.1	11321375167	b5315f52dd138f64408d0b2717827be7
+file	TCL01-CLBL1	CLBL1_recal_reads.bai	Index File	tumor cell line sample, TCL01-CLBL1: bam index of WES reads	6089344	91f881d13abc07ecb2a9acda49ec6592
+file	TCL01-CLBL1	CLBL1_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-CLBL1: WES reads to CanFam3.1	12879642030	2b703e160fd67bd600bc06c4e5194dbc
+file	TCL01-CLL-1390	CLL1390_recal_reads.bai	Index File	tumor cell line sample, TCL01-CLL-1390: bam index of WES reads	5940688	6f981ad147ca14172d90bb71ee2d6b47
+file	TCL01-CLL-1390	CLL1390_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-CLL-1390: WES reads to CanFam3.1	11063183792	6e5f2d1b70e1a15aa8161d8ff08b4f3c
+file	TCL01-CML-6M	CML6M_recal_reads.bai	Index File	tumor cell line sample, TCL01-CML-6M: bam index of WES reads	6017352	fd4f31e0639812fc9720eec8c1eaab5e
+file	TCL01-CML-6M	CML6M_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-CML-6M: WES reads to CanFam3.1	13819912565	ff81883bb52db4529684baf9d08f0d47
+file	TCL01-CML-10C2	CML8410C2_recal_reads.bai	Index File	tumor cell line sample, TCL01-CML-10C2: bam index of WES reads	5775352	c768ea54e7d2582abfc0e879a56e64bd
+file	TCL01-CML-10C2	CML8410C2_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-CML-10C2: WES reads to CanFam3.1	11547785491	341d0de70c749743ba302224523bb282
+file	TCL01-CMT12	CMT12_recal_reads.bai	Index File	tumor cell line sample, TCL01-CMT12: bam index of WES reads	5861768	f3c6e5275164b4bd169d48ca3eccc8c9
+file	TCL01-CMT12	CMT12_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-CMT12: WES reads to CanFam3.1	11503041279	3674662154f40c618800e00fe1a01cff
+file	TCL01-CTAC	CTAC_recal_reads.bai	Index File	tumor cell line sample, TCL01-CTAC: bam index of WES reads	5967232	000acc71589ef0f0651b6568f74db029
+file	TCL01-CTAC	CTAC_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-CTAC: WES reads to CanFam3.1	12333386882	f820e4a1903de38de47032daabd368be
+file	TCL01-D-17	D17_recal_reads.bai	Index File	tumor cell line sample, TCL01-D-17: bam index of WES reads	6167080	65b6e7f9863ac7702245aec0ace69bec
+file	TCL01-D-17	D17_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-D-17: WES reads to CanFam3.1	14885423514	743f1238a56a582ea3b368ab28e1429f
+file	TCL01-DEN-HSA	DENNY_recal_reads.bai	Index File	tumor cell line sample, TCL01-DEN-HSA: bam index of WES reads	6009952	580df4374c123151ce6c6b9c9502ca5a
+file	TCL01-DEN-HSA	DENNY_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-DEN-HSA: WES reads to CanFam3.1	11416481531	62e9ca8c6c9a8dbf56a06fb63e433be4
+file	TCL01-DH82	DH82_recal_reads.bai	Index File	tumor cell line sample, TCL01-DH82: bam index of WES reads	6038128	89a41178d5b5f36a6c4a25c3d4b67348
+file	TCL01-DH82	DH82_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-DH82: WES reads to CanFam3.1	15276960482	7a4be07d1e8558140d0fd98eff7b9a0f
+file	TCL01-Gracie	GRACIE_recal_reads.bai	Index File	tumor cell line sample, TCL01-Gracie: bam index of WES reads	6272816	9ab3f467c8ff7be49da8110672e93b1a
+file	TCL01-Gracie	GRACIE_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Gracie: WES reads to CanFam3.1	20107363220	c1d290ecf6391f5eff97b0fb509e2fe7
+file	TCL01-HMPOS	HMPOS_recal_reads.bai	Index File	tumor cell line sample, TCL01-HMPOS: bam index of WES reads	5922504	9dd5edeef4f8ea4b31e3e467e309f58b
+file	TCL01-HMPOS	HMPOS_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-HMPOS: WES reads to CanFam3.1	13004970608	fde03039d6d2e640928f5393c12a5ed6
+file	TCL01-Jones	JONES_recal_reads.bai	Index File	tumor cell line sample, TCL01-Jones: bam index of WES reads	6019640	4ca1cf7a0ec588a521bd2639a42030c7
+file	TCL01-Jones	JONES_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Jones: WES reads to CanFam3.1	15484551373	b209406b089ff9e6c214815028205e03
+file	TCL01-Kinsey	KINSEY_recal_reads.bai	Index File	tumor cell line sample, TCL01-Kinsey: bam index of WES reads	6002392	c9a9d5a198b71b82ece903a071e412c3
+file	TCL01-Kinsey	KINSEY_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Kinsey: WES reads to CanFam3.1	13028953715	64fb3640a3d8c83ef9c55c6d988a9f0b
+file	TCL01-McKinley	MACKINLEY_recal_reads.bai	Index File	tumor cell line sample, TCL01-McKinley: bam index of WES reads	5991712	5da19e58266a35086cf252f4744f93e6
+file	TCL01-McKinley	MACKINLEY_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-McKinley: WES reads to CanFam3.1	15930203963	df11b00c83de825d262417103d364e1a
+file	TCL01-Moresco	MORESCO_recal_reads.bai	Index File	tumor cell line sample, TCL01-Moresco: bam index of WES reads	5980688	f93ca8cd177eabad0e7f9c79c035f9e9
+file	TCL01-Moresco	MORESCO_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Moresco: WES reads to CanFam3.1	12969130310	f5d91b56967b5375331410912c54dcc8
+file	TCL01-Nike	NIKE_recal_reads.bai	Index File	tumor cell line sample, TCL01-Nike: bam index of WES reads	5982416	3b6917d9ea7ae9e4f35980bf3b60a88e
+file	TCL01-Nike	NIKE_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Nike: WES reads to CanFam3.1	13834591537	757ff28e42b24d2261179bccbf696f14
+file	TCL01-OS2.4	OS2-4_recal_reads.bai	Index File	tumor cell line sample, TCL01-OS2.4: bam index of WES reads	6132328	7d3b98a5789bf9270e3292fae787f60b
+file	TCL01-OS2.4	OS2-4_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-OS2.4: WES reads to CanFam3.1	16406343532	d31aeeb6f44600c36cc3838bfc4c8af6
+file	TCL01-OSA8	OSA8_recal_reads.bai	Index File	tumor cell line sample, TCL01-OSA8: bam index of WES reads	6169168	6de0d625b4c9995c39c0e6fcd3c79e9b
+file	TCL01-OSA8	OSA8_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-OSA8: WES reads to CanFam3.1	15295197872	b3dbc062e48c7db29596e25f90b3bc7a
+file	TCL01-OSW	OSW_recal_reads.bai	Index File	tumor cell line sample, TCL01-OSW: bam index of WES reads	6129712	fe2a0df060c8d40be92ef0e835255df4
+file	TCL01-OSW	OSW_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-OSW: WES reads to CanFam3.1	15645298941	b7a0879015e0b583e4a20a54ab08abeb
+file	TCL01-Parks	PARKS_recal_reads.bai	Index File	tumor cell line sample, TCL01-Parks: bam index of WES reads	6534840	2b466cafddc7b428ff05da1a15dc6cf6
+file	TCL01-Parks	PARKS_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Parks: WES reads to CanFam3.1	20117760429	34d6fdeef92bbf19b6887f0b7752116a
+file	TCL01-SB	SB_recal_reads.bai	Index File	tumor cell line sample, TCL01-SB: bam index of WES reads	6173640	8f4fc8218a773798b81d1573b811c8da
+file	TCL01-SB	SB_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-SB: WES reads to CanFam3.1	15742684377	f8f253afb557f0e33a0a864a4d862e7b
+file	TCL01-STSA-1	STS-1_recal_reads.bai	Index File	tumor cell line sample, TCL01-STSA-1: bam index of WES reads	6178592	09abe8721e1603d86e8286eff9d24d87
+file	TCL01-STSA-1	STS-1_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-STSA-1: WES reads to CanFam3.1	16771819055	c4ce1f8bcc879a4838a81ea5e8843be9
+file	TCL01-Tyler1	TYLER1_recal_reads.bai	Index File	tumor cell line sample, TCL01-Tyler1: bam index of WES reads	5936288	3ab276af9b2f8dcf8abba7af49c954a6
+file	TCL01-Tyler1	TYLER1_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Tyler1: WES reads to CanFam3.1	11471388290	2f3a05cd811bfeb115f3b897cec6a12b
+file	TCL01-Tyler2	TYLER2_recal_reads.bai	Index File	tumor cell line sample, TCL01-Tyler2: bam index of WES reads	6128568	fc354a42685615be86e35d4d1018239e
+file	TCL01-Tyler2	TYLER2_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Tyler2: WES reads to CanFam3.1	15424341682	fd54a81f8508833a966b241293793218
+file	TCL01-Vogel	VOGEL_recal_reads.bai	Index File	tumor cell line sample, TCL01-Vogel: bam index of WES reads	6059208	9b5111bd59cadff5c0cc00c3182b5334
+file	TCL01-Vogel	VOGEL_recal_reads.bam	Whole Exome Sequence File	tumor cell line sample, TCL01-Vogel: WES reads to CanFam3.1	22941297095	5a33ed689898579edde9ab4bf7ac6d17
+file	TCL01-N-1146	N-1146_recal_reads.bai	Index File	normal sample, TCL01-N-1146: bam index of WES reads	5966640	871146c4742be026a8845a1eacf7120d
+file	TCL01-N-1146	N-1146_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-1146: WES reads to CanFam3.1	13709569910	c6f0a5dcfaf8b52b0b9c30df72511c26
+file	TCL01-N-1344	N-1344_recal_reads.bai	Index File	normal sample, TCL01-N-1344: bam index of WES reads	5483208	3bb1c7b36476ea8825a67506e3dbbe2d
+file	TCL01-N-1344	N-1344_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-1344: WES reads to CanFam3.1	8496493381	52c6830d322d10c226e62a03be03aca4
+file	TCL01-N-166408	N-166408_recal_reads.bai	Index File	normal sample, TCL01-N-166408: bam index of WES reads	5435520	43d7c317a765880bfc6c187dde17f620
+file	TCL01-N-166408	N-166408_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-166408: WES reads to CanFam3.1	9536035091	e08b87efd448b31115f0b854d2778cfd
+file	TCL01-N-172160	N-172160_recal_reads.bai	Index File	normal sample, TCL01-N-172160: bam index of WES reads	5588544	ed073737170ed2a5972e979074f6d80f
+file	TCL01-N-172160	N-172160_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-172160: WES reads to CanFam3.1	8806593257	1ab700451aa54c8f36495fc852c50807
+file	TCL01-N-1776	N-1776_recal_reads.bai	Index File	normal sample, TCL01-N-1776: bam index of WES reads	5632672	f7e0e0e15ed30c96abe9a7ca932d48a8
+file	TCL01-N-1776	N-1776_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-1776: WES reads to CanFam3.1	9211871132	93f70d106718812541d0cc9b9b2a3f5e
+file	TCL01-N-1866	N-1866_recal_reads.bai	Index File	normal sample, TCL01-N-1866: bam index of WES reads	5817080	f6206908d6f88ad46ad0dd29a7520da4
+file	TCL01-N-1866	N-1866_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-1866: WES reads to CanFam3.1	11810859656	5a9937c8d6143eca6bd77de6699a7817
+file	TCL01-N-353	N-353_recal_reads.bai	Index File	normal sample, TCL01-N-353: bam index of WES reads	5572704	bfc15de56f00eb38c7fa96a43ea6d57f
+file	TCL01-N-353	N-353_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-353: WES reads to CanFam3.1	8616102202	3c7e5c329e781b192e0b804ba5fc94f6
+file	TCL01-N-Bella	N-Bella_recal_reads.bai	Index File	normal sample, TCL01-N-Bella: bam index of WES reads	5677384	29e49563d47e23d946a1bb0516c489cc
+file	TCL01-N-Bella	N-Bella_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-Bella: WES reads to CanFam3.1	12052962019	34b250eed7221d0b53b6f425208f3651
+file	TCL01-N-CSU7	N-csu7_recal_reads.bai	Index File	normal sample, TCL01-N-CSU7: bam index of WES reads	5658952	bb0d4e4867d234bf5ef04c59d97726ad
+file	TCL01-N-CSU7	N-csu7_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-CSU7: WES reads to CanFam3.1	13349785456	ecf5dd62861abf5f12b678ef4a9a7211
+file	TCL01-N-CSU9	N-CSU9_recal_reads.bai	Index File	normal sample, TCL01-N-CSU9: bam index of WES reads	5544840	a62599e81a72d19b6d4640b6516bcae5
+file	TCL01-N-CSU9	N-CSU9_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-CSU9: WES reads to CanFam3.1	12055125754	0337180cffbc95e501f4c49289068d73
+file	TCL01-N-VRCC3	N-vrcc3_recal_reads.bai	Index File	normal sample, TCL01-N-VRCC3: bam index of WES reads	5605400	2164cc3caf1d69ba3a5acaae222b13e1
+file	TCL01-N-VRCC3	N-vrcc3_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-VRCC3: WES reads to CanFam3.1	12165094093	8ea6e5e94b251c1bbc3c121f26646095
+file	TCL01-N-VRCC7	N-VRCC7_recal_reads.bai	Index File	normal sample, TCL01-N-VRCC7: bam index of WES reads	5559040	505553c39256f2db02776a8d332ffdfc
+file	TCL01-N-VRCC7	N-VRCC7_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-VRCC7: WES reads to CanFam3.1	11179218619	921b99b5ba416713c76c4be9e32f1399
+file	TCL01-N-Zada	N-Zada_recal_reads.bai	Index File	normal sample, TCL01-N-Zada: bam index of WES reads	5518024	b3e1f7a993369723c4e5763131425b84
+file	TCL01-N-Zada	N-Zada_recal_reads.bam	Whole Exome Sequence File	normal sample, TCL01-N-Zada: WES reads to CanFam3.1	11175904110	c92d6de4ae3bc347604fc6a3eb29ee05
