@@ -1,2 +1,0 @@
-type	 study.clinical_study_designation	pi_first_name	pi_last_name	pi_middle_initial
-principal_investigator	TCL01	Dawn	Duval	L
