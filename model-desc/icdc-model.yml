@@ -73,10 +73,10 @@ Nodes:
       Class: secondary
       Template: 'Yes'
     Props:
+      - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later. ALSO the property needs to be arm_record_id
       - arm # arm name
       - arm_description
-      - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
-      - ctep_treatment_assignment_code
+      - ctep_treatment_assignment_code # time to get rid of this!!!
       - crdc_id
   # proposing deprecation or removal of the agent node as it contains no data across ingested studies as of 7/16/24.
   # agent:
@@ -100,8 +100,8 @@ Nodes:
       Class: secondary
       Template: 'Yes'
     Props:
-      - cohort_description # cohort name generally inclusive of some detail as to agent and dose
       - cohort_record_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
+      - cohort_description # cohort name generally inclusive of some detail as to agent and dose
       - cohort_dose # the intended or protocol dose
       - crdc_id
   case:
@@ -125,9 +125,8 @@ Nodes:
       Template: 'Yes'
     Props: 
       - registration_origin
-      - registration_record_id
+      - registration_record_id # this is incorrect, registration_id values simply cannot function both as legitimate registration IDs (paired with a registration_origin value) AND the record ID for any given registration_id to registration_origin pairing
       - crdc_id
-      # - is_primary_id
   biospecimen_source:
     Desc: The Biospecimen Source node functions essentially as a look-up table used by the front-end of the application to convert the names of biobanks and tissue repositories represented in the form of acronyms into human-readable, full text names.
     Tags:
