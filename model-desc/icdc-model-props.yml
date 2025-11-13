@@ -161,7 +161,7 @@ PropDefinitions:
       - 'Yes'
       - 'No'
       - Undefined # accommodates situations where there is any ambiguity in terms of an adverse event being expected or not
-    Req: 'Yes'
+    Req: Preferred # preferred instead of required accommodates siutations where the source data simply doesn't have any values, but if values are available, they must be compliant with the controlled vocabulary defined above
   # # agent props **proposing deprecation or removal of all props in this node as it contains no data across ingested studies as of 7/16/24
   # document_number:
   #   Desc: S/N of the executed CRF
@@ -1042,16 +1042,6 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
-  date_of_registration:
-    Desc: The date upon which the patient/subject/donor was enrolled in the study/trial.
-    Src: Data Owner(s)
-    Type: datetime
-    Req: 'No'
-    Tags:
-       Labeled: Date of Registration
-  # registering_institution: also included in enrollment node, defined elsewhere
-  #   Src: ENROLLMENT/ENROLL/1
-  #   Type: string
   initials:
     Desc: The initials of the patient/subject/donor based upon the subject's first or given name, and the last or family name of the subject's owner.
     Src: Data Owner(s)
@@ -1059,6 +1049,24 @@ PropDefinitions:
     Req: Preferred
     Tags:
        Labeled: Initials
+  # site_short_name: included in both the enrollment and the study_site nodes, but defined in the latter
+  #   Desc: widely accepted acronym for the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
+  #   Src: ENROLLMENT/ENROLL/1
+  #   Type: string
+  # veterinary_medical_center: included in both the enrollment and the study_site nodes, but defined in the latter
+  #   Desc: full name of the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
+  #   Src: ENROLLMENT/ENROLL/1
+  #   Type: string
+  # registering_institution: included in both the enrollment and the study_site nodes, but defined in the latter
+  #   Src: ENROLLMENT/ENROLL/1
+  #   Type: string
+  date_of_registration:
+    Desc: The date upon which the patient/subject/donor was enrolled in the study/trial.
+    Src: Data Owner(s)
+    Type: datetime
+    Req: 'No'
+    Tags:
+       Labeled: Date of Registration
   date_of_informed_consent:
     Desc: The date upon which the owner of the patient/subject/donor signed an informed consent on behalf of the subject.
     Src: Data Owner(s)
@@ -1066,10 +1074,6 @@ PropDefinitions:
     Req: 'No'
     Tags:
        Labeled: Date of Informed Consent
-  # veterinary_medical_center: also included in enrollment node, defined elsewhere
-  #   Desc: full name of the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program, together with the site's city and state
-  #   Src: ENROLLMENT/ENROLL/1
-  #   Type: string
   # cohort_description: also included in enrollment node, defined elsewhere in this document
   #   Desc: essentially, the name of the agent under test and the dose at which it is being used
   #   Src: ENROLLMENT/ENROLL/1
@@ -1081,10 +1085,6 @@ PropDefinitions:
     Req: 'No'
     Tags:
        Labeled: Patient Subgroup
-  # site_short_name: also included in enrollment node, defined elsewhere
-  #   Desc: widely accepted acronym for the university at which the patient was enrolled into the study/trial, and then treated under the appropriate veterinary medicine program
-  #   Src: ENROLLMENT/ENROLL/1
-  #   Type: string
   # removed residual evaluation props from here
   # file props
   file_name:
