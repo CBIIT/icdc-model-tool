@@ -238,11 +238,12 @@ Nodes:
       Template: 'Yes'
     Props:
       - enrollment_record_id
-      - date_of_registration
-      - registering_institution
-      - initials
-      - date_of_informed_consent
+      - initials # of patient/subject/donor
+      - site_short_name
       - veterinary_medical_center
+      - registering_institution
+      - date_of_registration
+      - date_of_informed_consent
       #- cohort_description
       - patient_subgroup
       - crdc_id
