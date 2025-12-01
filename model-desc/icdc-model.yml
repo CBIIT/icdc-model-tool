@@ -3,7 +3,7 @@
 # Lower case names are labels for the entities
 # document number - really a property of properties (where did this question appear)
 Handle: ICDC
-Version: v1.0.0
+Version: v1.1.0
 Nodes:
   program:
     Desc: Within the Integrated Canine Data Commons, studies are grouped into discrete programs, based upon the origins and/or scientific nature of each study/trial. These programs may or may not directly relate to any official, e.g. NCI, funding program. The Program node contains the properties required to appropriately characterize any given ICDC program.
@@ -73,10 +73,10 @@ Nodes:
       Class: secondary
       Template: 'Yes'
     Props:
+      - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later. ALSO the property needs to be arm_record_id
       - arm # arm name
       - arm_description
-      - arm_id # potentially needed to differentiate between arms having the same name, but which actually belong to different studies. Proactively including sooner rather than later.
-      - ctep_treatment_assignment_code
+      # - ctep_treatment_assignment_code # time to get rid of this!!!
       - crdc_id
   # proposing deprecation or removal of the agent node as it contains no data across ingested studies as of 7/16/24.
   # agent:
@@ -100,8 +100,8 @@ Nodes:
       Class: secondary
       Template: 'Yes'
     Props:
-      - cohort_description # cohort name generally inclusive of some detail as to agent and dose
       - cohort_record_id # needed to differentiate between cohorts that share values for cohort description, but which actually belong to different studies
+      - cohort_description # cohort name generally inclusive of some detail as to agent and dose
       - cohort_dose # the intended or protocol dose
       - crdc_id
   case:
@@ -125,9 +125,8 @@ Nodes:
       Template: 'Yes'
     Props: 
       - registration_origin
-      - registration_record_id
+      - registration_record_id # this is incorrect, registration_id values simply cannot function both as legitimate registration IDs (paired with a registration_origin value) AND the record ID for any given registration_id to registration_origin pairing
       - crdc_id
-      # - is_primary_id
   biospecimen_source:
     Desc: The Biospecimen Source node functions essentially as a look-up table used by the front-end of the application to convert the names of biobanks and tissue repositories represented in the form of acronyms into human-readable, full text names.
     Tags:
@@ -167,7 +166,7 @@ Nodes:
       - neutered_indicator
       - crdc_id
   cycle:
-    Desc: In clinical trials where therapeutic agents are administered in multiple discrete treatment cycles, the properties within the Cycle node serve to capture the dates upon which each cycle started and ended, providing a detailed timeframe for the therapeutic intervention(s) in question. Adverse events can then be associated with the correct cycle based upon when they were observed.
+    Desc: In clinical trials where therapeutic agents are administered in multiple discrete treatment cycles, the properties within the Cycle node serve to capture the dates upon which each cycle started and ended, providing a detailed timeframe for the therapeutic intervention(s) in question. Adverse events and various clinical assessments can then be associated with the correct cycle based upon when they were observed.
     Tags:
       Category: clinical_trial
       Assignment: extended
@@ -189,9 +188,9 @@ Nodes:
       Template: 'Yes'
       Clinical_Data_Export: 'Yes'
     Props: 
+      - visit_record_id
       - visit_date
       - visit_number
-      - visit_record_id
       - crdc_id
   principal_investigator:
     Desc: The Principal Investigator node contains properties which identify the principal investigator(s) responsible for any given study/trial. A study/trial may have one or more principal investigators, and any given individual may be listed as a principal investigator on more than one study/trial.
@@ -239,12 +238,12 @@ Nodes:
       Template: 'Yes'
     Props:
       - enrollment_record_id
-      - date_of_registration
-      - registering_institution
-      - initials
-      - date_of_informed_consent
+      - initials # of patient/subject/donor
+      - site_short_name
       - veterinary_medical_center
-      #- cohort_description
+      - registering_institution
+      - date_of_registration
+      - date_of_informed_consent
       - patient_subgroup
       - crdc_id
   prior_therapy:
