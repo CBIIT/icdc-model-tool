@@ -2011,10 +2011,51 @@ PropDefinitions:
     Src: Data Owner(s)
     Type: string
     Req: 'No'
+  # consent_group props
+  consent_group_id:
+    Desc: A sequence of characters used to uniquely identify, name, or characterize the presence and nature of a consent group in a study.
+    Term:
+      - Origin: caDSR
+        Code: 'TBD'
+        Value: Study Consent Group Identifier
+        Version: "1.00"
+        Tags:
+          Provenance: DCF
+          Added: 12-22-25
+    Src: Data Submitter
+    Type: string
+    Req: true 
+    Key: true
+  consent_group_name:
+    Desc: The words or acronym which describe a set of study participants who have signed the same consent agreement and that will be included in the dbGaP repository.
+    Term:
+      - Origin: caDSR
+        Code: '14534329'
+        Value: Research Activity dbGaP Consent Group Text
+        Version: "1.00"
+        Tags:
+          Provenance: DCF
+          Added: 12-22-25
+    Src: Data Submitter
+    Type: string
+    Req: true 
+  consent_group_number:
+    Desc: A numeral or string of numerals used to identify the set of study participants who have signed the same consent agreement and that will be included in the dbGaP repository.
+    Term:
+      - Origin: caDSR
+        Code: '14534330'
+        Value: Research Activity dbGaP Consent Group Number 
+        Version: "1.00"
+        Tags:
+          Provenance: DCF 
+          Added: 12-22-25
+    Src: Data Submitter
+    Type: integer
+    Req: true
   # visit props
   visit_record_id:
     Desc: A unique identifier of each visit record; specifically the value of case_id concatenated with the value of visit_date, the date upon which the visit occurred. <br>This property is used as the key via which child records, e.g. physical examination records, can be associated with the appropriate visit, and to identify the correct visit records during data updates.
-    Src: Data Owner(s)
+    Src: Data Submitter
     Type: string
     Req: 'Yes'
     Key: true
@@ -2033,7 +2074,7 @@ PropDefinitions:
   #   Type: integer
   vital_signs_record_id:
     Desc: A globally unique identifier of each vital signs record collected during a scheduled visit; specifically the value of case_id concatenated with the value of date_of_vital_signs, the date upon which the vital signs evaluation in question was conducted. <br>This property is used as the key to identify the correct vital signs records during data updates.
-    Src: Data Owner(s)
+    Src: Data Submitter
     Type: string
     Req: 'Yes'
     Key: true
