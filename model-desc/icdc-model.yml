@@ -3,7 +3,7 @@
 # Lower case names are labels for the entities
 # document number - really a property of properties (where did this question appear)
 Handle: ICDC
-Version: v1.1.0
+Version: v1.2.0
 Nodes:
   program:
     Desc: Within the Integrated Canine Data Commons, studies are grouped into discrete programs, based upon the origins and/or scientific nature of each study/trial. These programs may or may not directly relate to any official, e.g. NCI, funding program. The Program node contains the properties required to appropriately characterize any given ICDC program.
@@ -37,6 +37,18 @@ Nodes:
       - dates_of_conduct
       - accession_id
       - study_disposition
+      - crdc_id
+  consent_group:
+    Desc: The Consent Group node contains properties required to characterize the consent groups defined within each study/trial. Consent groups are used to define subsets of patients/subjects/donors within a given study/trial, based upon the specific consents that those patients/subjects/donors provided at the time of enrollment.
+    Tags:
+      Category: study
+      Assignment: core
+      Class: primary
+      Template: 'Yes'
+    Props:
+      - consent_group_record_id
+      - consent_group_name
+      - consent_group_number
       - crdc_id
   human_relevance:
     Desc: The Human Relevance node contains properties required to demonstrate how each study/trial offers unique opportunities for the cancer research community to gain significant insights into understanding human cancer biology (including initiation, progression and metastasis), developing new treatments, mitigating toxicities, and improving outcomes for both canines and humans.
