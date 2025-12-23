@@ -46,9 +46,9 @@ Nodes:
       Class: primary
       Template: 'Yes'
     Props:
-      - consent_group_id
-      - consent_group_number
+      - consent_group_record_id
       - consent_group_name
+      - consent_group_number
       - crdc_id
   human_relevance:
     Desc: The Human Relevance node contains properties required to demonstrate how each study/trial offers unique opportunities for the cancer research community to gain significant insights into understanding human cancer biology (including initiation, progression and metastasis), developing new treatments, mitigating toxicities, and improving outcomes for both canines and humans.

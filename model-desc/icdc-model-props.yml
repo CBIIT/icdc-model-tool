@@ -2012,7 +2012,7 @@ PropDefinitions:
     Type: string
     Req: 'No'
   # consent_group props
-  consent_group_id:
+  consent_group_record_id:
     Desc: A sequence of characters used to uniquely identify, name, or characterize the presence and nature of a consent group in a study.
     Term:
       - Origin: caDSR
