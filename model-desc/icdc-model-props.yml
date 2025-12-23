@@ -1987,7 +1987,8 @@ PropDefinitions:
           Added: 10-20-24
           Labeled: Study Type
     Src: Internally-curated
-    Type: list
+    Type: 
+      value_type: list
     Req: 'Yes'
   date_of_iacuc_approval:
     Desc: Where applicable, the date upon which the study/trial was approved by the IACUC.
