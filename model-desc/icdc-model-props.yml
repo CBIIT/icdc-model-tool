@@ -1989,6 +1989,7 @@ PropDefinitions:
     Src: Internally-curated
     Type: 
       value_type: list
+      item_type: string
     Req: 'Yes'
   date_of_iacuc_approval:
     Desc: Where applicable, the date upon which the study/trial was approved by the IACUC.
