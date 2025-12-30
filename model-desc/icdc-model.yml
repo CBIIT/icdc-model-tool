@@ -3,7 +3,7 @@
 # Lower case names are labels for the entities
 # document number - really a property of properties (where did this question appear)
 Handle: ICDC
-Version: v1.2.0
+Version: v1.3.0
 Nodes:
   program:
     Desc: Within the Integrated Canine Data Commons, studies are grouped into discrete programs, based upon the origins and/or scientific nature of each study/trial. These programs may or may not directly relate to any official, e.g. NCI, funding program. The Program node contains the properties required to appropriately characterize any given ICDC program.
@@ -632,6 +632,8 @@ Relationships:
       - Src: registration
         Dst: case
         Mul: many_to_many
+      - Src: case
+        Dst: consent_group
     Props: null
   of_study_arm:
     Mul: many_to_many
@@ -659,6 +661,12 @@ Relationships:
       - Src: publication
         Dst: study
         Mul: many_to_one
+    Props: null
+  of_consent_group:
+    Mul: many_to_one
+    Ends:
+      - Src: consent_group
+        Dst: study
     Props: null
   had_adverse_event:
     Mul: many_to_one
