@@ -27,7 +27,7 @@ Nodes:
         display: "File Location"
   case:
     StaticProps:
-      - property: case_record_id
+      - property: case_id
         display: "Case ID"
   study:
     StaticProps:
