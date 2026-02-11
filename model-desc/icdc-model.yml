@@ -124,7 +124,7 @@ Nodes:
       Class: primary
       Template: 'Yes'
     Props:
-      - case_record_id
+      - case_id
       - patient_id
       - patient_first_name
       - crdc_id
@@ -135,9 +135,13 @@ Nodes:
       Assignment: core
       Class: secondary
       Template: 'Yes'
-    Props: 
+    CompKey:
       - registration_origin
-      - registration_record_id # this is incorrect, registration_id values simply cannot function both as legitimate registration IDs (paired with a registration_origin value) AND the record ID for any given registration_id to registration_origin pairing
+      - registration_id
+    Props: 
+      - registration_record_id # adding this as the node ID required for book-keeping purposes
+      - registration_origin
+      - registration_id # reverting this; registration_id values simply cannot function both as legitimate registration IDs (paired with a registration_origin value) AND the record ID for any given registration_id to registration_origin pairing. In
       - crdc_id
   biospecimen_source:
     Desc: The Biospecimen Source node functions essentially as a look-up table used by the front-end of the application to convert the names of biobanks and tissue repositories represented in the form of acronyms into human-readable, full text names.
@@ -438,6 +442,7 @@ Nodes:
       Class: secondary
       Template: 'Yes'
     Props:
+      #- publication_record_id
       - publication_title
       - authorship
       - year_of_publication
@@ -660,7 +665,6 @@ Relationships:
         # Mul: many_to_one
       - Src: publication
         Dst: study
-        Mul: many_to_one
     Props: null
   of_consent_group:
     Mul: many_to_one
