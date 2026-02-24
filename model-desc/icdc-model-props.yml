@@ -342,7 +342,7 @@ PropDefinitions:
     Type: datetime
   # demographic props
   demographic_record_id:
-    Desc: A unique identifier of each demographic record, which WILL typically BE the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates. #A unique identifier of each demographic record, used to identify the correct demographic records during data updates. <br>The value of this property will generally be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates.
+    Desc: A unique identifier of each demographic record, which WILL typically be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates. #A unique identifier of each demographic record, used to identify the correct demographic records during data updates. <br>The value of this property will generally be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
