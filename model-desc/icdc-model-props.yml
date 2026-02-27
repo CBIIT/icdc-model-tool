@@ -342,7 +342,7 @@ PropDefinitions:
     Type: datetime
   # demographic props
   demographic_record_id:
-    Desc: A unique identifier of each demographic record, which WILL typically be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates. #A unique identifier of each demographic record, used to identify the correct demographic records during data updates. <br>The value of this property will generally be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates.
+    Desc: A unique identifier of each demographic record, which will typically be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates. #A unique identifier of each demographic record, used to identify the correct demographic records during data updates. <br>The value of this property will generally be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1594,7 +1594,7 @@ PropDefinitions:
        Labeled: PubMed ID
   # registration props
   registration_record_id:
-    Desc: A unique identifier of each registration record; specifically the auto-concatenation of the corresponding values of the registration_origin and regsitration_id properties. <br> This property is used as the key with which to identify the correct registration records during data updates.
+    Desc: A unique identifier of each registration record; specifically the auto-concatenation of the corresponding values of the registration_origin and registration_id properties. <br> This property is used as the key with which to identify the correct registration records during data updates.
     Src: System-generated
     Type: string
     Req: 'Yes'
@@ -1602,7 +1602,7 @@ PropDefinitions:
     Tags:
       Template: 'No'
   registration_origin:
-    Desc: The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym. At least one registration_origin value is required for each registration_id value in order to construct the unique pairings of regsitartion_origin and registration_id values which are used to identify multi-study participants, as described below.
+    Desc: The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym. At least one registration_origin value is required for each registration_id value in order to construct the unique pairings of registration_origin and registration_id values which are used to identify multi-study participants, as described below.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
