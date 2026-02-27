@@ -8,7 +8,7 @@ PropDefinitions:
       Template: 'No'
   # adverse_event props
   adverse_event_record_id:
-    Desc: A unique identifier via which adverse event records can be unambiguously differentiated from one another across patients/subjects/donors and across studies/trials. <br>This property is used as the key to identify the correct adverse event records during data upates.
+    Desc: A unique identifier via which adverse event records can be unambiguously differentiated from one another across patients/subjects/donors and across studies/trials. <br>This property is used as the key with which to identify the correct adverse event records during data updates.
     Src: Data Submitter
     Type: string
     Req: true
@@ -254,7 +254,7 @@ PropDefinitions:
   #   Type: datetime
   # biospecimen_source props
   biospecimen_repository_acronym:
-    Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in the form of an acronym. <br>This property is used as the key to identify the correct biospecimen repository records during data updates.
+    Desc: The name of the biobank or tissue repository from which or to which samples for any given patient/subject/donor were acquired or submitted, expressed in the form of an acronym. <br>This property is used as the key with which to identify the correct biospecimen repository records during data updates.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
@@ -322,7 +322,7 @@ PropDefinitions:
        Labeled: Cohorts
   # cycle props
   cycle_record_id:
-    Desc: A unique identifier for each therapy cycle administered to a patient/subject; specifically the value of case_id concatenated with the value of cycle_number. <br>This property is used as the key via which child records, e.g. visit records, can be associated with the appropriate cycle during data loading, and to identify the correct cycle records during data upates.
+    Desc: A unique identifier of each therapy cycle administered to a patient/subject; specifically the value of case_id concatenated with the value of cycle_number. <br>This property is used as the key via which child records, e.g. visit records, can be associated with the appropriate cycle during data loading, and to identify the correct records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -342,7 +342,7 @@ PropDefinitions:
     Type: datetime
   # demographic props
   demographic_record_id:
-    Desc: A unique identifier of each demographic record, used to identify the correct demographic records during data updates. <br>The value of this property will generally be the same as the value of the case_id property. <br> This property is used as the key to identify the correct demographic records during data updates.
+    Desc: A unique identifier of each demographic record, which WILL typically be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates. #A unique identifier of each demographic record, used to identify the correct demographic records during data updates. <br>The value of this property will generally be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct demographic records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -690,7 +690,7 @@ PropDefinitions:
        Labeled: Neutered Status
   # diagnosis props
   diagnosis_record_id:
-    Desc: A unique identifier of each diagnosis record, used to associate child records, e.g. pathology reports, with the appropriate parent, and to identify the correct diagnosis records during data updates. The value of this property will generally be the same as the value of the case_id property.
+    Desc: A unique identifier of each diagnosis record, which will typically be the same as the value of the case_id property. <br>This property is used as the key via which child records, e.g. pathology reports, can be associated with the appropriate diagnosis records during data loading, and to identify the correct records during data updates. #A unique identifier of each diagnosis record, used to associate child records, e.g. pathology reports, with the appropriate parent, and to identify the correct diagnosis records during data updates. The value of this property will generally be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct diagnosis during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -925,7 +925,7 @@ PropDefinitions:
        Labeled: Concurrent Disease Specifics
   # human_relevance props
   human_relevance_record_id:
-    Desc: A unique identifier via which human relevance records can be differentiated from one another across studies/trials. Specifically, this value should be the same as the study's Study Code, i.e. the value of the clinical_study_designation property. <br>This property is used as the key to identify the correct human relevance records during data updates.
+    Desc: A unique identifier via which human relevance records can be differentiated from one another across studies/trials. Specifically, this value should be the same as the study's Study Code, i.e. the value of the clinical_study_designation property. <br>This property is used as the key with which to identify the correct human relevance records during data updates.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
@@ -967,7 +967,7 @@ PropDefinitions:
     Req: 'No'
   # disease_extent props
   disease_extent_record_id:
-    Desc: A unique identifier of each evaluation of disease extent for a subject/patient/donor; specifically the value of case_id concatenated with the value of evaluation_code. <br>This property is used as the key to identify the correct disease extent records during data updates.
+    Desc: A unique identifier of each evaluation of disease extent for a subject/patient/donor; specifically the value of case_id concatenated with the value of evaluation_code. <br>This property is used as the key with which to identify the correct disease extent records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1037,7 +1037,7 @@ PropDefinitions:
     Req: 'No'
   # enrollment props
   enrollment_record_id:
-    Desc: A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates. The value of this property will generally be the same as the value of the case_id property.
+    Desc: A unique identifier of each enrollment record, which will typically be the same as the value of the case_id property. <br>This property is used as the key via which child records, e.g. prior surgery records, can be associated with the appropriate enrollment records during data loading, and to identify the correct records during data updates. #A unique identifier of each enrollment record, used to associate child records, e.g. prior surgery records, with the appropriate parent, and to identify the correct enrollment records during data updates. The value of this property will generally be the same as the value of the case_id property. <br> This property is used as the key with which to identify the correct enrollment records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1290,7 +1290,7 @@ PropDefinitions:
   #   Type: string
   # physical_exam props
   physical_exam_record_id: 
-    Desc: A unique identifier of each physical exam record; specifically the value of case_id concatenated with the value of date_of_examination, the date upon which the physical exam was conducted. <br>This property is used as the key to identify the correct physical exam records during data updates.
+    Desc: A unique identifier of each physical exam record; specifically the value of case_id concatenated with the value of date_of_examination, the date upon which the physical exam was conducted. <br>This property is used as the key with which to identify the correct physical exam records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1337,7 +1337,7 @@ PropDefinitions:
     Type: TBD
   # principal_investigator props
   person_record_id: 
-    Desc: A unique identifier via which a principle investigator can be differentiated across studies; specifically the value of study_id concatenated with the value of pi_last_name, <br>This property is used as the key via which child records, e.g. cohort records, can be associated with the appropriate principle investigator, and to identify the correct principle investigator records during data updates.
+    Desc: A unique identifier via which a principal investigator can be differentiated across studies; specifically the value of study_id concatenated with the value of the pi_last_name property. <br>This property is used as the key with which to identify the correct principal investigator records during data updates. #A unique identifier via which a principle investigator can be differentiated across studies; specifically the value of study_id concatenated with the value of pi_last_name, <br>This property is used as the key via which child records, e.g. cohort records, can be associated with the appropriate principle investigator, and to identify the correct principle investigator records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1365,7 +1365,7 @@ PropDefinitions:
        Labeled: Principal Investigators
   # prior_surgery props
   prior_surgery_record_id:
-    Desc: A unique identifier of each prior surgery record; <br>This property is used as the key to identify the correct prior surgery records during data updates.
+    Desc: A unique identifier of each prior surgery record. <br>This property is used as the key with which to identify the correct prior surgery records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1403,7 +1403,7 @@ PropDefinitions:
     Req: 'No'
   # prior_therapy props
   prior_therapy_record_id:
-    Desc: A unique identifier of each prior therapy record; <br>This property is used as the key to identify the correct prior therapy records during data updates.
+    Desc: A unique identifier of each prior therapy record. <br>This property is used as the key with which to identify the correct prior therapy records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1497,12 +1497,12 @@ PropDefinitions:
     Type: TBD
   # program props
   program_acronym:
-    Desc: The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI. <br>This property is used as the key via which child records, e.g. study records can be associated with the appropriate program during data loading, and to identify the correct records during data updates.
+    Desc: The name of the program under which related studies will be grouped, expressed in the form of the acronym by which it will identified within the UI. <br>This property is used as the key via which child records, e.g. study records, can be associated with the appropriate program during data loading, and to identify the correct records during data updates.
     Term:
       - Origin: caDSR
         Code: '11459801'
         Value: 'Program Short Name Text'
-        Version: '1.0'
+        Version: '1'
         Tags:
           Provenance: DSS
           Added: 12-23-25
@@ -1527,7 +1527,7 @@ PropDefinitions:
       - Origin: caDSR
         Code: '11444542'
         Value: Program Name Text
-        Version: "1.00"
+        Version: '1'
         Tags:
           Provenance: CRDC
           Added: 10-20-24
@@ -1578,7 +1578,7 @@ PropDefinitions:
     Tags:
        Labeled: Journal
   digital_object_id:
-    Desc: Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet. <br>Values of this property must contain only the alphanumeric string of the digital object identifier itself, exclusive of any prefix such as "DOI:", such that values can be correctly interpreted and displayed as hyperlinks within the application. <br>This property is used as the key via which to identify the correct publication records during data updates.
+    Desc: Where applicable, the digital object identifier for the cited work, by which it can be permanently identified, and linked to via the internet. <br>Values of this property must contain only the alphanumeric string of the digital object identifier itself, exclusive of any prefix such as "DOI:", such that values can be correctly interpreted and displayed as hyperlinks within the application. <br>This property is used as the key with which to identify the correct publication records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1594,7 +1594,7 @@ PropDefinitions:
        Labeled: PubMed ID
   # registration props
   registration_record_id:
-    Desc: TBD
+    Desc: A unique identifier of each registration record; specifically the auto-concatenation of the corresponding values of the registration_origin and regsitration_id properties. <br> This property is used as the key with which to identify the correct registration records during data updates.
     Src: System-generated
     Type: string
     Req: 'Yes'
@@ -1602,12 +1602,12 @@ PropDefinitions:
     Tags:
       Template: 'No'
   registration_origin:
-    Desc: The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym.
+    Desc: The entity with which each registration ID is directly associated, for example, an ICDC study, as denoted by the appropriate study code, or the biobank or tissue repository from which samples for a study/trial participant were acquired, as denoted by the appropriate acronym. At least one registration_origin value is required for each registration_id value in order to construct the unique pairings of regsitartion_origin and registration_id values which are used to identify multi-study participants, as described below.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
   registration_id:
-    Desc: A globally unique identifier to describe a patient/donor/subject; specifically the value of case_id. <br>This property is used as the key to identify the registration records during data updates.  # this is incorrect, registration_id values simply cannot function both as legitimate registration IDs (paired with a registration_origin value) AND the record ID for any given registration_id to registration_origin pairing. Registration records depend upon pairings of IDs and origins, and any given dog with multiple registrations may have the same registration_id associated multiple different origins. Besides which, the value of registration_id will NEVER be the same as the case_record_id  
+    Desc: Any identifier used by the data submitter to denote a specific patient/donor/subject, with each such ID required to be associated with at least one corresponding value for the registration_origin property. Any given patient/subject/donor may be associated with multiple submitter-side IDs that are unique in and of themselves, and/or be associated multiple times with a repeated ID that is used within different contexts on the submitter side. Regardless, each context-specific instance within which any given ID applies is captured in the form of a unique pairing of registration_origin and registration_id values. These pairings are used by the application to identify canine individuals participating in two or more separate studies, even when different studies refer to the same multi-study participant by different primary IDs and therefore by the different Case IDs derived from them.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -1994,7 +1994,7 @@ PropDefinitions:
       - Origin: caDSR
         Code: '11160683'
         Value: Study Primary Purpose Text
-        Version: "1.00"
+        Version: '1'
         Tags:
           Provenance: CRDC
           Added: 10-20-24
@@ -2034,8 +2034,8 @@ PropDefinitions:
       - Under Embargo
     Req: 'Yes'
   # study_arm props
-  arm_id: # needs to be arm_record_id
-    Desc: A unique identifier via which study arms can be differentiated from one another across studies/trials. <br>This property is used as the key via which child records, e.g. cohort records, can be associated with the appropriate study arm during data loading, and to identify the correct records during data updates.
+  arm_id: # needs to be arm_record_id?
+    Desc: A unique identifier via which study arms can be differentiated from one another across studies/trials. <br>This property is used as the key via which child records, e.g. cohort records, or in some instances individual cases, can be associated with the appropriate study arm during data loading, and to identify the correct records during data updates.
     Src: Internally-curated
     Type: string
     Req: 'Yes'
@@ -2060,7 +2060,7 @@ PropDefinitions:
   #   Req: 'No'
   # study_site props
   site_short_name:
-    Desc: When recorded at the study level via the Study Site node, the widely-accepted acronym for any institution at which patients/subjects/donors were enrolled nto the study/trial in question. When recorded at the patient/subject/donor level via the Enrollment node, the widely-accepted acronym for the institution at which any given patient/subject/donor was enrolled into the study/trial in question, for treatment under the appropriate veterinary medicine program. <br>This property is used as the key via which to identify the correct records during data updates.
+    Desc: When recorded at the study level via the Study Site node, the widely-accepted acronym for any institution at which patients/subjects/donors were enrolled into the study/trial in question. When recorded at the patient/subject/donor level via the Enrollment node, the widely-accepted acronym for the institution at which any given patient/subject/donor was enrolled into the study/trial in question, for treatment under the appropriate veterinary medicine program. <br>This property is used as the key with which to identify the correct study site records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -2084,7 +2084,7 @@ PropDefinitions:
       - Origin: caDSR
         Code: 'TBD'
         Value: Study Consent Group Identifier
-        Version: "1.00"
+        Version: '1'
         Tags:
           Provenance: DCF
           Added: 12-22-25
@@ -2098,7 +2098,7 @@ PropDefinitions:
       - Origin: caDSR
         Code: '14534329'
         Value: Research Activity dbGaP Consent Group Text
-        Version: "1.00"
+        Version: '1'
         Tags:
           Provenance: DCF
           Added: 12-22-25
@@ -2111,7 +2111,7 @@ PropDefinitions:
       - Origin: caDSR
         Code: '14534330'
         Value: Research Activity dbGaP Consent Group Number 
-        Version: "1.00"
+        Version: '1'
         Tags:
           Provenance: DCF 
           Added: 12-22-25
@@ -2120,7 +2120,7 @@ PropDefinitions:
     Req: true
   # visit props
   visit_record_id:
-    Desc: A unique identifier of each visit record; specifically the value of case_id concatenated with the value of visit_date, the date upon which the visit occurred. <br>This property is used as the key via which child records, e.g. physical examination records, can be associated with the appropriate visit, and to identify the correct visit records during data updates.
+    Desc: A unique identifier of each visit record; specifically the value of case_id concatenated with the value of visit_date, the date upon which the visit occurred. <br>This property is used as the key via which child records, e.g. physical examination records, can be associated with the appropriate visit, and to identify the correct records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
@@ -2139,7 +2139,7 @@ PropDefinitions:
   #   Src: PHYSICAL_EXAM/PE/1
   #   Type: integer
   vital_signs_record_id:
-    Desc: A globally unique identifier of each vital signs record collected during a scheduled visit; specifically the value of case_id concatenated with the value of date_of_vital_signs, the date upon which the vital signs evaluation in question was conducted. <br>This property is used as the key to identify the correct vital signs records during data updates.
+    Desc: A globally unique identifier of each vital signs record collected during a scheduled visit; specifically the value of case_id concatenated with the value of the date_of_vital_signs property, the date upon which the vital signs evaluation in question was conducted. <br>This property is used as the key with which to identify the correct records during data updates.
     Src: Data Submitter
     Type: string
     Req: 'Yes'
