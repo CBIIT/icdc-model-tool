@@ -3,7 +3,7 @@
 # Lower case names are labels for the entities
 # document number - really a property of properties (where did this question appear)
 Handle: ICDC
-Version: v1.3.0
+Version: v2.0.0
 Nodes:
   program:
     Desc: Within the Integrated Canine Data Commons, studies are grouped into discrete programs, based upon the origins and/or scientific nature of each study/trial. These programs may or may not directly relate to any official, e.g. NCI, funding program. The Program node contains the properties required to appropriately characterize any given ICDC program.
