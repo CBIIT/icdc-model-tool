@@ -1,6 +1,7 @@
 ## Release Notes - Integrated Canine Data Commons (ICDC)
 ### Data Model version 2.0.0
-Release Date: 03/10/26
+Release Date: 03/10/26  
+
 This major version release includes a breaking change to the Case node's key property name, introduces a new system-generated key for the Registration node, updates the publications-to-studies relationship cardinality, and improves documentation for record ID properties across the model. Speficially, this release:
 
 - Reverts the "case_record_id" property back to simply "case_id"
