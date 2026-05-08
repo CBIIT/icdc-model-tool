@@ -1,4 +1,9 @@
 ## Release Notes - Integrated Canine Data Commons (ICDC)
+### Data Model version 2.1.0
+Release Date 05/8/26
+
+This minor version release adds the study_accession property to the ICDC data model and finalizes the caDSR code mapping for the Consent Group node.
+
 ### Data Model version 2.0.0
 Release Date: 03/10/26  
 
