@@ -37,6 +37,7 @@ Nodes:
       - dates_of_conduct
       - accession_id
       - study_disposition
+      - study_accession
       - crdc_id
   consent_group:
     Desc: The Consent Group node contains properties required to characterize the consent groups defined within each study/trial. Consent groups are used to define subsets of patients/subjects/donors within a given study/trial, based upon the specific consents that those patients/subjects/donors provided at the time of enrollment.

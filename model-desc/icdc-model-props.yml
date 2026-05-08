@@ -2033,6 +2033,17 @@ PropDefinitions:
       - Pending
       - Under Embargo
     Req: 'Yes'
+  study_accession:
+    Desc: dbGaP study accession number 
+    Req: false 
+    Type:
+      pattern: ^phs[0-9]+$
+    Term:
+    - Origin: caDSR
+      Original Source: DSS CDE
+      Code: '11524544'
+      Value: Research Activity dbGaP Accession Number Identifier
+      Version: '1.00'
   # study_arm props
   arm_id: # needs to be arm_record_id?
     Desc: A unique identifier via which study arms can be differentiated from one another across studies/trials. <br>This property is used as the key via which child records, e.g. cohort records, or in some instances individual cases, can be associated with the appropriate study arm during data loading, and to identify the correct records during data updates.
@@ -2082,7 +2093,7 @@ PropDefinitions:
     Desc: A sequence of characters used to uniquely identify, name, or characterize the presence and nature of a consent group in a study.
     Term:
       - Origin: caDSR
-        Code: 'TBD'
+        Code: '16306756'
         Value: Study Consent Group Identifier
         Version: '1'
         Tags:
