@@ -18,5 +18,6 @@ jobs:
       model_files: |
         icdc-model.yml icdc-model-props.yml
       model_prefix: icdc-model
+      no_docs: true
       event_name: ${{ github.event_name }}
 
