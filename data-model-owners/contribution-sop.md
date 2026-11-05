@@ -62,7 +62,7 @@ A property defined in the properties file but missing from a node's `Props:` lis
    git checkout -b ICDC-3983
    ```
 
-4. **Make the change** in the files from Section 3. Comment out rather than delete when the Rulebook says to preserve history (for example, retired `Enum:` blocks), and remember that commented-out lines are removed as far as the parser is concerned.
+4. **Make the change** in the files from Section 3, following the [MDF Property Playbook](./mdf-property-playbook.md) for property syntax. Comment out rather than delete when the Rulebook says to preserve history (for example, retired `Enum:` blocks), and remember that commented-out lines are removed as far as the parser is concerned.
 
 5. **Validate locally** (Section 8).
 
@@ -140,7 +140,7 @@ Feature branches never carry their own version bumps.
 
 6. **Create a GitHub Release** for the tag and paste the release notes. The Portal does not read GitHub Releases; they are for people.
 
-7. **Verify Stage and Prod** after the next sync (Owner's Guide, Section 9). Do not announce the release until `cache/content.json` on both the `stage` and `prod` branches of `CBIIT/crdc-datahub-models` shows the new version.
+7. **Verify Stage and Prod** (Owner's Guide, Section 9). The model reaches the Navigator within the hour; its permissible values arrive only after MDB loads the tag (a daily job) and promotes it (nightly), so a tag pushed late in the day may not have values until the next morning. Do not announce the release until `cache/content.json` on both the `stage` and `prod` branches of `CBIIT/crdc-datahub-models` shows the new version **and** STS returns values for the changed properties. If a submission is waiting on the release, tell the submitter that their submission must be switched to the new model version, which resets its validation status (Owner's Guide, Section 6.3).
 
 8. **Bring `develop` level with `master`** so the merge commit exists on both branches:
 
@@ -157,6 +157,7 @@ Feature branches never carry their own version bumps.
 - [ ] New properties appear in both the properties file and a node's `Props:` list
 - [ ] No new files under `model-desc/` other than model and Navigator files
 - [ ] No `Code: 'TBD'`
+- [ ] Properties meant to use a CDE's values reference it in `Enum:`, not only in `Term:` ([MDF Property Playbook](./mdf-property-playbook.md), Section 6.2)
 - [ ] Version impact stated using the Rulebook, with required query evidence
 - [ ] CI validation passing
 - [ ] No secrets or credentials committed

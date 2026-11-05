@@ -2,7 +2,7 @@
 
 **Audience:** anyone who owns, edits, or releases a CRDC data commons model that is consumed by the CRDC Submission Portal (also called the CRDC Data Hub).
 **Scope:** CRDC-wide. This guide is kept identical in `CBIIT/ctdc-model` and `CBIIT/icdc-model-tool`; update both copies together.
-**Verified against:** `CBIIT/crdc-datahub-models`, workflow `.github/workflows/update-model-version.yaml`, as of November 2026.
+**Verified against:** `CBIIT/crdc-datahub-models`, workflow `.github/workflows/update-model-version.yaml`, and the MDB and Data Hub teams' answers in #data-modeling, as of November 2026.
 
 ## How the owner documents fit together
 
@@ -30,7 +30,7 @@ flowchart LR
 2. That repository has one branch per Submission Portal environment: `dev`, `dev2`, `qa`, `qa2`, `stage`, `prod`.
 3. A GitHub Action runs **every hour at minute 29**. For each environment branch it moves the submodule to the right commit of your repo, copies your files into a version folder, and updates `cache/content.json`.
 4. The Portal reads that branch: the version folder supplies the model and Navigator files, and `content.json` supplies the version list and Navigator settings.
-5. Permissible values used during validation come from **MDB** (served by STS), not directly from your YAML. See Section 6.
+5. Permissible values used during validation come from **MDB** (served by STS), on a separate, slower path that starts from your release tag. See Section 6.
 
 Nothing in this pipeline is manual. You never create folders or edit files in `crdc-datahub-models` to release a model.
 
@@ -53,7 +53,8 @@ What that means in practice:
 
 - **Tags must start with a digit.** `2.1.0` counts. `v2.1.0` and `v.2.1.0` are ignored entirely.
 - **The highest version number wins, not the newest tag.** If you tag `1.4.1` after `2.0.0`, stage and prod stay on `2.0.0`.
-- **Never put a suffix on a tag at or above your current release.** The pattern matches `4.1.1-hotfix`, and `sort -V` ranks it *above* `4.1.1`, so it would become the production release. Suffixed tags are only harmless when their number is lower than the current release.
+- **Never put a suffix on a tag at or above your current release.** The pattern matches `4.1.1-hotfix`, and `sort -V` ranks it *above* `4.1.1`, so it would become the production release.
+- **Suffixed tags do have one sanctioned use: correcting an old version for MDB.** When MDB cannot load a historical version, the MDB team may ask for the fix to be tagged as `<version>-mdf-fix` with the YAML `Version:` left unchanged (CTDC did this for 1.8.0 to 1.13.0 in October 2026). MDB then reads the fixed tag in place of the original. This is safe for the Submission Portal only because those numbers are below the current release; do it only at the MDB team's request.
 - **Branch names do not matter for stage and prod.** Only the tag does. The tag should still point at a commit on your release branch so history stays readable.
 
 ## 3. How the version number is determined
@@ -97,16 +98,41 @@ Rules that follow from this:
 
 ## 6. Where permissible values come from
 
-During submission validation the Portal asks **MDB** (through the STS API) for each property's permissible values, keyed by **model, version, and property**. MDB decides as follows:
+Permissible values travel a **second path**, separate from the hourly model sync: from your release tag, through MDB, to the Portal.
 
-| Property state in your YAML | What validates submissions |
+### 6.1 Which list validates a property
+
+During validation the Portal asks MDB, through STS (`https://sts.cancer.gov/v2/terms/model-pvs/<MODEL>/<property>`), for each property's permissible values by **model, version, and property**. Since EDPs went live in early September 2026, MDB answers from `Type:` and `Enum:` only:
+
+| Property in your YAML | What validates submissions |
 |---|---|
-| Bound to a caDSR CDE (`Term:` with a live `Code:`) whose value domain is an enumerated list | **The CDE's permissible values.** Any `Enum:` block on the property is ignored for validation, though the Navigator still displays it |
-| Bound to a CDE whose permissible values are URL placeholders (external vocabularies such as ICD-O) or that has no enumerated values | The model's own `Enum:` if present; otherwise only the `Type:` |
-| No live `Code:` | The model's `Enum:` if present; otherwise only the `Type:` |
-| `Code: 'TBD'` | Nothing usable. MDB cannot resolve it. Never release a `TBD` code |
+| `Enum:` with literal values | That list |
+| `Enum:` with one reference to a caDSR CDE or a CRDC EDP | That value set, at the referenced version |
+| `useNullCDE: Yes` in the property's caDSR `Term:` entry | Adds the standard null values to either of the above |
+| `Type: string`, `integer`, `number`, or a pattern | **No list.** Any value of that type |
 
-This is why a change to a property's CDE binding can change what validates even when no `Enum:` line moves, and why an `Enum:` edit on a CDE-bound property can be documentation only. The [Versioning Rulebook](./versioning-rulebook.md) turns this into classification rules.
+**`Term:` is not examined.** A `Term:` records what the property means; it does not supply values, even when it names an enumerated CDE. Before September 2026 the Portal did pull values from `Term:`, and models written in that era (including CTDC's) still have many properties with a CDE in `Term:` and `Type: string`. Those properties now accept free text. To enforce a CDE's values, reference it in `Enum:` as well. The [MDF Property Playbook](./mdf-property-playbook.md) (Sections 6 to 8) has the syntax, and the [Versioning Rulebook](./versioning-rulebook.md) has the classification rules.
+
+The Portal ignores `Tags`, and validates only against the official value strings. NCIt synonyms appear in error messages as suggestions but never pass validation.
+
+### 6.2 When new values reach the Portal
+
+| Step | When |
+|---|---|
+| MDB loads a newly tagged model version | A daily scheduled job; a tag pushed after that day's run waits for the next one |
+| MDB promotes the loaded data to the production STS | Nightly |
+| The Portal pulls permissible values from MDB | **Only when it sees a new model version** |
+
+The authoritative schedule is the MDB team's *MDB System Documentation* on the CTOS Data Team SharePoint; ask in #data-modeling or watch #mdb-alerts when timing matters. Consequences:
+
+* *A new version can appear before its values do.* The hourly sync shows the new version in the Navigator within the hour, but until MDB has loaded it, properties show "Permissible values are currently not available." Tag early in the day when a submission is waiting.
+* *caDSR can add values without a new CDE version.* caDSR versions a CDE only when values are removed or the meaning changes. MDB re-checks the CDE versions your model references and picks up additions, but the Portal fetches values only for a new model version. **New caDSR values reach submitters only after your next release.**
+* *An unbumped change never refreshes values.* Another reason every release needs a new version number (Section 4).
+* *EDP changes follow their own version.* A CRDC EDP is versioned in `CBIIT/bento-edps`; reference the new EDP version in your model and release it.
+
+### 6.3 Submissions are pinned to a model version
+
+A submission keeps validating against the model version it started with, even after newer versions are released. To use a newer version, the submission's model version must be changed deliberately, which resets the submission's validation status to New.
 
 ## 7. Navigator configuration belongs to the Data Hub
 
@@ -147,7 +173,15 @@ Expected results:
 - After merging a version bump to `develop`: `dev` and `qa` show the new number; `stage` and `prod` do not.
 - After pushing the release tag: `stage` and `prod` show the new number.
 
-Then open the Data Model Navigator in each environment and spot-check a changed property.
+Then confirm MDB has the release, which can take until the day after the tag (Section 6.2):
+
+```bash
+curl -s "https://sts.cancer.gov/v2/model/CTDC/versions"          # the new version is listed
+curl -s "https://sts.cancer.gov/v2/terms/model-pvs/CTDC/<property>" \
+  | jq '.[] | {version, values: (.permissibleValues | length)}'  # a changed property has its values
+```
+
+Finally, open the Data Model Navigator in each environment and spot-check a changed property. "Permissible values are currently not available" on a property that should have values means MDB has not loaded the version yet.
 
 ## 10. Pitfalls checklist
 
@@ -158,6 +192,8 @@ Then open the Data Model Navigator in each environment and spot-check a changed 
 - [ ] No property carries `Code: 'TBD'`
 - [ ] Release notes exist for the version, in the file named by `release-notes`
 - [ ] `content.json` on `stage` and `prod` shows the new version
+- [ ] STS lists the new version and returns values for changed properties
+- [ ] Every property meant to use a CDE's values references it in `Enum:`, not only in `Term:`
 
 ## 11. Getting help
 
